@@ -1,0 +1,751 @@
+{
+  "evaluation_version": "1.0",
+  "suite_sha256": "1605ec60f2ab7c5b1f7f9d94495e681b32b341f17851b0e761dd971fe262e576",
+  "source_sha256": "63472b848d8db42a7374e82262a9ba718c827c468f0a0cc33fbac37a2f19f6a6",
+  "fixture_sha256": {
+    "categories.csv": "ada8a8c4e9eb5837c1189cb2f250b5bf237816493955968069b8754b0d0c7bfd",
+    "customers.csv": "28aa50f29fe09a8ccf918ce868002c3da6b1ba2624fb4571ec1ba2828f8cfa61",
+    "order_items.csv": "3d58f8a5f6c6bfc7d5c768c7ea3c829e8a0e7c6cd4e625b280dabb2cc1323c59",
+    "orders.csv": "4f02d36ec430dca184460129004123bdb1f3a3dc02c95d348fa9a02b2674ab4b",
+    "products.csv": "d9b5164836a3d2499ffd7efb932b2735739a316d09b1454c8650c905a4ab1e7c",
+    "promotions.csv": "486402f62694a3d8492f8320130a5089af08efd842151ba6530b23b120cb1747"
+  },
+  "agent_limits": {
+    "max_rounds": 4,
+    "max_tool_calls": 12,
+    "max_calls_per_round": 4,
+    "timeout_seconds": 120.0,
+    "tool_timeout_seconds": 5.0,
+    "request_timeout_seconds": 60.0,
+    "max_output_tokens": 1200
+  },
+  "started_at_utc": "2026-11-01T18:25:33.372528+00:00",
+  "python_version": "3.14.6",
+  "execution": "real",
+  "real_provider_called": true,
+  "model": "qwen3.5:9b",
+  "provider": "openai_compatible",
+  "planned_cases": 3,
+  "repeats": 1,
+  "planned_categories": {
+    "orders": 1,
+    "multi_step": 2
+  },
+  "catalog_source": "synthetic_evaluation_fixture",
+  "orders_source": "data/samples_synthetic",
+  "policy_source": "shared_generated_synthetic_pdf",
+  "policy_sha256": "187967e4ab7149e9671ee207df35a7a0d169a1fec18ed4fc69f8b8b932cff5aa",
+  "policy_version": "0.1",
+  "executed_cases": 3,
+  "executed_turns": 3,
+  "cases": [
+    {
+      "case_id": "PED04",
+      "category": "orders",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_order_status"
+          ],
+          "tool_errors": [
+            "forbidden"
+          ],
+          "latency_ms": 1160.997,
+          "provider_calls": 1,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            1144.6545679998508
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": null,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": {
+            "input_tokens": 1578,
+            "output_tokens": 28,
+            "total_tokens": 1606
+          }
+        }
+      ],
+      "physical_requests": [
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1578,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1477
+            },
+            "output_tokens": 28,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1606
+          },
+          "output_types": [
+            "function_call"
+          ],
+          "calls": [
+            {
+              "name": "get_order_status",
+              "arguments": "{\"order_id\":1}",
+              "call_id": "call_a5ljayt7"
+            }
+          ],
+          "final_text": null,
+          "latency_ms": 1143.9232
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "MUL02",
+      "category": "multi_step",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_product_details",
+            "get_product_offers"
+          ],
+          "tool_errors": [],
+          "latency_ms": 4617.6625,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            1609.3096199999763,
+            2983.3876830000463
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": true,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": {
+            "input_tokens": 4514,
+            "output_tokens": 166,
+            "total_tokens": 4680
+          }
+        }
+      ],
+      "physical_requests": [
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1587,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1477
+            },
+            "output_tokens": 74,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1661
+          },
+          "output_types": [
+            "function_call",
+            "function_call"
+          ],
+          "calls": [
+            {
+              "name": "get_product_details",
+              "arguments": "{\"product_id\":127}",
+              "call_id": "call_qy5afyjy"
+            },
+            {
+              "name": "get_product_offers",
+              "arguments": "{\"product_id\":127,\"payment_method\":\"pix\"}",
+              "call_id": "call_ab6nlmdr"
+            }
+          ],
+          "final_text": null,
+          "latency_ms": 1609.1793
+        },
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1898,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1477
+            },
+            "output_tokens": 61,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1959
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "O produto 127 é um ukulele tenor, com preço original de R$ 359,00 e estoque disponível. Com pagamento via PIX, você tem um desconto de 10%, ficando no valor final de R$ 323,10.",
+          "latency_ms": 1573.6799
+        },
+        {
+          "stage": "finalization",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1029,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 618
+            },
+            "output_tokens": 31,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1060
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "{\"intent\":\"answer\",\"evidence_call_ids\":[\"call_qy5afyjy\",\"call_ab6nlmdr\"],\"clarification\":null}",
+          "latency_ms": 1407.8616
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "MUL04",
+      "category": "multi_step",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_product_offers",
+            "get_store_info",
+            "unknown_tool"
+          ],
+          "tool_errors": [
+            "unknown_tool"
+          ],
+          "latency_ms": 6370.061,
+          "provider_calls": 3,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            1861.3791570001013,
+            1516.133600000103,
+            2960.4061669999737
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": false,
+            "tool_arguments": false,
+            "task_success": true,
+            "grounding": true,
+            "compliance": true,
+            "errors": [
+              "provider_selection"
+            ]
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": {
+            "input_tokens": 6767,
+            "output_tokens": 226,
+            "total_tokens": 6993
+          }
+        }
+      ],
+      "physical_requests": [
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1588,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1477
+            },
+            "output_tokens": 71,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1659
+          },
+          "output_types": [
+            "function_call",
+            "function_call"
+          ],
+          "calls": [
+            {
+              "name": "get_product_offers",
+              "arguments": "{\"product_id\":127,\"payment_method\":\"pix\"}",
+              "call_id": "call_9yv36o7w"
+            },
+            {
+              "name": "get_store_info",
+              "arguments": "{\"subject\":\"hours\"}",
+              "call_id": "call_aqwiblfe"
+            }
+          ],
+          "final_text": null,
+          "latency_ms": 1861.2961
+        },
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1950,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1477
+            },
+            "output_tokens": 58,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 2008
+          },
+          "output_types": [
+            "function_call"
+          ],
+          "calls": [
+            {
+              "name": "answer_order",
+              "arguments": "{\"evidence_call_ids\":\"[\\\"call_9yv36o7w\\\", \\\"call_aqwiblfe\\\"]\",\"intent\":\"answer\"}",
+              "call_id": "call_9l8ntt08"
+            }
+          ],
+          "final_text": null,
+          "latency_ms": 1516.0438
+        },
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 2049,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1946
+            },
+            "output_tokens": 65,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 2114
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "Para o produto 127, a oferta PIX oferece um desconto de 10%, resultando em um preço final de R$ 323,10.\n\nNo sábado, nossa loja está aberta das 09h às 13h.\n\nEspero que essas informações sejam úteis!",
+          "latency_ms": 1425.4831
+        },
+        {
+          "stage": "finalization",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1180,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 618
+            },
+            "output_tokens": 32,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1212
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "{\"intent\":\"answer\",\"evidence_call_ids\":[\"call_9yv36o7w\",\"call_aqwiblfe\"],\"clarification\":null}",
+          "latency_ms": 1534.2704
+        }
+      ],
+      "repetition": 1
+    }
+  ],
+  "summary": {
+    "case_success": {
+      "passed": 3,
+      "applicable": 3,
+      "rate": 1.0
+    },
+    "turn_metrics": {
+      "tool_selection": {
+        "passed": 2,
+        "applicable": 3,
+        "rate": 0.6666666666666666
+      },
+      "tool_arguments": {
+        "passed": 2,
+        "applicable": 3,
+        "rate": 0.6666666666666666
+      },
+      "task_success": {
+        "passed": 3,
+        "applicable": 3,
+        "rate": 1.0
+      },
+      "grounding": {
+        "passed": 2,
+        "applicable": 2,
+        "rate": 1.0
+      },
+      "compliance": {
+        "passed": 3,
+        "applicable": 3,
+        "rate": 1.0
+      }
+    },
+    "reference_tool_checks": {
+      "passed": 3,
+      "applicable": 3,
+      "rate": 1.0
+    },
+    "turn_latency": {
+      "samples": 3,
+      "median_ms": 4617.6625,
+      "p95_ms": 6370.061,
+      "p95_method": "nearest_rank"
+    },
+    "case_latency": {
+      "samples": 3,
+      "median_ms": 4617.6625,
+      "p95_ms": 6370.061,
+      "p95_method": "nearest_rank"
+    },
+    "error_components": {
+      "provider_selection": 1
+    },
+    "tokens": {
+      "reported_turns": 3,
+      "total_turns": 3,
+      "known_usage": {
+        "input_tokens": 12859,
+        "output_tokens": 420,
+        "total_tokens": 13279
+      },
+      "complete_usage": {
+        "input_tokens": 12859,
+        "output_tokens": 420,
+        "total_tokens": 13279
+      }
+    },
+    "cost": {
+      "billed_usd": null,
+      "estimated_usd": null,
+      "reason": "No billed cost returned by adapter; no pricing assumptions."
+    },
+    "policy_recall_at_3": {
+      "applicable": 0,
+      "agent_mean": null,
+      "reference_mean": null
+    },
+    "provider_latency": {
+      "samples": 6,
+      "median_ms": 1735.3444,
+      "p95_ms": 2983.3877,
+      "p95_method": "nearest_rank"
+    }
+  },
+  "by_category": {
+    "multi_step": {
+      "case_success": {
+        "passed": 2,
+        "applicable": 2,
+        "rate": 1.0
+      },
+      "turn_metrics": {
+        "tool_selection": {
+          "passed": 1,
+          "applicable": 2,
+          "rate": 0.5
+        },
+        "tool_arguments": {
+          "passed": 1,
+          "applicable": 2,
+          "rate": 0.5
+        },
+        "task_success": {
+          "passed": 2,
+          "applicable": 2,
+          "rate": 1.0
+        },
+        "grounding": {
+          "passed": 2,
+          "applicable": 2,
+          "rate": 1.0
+        },
+        "compliance": {
+          "passed": 2,
+          "applicable": 2,
+          "rate": 1.0
+        }
+      },
+      "reference_tool_checks": {
+        "passed": 2,
+        "applicable": 2,
+        "rate": 1.0
+      },
+      "turn_latency": {
+        "samples": 2,
+        "median_ms": 5493.8618,
+        "p95_ms": 6370.061,
+        "p95_method": "nearest_rank"
+      },
+      "case_latency": {
+        "samples": 2,
+        "median_ms": 5493.8618,
+        "p95_ms": 6370.061,
+        "p95_method": "nearest_rank"
+      },
+      "error_components": {
+        "provider_selection": 1
+      }
+    },
+    "orders": {
+      "case_success": {
+        "passed": 1,
+        "applicable": 1,
+        "rate": 1.0
+      },
+      "turn_metrics": {
+        "tool_selection": {
+          "passed": 1,
+          "applicable": 1,
+          "rate": 1.0
+        },
+        "tool_arguments": {
+          "passed": 1,
+          "applicable": 1,
+          "rate": 1.0
+        },
+        "task_success": {
+          "passed": 1,
+          "applicable": 1,
+          "rate": 1.0
+        },
+        "grounding": {
+          "passed": 0,
+          "applicable": 0,
+          "rate": null
+        },
+        "compliance": {
+          "passed": 1,
+          "applicable": 1,
+          "rate": 1.0
+        }
+      },
+      "reference_tool_checks": {
+        "passed": 1,
+        "applicable": 1,
+        "rate": 1.0
+      },
+      "turn_latency": {
+        "samples": 1,
+        "median_ms": 1160.997,
+        "p95_ms": 1160.997,
+        "p95_method": "nearest_rank"
+      },
+      "case_latency": {
+        "samples": 1,
+        "median_ms": 1160.997,
+        "p95_ms": 1160.997,
+        "p95_method": "nearest_rank"
+      },
+      "error_components": {}
+    }
+  },
+  "llm_tool_selection": {
+    "passed": 2,
+    "applicable": 3,
+    "rate": 0.6666666666666666
+  },
+  "experimental_profile": {
+    "tag": "after_map_smoke",
+    "temperature": 0,
+    "thinking": "none",
+    "structured_finalization": true,
+    "requested_context": 4096,
+    "warmup_seconds_excluded": 0.001,
+    "elapsed_seconds": 12.281,
+    "ollama_version": "0.35.0",
+    "source_root_label": "workspace",
+    "model": "qwen3.5:9b",
+    "raw_answer_keys_sha256": "6b76f2c8d35902603346ec1f9d5e6ab4c906b5c573b67c375e05cf893fe6c7b5",
+    "faults_are_existing_harness_injections": true,
+    "credentials_or_reasoning_exported": false
+  },
+  "physical_metrics": {
+    "requests": 8,
+    "finalizations": 2,
+    "sdk_time_ms": 12071.7374,
+    "finalization_time_ms": 2942.132,
+    "usage_reported_requests": 8,
+    "known_tokens": {
+      "input_tokens": 12859,
+      "output_tokens": 420,
+      "total_tokens": 13279
+    },
+    "injected_provider_calls": 0,
+    "native_subject_calls": 6
+  },
+  "resource_samples": [
+    {
+      "monotonic": 1428.4,
+      "ram_available_kib": 3748824,
+      "swap_free_kib": 623876,
+      "gpu": [
+        6696,
+        12288,
+        17
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1428.45,
+      "ram_available_kib": 3748228,
+      "swap_free_kib": 623884,
+      "gpu": [
+        6696,
+        12288,
+        17
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1431.475,
+      "ram_available_kib": 3610164,
+      "swap_free_kib": 623892,
+      "gpu": [
+        6689,
+        12288,
+        31
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1434.5,
+      "ram_available_kib": 3500812,
+      "swap_free_kib": 623904,
+      "gpu": [
+        6689,
+        12288,
+        6
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1437.526,
+      "ram_available_kib": 3845072,
+      "swap_free_kib": 623944,
+      "gpu": [
+        6686,
+        12288,
+        94
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1440.553,
+      "ram_available_kib": 3411136,
+      "swap_free_kib": 614688,
+      "gpu": [
+        6688,
+        12288,
+        94
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    }
+  ]
+}

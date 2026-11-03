@@ -1,0 +1,45 @@
+{
+  "evaluation_version": "1.0",
+  "suite_sha256": "6f94fe24cd3402f310b3254fce5b3d9c973e2416301e6fa30c9bab90f824e26a",
+  "source_sha256": "977c3cfe3f11446a9eedc26acef8e60ae07825767e1157e757415c37e0fd064e",
+  "fixture_sha256": {
+    "categories.csv": "ada8a8c4e9eb5837c1189cb2f250b5bf237816493955968069b8754b0d0c7bfd",
+    "customers.csv": "28aa50f29fe09a8ccf918ce868002c3da6b1ba2624fb4571ec1ba2828f8cfa61",
+    "order_items.csv": "3d58f8a5f6c6bfc7d5c768c7ea3c829e8a0e7c6cd4e625b280dabb2cc1323c59",
+    "orders.csv": "4f02d36ec430dca184460129004123bdb1f3a3dc02c95d348fa9a02b2674ab4b",
+    "products.csv": "d9b5164836a3d2499ffd7efb932b2735739a316d09b1454c8650c905a4ab1e7c",
+    "promotions.csv": "486402f62694a3d8492f8320130a5089af08efd842151ba6530b23b120cb1747"
+  },
+  "agent_limits": {
+    "max_rounds": 4,
+    "max_tool_calls": 12,
+    "max_calls_per_round": 4,
+    "timeout_seconds": 30.0,
+    "tool_timeout_seconds": 5.0,
+    "request_timeout_seconds": 20.0,
+    "max_output_tokens": 1200
+  },
+  "started_at_utc": "2026-11-01T02:40:15.846388+00:00",
+  "python_version": "3.14.6",
+  "execution": "not_run",
+  "real_provider_called": false,
+  "model": null,
+  "provider": null,
+  "planned_cases": 40,
+  "repeats": 1,
+  "planned_categories": {
+    "catalog": 8,
+    "pricing": 6,
+    "policies": 8,
+    "orders": 6,
+    "multi_step": 5,
+    "robustness": 7
+  },
+  "catalog_source": "synthetic_evaluation_fixture",
+  "orders_source": "data/samples_synthetic",
+  "policy_source": "synthetic_pdf",
+  "reason": "provider_not_configured",
+  "executed_cases": 0,
+  "summary": null,
+  "cases": []
+}

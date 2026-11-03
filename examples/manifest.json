@@ -1,0 +1,43 @@
+{
+  "generated_at_utc": "2026-11-01T02:53:42.447168+00:00",
+  "execution": "scripted_simulation",
+  "real_provider_called": false,
+  "fixtures": "data/samples",
+  "examples": [
+    {
+      "file": "01_catalogo.md",
+      "sha256": "f854b314968e75b3947a35ab6aedc7855aed9d65653ca47835a65c6f779a6378",
+      "turns": 1,
+      "provider_calls": 2,
+      "tool_calls": 1
+    },
+    {
+      "file": "02_promocao_pagamento.md",
+      "sha256": "2302331a7e7325d0a1b9d6679a1a6ccb19d89a840306d9ab136aa57bf27f7812",
+      "turns": 3,
+      "provider_calls": 6,
+      "tool_calls": 4
+    },
+    {
+      "file": "03_pedido_protegido.md",
+      "sha256": "396ff33395d74798c0ce5c566197c40eeab18275494690f594a7b71e0f9a6ba5",
+      "turns": 2,
+      "provider_calls": 4,
+      "tool_calls": 2
+    },
+    {
+      "file": "04_devolucao.md",
+      "sha256": "ede89de942990c36c80eeff9b683628a43954e920e32cd4cd80becc9292c3947",
+      "turns": 2,
+      "provider_calls": 3,
+      "tool_calls": 2
+    },
+    {
+      "file": "05_fora_escopo.md",
+      "sha256": "4ea395cb2756b8f16ab49e29243ec668e03498b4ec124f1ef83a7cb67013f719",
+      "turns": 2,
+      "provider_calls": 0,
+      "tool_calls": 0
+    }
+  ]
+}

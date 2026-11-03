@@ -1,0 +1,9 @@
+{
+  "frozen_at_utc": "2026-11-01T19:21:06.804631+00:00",
+  "file": "tests/evaluations/holdout_12c.json",
+  "sha256": "2debda24cc513e2bed49c2b9f24beec625a07227956bdd1919976d09553d8b93",
+  "cases": 18,
+  "turns": 20,
+  "purpose": "Holdout definido antes de alterações funcionais e de qualquer inferência; não ajustar o agente após observar seus resultados.",
+  "oracle": "Regras determinísticas e fixtures sintéticas, não LLM-juiz."
+}

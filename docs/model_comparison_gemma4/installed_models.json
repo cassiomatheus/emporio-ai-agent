@@ -1,0 +1,39 @@
+{
+  "ollama_version": "0.35.0",
+  "models": [
+    {
+      "name": "gemma4:12b",
+      "digest": "6114515d63c17436a7c0417d82820ac65ad643e2806c5a3c89cb62846436ed0b",
+      "size": 8021618941,
+      "details": {
+        "parent_model": "imatrix-20260927-12b/model-q4_K_M.gguf",
+        "format": "gguf",
+        "family": "gemma4",
+        "families": [
+          "gemma4"
+        ],
+        "parameter_size": "11.9B",
+        "quantization_level": "Q4_K_M",
+        "context_length": 262144,
+        "embedding_length": 3840
+      }
+    },
+    {
+      "name": "qwen3.5:9b",
+      "digest": "56671c2ab9385f9cfcb404638e32cd62d88e3501d44822208363c010179a3c90",
+      "size": 6550825550,
+      "details": {
+        "parent_model": "model.gguf",
+        "format": "gguf",
+        "family": "qwen35",
+        "families": [
+          "qwen35"
+        ],
+        "parameter_size": "9.0B",
+        "quantization_level": "Q4_K_M",
+        "context_length": 262144,
+        "embedding_length": 4096
+      }
+    }
+  ]
+}

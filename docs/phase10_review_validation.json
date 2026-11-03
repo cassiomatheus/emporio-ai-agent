@@ -1,0 +1,100 @@
+{
+  "verified_at_utc": "2026-11-01T03:32:05.863606+00:00",
+  "scope": "final_phase10_senior_review_after_all_corrections",
+  "initial_venv_created_clean": true,
+  "initial_install_exit_code": 0,
+  "initial_install_seconds": 8.979,
+  "final_source_refreshed_and_reinstalled": true,
+  "candidate_files_copied": 129,
+  "private_env_absent_at_initial_copy": true,
+  "raw_absent": true,
+  "database_absent_at_initial_copy": true,
+  "pytest_absent_before_initial_install": true,
+  "system_site_packages": false,
+  "commands": [
+    {
+      "command": "python -m pip install -c requirements-dev.lock -e .[dev]",
+      "exit_code": 0,
+      "duration_seconds": 1.864
+    },
+    {
+      "command": "python -c <verify package origin>",
+      "exit_code": 0,
+      "duration_seconds": 0.186
+    },
+    {
+      "command": "python -m app.main",
+      "exit_code": 0,
+      "duration_seconds": 0.174
+    },
+    {
+      "command": "python scripts/ingest_data.py --raw-dir data/samples --database data/demo.sqlite3",
+      "exit_code": 0,
+      "duration_seconds": 0.146
+    },
+    {
+      "command": "python scripts/ingest_data.py --raw-dir data/samples --database data/demo.sqlite3",
+      "exit_code": 0,
+      "duration_seconds": 0.136
+    },
+    {
+      "command": "python -m app.cli --offline-demo --message Qual a oferta PIX do produto 127?",
+      "exit_code": 0,
+      "duration_seconds": 0.727
+    },
+    {
+      "command": "python -m pytest -q",
+      "exit_code": 0,
+      "duration_seconds": 16.772,
+      "summary": "409 passed, 35 skipped in 16.13s"
+    },
+    {
+      "command": "python -m ruff check .",
+      "exit_code": 0,
+      "duration_seconds": 0.03,
+      "summary": "All checks passed!"
+    },
+    {
+      "command": "python -m ruff format --check .",
+      "exit_code": 0,
+      "duration_seconds": 0.031,
+      "summary": "104 files already formatted"
+    },
+    {
+      "command": "python -m pip check",
+      "exit_code": 0,
+      "duration_seconds": 0.214,
+      "summary": "No broken requirements found."
+    },
+    {
+      "command": "python -O scripts/generate_examples.py --output <temporary-examples>",
+      "exit_code": 0,
+      "duration_seconds": 0.916
+    },
+    {
+      "command": "python -c <verify endpoints with TestClient>",
+      "exit_code": 0,
+      "duration_seconds": 0.928
+    },
+    {
+      "command": "python -m pip freeze --exclude-editable",
+      "exit_code": 0,
+      "duration_seconds": 0.208
+    }
+  ],
+  "http": {
+    "transport": "TestClient_inprocess",
+    "health": 200,
+    "session": 201,
+    "chat": 200,
+    "order_denied": 403,
+    "tokens_exported": false
+  },
+  "all_checks_passed": true,
+  "real_provider_called": false,
+  "dependency_lock_matched": true,
+  "matched_executable_fixture_files": 95,
+  "executable_fixture_files_matched_workspace_at_verification": true,
+  "optimized_examples_validated": 5,
+  "raw_logs_published": false
+}

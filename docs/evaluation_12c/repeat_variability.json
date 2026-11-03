@@ -1,0 +1,30 @@
+{
+  "same_task_checks_all_turns": true,
+  "comparison_excludes_random_call_ids": true,
+  "differences": [
+    {
+      "case": "MUL01",
+      "step": 1,
+      "arguments_differ": false,
+      "arguments1": null,
+      "arguments2": null,
+      "delivered_text_differs": false,
+      "physical_requests": [
+        3,
+        2
+      ]
+    },
+    {
+      "case": "MUL04",
+      "step": 1,
+      "arguments_differ": false,
+      "arguments1": null,
+      "arguments2": null,
+      "delivered_text_differs": true,
+      "physical_requests": [
+        3,
+        3
+      ]
+    }
+  ]
+}

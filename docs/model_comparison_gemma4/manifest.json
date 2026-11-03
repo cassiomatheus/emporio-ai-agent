@@ -1,0 +1,99 @@
+{
+  "started_at_utc": "2026-11-02T21:03:19.277259+00:00",
+  "scope": "real_local_model_comparison_existing_agent_no_tuning",
+  "models": [
+    {
+      "name": "qwen3.5:9b",
+      "details": {
+        "parent_model": "model.gguf",
+        "format": "gguf",
+        "family": "qwen35",
+        "families": [
+          "qwen35"
+        ],
+        "parameter_size": "9.0B",
+        "quantization_level": "Q4_K_M"
+      },
+      "capabilities": [
+        "completion",
+        "vision",
+        "tools",
+        "thinking"
+      ],
+      "context_metadata": {
+        "general.architecture": "qwen35",
+        "general.parameter_count": 8953803264,
+        "qwen35.context_length": 262144
+      },
+      "thinking_metadata": {
+        "thinking": {
+          "values": [
+            false,
+            true
+          ],
+          "default": true
+        }
+      }
+    },
+    {
+      "name": "gemma4:12b",
+      "details": {
+        "parent_model": "imatrix-20260927-12b/model-q4_K_M.gguf",
+        "format": "gguf",
+        "family": "gemma4",
+        "families": [
+          "gemma4"
+        ],
+        "parameter_size": "11.9B",
+        "quantization_level": "Q4_K_M"
+      },
+      "capabilities": [
+        "completion",
+        "vision",
+        "audio",
+        "tools",
+        "thinking"
+      ],
+      "context_metadata": {
+        "gemma4.context_length": 262144,
+        "general.architecture": "gemma4",
+        "general.parameter_count": 11907350576
+      },
+      "thinking_metadata": {
+        "thinking": {
+          "values": [
+            false,
+            true
+          ],
+          "default": true
+        }
+      }
+    }
+  ],
+  "source_sha256": "38e06ad26f8fee3deed98a30256b7dd0e3d780cc785bb93c16327e82ca641c25",
+  "answer_keys": {
+    "tests/evaluations/agent_cases.json": "6b76f2c8d35902603346ec1f9d5e6ab4c906b5c573b67c375e05cf893fe6c7b5",
+    "tests/evaluations/holdout_12c.json": "2debda24cc513e2bed49c2b9f24beec625a07227956bdd1919976d09553d8b93"
+  },
+  "sample_sha256": {
+    "data/samples/categories.csv": "ada8a8c4e9eb5837c1189cb2f250b5bf237816493955968069b8754b0d0c7bfd",
+    "data/samples/customers.csv": "28aa50f29fe09a8ccf918ce868002c3da6b1ba2624fb4571ec1ba2828f8cfa61",
+    "data/samples/order_items.csv": "3d58f8a5f6c6bfc7d5c768c7ea3c829e8a0e7c6cd4e625b280dabb2cc1323c59",
+    "data/samples/orders.csv": "4f02d36ec430dca184460129004123bdb1f3a3dc02c95d348fa9a02b2674ab4b",
+    "data/samples/products.csv": "d9b5164836a3d2499ffd7efb932b2735739a316d09b1454c8650c905a4ab1e7c",
+    "data/samples/promotions.csv": "486402f62694a3d8492f8320130a5089af08efd842151ba6530b23b120cb1747"
+  },
+  "controlled_parameters": {
+    "context": 4096,
+    "temperature": 0,
+    "thinking": "none",
+    "structured_finalization": true,
+    "max_output_tokens": 1200,
+    "request_timeout_seconds": 60.0,
+    "agent_timeout_seconds": 120.0,
+    "max_rounds": 4
+  },
+  "runtime_model_unchanged": "qwen3.5:9b",
+  "sources": "synthetic_only",
+  "note": "Comparação neste agente/prompt; o prompt foi anteriormente ajustado usando Qwen. Conjunto adicional já foi visto em avaliação anterior, não é um novo teste cego."
+}

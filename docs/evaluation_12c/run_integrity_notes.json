@@ -1,0 +1,17 @@
+{
+  "observed_at_utc": "2026-11-01T19:53:02.455594+00:00",
+  "pre_resume_report_found_zero_bytes": true,
+  "cause": "not_established",
+  "derived_summary_preserved": "comparison_before_resume.json",
+  "not_counted_as_final": true,
+  "interrupted_diagnostic": {
+    "tag": "after12c_run1_verified",
+    "reason": "Corrigir descrição de term para corresponder ao ProductService antes de fixar as duas rodadas finais.",
+    "completed_cases": 13,
+    "recorded_completed_case_requests": 35,
+    "inflight_requests_not_fully_accounted": true,
+    "included_in_final_rates": false
+  },
+  "final_reports_written_exclusively_and_atomically": true,
+  "total_session_tokens_not_claimed_complete": true
+}

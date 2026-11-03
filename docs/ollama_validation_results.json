@@ -1,0 +1,1564 @@
+{
+  "execution": "real_local_ollama",
+  "started_at_utc": "2026-11-01T15:36:16.147273+00:00",
+  "model": "qwen3.5:9b",
+  "ollama_version": "0.35.0",
+  "base_url": "http://127.0.0.1:11434/v1",
+  "python": "3.14.6",
+  "structured_finalization": true,
+  "limits": {
+    "max_rounds": 4,
+    "max_tool_calls": 12,
+    "max_calls_per_round": 4,
+    "timeout_seconds": 120.0,
+    "tool_timeout_seconds": 5.0,
+    "request_timeout_seconds": 60.0,
+    "max_output_tokens": 1200
+  },
+  "sources": "temporary_synthetic_fixtures_only",
+  "suite_sha256": "6b76f2c8d35902603346ec1f9d5e6ab4c906b5c573b67c375e05cf893fe6c7b5",
+  "core_cases": [
+    "CAT02",
+    "PRE02",
+    "POL04",
+    "PED01",
+    "MUL05",
+    "ROB01"
+  ],
+  "supplemental_cases": [
+    "POL07",
+    "PED04"
+  ],
+  "cases": [
+    {
+      "case_id": "CAT02",
+      "category": "catalog",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "question": "Quais violões de nylon disponíveis custam até R$ 1.000?",
+          "response": {
+            "status": "answered",
+            "text": "Olá! Consultei as fontes da loja para você.\n\nEstas são as opções consultadas no snapshot:\n- Instrumento sintético disponível (ID 102): R$ 250,00; disponível; estoque registrado: 4.\n- Violão sintético para parcelas (ID 103): R$ 960,00; disponível; estoque registrado: 3.",
+            "rounds": 3,
+            "tools": [
+              {
+                "call_id": "call_dr80e09a",
+                "name": "search_products",
+                "status": "error",
+                "error_code": "invalid_arguments"
+              },
+              {
+                "call_id": "call_y033end5",
+                "name": "search_products",
+                "status": "ok",
+                "error_code": null
+              }
+            ],
+            "usage": {
+              "input_tokens": 6393,
+              "output_tokens": 927,
+              "total_tokens": 7320
+            }
+          },
+          "latency_ms": 19856.305,
+          "physical_requests": [
+            {
+              "stage": "automatic_tools",
+              "store": false,
+              "server_state_reference": false,
+              "status": "completed",
+              "output_types": [
+                "reasoning",
+                "function_call"
+              ],
+              "function_calls": [
+                {
+                  "name": "search_products",
+                  "call_id": "call_dr80e09a",
+                  "arguments": "{\"category\":\"Violões\",\"specs\":{\"strings\":\"nylon\"},\"max_price\":1000,\"available_only\":true,\"limit\":50}"
+                }
+              ],
+              "final_text": null,
+              "usage": {
+                "input_tokens": 1419,
+                "input_tokens_details": {
+                  "cache_write_tokens": null,
+                  "cached_tokens": 1417
+                },
+                "output_tokens": 254,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 1673
+              },
+              "latency_ms": 5222.3733
+            },
+            {
+              "stage": "automatic_tools",
+              "store": false,
+              "server_state_reference": false,
+              "status": "completed",
+              "output_types": [
+                "reasoning",
+                "function_call"
+              ],
+              "function_calls": [
+                {
+                  "name": "search_products",
+                  "call_id": "call_y033end5",
+                  "arguments": "{\"category\":\"Violões\",\"specs\":{\"strings\":\"nylon\"},\"max_price\":1000,\"available_only\":true}"
+                }
+              ],
+              "final_text": null,
+              "usage": {
+                "input_tokens": 1721,
+                "input_tokens_details": {
+                  "cache_write_tokens": null,
+                  "cached_tokens": 1417
+                },
+                "output_tokens": 149,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 1870
+              },
+              "latency_ms": 3166.114
+            },
+            {
+              "stage": "automatic_tools",
+              "store": false,
+              "server_state_reference": false,
+              "status": "completed",
+              "output_types": [
+                "reasoning",
+                "message"
+              ],
+              "function_calls": [],
+              "final_text": "Que bom que você está interessado em violões! Encontrei 2 opções disponíveis na nossa loja dentro do seu orçamento de até R$ 1.000:\n\n**Violões de nylon disponíveis:**\n\n1. **Instrumento sintético disponível** - R$ 250,00\n   - Categoria: Violões\n   - Cor: Azul\n   - Cordas: Nylon\n   - Estoque disponível\n\n2. **Violão sintético para parcelas** - R$ 960,00\n   - Categoria: Violões  \n   - Cor: Natural\n   - Cordas: Nylon\n   - Estoque disponível\n\nAmbos estão ativos e com estoque disponível! 😊 Gostaria de saber mais detalhes sobre algum deles, como condições de pagamento ou parcelamento?",
+              "usage": {
+                "input_tokens": 2061,
+                "input_tokens_details": {
+                  "cache_write_tokens": null,
+                  "cached_tokens": 1869
+                },
+                "output_tokens": 336,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 2397
+              },
+              "latency_ms": 6761.1483
+            },
+            {
+              "stage": "structured_finalization",
+              "store": false,
+              "server_state_reference": false,
+              "status": "completed",
+              "output_types": [
+                "reasoning",
+                "message"
+              ],
+              "function_calls": [],
+              "final_text": "{\"intent\":\"answer\",\"evidence_call_ids\":[\"call_y033end5\"],\"clarification\":null}",
+              "usage": {
+                "input_tokens": 1192,
+                "input_tokens_details": {
+                  "cache_write_tokens": null,
+                  "cached_tokens": 402
+                },
+                "output_tokens": 188,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 1380
+              },
+              "latency_ms": 4670.8449
+            }
+          ],
+          "tools": [
+            {
+              "name": "search_products",
+              "arguments": {
+                "category": "Violões",
+                "specs": {
+                  "strings": "nylon"
+                },
+                "max_price": 1000,
+                "available_only": true,
+                "limit": 50
+              },
+              "payload": {
+                "status": "error",
+                "data": null,
+                "error": {
+                  "code": "invalid_arguments",
+                  "message": "Revise os parâmetros informados.",
+                  "invalid_fields": [
+                    "limit"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "search_products",
+              "arguments": {
+                "category": "Violões",
+                "specs": {
+                  "strings": "nylon"
+                },
+                "max_price": 1000,
+                "available_only": true
+              },
+              "payload": {
+                "status": "ok",
+                "data": {
+                  "items": [
+                    {
+                      "product_id": 102,
+                      "name": "Instrumento sintético disponível",
+                      "category_id": 1,
+                      "category_name": "Violões",
+                      "price_brl": "250.00",
+                      "description": "Exemplo de produto ativo",
+                      "stock_quantity": 4,
+                      "status": "active",
+                      "specs": {
+                        "color": "azul",
+                        "strings": "nylon"
+                      },
+                      "available": true,
+                      "availability_reason": "available"
+                    },
+                    {
+                      "product_id": 103,
+                      "name": "Violão sintético para parcelas",
+                      "category_id": 1,
+                      "category_name": "Violões",
+                      "price_brl": "960.00",
+                      "description": "Fixture da avaliação",
+                      "stock_quantity": 3,
+                      "status": "active",
+                      "specs": {
+                        "strings": "nylon",
+                        "color": "natural"
+                      },
+                      "available": true,
+                      "availability_reason": "available"
+                    }
+                  ],
+                  "total": 2,
+                  "limit": 10,
+                  "offset": 0
+                },
+                "error": null
+              }
+            }
+          ],
+          "checks": {
+            "tool_selection": false,
+            "tool_arguments": false,
+            "task_success": true,
+            "grounding": true,
+            "compliance": true,
+            "errors": [
+              "provider_selection"
+            ]
+          }
+        }
+      ],
+      "success": true
+    },
+    {
+      "case_id": "PRE02",
+      "category": "pricing",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "question": "Qual a oferta do produto 127 no PIX?",
+          "response": {
+            "status": "answered",
+            "text": "Olá! Consultei as fontes da loja para você.\n\nProduto 127: preço de tabela R$ 359,00.\n- PIX: R$ 323,10 (10% de desconto, sem acumulação).\nCondições calculadas sobre o snapshot; PIX e promoção não se somam.",
+            "rounds": 2,
+            "tools": [
+              {
+                "call_id": "call_gcc6m5k5",
+                "name": "get_product_offers",
+                "status": "ok",
+                "error_code": null
+              }
+            ],
+            "usage": {
+              "input_tokens": 3935,
+              "output_tokens": 803,
+              "total_tokens": 4738
+            }
+          },
+          "latency_ms": 16959.5988,
+          "physical_requests": [
+            {
+              "stage": "automatic_tools",
+              "store": false,
+              "server_state_reference": false,
+              "status": "completed",
+              "output_types": [
+                "reasoning",
+                "function_call"
+              ],
+              "function_calls": [
+                {
+                  "name": "get_product_offers",
+                  "call_id": "call_gcc6m5k5",
+                  "arguments": "{\"product_id\":127,\"payment_method\":\"pix\"}"
+                }
+              ],
+              "final_text": null,
+              "usage": {
+                "input_tokens": 1412,
+                "input_tokens_details": {
+                  "cache_write_tokens": null,
+                  "cached_tokens": 907
+                },
+                "output_tokens": 162,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 1574
+              },
+              "latency_ms": 3704.7716
+            },
+            {
+              "stage": "automatic_tools",
+              "store": false,
+              "server_state_reference": false,
+              "status": "completed",
+              "output_types": [
+                "reasoning",
+                "message"
+              ],
+              "function_calls": [],
+              "final_text": "O produto 127 com pagamento via PIX tem uma promoção especial! 🎸\n\n**Detalhes da oferta:**\n- Preço original: R$ 359,00\n- Desconto aplicado: 10% (promoção)\n- Preço final com PIX: **R$ 323,10**\n\nA condição de pagamento é à vista via PIX, sem parcelamento listado na promoção atual. As regras aplicadas são RN-01 a RN-05 e RN-11.\n\nSe quiser saber mais detalhes sobre o produto ou ver outras opções de pagamento, é só falar!",
+              "usage": {
+                "input_tokens": 1696,
+                "input_tokens_details": {
+                  "cache_write_tokens": null,
+                  "cached_tokens": 1573
+                },
+                "output_tokens": 300,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 1996
+              },
+              "latency_ms": 5949.4512
+            },
+            {
+              "stage": "structured_finalization",
+              "store": false,
+              "server_state_reference": false,
+              "status": "completed",
+              "output_types": [
+                "reasoning",
+                "message"
+              ],
+              "function_calls": [],
+              "final_text": "{\"intent\":\"answer\",\"evidence_call_ids\":[\"call_gcc6m5k5\"],\"clarification\":null}",
+              "usage": {
+                "input_tokens": 827,
+                "input_tokens_details": {
+                  "cache_write_tokens": null,
+                  "cached_tokens": 402
+                },
+                "output_tokens": 341,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 1168
+              },
+              "latency_ms": 7283.5435
+            }
+          ],
+          "tools": [
+            {
+              "name": "get_product_offers",
+              "arguments": {
+                "product_id": 127,
+                "payment_method": "pix"
+              },
+              "payload": {
+                "status": "ok",
+                "data": {
+                  "product_id": 127,
+                  "original_price": "359.00",
+                  "options": [
+                    {
+                      "payment_method": "pix",
+                      "discount_percent": "10",
+                      "final_price": "323.10",
+                      "discount_source": "promotion",
+                      "promotion_id": 1,
+                      "eligible_installments": []
+                    }
+                  ],
+                  "selected_plan": null,
+                  "applied_rules": [
+                    "RN-01",
+                    "RN-02",
+                    "RN-03",
+                    "RN-04",
+                    "RN-05",
+                    "RN-11"
+                  ]
+                },
+                "error": null
+              }
+            }
+          ],
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": true,
+            "compliance": true,
+            "errors": []
+          }
+        }
+      ],
+      "success": true
+    },
+    {
+      "case_id": "POL04",
+      "category": "policies",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "question": "Qual o prazo para arrependimento em compra online após receber o produto?",
+          "response": {
+            "status": "answered",
+            "text": "Olá! Consultei as fontes da loja para você.\n\nEncontrei estas referências no manual:\n- [policies_synthetic.pdf, seção 4.1, p. 4, v. 0.1] Compra online: ate 7 dias corridos do recebimento real. Embalagem original, sem uso, com componentes. Loja paga retorno. Reembolso na mesma modalidade em ate 10 dias uteis.\nSão referências; a aplicação depende das condições do caso.",
+            "rounds": 2,
+            "tools": [
+              {
+                "call_id": "call_ivzud2uh",
+                "name": "search_store_policies",
+                "status": "ok",
+                "error_code": null
+              }
+            ],
+            "usage": {
+              "input_tokens": 4144,
+              "output_tokens": 441,
+              "total_tokens": 4585
+            }
+          },
+          "latency_ms": 10152.0181,
+          "physical_requests": [
+            {
+              "stage": "automatic_tools",
+              "store": false,
+              "server_state_reference": false,
+              "status": "completed",
+              "output_types": [
+                "reasoning",
+                "function_call"
+              ],
+              "function_calls": [
+                {
+                  "name": "search_store_policies",
+                  "call_id": "call_ivzud2uh",
+                  "arguments": "{\"query\":\"prazo arrependimento compras online\"}"
+                }
+              ],
+              "final_text": null,
+              "usage": {
+                "input_tokens": 1415,
+                "input_tokens_details": {
+                  "cache_write_tokens": null,
+                  "cached_tokens": 907
+                },
+                "output_tokens": 131,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 1546
+              },
+              "latency_ms": 3070.1732
+            },
+            {
+              "stage": "automatic_tools",
+              "store": false,
+              "server_state_reference": false,
+              "status": "completed",
+              "output_types": [
+                "reasoning",
+                "message"
+              ],
+              "function_calls": [],
+              "final_text": "{\"intent\":\"answer\",\"evidence_call_ids\":[\"9327476006a3:4.1:1\"],\"clarification\":null}",
+              "usage": {
+                "input_tokens": 1799,
+                "input_tokens_details": {
+                  "cache_write_tokens": null,
+                  "cached_tokens": 1545
+                },
+                "output_tokens": 168,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 1967
+              },
+              "latency_ms": 3499.1172
+            },
+            {
+              "stage": "structured_finalization",
+              "store": false,
+              "server_state_reference": false,
+              "status": "completed",
+              "output_types": [
+                "reasoning",
+                "message"
+              ],
+              "function_calls": [],
+              "final_text": "{\"intent\":\"answer\",\"evidence_call_ids\":[\"call_ivzud2uh\"],\"clarification\":null}",
+              "usage": {
+                "input_tokens": 930,
+                "input_tokens_details": {
+                  "cache_write_tokens": null,
+                  "cached_tokens": 402
+                },
+                "output_tokens": 142,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 1072
+              },
+              "latency_ms": 3559.2422
+            }
+          ],
+          "tools": [
+            {
+              "name": "search_store_policies",
+              "arguments": {
+                "query": "prazo arrependimento compras online"
+              },
+              "payload": {
+                "status": "ok",
+                "data": {
+                  "status": "matched",
+                  "hits": [
+                    {
+                      "chunk_id": "9327476006a3:4.1:1",
+                      "metadata": {
+                        "source_name": "policies_synthetic.pdf",
+                        "source_sha256": "9327476006a345257006c110da6b843e49fead0f4e1b64a9cb349353be2fabdd",
+                        "version": "0.1",
+                        "section_id": "4.1",
+                        "section_title": "Devolucao por arrependimento",
+                        "section_path": [
+                          "4.1 Devolucao por arrependimento"
+                        ],
+                        "pages": [
+                          4
+                        ],
+                        "section_pages": [
+                          4
+                        ]
+                      },
+                      "excerpt": "Compra online: ate 7 dias corridos do recebimento real. Embalagem original, sem uso, com componentes. Loja paga retorno. Reembolso na mesma modalidade em ate 10 dias uteis.",
+                      "excerpt_truncated": false,
+                      "score": 6.292899,
+                      "lexical_coverage": 0.75,
+                      "match_grade": "partial"
+                    }
+                  ]
+                },
+                "error": null
+              }
+            }
+          ],
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": true,
+            "compliance": true,
+            "errors": []
+          }
+        },
+        {
+          "step": 2,
+          "actor": "a",
+          "question": "Quero devolver minha compra online, mas não sei quando recebi. Posso devolver?",
+          "response": {
+            "status": "answered",
+            "text": "Em que data você recebeu o produto? Para avaliar a devolução, também precisamos conferir as condições do caso com a loja. A data do pedido e a previsão de entrega não comprovam o recebimento.",
+            "rounds": 1,
+            "tools": [],
+            "usage": {
+              "input_tokens": 2227,
+              "output_tokens": 785,
+              "total_tokens": 3012
+            }
+          },
+          "latency_ms": 16002.8871,
+          "physical_requests": [
+            {
+              "stage": "automatic_tools",
+              "store": false,
+              "server_state_reference": false,
+              "status": "completed",
+              "output_types": [
+                "reasoning",
+                "message"
+              ],
+              "function_calls": [],
+              "final_text": "Olá! Para processarmos a devolução corretamente, preciso confirmar alguns detalhes importantes:\n\nO prazo de arrependimento é de 7 dias corridos **após o recebimento real** do produto (não conta-se apenas a compra). Como você não lembra quando recebeu, preciso verificar:\n\n1. Você tem algum e-mail ou nota fiscal com a data de entrega?\n2. Pode me dizer se recebeu algo parecido com aquele que comprou para confirmarmos qual item?\n3. Tem alguma foto do produto em casa datada de quando chegou?\n\nAssim conseguimos localizar no histórico e verificar se ainda está dentro do prazo legal. A gente resolve isso juntos! 😊\n\nQual foi a data aproximada que o produto chegou?",
+              "usage": {
+                "input_tokens": 1548,
+                "input_tokens_details": {
+                  "cache_write_tokens": null,
+                  "cached_tokens": 1411
+                },
+                "output_tokens": 332,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 1880
+              },
+              "latency_ms": 6805.8399
+            },
+            {
+              "stage": "structured_finalization",
+              "store": false,
+              "server_state_reference": false,
+              "status": "completed",
+              "output_types": [
+                "reasoning",
+                "message"
+              ],
+              "function_calls": [],
+              "final_text": "{\"intent\":\"clarify\",\"evidence_call_ids\":[],\"clarification\":\"receipt_date\"}",
+              "usage": {
+                "input_tokens": 679,
+                "input_tokens_details": {
+                  "cache_write_tokens": null,
+                  "cached_tokens": 418
+                },
+                "output_tokens": 453,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 1132
+              },
+              "latency_ms": 9182.7578
+            }
+          ],
+          "tools": [],
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": null,
+            "compliance": true,
+            "errors": []
+          }
+        }
+      ],
+      "success": true
+    },
+    {
+      "case_id": "PED01",
+      "category": "orders",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "question": "Consulte pedido 1.",
+          "response": {
+            "status": "answered",
+            "text": "Olá! Consultei as fontes da loja para você.\n\nPedido 1: entregue no snapshot; total histórico R$ 999,90.\nO snapshot não informa código de rastreamento.\nO snapshot não informa previsão de entrega.",
+            "rounds": 2,
+            "tools": [
+              {
+                "call_id": "call_ojtn43x0",
+                "name": "get_order_status",
+                "status": "ok",
+                "error_code": null
+              }
+            ],
+            "usage": {
+              "input_tokens": 3727,
+              "output_tokens": 693,
+              "total_tokens": 4420
+            }
+          },
+          "latency_ms": 14853.4911,
+          "physical_requests": [
+            {
+              "stage": "automatic_tools",
+              "store": false,
+              "server_state_reference": false,
+              "status": "completed",
+              "output_types": [
+                "reasoning",
+                "function_call"
+              ],
+              "function_calls": [
+                {
+                  "name": "get_order_status",
+                  "call_id": "call_ojtn43x0",
+                  "arguments": "{\"order_id\":1}"
+                }
+              ],
+              "final_text": null,
+              "usage": {
+                "input_tokens": 1406,
+                "input_tokens_details": {
+                  "cache_write_tokens": null,
+                  "cached_tokens": 907
+                },
+                "output_tokens": 63,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 1469
+              },
+              "latency_ms": 1797.3561
+            },
+            {
+              "stage": "automatic_tools",
+              "store": false,
+              "server_state_reference": false,
+              "status": "completed",
+              "output_types": [
+                "reasoning",
+                "message"
+              ],
+              "function_calls": [],
+              "final_text": "O pedido #1 está com status **entregue**! 📦\n\n- **Data do pedido:** 01/02/2026  \n- **Total:** R$ 999,90  \n- **Forma de pagamento:** Pix  \n\n**Itens comprados:**\n- 2 unidades do *Instrumento sintético disponível*\n- 1 unidade do *Instrumento sintético em oferta*\n\nSem código de rastreio disponível no momento. Precisa de mais alguma informação?",
+              "usage": {
+                "input_tokens": 1595,
+                "input_tokens_details": {
+                  "cache_write_tokens": null,
+                  "cached_tokens": 1468
+                },
+                "output_tokens": 270,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 1865
+              },
+              "latency_ms": 5375.9898
+            },
+            {
+              "stage": "structured_finalization",
+              "store": false,
+              "server_state_reference": false,
+              "status": "completed",
+              "output_types": [
+                "reasoning",
+                "message"
+              ],
+              "function_calls": [],
+              "final_text": "{\"intent\":\"answer\",\"evidence_call_ids\":[\"call_ojtn43x0\"],\"clarification\":null}",
+              "usage": {
+                "input_tokens": 726,
+                "input_tokens_details": {
+                  "cache_write_tokens": null,
+                  "cached_tokens": 418
+                },
+                "output_tokens": 360,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 1086
+              },
+              "latency_ms": 7656.2264
+            }
+          ],
+          "tools": [
+            {
+              "name": "get_order_status",
+              "arguments": {
+                "order_id": 1
+              },
+              "payload": {
+                "status": "ok",
+                "data": {
+                  "order_id": 1,
+                  "order_date": "2026-02-01",
+                  "status": "delivered",
+                  "total_brl": "999.90",
+                  "payment_method": "pix",
+                  "tracking_code": null,
+                  "estimated_delivery": null,
+                  "tracking_status": "not_provided",
+                  "items": [
+                    {
+                      "product_id": 102,
+                      "name": "Instrumento sintético disponível",
+                      "quantity": 2
+                    },
+                    {
+                      "product_id": 127,
+                      "name": "Instrumento sintético em oferta",
+                      "quantity": 1
+                    }
+                  ]
+                },
+                "error": null
+              }
+            }
+          ],
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": true,
+            "compliance": true,
+            "errors": []
+          }
+        }
+      ],
+      "success": true
+    },
+    {
+      "case_id": "MUL05",
+      "category": "multi_step",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "question": "Mostre o produto 102.",
+          "response": {
+            "status": "answered",
+            "text": "Olá! Consultei as fontes da loja para você.\n\nDetalhes verificados no snapshot:\n- Instrumento sintético disponível (ID 102): R$ 250,00; disponível; estoque registrado: 4.",
+            "rounds": 2,
+            "tools": [
+              {
+                "call_id": "call_5h7tjx6n",
+                "name": "get_product_details",
+                "status": "ok",
+                "error_code": null
+              }
+            ],
+            "usage": {
+              "input_tokens": 3736,
+              "output_tokens": 460,
+              "total_tokens": 4196
+            }
+          },
+          "latency_ms": 10375.7645,
+          "physical_requests": [
+            {
+              "stage": "automatic_tools",
+              "store": false,
+              "server_state_reference": false,
+              "status": "completed",
+              "output_types": [
+                "reasoning",
+                "function_call"
+              ],
+              "function_calls": [
+                {
+                  "name": "get_product_details",
+                  "call_id": "call_5h7tjx6n",
+                  "arguments": "{\"product_id\":102}"
+                }
+              ],
+              "final_text": null,
+              "usage": {
+                "input_tokens": 1409,
+                "input_tokens_details": {
+                  "cache_write_tokens": null,
+                  "cached_tokens": 907
+                },
+                "output_tokens": 88,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 1497
+              },
+              "latency_ms": 2287.8439
+            },
+            {
+              "stage": "automatic_tools",
+              "store": false,
+              "server_state_reference": false,
+              "status": "completed",
+              "output_types": [
+                "reasoning",
+                "message"
+              ],
+              "function_calls": [],
+              "final_text": "E aí! Aqui estão os detalhes do produto 102:\n\n🎸 **Instrumento sintético disponível**\n- Categoria: Violões\n- Preço: R$ 250,00\n- Estoque: 4 unidades\n- Status: Ativo\n- Cor: Azul\n- Cordas: Nylon\n\nÉ um violão ativo com cordas de nylon! Tem uma boa quantidade em estoque também. Quer saber mais sobre parcelamento ou alguma outra informação?",
+              "usage": {
+                "input_tokens": 1598,
+                "input_tokens_details": {
+                  "cache_write_tokens": null,
+                  "cached_tokens": 1496
+                },
+                "output_tokens": 248,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 1846
+              },
+              "latency_ms": 4949.94
+            },
+            {
+              "stage": "structured_finalization",
+              "store": false,
+              "server_state_reference": false,
+              "status": "completed",
+              "output_types": [
+                "reasoning",
+                "message"
+              ],
+              "function_calls": [],
+              "final_text": "{\"intent\":\"answer\",\"evidence_call_ids\":[\"call_5h7tjx6n\"],\"clarification\":null}",
+              "usage": {
+                "input_tokens": 729,
+                "input_tokens_details": {
+                  "cache_write_tokens": null,
+                  "cached_tokens": 418
+                },
+                "output_tokens": 124,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 853
+              },
+              "latency_ms": 3115.7847
+            }
+          ],
+          "tools": [
+            {
+              "name": "get_product_details",
+              "arguments": {
+                "product_id": 102
+              },
+              "payload": {
+                "status": "ok",
+                "data": {
+                  "product_id": 102,
+                  "name": "Instrumento sintético disponível",
+                  "category_id": 1,
+                  "category_name": "Violões",
+                  "price_brl": "250.00",
+                  "description": "Exemplo de produto ativo",
+                  "stock_quantity": 4,
+                  "status": "active",
+                  "specs": {
+                    "color": "azul",
+                    "strings": "nylon"
+                  },
+                  "available": true,
+                  "availability_reason": "available"
+                },
+                "error": null
+              }
+            }
+          ],
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": true,
+            "compliance": true,
+            "errors": []
+          }
+        },
+        {
+          "step": 2,
+          "actor": "b",
+          "question": "E em 6x?",
+          "response": {
+            "status": "answered",
+            "text": "Qual instrumento ou modelo você procura?",
+            "rounds": 0,
+            "tools": [],
+            "usage": null
+          },
+          "latency_ms": 1.9786,
+          "physical_requests": [],
+          "tools": [],
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": null,
+            "compliance": true,
+            "errors": []
+          }
+        },
+        {
+          "step": 3,
+          "actor": "a",
+          "question": "E no PIX?",
+          "response": {
+            "status": "answered",
+            "text": "Olá! Consultei as fontes da loja para você.\n\nProduto 102: preço de tabela R$ 250,00.\n- PIX: R$ 237,50 (5% de desconto, sem acumulação).\nCondições calculadas sobre o snapshot; PIX e promoção não se somam.",
+            "rounds": 2,
+            "tools": [
+              {
+                "call_id": "call_oh3wbjy2",
+                "name": "get_product_offers",
+                "status": "ok",
+                "error_code": null
+              }
+            ],
+            "usage": {
+              "input_tokens": 4147,
+              "output_tokens": 407,
+              "total_tokens": 4554
+            }
+          },
+          "latency_ms": 9128.5681,
+          "physical_requests": [
+            {
+              "stage": "automatic_tools",
+              "store": false,
+              "server_state_reference": false,
+              "status": "completed",
+              "output_types": [
+                "reasoning",
+                "function_call"
+              ],
+              "function_calls": [
+                {
+                  "name": "get_product_offers",
+                  "call_id": "call_oh3wbjy2",
+                  "arguments": "{\"product_id\":102,\"payment_method\":\"pix\"}"
+                }
+              ],
+              "final_text": null,
+              "usage": {
+                "input_tokens": 1508,
+                "input_tokens_details": {
+                  "cache_write_tokens": null,
+                  "cached_tokens": 1405
+                },
+                "output_tokens": 125,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 1633
+              },
+              "latency_ms": 2752.3264
+            },
+            {
+              "stage": "automatic_tools",
+              "store": false,
+              "server_state_reference": false,
+              "status": "completed",
+              "output_types": [
+                "reasoning",
+                "message"
+              ],
+              "function_calls": [],
+              "final_text": "Olá! Consultei as condições especiais via PIX para este instrumento:\n\n- Desconto disponível: **5%** no pagamento à vista via PIX\n- Preço original: R$ 250,00\n- Preço com desconto: **R$ 237,50**\n\nObservação: Não há opções de parcelamento configuradas neste produto. O desconto se aplica apenas ao pagamento único via PIX!",
+              "usage": {
+                "input_tokens": 1754,
+                "input_tokens_details": {
+                  "cache_write_tokens": null,
+                  "cached_tokens": 1632
+                },
+                "output_tokens": 184,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 1938
+              },
+              "latency_ms": 3730.016
+            },
+            {
+              "stage": "structured_finalization",
+              "store": false,
+              "server_state_reference": false,
+              "status": "completed",
+              "output_types": [
+                "reasoning",
+                "message"
+              ],
+              "function_calls": [],
+              "final_text": "{\"intent\":\"answer\",\"evidence_call_ids\":[\"call_oh3wbjy2\"],\"clarification\":null}",
+              "usage": {
+                "input_tokens": 885,
+                "input_tokens_details": {
+                  "cache_write_tokens": null,
+                  "cached_tokens": 418
+                },
+                "output_tokens": 98,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 983
+              },
+              "latency_ms": 2623.5484
+            }
+          ],
+          "tools": [
+            {
+              "name": "get_product_offers",
+              "arguments": {
+                "product_id": 102,
+                "payment_method": "pix"
+              },
+              "payload": {
+                "status": "ok",
+                "data": {
+                  "product_id": 102,
+                  "original_price": "250.00",
+                  "options": [
+                    {
+                      "payment_method": "pix",
+                      "discount_percent": "5",
+                      "final_price": "237.50",
+                      "discount_source": "pix",
+                      "promotion_id": null,
+                      "eligible_installments": []
+                    }
+                  ],
+                  "selected_plan": null,
+                  "applied_rules": [
+                    "RN-01",
+                    "RN-02",
+                    "RN-03",
+                    "RN-04",
+                    "RN-05",
+                    "RN-11"
+                  ]
+                },
+                "error": null
+              }
+            }
+          ],
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": true,
+            "compliance": true,
+            "errors": []
+          }
+        }
+      ],
+      "success": true
+    },
+    {
+      "case_id": "ROB01",
+      "category": "robustness",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "question": "Vocês vendem cabos e palhetas?",
+          "response": {
+            "status": "answered",
+            "text": "A Empório da Música trabalha com instrumentos musicais. Para acessórios ou outro assunto, procure um atendimento especializado.",
+            "rounds": 0,
+            "tools": [],
+            "usage": null
+          },
+          "latency_ms": 1.3339,
+          "physical_requests": [],
+          "tools": [],
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": null,
+            "compliance": true,
+            "errors": []
+          }
+        }
+      ],
+      "success": true
+    },
+    {
+      "case_id": "POL07",
+      "category": "policies",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "question": "Troca por defeito em 30 dias é a mesma coisa que garantia legal de 90 dias?",
+          "response": {
+            "status": "answered",
+            "text": "Olá! Consultei as fontes da loja para você.\n\nEncontrei estas referências no manual:\n- [policies_synthetic.pdf, seção 4.2, p. 5, v. 0.1] Troca por defeito de fabricacao em ate 30 dias da compra. Procedimento distinto da garantia legal de 90 dias do recebimento.\n- [policies_synthetic.pdf, seção 8.1, p. 8, v. 0.1] Garantia legal de 90 dias a partir do recebimento, para defeito de fabricacao. Nao confundir com troca em 30 dias da compra.\nSão referências; a aplicação depende das condições do caso.",
+            "rounds": 2,
+            "tools": [
+              {
+                "call_id": "call_dk872d3x",
+                "name": "search_store_policies",
+                "status": "ok",
+                "error_code": null
+              }
+            ],
+            "usage": {
+              "input_tokens": 4612,
+              "output_tokens": 522,
+              "total_tokens": 5134
+            }
+          },
+          "latency_ms": 12096.8042,
+          "physical_requests": [
+            {
+              "stage": "automatic_tools",
+              "store": false,
+              "server_state_reference": false,
+              "status": "completed",
+              "output_types": [
+                "reasoning",
+                "function_call"
+              ],
+              "function_calls": [
+                {
+                  "name": "search_store_policies",
+                  "call_id": "call_dk872d3x",
+                  "arguments": "{\"query\":\"garantia legal troca defeito 90 dias 30 dias\",\"top_k\":5}"
+                }
+              ],
+              "final_text": null,
+              "usage": {
+                "input_tokens": 1423,
+                "input_tokens_details": {
+                  "cache_write_tokens": null,
+                  "cached_tokens": 907
+                },
+                "output_tokens": 166,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 1589
+              },
+              "latency_ms": 3793.7556
+            },
+            {
+              "stage": "automatic_tools",
+              "store": false,
+              "server_state_reference": false,
+              "status": "completed",
+              "output_types": [
+                "reasoning",
+                "message"
+              ],
+              "function_calls": [],
+              "final_text": "Não, pessoal! São procedimentos diferentes e não são a mesma coisa:\n\n- **Troca por defeito em 30 dias**: Se você notar um problema no primeiro mês após a compra, tem até 30 dias da data do pedido para solicitar essa troca específica. É como um \"prazo especial\" de verificação.\n\n- **Garantia legal de 90 dias**: Essa começa a contar desde que você recebe o instrumento (não só da compra), e dura por 90 dias. Serve para defeitos de fabricação detectados nesse período.\n\nBasicamente, são duas proteções diferentes! Se tiver alguma dúvida sobre qual procedimento aplicar, é só me avisar! 🎸",
+              "usage": {
+                "input_tokens": 2029,
+                "input_tokens_details": {
+                  "cache_write_tokens": null,
+                  "cached_tokens": 1588
+                },
+                "output_tokens": 236,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 2265
+              },
+              "latency_ms": 4955.9114
+            },
+            {
+              "stage": "structured_finalization",
+              "store": false,
+              "server_state_reference": false,
+              "status": "completed",
+              "output_types": [
+                "reasoning",
+                "message"
+              ],
+              "function_calls": [],
+              "final_text": "{\"intent\":\"answer\",\"evidence_call_ids\":[\"call_dk872d3x\"],\"clarification\":null}",
+              "usage": {
+                "input_tokens": 1160,
+                "input_tokens_details": {
+                  "cache_write_tokens": null,
+                  "cached_tokens": 418
+                },
+                "output_tokens": 120,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 1280
+              },
+              "latency_ms": 3325.7053
+            }
+          ],
+          "tools": [
+            {
+              "name": "search_store_policies",
+              "arguments": {
+                "query": "garantia legal troca defeito 90 dias 30 dias",
+                "top_k": 5
+              },
+              "payload": {
+                "status": "ok",
+                "data": {
+                  "status": "matched",
+                  "hits": [
+                    {
+                      "chunk_id": "9327476006a3:4.2:1",
+                      "metadata": {
+                        "source_name": "policies_synthetic.pdf",
+                        "source_sha256": "9327476006a345257006c110da6b843e49fead0f4e1b64a9cb349353be2fabdd",
+                        "version": "0.1",
+                        "section_id": "4.2",
+                        "section_title": "Troca por defeito",
+                        "section_path": [
+                          "4.2 Troca por defeito"
+                        ],
+                        "pages": [
+                          5
+                        ],
+                        "section_pages": [
+                          5
+                        ]
+                      },
+                      "excerpt": "Troca por defeito de fabricacao em ate 30 dias da compra. Procedimento distinto da garantia legal de 90 dias do recebimento.",
+                      "excerpt_truncated": false,
+                      "score": 12.26901,
+                      "lexical_coverage": 1.0,
+                      "match_grade": "strong"
+                    },
+                    {
+                      "chunk_id": "9327476006a3:8.1:1",
+                      "metadata": {
+                        "source_name": "policies_synthetic.pdf",
+                        "source_sha256": "9327476006a345257006c110da6b843e49fead0f4e1b64a9cb349353be2fabdd",
+                        "version": "0.1",
+                        "section_id": "8.1",
+                        "section_title": "Garantia legal",
+                        "section_path": [
+                          "8.1 Garantia legal"
+                        ],
+                        "pages": [
+                          8
+                        ],
+                        "section_pages": [
+                          8
+                        ]
+                      },
+                      "excerpt": "Garantia legal de 90 dias a partir do recebimento, para defeito de fabricacao. Nao confundir com troca em 30 dias da compra.",
+                      "excerpt_truncated": false,
+                      "score": 12.26901,
+                      "lexical_coverage": 1.0,
+                      "match_grade": "strong"
+                    }
+                  ]
+                },
+                "error": null
+              }
+            }
+          ],
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": false,
+            "task_success": true,
+            "grounding": true,
+            "compliance": true,
+            "errors": [
+              "provider_selection"
+            ]
+          }
+        }
+      ],
+      "success": true
+    },
+    {
+      "case_id": "PED04",
+      "category": "orders",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "question": "Consulte pedido 1.",
+          "response": {
+            "status": "abstained",
+            "text": "Não consegui confirmar essa informação nas fontes agora. Pode tentar novamente ou pedir ajuda a um atendente da loja?",
+            "rounds": 2,
+            "tools": [
+              {
+                "call_id": "call_87d6b84h",
+                "name": "get_order_status",
+                "status": "error",
+                "error_code": "forbidden"
+              }
+            ],
+            "usage": {
+              "input_tokens": 3659,
+              "output_tokens": 601,
+              "total_tokens": 4260
+            }
+          },
+          "latency_ms": 12940.0694,
+          "physical_requests": [
+            {
+              "stage": "automatic_tools",
+              "store": false,
+              "server_state_reference": false,
+              "status": "completed",
+              "output_types": [
+                "reasoning",
+                "function_call"
+              ],
+              "function_calls": [
+                {
+                  "name": "get_order_status",
+                  "call_id": "call_87d6b84h",
+                  "arguments": "{\"order_id\":1}"
+                }
+              ],
+              "final_text": null,
+              "usage": {
+                "input_tokens": 1406,
+                "input_tokens_details": {
+                  "cache_write_tokens": null,
+                  "cached_tokens": 907
+                },
+                "output_tokens": 108,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 1514
+              },
+              "latency_ms": 2726.1173
+            },
+            {
+              "stage": "automatic_tools",
+              "store": false,
+              "server_state_reference": false,
+              "status": "completed",
+              "output_types": [
+                "reasoning",
+                "message"
+              ],
+              "function_calls": [],
+              "final_text": "Olá! Infelizmente não foi possível consultar o pedido 1 - ele consta como não encontrado ou sem autorização de acesso no nosso sistema. \n\nVocê tem certeza do número do pedido? Ou talvez você queira verificar algum instrumento específico em vez de um pedido? Estou à disposição para ajudar de outra forma! 🎸",
+              "usage": {
+                "input_tokens": 1561,
+                "input_tokens_details": {
+                  "cache_write_tokens": null,
+                  "cached_tokens": 1513
+                },
+                "output_tokens": 157,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 1718
+              },
+              "latency_ms": 3160.8345
+            },
+            {
+              "stage": "structured_finalization",
+              "store": false,
+              "server_state_reference": false,
+              "status": "completed",
+              "output_types": [
+                "reasoning",
+                "message"
+              ],
+              "function_calls": [],
+              "final_text": "{\"intent\":\"answer\",\"evidence_call_ids\":[],\"clarification\":\"receipt_date\"}",
+              "usage": {
+                "input_tokens": 692,
+                "input_tokens_details": {
+                  "cache_write_tokens": null,
+                  "cached_tokens": 418
+                },
+                "output_tokens": 336,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 1028
+              },
+              "latency_ms": 7029.7635
+            }
+          ],
+          "tools": [
+            {
+              "name": "get_order_status",
+              "arguments": {
+                "order_id": 1
+              },
+              "payload": {
+                "status": "error",
+                "data": null,
+                "error": {
+                  "code": "forbidden",
+                  "message": "Pedido não encontrado ou sem autorização de acesso.",
+                  "invalid_fields": []
+                }
+              }
+            }
+          ],
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": false,
+            "grounding": null,
+            "compliance": true,
+            "errors": [
+              "provider_or_protocol"
+            ]
+          }
+        }
+      ],
+      "success": false
+    }
+  ],
+  "reasoning_content_exported": false,
+  "credentials_or_session_ids_exported": false,
+  "summary": {
+    "core_success": 6,
+    "core_total": 6,
+    "supplemental_success": 1,
+    "turn_latency_core_including_guards": {
+      "samples": 9,
+      "median_ms": 10375.7645,
+      "p95_ms": 19856.305,
+      "p95_method": "nearest_rank"
+    },
+    "turn_latency_core_with_model": {
+      "samples": 7,
+      "median_ms": 14853.4911,
+      "p95_ms": 19856.305,
+      "p95_method": "nearest_rank"
+    },
+    "physical_requests": 27,
+    "structured_finalizations": 9,
+    "usage_reported_requests": 27,
+    "known_tokens": {
+      "input_tokens": 36580,
+      "output_tokens": 5639,
+      "total_tokens": 42219
+    },
+    "billed_cost_usd": null,
+    "energy_or_electricity_cost_measured": false
+  },
+  "loaded_models_after": [
+    {
+      "name": "qwen3.5:9b",
+      "model": "qwen3.5:9b",
+      "size": 5589560196,
+      "digest": "56671c2ab9385f9cfcb404638e32cd62d88e3501d44822208363c010179a3c90",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen35",
+        "families": [
+          "qwen35"
+        ],
+        "parameter_size": "9.0B",
+        "quantization_level": "Q4_K_M"
+      },
+      "expires_at": "2026-11-01T12:43:18.534097314-03:00",
+      "size_vram": 5589560196,
+      "context_length": 4096
+    }
+  ]
+}

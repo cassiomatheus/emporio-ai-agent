@@ -1,0 +1,189 @@
+{
+  "valid": true,
+  "tables": {
+    "categories": {
+      "source_name": "desafio_tecnico_ai_eng - categories.csv",
+      "sha256": "7a7901e16c8c6357a956031ada45a6fd6a4cc9bd7bc1edc05448cc55b01b0a9e",
+      "columns": [
+        "category_id",
+        "name",
+        "description"
+      ],
+      "rows": 9,
+      "null_counts": {
+        "category_id": 0,
+        "name": 0,
+        "description": 0
+      },
+      "invalid_rows": 0,
+      "duplicate_keys": 0
+    },
+    "products": {
+      "source_name": "desafio_tecnico_ai_eng - products.csv",
+      "sha256": "78d911d96ee891abb163b6c858e895025aa530ab27d0290540f05d5098377c12",
+      "columns": [
+        "product_id",
+        "price_brl",
+        "name",
+        "category_id",
+        "description",
+        "stock_quantity",
+        "status",
+        "specs",
+        "created_at"
+      ],
+      "rows": 65,
+      "null_counts": {
+        "product_id": 0,
+        "price_brl": 0,
+        "name": 0,
+        "category_id": 0,
+        "description": 0,
+        "stock_quantity": 0,
+        "status": 0,
+        "specs": 0,
+        "created_at": 0
+      },
+      "invalid_rows": 0,
+      "duplicate_keys": 0
+    },
+    "customers": {
+      "source_name": "desafio_tecnico_ai_eng - customers.csv",
+      "sha256": "1cd724dc86eac6258913cc890abf23d3893c57a99c9325ebfb91dfad3c7b0f37",
+      "columns": [
+        "customer_id",
+        "name",
+        "phone",
+        "email",
+        "city"
+      ],
+      "rows": 50,
+      "null_counts": {
+        "customer_id": 0,
+        "name": 0,
+        "phone": 0,
+        "email": 0,
+        "city": 0
+      },
+      "invalid_rows": 0,
+      "duplicate_keys": 0
+    },
+    "orders": {
+      "source_name": "desafio_tecnico_ai_eng - orders.csv",
+      "sha256": "deb9c2480605d8d22117d569f0045fd156c5e9a58ffeebb847ff61b3b9512fd5",
+      "columns": [
+        "order_id",
+        "customer_id",
+        "order_date",
+        "status",
+        "total_brl",
+        "payment_method",
+        "tracking_code",
+        "estimated_delivery",
+        "notes"
+      ],
+      "rows": 20,
+      "null_counts": {
+        "order_id": 0,
+        "customer_id": 0,
+        "order_date": 0,
+        "status": 0,
+        "total_brl": 0,
+        "payment_method": 0,
+        "tracking_code": 12,
+        "estimated_delivery": 12,
+        "notes": 16
+      },
+      "invalid_rows": 0,
+      "duplicate_keys": 0
+    },
+    "order_items": {
+      "source_name": "desafio_tecnico_ai_eng - order_items.csv",
+      "sha256": "7656eb681821d48e0c932f61d3188309b955c25446578235f2d8e69604b0f0bc",
+      "columns": [
+        "order_id",
+        "quantity",
+        "product_id"
+      ],
+      "rows": 22,
+      "null_counts": {
+        "order_id": 0,
+        "quantity": 0,
+        "product_id": 0
+      },
+      "invalid_rows": 0,
+      "duplicate_keys": 0
+    },
+    "promotions": {
+      "source_name": "desafio_tecnico_ai_eng - promotions.csv",
+      "sha256": "cbe08c7e91b00437c0c00a7ef1486deba73de52d23e3f97f51a7dbd557d759e0",
+      "columns": [
+        "promotion_id",
+        "product_id",
+        "discount_percent",
+        "description",
+        "is_active"
+      ],
+      "rows": 25,
+      "null_counts": {
+        "promotion_id": 0,
+        "product_id": 0,
+        "discount_percent": 0,
+        "description": 0,
+        "is_active": 0
+      },
+      "invalid_rows": 0,
+      "duplicate_keys": 0
+    }
+  },
+  "foreign_key_violations": {
+    "products.category_id->categories.category_id": 0,
+    "orders.customer_id->customers.customer_id": 0,
+    "order_items.order_id->orders.order_id": 0,
+    "order_items.product_id->products.product_id": 0,
+    "promotions.product_id->products.product_id": 0
+  },
+  "errors": [],
+  "observations": {
+    "product_status_counts": {
+      "active": 62,
+      "coming_soon": 1,
+      "discontinued": 2
+    },
+    "order_status_counts": {
+      "cancelled": 4,
+      "confirmed": 4,
+      "delivered": 7,
+      "pending": 4,
+      "shipped": 1
+    },
+    "promotion_active_counts": {
+      "0": 21,
+      "1": 4
+    },
+    "zero_stock_products": 2,
+    "non_active_positive_stock_product_ids": [
+      130,
+      136
+    ],
+    "specs_valid_objects": 65,
+    "order_date_min": "2025-10-15",
+    "order_date_max": "2026-03-22",
+    "historical_total_differences": [
+      {
+        "order_id": 3,
+        "difference_cents": 4800
+      },
+      {
+        "order_id": 20,
+        "difference_cents": 8800
+      }
+    ],
+    "limitations": [
+      "snapshot_not_live",
+      "no_promotion_dates",
+      "no_actual_delivery_date",
+      "current_catalog_sum_is_not_purchase_total"
+    ]
+  }
+}

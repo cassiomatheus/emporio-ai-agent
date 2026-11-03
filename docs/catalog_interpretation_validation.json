@@ -1,0 +1,511 @@
+{
+  "date": "2026-11-03",
+  "scope": "Structured catalog interpretation only; six existing tools; no additional mandatory inference pass.",
+  "configuration": {
+    "model": "qwen3.5:9b",
+    "context_tokens": 4096,
+    "temperature": 0,
+    "thinking": "none",
+    "structured_finalization": true,
+    "provider": "local Ollama via existing openai_compatible adapter"
+  },
+  "evaluation": {
+    "data": "synthetic catalog/orders and synthetic policy PDF",
+    "unchanged_gold": true,
+    "stages": {
+      "baseline_preserved": {
+        "execution": "real",
+        "real_provider_called": true,
+        "model": "qwen3.5:9b",
+        "provider": "openai_compatible",
+        "executed_cases": 40,
+        "executed_turns": 46,
+        "suite_sha256": "6f94fe24cd3402f310b3254fce5b3d9c973e2416301e6fa30c9bab90f824e26a",
+        "summary": {
+          "case_success": {
+            "passed": 37,
+            "applicable": 40,
+            "rate": 0.925
+          },
+          "turn_metrics": {
+            "tool_selection": {
+              "passed": 44,
+              "applicable": 46,
+              "rate": 0.9565217391304348
+            },
+            "tool_arguments": {
+              "passed": 42,
+              "applicable": 46,
+              "rate": 0.9130434782608695
+            },
+            "task_success": {
+              "passed": 43,
+              "applicable": 46,
+              "rate": 0.9347826086956522
+            },
+            "grounding": {
+              "passed": 26,
+              "applicable": 26,
+              "rate": 1.0
+            },
+            "compliance": {
+              "passed": 46,
+              "applicable": 46,
+              "rate": 1.0
+            }
+          },
+          "reference_tool_checks": {
+            "passed": 39,
+            "applicable": 39,
+            "rate": 1.0
+          },
+          "turn_latency": {
+            "samples": 46,
+            "median_ms": 3645.6258,
+            "p95_ms": 6055.777,
+            "p95_method": "nearest_rank"
+          },
+          "case_latency": {
+            "samples": 40,
+            "median_ms": 3855.5101,
+            "p95_ms": 7490.0222,
+            "p95_method": "nearest_rank"
+          },
+          "error_components": {
+            "provider_selection": 4
+          },
+          "tokens": {
+            "reported_turns": 38,
+            "total_turns": 46,
+            "known_usage": {
+              "input_tokens": 187404,
+              "output_tokens": 5128,
+              "total_tokens": 192532
+            },
+            "complete_usage": null
+          },
+          "cost": {
+            "billed_usd": null,
+            "estimated_usd": null,
+            "reason": "No billed cost returned by adapter; no pricing assumptions."
+          },
+          "policy_recall_at_3": {
+            "applicable": 7,
+            "agent_mean": 1.0,
+            "reference_mean": 1.0
+          },
+          "provider_latency": {
+            "samples": 70,
+            "median_ms": 1644.7962,
+            "p95_ms": 4339.8856,
+            "p95_method": "nearest_rank"
+          }
+        },
+        "llm_tool_selection": {
+          "passed": 34,
+          "applicable": 36,
+          "rate": 0.9444444444444444
+        },
+        "catalog_case_success": {
+          "passed": 7,
+          "applicable": 8,
+          "rate": 0.875
+        }
+      },
+      "first_version": {
+        "execution": "real",
+        "real_provider_called": true,
+        "model": "qwen3.5:9b",
+        "provider": "openai_compatible",
+        "executed_cases": 40,
+        "executed_turns": 46,
+        "suite_sha256": "6f94fe24cd3402f310b3254fce5b3d9c973e2416301e6fa30c9bab90f824e26a",
+        "summary": {
+          "case_success": {
+            "passed": 34,
+            "applicable": 40,
+            "rate": 0.85
+          },
+          "turn_metrics": {
+            "tool_selection": {
+              "passed": 41,
+              "applicable": 46,
+              "rate": 0.8913043478260869
+            },
+            "tool_arguments": {
+              "passed": 38,
+              "applicable": 46,
+              "rate": 0.8260869565217391
+            },
+            "task_success": {
+              "passed": 39,
+              "applicable": 46,
+              "rate": 0.8478260869565217
+            },
+            "grounding": {
+              "passed": 24,
+              "applicable": 24,
+              "rate": 1.0
+            },
+            "compliance": {
+              "passed": 46,
+              "applicable": 46,
+              "rate": 1.0
+            }
+          },
+          "reference_tool_checks": {
+            "passed": 39,
+            "applicable": 39,
+            "rate": 1.0
+          },
+          "turn_latency": {
+            "samples": 46,
+            "median_ms": 1791.9785,
+            "p95_ms": 5086.8206,
+            "p95_method": "nearest_rank"
+          },
+          "case_latency": {
+            "samples": 40,
+            "median_ms": 2023.8096,
+            "p95_ms": 6024.592,
+            "p95_method": "nearest_rank"
+          },
+          "error_components": {
+            "provider_selection": 8
+          },
+          "tokens": {
+            "reported_turns": 37,
+            "total_turns": 46,
+            "known_usage": {
+              "input_tokens": 171918,
+              "output_tokens": 3334,
+              "total_tokens": 175252
+            },
+            "complete_usage": null
+          },
+          "cost": {
+            "billed_usd": null,
+            "estimated_usd": null,
+            "reason": "No billed cost returned by adapter; no pricing assumptions."
+          },
+          "policy_recall_at_3": {
+            "applicable": 7,
+            "agent_mean": 1.0,
+            "reference_mean": 1.0
+          },
+          "provider_latency": {
+            "samples": 67,
+            "median_ms": 1046.2681,
+            "p95_ms": 3367.7947,
+            "p95_method": "nearest_rank"
+          }
+        },
+        "llm_tool_selection": {
+          "passed": 31,
+          "applicable": 35,
+          "rate": 0.8857142857142857
+        },
+        "catalog_case_success": {
+          "passed": 6,
+          "applicable": 8,
+          "rate": 0.75
+        }
+      },
+      "consolidated": {
+        "execution": "real",
+        "real_provider_called": true,
+        "model": "qwen3.5:9b",
+        "provider": "openai_compatible",
+        "executed_cases": 40,
+        "executed_turns": 46,
+        "suite_sha256": "6f94fe24cd3402f310b3254fce5b3d9c973e2416301e6fa30c9bab90f824e26a",
+        "summary": {
+          "case_success": {
+            "passed": 39,
+            "applicable": 40,
+            "rate": 0.975
+          },
+          "turn_metrics": {
+            "tool_selection": {
+              "passed": 44,
+              "applicable": 46,
+              "rate": 0.9565217391304348
+            },
+            "tool_arguments": {
+              "passed": 43,
+              "applicable": 46,
+              "rate": 0.9347826086956522
+            },
+            "task_success": {
+              "passed": 45,
+              "applicable": 46,
+              "rate": 0.9782608695652174
+            },
+            "grounding": {
+              "passed": 28,
+              "applicable": 28,
+              "rate": 1.0
+            },
+            "compliance": {
+              "passed": 46,
+              "applicable": 46,
+              "rate": 1.0
+            }
+          },
+          "reference_tool_checks": {
+            "passed": 39,
+            "applicable": 39,
+            "rate": 1.0
+          },
+          "turn_latency": {
+            "samples": 46,
+            "median_ms": 3716.4833,
+            "p95_ms": 6067.4103,
+            "p95_method": "nearest_rank"
+          },
+          "case_latency": {
+            "samples": 40,
+            "median_ms": 3908.062,
+            "p95_ms": 6191.1209,
+            "p95_method": "nearest_rank"
+          },
+          "error_components": {
+            "provider_selection": 3
+          },
+          "tokens": {
+            "reported_turns": 38,
+            "total_turns": 46,
+            "known_usage": {
+              "input_tokens": 194894,
+              "output_tokens": 4756,
+              "total_tokens": 199650
+            },
+            "complete_usage": null
+          },
+          "cost": {
+            "billed_usd": null,
+            "estimated_usd": null,
+            "reason": "No billed cost returned by adapter; no pricing assumptions."
+          },
+          "policy_recall_at_3": {
+            "applicable": 7,
+            "agent_mean": 1.0,
+            "reference_mean": 1.0
+          },
+          "provider_latency": {
+            "samples": 72,
+            "median_ms": 1390.4498,
+            "p95_ms": 3984.4459,
+            "p95_method": "nearest_rank"
+          }
+        },
+        "llm_tool_selection": {
+          "passed": 34,
+          "applicable": 36,
+          "rate": 0.9444444444444444
+        },
+        "catalog_case_success": {
+          "passed": 8,
+          "applicable": 8,
+          "rate": 1.0
+        }
+      }
+    },
+    "remaining_failed_case": "POL08: safe out_of_scope rather than expected policy lookup/no_evidence",
+    "limitations": [
+      "One suite execution per stage; not a statistical model comparison.",
+      "Brief diagnostic overlap in baseline and controls; latency comparison is descriptive.",
+      "Overall turn metrics include backend guards; llm_tool_selection uses inference turns separately.",
+      "Adapter call counts are not guaranteed internal HTTP request counts.",
+      "Token usage is partial; no monetary cost was inferred."
+    ]
+  },
+  "real_target_intermediate": {
+    "question": "Estou procurando um ukulele soprano, de cor natural, por até R$ 250. Quais vocês têm?",
+    "request_and_query": [
+      {
+        "request": {
+          "intent": "search_products",
+          "product": {
+            "category": "ukulele",
+            "subtype": "soprano",
+            "name": null
+          },
+          "characteristics": {
+            "cor": "natural"
+          },
+          "min_price": null,
+          "max_price": "250",
+          "available_only": true,
+          "status": null,
+          "limit": 10,
+          "offset": 0
+        },
+        "query": {
+          "term": "soprano",
+          "name_terms": [],
+          "category": "Ukuleles",
+          "category_id": null,
+          "min_price": null,
+          "max_price": "250",
+          "specs": {
+            "color": "natural"
+          },
+          "available_only": true,
+          "status": null,
+          "limit": 10,
+          "offset": 0
+        },
+        "source": "semantic"
+      }
+    ],
+    "returned_ids": [
+      118,
+      116,
+      117
+    ],
+    "latency_ms": 7999.48,
+    "adapter_calls": 2,
+    "stage": "after nested JSON transport correction, before final schema/category-id refinement"
+  },
+  "intermediate_controls": [
+    {
+      "case": "lower_ceiling",
+      "expected_ids": [],
+      "returned_ids": [],
+      "filter_ids_match": true,
+      "latency_ms": 5617.34,
+      "response_limitation": "Model asked for product clarification despite empty matching result; final HTTP repetition correctly reported no matches."
+    },
+    {
+      "case": "other_subtype",
+      "expected_ids": [
+        120,
+        122,
+        121
+      ],
+      "returned_ids": [
+        120,
+        122,
+        121
+      ],
+      "filter_ids_match": true,
+      "latency_ms": 12598.01,
+      "response_limitation": null
+    },
+    {
+      "case": "other_category",
+      "expected_ids": [
+        83,
+        85,
+        81,
+        84,
+        82
+      ],
+      "returned_ids": [
+        83,
+        85,
+        81,
+        84,
+        82
+      ],
+      "filter_ids_match": true,
+      "latency_ms": 14966.4,
+      "response_limitation": null
+    }
+  ],
+  "http_final": {
+    "execution": "real_local_qwen",
+    "data": "original local public catalog; no customer/order data",
+    "rows": [
+      {
+        "message": "Estou procurando um ukulele soprano, de cor natural, por até R$ 250. Quais vocês têm?",
+        "expected_ids": [
+          118,
+          116,
+          117
+        ],
+        "returned_ids": [
+          118,
+          116,
+          117
+        ],
+        "http_status": 200,
+        "latency_ms": 38751.54,
+        "status": "answered",
+        "rounds": 2,
+        "execution_mode": "real",
+        "tools": [
+          {
+            "name": "search_products",
+            "status": "ok",
+            "error_code": null
+          }
+        ]
+      },
+      {
+        "message": "Busque ukuleles soprano da marca Kalani, cor natural e preço até R$ 250.",
+        "expected_ids": [
+          118
+        ],
+        "returned_ids": [
+          118
+        ],
+        "http_status": 200,
+        "latency_ms": 6984.87,
+        "status": "answered",
+        "rounds": 2,
+        "execution_mode": "real",
+        "tools": [
+          {
+            "name": "search_products",
+            "status": "ok",
+            "error_code": null
+          }
+        ]
+      }
+    ],
+    "empty_result": {
+      "http_status": 200,
+      "latency_ms": 5652.26,
+      "status": "answered",
+      "execution_mode": "real",
+      "tools": [
+        {
+          "name": "search_products",
+          "status": "ok",
+          "error_code": null
+        }
+      ],
+      "response": "Olá! Consultei as fontes da loja para você.\n\nNão encontrei produtos que atendam aos filtros consultados no snapshot."
+    }
+  },
+  "verification": {
+    "pytest": {
+      "command": ".venv/bin/python -m pytest -q --tb=short",
+      "passed": 600,
+      "skipped": 0,
+      "seconds": 19.56,
+      "new_tests": 39
+    },
+    "ruff": {
+      "command": ".venv/bin/ruff check .",
+      "result": "All checks passed!"
+    },
+    "compileall": {
+      "command": ".venv/bin/python -m compileall -q app",
+      "exit_code": 0
+    },
+    "dependencies": {
+      "command": ".venv/bin/python -m pip check",
+      "result": "No broken requirements found."
+    },
+    "protected_files": {
+      "count": 10,
+      "sha256_unchanged": true,
+      "includes": "All local raw CSV/PDF, original catalog database and both existing evaluation gold JSONs."
+    }
+  },
+  "privacy": "No session credentials, customer records, complete PDF text or provider keys exported.",
+  "git": "No commit, push, publication or history rewrite. Repository currently has no tracked project files; empty git diff is not evidence of unchanged files."
+}

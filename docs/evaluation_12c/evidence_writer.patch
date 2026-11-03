@@ -1,0 +1,45 @@
+--- before_atomic/scripts/benchmark_agent.py
++++ after_atomic/scripts/benchmark_agent.py
+@@ -4,6 +4,7 @@
+ import asyncio
+ import hashlib
+ import json
++import os
+ import re
+ import subprocess
+ import tempfile
+@@ -21,6 +22,24 @@
+ from app.evaluation import runner
+ from app.evaluation.fixtures import prepare_policy_pdf
+ from app.evaluation.models import EvaluationCase, load_cases
++
++
++def _write_report_exclusive(path: Path, report: dict) -> None:
++    """Arquivo final só aparece completo; nunca sobrescreve uma evidência anterior."""
++    temporary = None
++    try:
++        with tempfile.NamedTemporaryFile(
++            mode="w", encoding="utf-8", dir=path.parent, delete=False, suffix=".tmp"
++        ) as destination:
++            temporary = Path(destination.name)
++            json.dump(report, destination, ensure_ascii=False, indent=2)
++            destination.write("\n")
++            destination.flush()
++            os.fsync(destination.fileno())
++        os.link(temporary, path)
++    finally:
++        if temporary is not None:
++            temporary.unlink(missing_ok=True)
+ 
+ 
+ def main(argv=None):
+@@ -328,8 +347,7 @@
+         }
+         report["resource_samples"] = samples
+         out.parent.mkdir(parents=True, exist_ok=True)
+-        with out.open("x", encoding="utf-8") as destination:
+-            destination.write(json.dumps(report, ensure_ascii=False, indent=2) + "\n")
++        _write_report_exclusive(out, report)
+         print(
+             json.dumps(
+                 {

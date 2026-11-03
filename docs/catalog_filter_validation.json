@@ -1,0 +1,287 @@
+{
+  "date": "2026-11-03",
+  "scope": "catalog_query_category_term_and_observed_specs",
+  "before": {
+    "execution": "real_local_qwen_before",
+    "model": "qwen3.5:9b",
+    "question": "Estou procurando um ukulele soprano, de cor natural, por até R$ 250. Quais vocês têm?",
+    "latency_ms": 5143.52,
+    "status": "answered",
+    "text": "Olá! Consultei as fontes da loja para você.\n\nNão encontrei produtos que atendam aos filtros consultados no snapshot.",
+    "tools": [
+      {
+        "call_id": "call_ozk6lico",
+        "name": "search_products",
+        "status": "ok",
+        "error_code": null
+      }
+    ],
+    "provider_turns": [
+      {
+        "calls": [
+          {
+            "call_id": "call_ozk6lico",
+            "name": "search_products",
+            "arguments": "{\"category\":\"Violões\",\"max_price\":250,\"specs\":{\"color\":\"natural\"},\"term\":\"ukulele soprano\"}"
+          }
+        ],
+        "final_plan": null,
+        "usage": {
+          "input_tokens": 1955,
+          "output_tokens": 74,
+          "total_tokens": 2029
+        }
+      },
+      {
+        "calls": [],
+        "final_plan": "{\"intent\":\"answer\",\"evidence_call_ids\":[\"call_ozk6lico\"],\"clarification\":null}",
+        "usage": {
+          "input_tokens": 3229,
+          "output_tokens": 111,
+          "total_tokens": 3340
+        }
+      }
+    ]
+  },
+  "after": {
+    "execution": "real_local_qwen_after",
+    "model": "qwen3.5:9b",
+    "question": "Estou procurando um ukulele soprano, de cor natural, por até R$ 250. Quais vocês têm?",
+    "latency_ms": 9246.97,
+    "status": "answered",
+    "text": "Olá! Consultei as fontes da loja para você.\n\nEstas são as opções consultadas no snapshot:\n- Kalani KAL-300S Soprano Natural (ID 118): R$ 179,90; disponível; estoque registrado: 12.\n- Kala KA-15S Soprano Mogno (ID 116): R$ 199,90; disponível; estoque registrado: 15.\n- Ohana SK-10 Soprano Natural (ID 117): R$ 249,90; disponível; estoque registrado: 10.",
+    "tools": [
+      {
+        "call_id": "call_h5kywe1i",
+        "name": "search_products",
+        "status": "ok",
+        "error_code": null
+      }
+    ],
+    "provider_turns": [
+      {
+        "calls": [
+          {
+            "call_id": "call_h5kywe1i",
+            "name": "search_products",
+            "arguments": "{\"category\":\"Ukuleles\",\"term\":\"soprano\",\"max_price\":250,\"specs\":{\"color\":\"natural\"}}"
+          }
+        ],
+        "final_plan": null,
+        "usage": {
+          "input_tokens": 2080,
+          "output_tokens": 74,
+          "total_tokens": 2154
+        }
+      },
+      {
+        "calls": [],
+        "final_plan": "{\"intent\":\"answer\",\"evidence_call_ids\":[\"call_h5kywe1i\"],\"clarification\":null}",
+        "usage": {
+          "input_tokens": 4261,
+          "output_tokens": 227,
+          "total_tokens": 4488
+        }
+      }
+    ]
+  },
+  "real_controls": {
+    "execution": "real_local_qwen_controls",
+    "expected_defined_before_execution": {
+      "lower_ceiling": [],
+      "other_subtype": [
+        120,
+        122,
+        121
+      ],
+      "other_category": [
+        83,
+        85,
+        81,
+        84,
+        82
+      ]
+    },
+    "rows": [
+      {
+        "case": "lower_ceiling",
+        "question": "Estou procurando um ukulele soprano, de cor natural, por até R$ 179. Quais vocês têm?",
+        "canonical_filters": {
+          "category": "Ukuleles",
+          "term": "soprano",
+          "max_price": "179",
+          "specs": {
+            "color": "natural"
+          }
+        },
+        "expected_ids": [],
+        "returned_ids": [],
+        "status": "answered",
+        "passed": true,
+        "latency_ms": 5532.65,
+        "tools": [
+          {
+            "call_id": "call_b8jqranh",
+            "name": "search_products",
+            "status": "ok",
+            "error_code": null
+          }
+        ],
+        "provider_turns": [
+          {
+            "calls": [
+              {
+                "call_id": "call_b8jqranh",
+                "name": "search_products",
+                "arguments": "{\"category\":\"Ukuleles\",\"term\":\"soprano\",\"max_price\":179,\"specs\":{\"color\":\"natural\"}}"
+              }
+            ],
+            "final_plan": null
+          },
+          {
+            "calls": [],
+            "final_plan": "{\"intent\":\"clarify\",\"evidence_call_ids\":[],\"clarification\":\"product\"}"
+          }
+        ],
+        "text": "Qual instrumento ou modelo você procura?"
+      },
+      {
+        "case": "other_subtype",
+        "question": "Procuro um ukulele concert, de cor natural, por até R$ 600. Quais vocês têm?",
+        "canonical_filters": {
+          "category": "Ukuleles",
+          "term": "concert",
+          "max_price": "600",
+          "specs": {
+            "color": "natural"
+          }
+        },
+        "expected_ids": [
+          120,
+          122,
+          121
+        ],
+        "returned_ids": [
+          120,
+          122,
+          121
+        ],
+        "status": "answered",
+        "passed": true,
+        "latency_ms": 8135.85,
+        "tools": [
+          {
+            "call_id": "call_asklcr1x",
+            "name": "search_products",
+            "status": "ok",
+            "error_code": null
+          }
+        ],
+        "provider_turns": [
+          {
+            "calls": [
+              {
+                "call_id": "call_asklcr1x",
+                "name": "search_products",
+                "arguments": "{\"category\":\"Ukuleles\",\"term\":\"concert\",\"max_price\":600,\"specs\":{\"color\":\"natural\"}}"
+              }
+            ],
+            "final_plan": null
+          },
+          {
+            "calls": [],
+            "final_plan": "{\"intent\":\"answer\",\"evidence_call_ids\":[\"call_asklcr1x\"],\"clarification\":null}"
+          }
+        ],
+        "text": "Olá! Consultei as fontes da loja para você.\n\nEstas são as opções consultadas no snapshot:\n- Kala KA-C Concert Mogno (ID 120): R$ 349,90; disponível; estoque registrado: 9.\n- Kalani KAL-500C Concert Elétrico Natural (ID 122): R$ 479,00; disponível; estoque registrado: 5.\n- Ohana CK-20 Concert Natural (ID 121): R$ 549,00; disponível; estoque registrado: 6."
+      },
+      {
+        "case": "other_category",
+        "question": "Quais violões de nylon disponíveis custam até R$ 1.000?",
+        "canonical_filters": {
+          "category": "Violões",
+          "max_price": "1000",
+          "specs": {
+            "strings": "nylon"
+          }
+        },
+        "expected_ids": [
+          83,
+          85,
+          81,
+          84,
+          82
+        ],
+        "returned_ids": [
+          83,
+          85,
+          81,
+          84,
+          82
+        ],
+        "status": "answered",
+        "passed": true,
+        "latency_ms": 10717.39,
+        "tools": [
+          {
+            "call_id": "call_n5cnd9a9",
+            "name": "search_products",
+            "status": "ok",
+            "error_code": null
+          }
+        ],
+        "provider_turns": [
+          {
+            "calls": [
+              {
+                "call_id": "call_n5cnd9a9",
+                "name": "search_products",
+                "arguments": "{\"category\":\"Violões\",\"max_price\":1000,\"specs\":{\"strings\":\"nylon\"},\"available_only\":true}"
+              }
+            ],
+            "final_plan": null
+          },
+          {
+            "calls": [],
+            "final_plan": "{\"intent\":\"answer\",\"evidence_call_ids\":[\"call_n5cnd9a9\"],\"clarification\":null}"
+          }
+        ],
+        "text": "Olá! Consultei as fontes da loja para você.\n\nEstas são as opções consultadas no snapshot:\n- Tagima Memphis AC-39 Nylon Natural (ID 83): R$ 429,90; disponível; estoque registrado: 15.\n- Rozini RC-104 Nylon Estudante (ID 85): R$ 459,90; disponível; estoque registrado: 10.\n- Yamaha C40 Nylon Natural (ID 81): R$ 599,90; disponível; estoque registrado: 12.\n- Giannini GN-15 Nylon Cedr Natural (ID 84): R$ 689,00; disponível; estoque registrado: 6.\n- Yamaha C70 Nylon Natural (ID 82): R$ 849,00; disponível; estoque registrado: 8."
+      }
+    ]
+  },
+  "http_after": {
+    "execution": "real_local_qwen_http_after",
+    "question": "Estou procurando um ukulele soprano, de cor natural, por até R$ 250. Quais vocês têm?",
+    "http_status": 200,
+    "latency_ms": 7963.97,
+    "returned_ids": [
+      118,
+      116,
+      117
+    ],
+    "status": "answered",
+    "text": "Olá! Consultei as fontes da loja para você.\n\nEstas são as opções consultadas no snapshot:\n- Kalani KAL-300S Soprano Natural (ID 118): R$ 179,90; disponível; estoque registrado: 12.\n- Kala KA-15S Soprano Mogno (ID 116): R$ 199,90; disponível; estoque registrado: 15.\n- Ohana SK-10 Soprano Natural (ID 117): R$ 249,90; disponível; estoque registrado: 10.",
+    "rounds": 2,
+    "execution_mode": "real",
+    "tools": [
+      {
+        "name": "search_products",
+        "status": "ok",
+        "error_code": null
+      }
+    ]
+  },
+  "automated_tests": {
+    "new_cases": 8,
+    "execution": "mock_repository_real_services_tools_no_llm",
+    "focused_pytest": "38 passed in 1.25s",
+    "full_pytest": "561 passed in 17.28s",
+    "ruff": "All checks passed!",
+    "compileall_exit": 0
+  },
+  "input_output_schemas_unchanged": true,
+  "protected_files_hashes_match": true,
+  "business_services_unchanged": true,
+  "new_models_downloaded": false
+}

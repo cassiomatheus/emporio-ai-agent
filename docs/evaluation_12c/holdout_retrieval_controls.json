@@ -1,0 +1,242 @@
+{
+  "execution": "deterministic_control_only_no_llm",
+  "purpose": "Diagnóstico após holdout, sem alterar código, limiar ou gabaritos.",
+  "results": [
+    {
+      "case_id": "HLD10",
+      "original_query": {
+        "query": "Qual prazo de reembolso de uma devolução online?",
+        "top_k": 3
+      },
+      "expected_sections": [
+        "4.1"
+      ],
+      "actual_control": {
+        "status": "ok",
+        "data": {
+          "status": "matched",
+          "hits": [
+            {
+              "chunk_id": "f9260542b686:4.1:1",
+              "metadata": {
+                "source_name": "shared_synthetic.pdf",
+                "source_sha256": "f9260542b686abbbde48b9b38ed71d1d1a568b36002417a909ca94b96dde41e6",
+                "version": "0.1",
+                "section_id": "4.1",
+                "section_title": "Devolucao por arrependimento",
+                "section_path": [
+                  "4.1 Devolucao por arrependimento"
+                ],
+                "pages": [
+                  4
+                ],
+                "section_pages": [
+                  4
+                ]
+              },
+              "excerpt": "Compra online: ate 7 dias corridos do recebimento real. Embalagem original, sem uso, com componentes. Loja paga retorno. Reembolso na mesma modalidade em ate 10 dias uteis.",
+              "excerpt_truncated": false,
+              "score": 6.818992,
+              "lexical_coverage": 0.75,
+              "match_grade": "partial"
+            }
+          ]
+        },
+        "error": null
+      },
+      "lexical_diagnostics": [
+        {
+          "section_id": "4.1",
+          "query_tokens": [
+            "devol",
+            "online",
+            "prazo",
+            "reembol"
+          ],
+          "matched_tokens": [
+            "devol",
+            "online",
+            "reembol"
+          ],
+          "coverage": 0.75,
+          "title_anchors": [
+            "devol"
+          ],
+          "rejected_by_existing_threshold": false
+        }
+      ]
+    },
+    {
+      "case_id": "HLD11",
+      "original_query": {
+        "query": "A embalagem e os componentes precisam voltar junto no arrependimento?",
+        "top_k": 3
+      },
+      "expected_sections": [
+        "4.1"
+      ],
+      "actual_control": {
+        "status": "error",
+        "data": null,
+        "error": {
+          "code": "no_evidence",
+          "message": "Não há evidência suficiente para essa consulta.",
+          "invalid_fields": []
+        }
+      },
+      "lexical_diagnostics": [
+        {
+          "section_id": "4.1",
+          "query_tokens": [
+            "arrependimento",
+            "componente",
+            "embalagem",
+            "junto",
+            "precisam",
+            "voltar"
+          ],
+          "matched_tokens": [
+            "arrependimento",
+            "componente",
+            "embalagem"
+          ],
+          "coverage": 0.5,
+          "title_anchors": [
+            "arrependimento"
+          ],
+          "rejected_by_existing_threshold": true
+        }
+      ]
+    },
+    {
+      "case_id": "HLD12",
+      "original_query": {
+        "query": "Qual a diferença entre pedir troca por defeito e acionar a garantia?",
+        "top_k": 3
+      },
+      "expected_sections": [
+        "4.2",
+        "8.1"
+      ],
+      "actual_control": {
+        "status": "ok",
+        "data": {
+          "status": "matched",
+          "hits": [
+            {
+              "chunk_id": "f9260542b686:4.2:1",
+              "metadata": {
+                "source_name": "shared_synthetic.pdf",
+                "source_sha256": "f9260542b686abbbde48b9b38ed71d1d1a568b36002417a909ca94b96dde41e6",
+                "version": "0.1",
+                "section_id": "4.2",
+                "section_title": "Troca por defeito",
+                "section_path": [
+                  "4.2 Troca por defeito"
+                ],
+                "pages": [
+                  5
+                ],
+                "section_pages": [
+                  5
+                ]
+              },
+              "excerpt": "Troca por defeito de fabricacao em ate 30 dias da compra. Procedimento distinto da garantia legal de 90 dias do recebimento.",
+              "excerpt_truncated": false,
+              "score": 6.931472,
+              "lexical_coverage": 0.42857142857142855,
+              "match_grade": "partial"
+            }
+          ]
+        },
+        "error": null
+      },
+      "lexical_diagnostics": [
+        {
+          "section_id": "4.2",
+          "query_tokens": [
+            "acionar",
+            "defeito",
+            "diferenca",
+            "entre",
+            "garant",
+            "pedir",
+            "troc"
+          ],
+          "matched_tokens": [
+            "defeito",
+            "garant",
+            "troc"
+          ],
+          "coverage": 0.42857142857142855,
+          "title_anchors": [
+            "defeito",
+            "troc"
+          ],
+          "rejected_by_existing_threshold": false
+        },
+        {
+          "section_id": "8.1",
+          "query_tokens": [
+            "acionar",
+            "defeito",
+            "diferenca",
+            "entre",
+            "garant",
+            "pedir",
+            "troc"
+          ],
+          "matched_tokens": [
+            "defeito",
+            "garant",
+            "troc"
+          ],
+          "coverage": 0.42857142857142855,
+          "title_anchors": [
+            "garant"
+          ],
+          "rejected_by_existing_threshold": true
+        }
+      ]
+    },
+    {
+      "case_id": "HLD14",
+      "original_query": {
+        "query": "A entrega em área metropolitana custa o quê numa compra de R$ 450?",
+        "top_k": 3
+      },
+      "expected_sections": [
+        "5.1"
+      ],
+      "actual_control": {
+        "status": "error",
+        "data": null,
+        "error": {
+          "code": "no_evidence",
+          "message": "Não há evidência suficiente para essa consulta.",
+          "invalid_fields": []
+        }
+      },
+      "lexical_diagnostics": [
+        {
+          "section_id": "5.1",
+          "query_tokens": [
+            "450",
+            "area",
+            "compra",
+            "custa",
+            "entrega",
+            "metropolitana",
+            "numa"
+          ],
+          "matched_tokens": [
+            "metropolitana"
+          ],
+          "coverage": 0.14285714285714285,
+          "title_anchors": [],
+          "rejected_by_existing_threshold": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+product_id,price_brl,name,category_id,description,stock_quantity,status,specs,created_at
+101,100.10,Instrumento sintético sem estoque,1,Exemplo de estoque zero,0,active,"{""strings"": ""nylon""}",2026-01-01
+102,250.00,Instrumento sintético disponível,1,Exemplo de produto ativo,4,active,"{""strings"": ""nylon"", ""color"": ""azul""}",2026-01-02
+127,359,Instrumento sintético em oferta,1,Exemplo de promoção,11,active,"{""type"": ""tenor""}",2026-01-03
+130,1749,Instrumento sintético futuro,2,Estoque positivo não indica disponibilidade,2,coming_soon,"{""keys"": 61}",2026-01-04
+136,441,Instrumento sintético descontinuado,1,Preservar o status original,13,discontinued,"{""color"": ""natural""}",2026-01-05

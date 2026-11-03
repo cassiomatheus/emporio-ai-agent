@@ -1,0 +1,130 @@
+{
+  "verified_at_utc": "2026-11-01T03:01:38.664264+00:00",
+  "copy_method": "git cached + untracked nonignored candidates, not a remote clone",
+  "copied_candidate_files": 125,
+  "isolation": {
+    "no_private_env_at_copy": true,
+    "no_raw_data_at_copy": true,
+    "no_sqlite_at_copy": true,
+    "pytest_absent_before_install": true,
+    "system_site_packages": false
+  },
+  "origin": {
+    "package_from_clean_source": true,
+    "python": "3.14.6",
+    "sqlite": "3.53.2",
+    "real_llm_configured": false
+  },
+  "installation": {
+    "command": "python -m pip install -c requirements-dev.lock -e .[dev]",
+    "exit_code": 0,
+    "duration_seconds": 22.614
+  },
+  "commands": [
+    {
+      "command": "python -c <verify package origin and configuration>",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "duration_seconds": 0.174
+    },
+    {
+      "command": "python -m app.main",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "duration_seconds": 0.166
+    },
+    {
+      "command": "python scripts/ingest_data.py --raw-dir data/samples --database data/demo.sqlite3",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "duration_seconds": 0.134
+    },
+    {
+      "command": "python scripts/ingest_data.py --raw-dir data/samples --database data/demo.sqlite3",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "duration_seconds": 0.128
+    },
+    {
+      "command": "python -m app.cli --offline-demo --message Mostre o produto 102",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "duration_seconds": 0.741
+    },
+    {
+      "command": "python -m app.cli --offline-demo",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "duration_seconds": 0.784
+    },
+    {
+      "command": "python -m app.cli --offline-demo --demo-order --message Consulte pedido 1",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "duration_seconds": 0.767
+    },
+    {
+      "command": "python -m pytest -q",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "duration_seconds": 15.045,
+      "summary": "382 passed, 35 skipped in 14.25s"
+    },
+    {
+      "command": "python -m ruff check .",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "duration_seconds": 0.033,
+      "summary": "All checks passed!"
+    },
+    {
+      "command": "python -m ruff format --check .",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "duration_seconds": 0.037,
+      "summary": "102 files already formatted"
+    },
+    {
+      "command": "python -m pip check",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "duration_seconds": 0.221,
+      "summary": "No broken requirements found."
+    },
+    {
+      "command": "python scripts/evaluate_agent.py --output <temporary-result.json>",
+      "exit_code": 1,
+      "expected_exit_code": 1,
+      "duration_seconds": 1.641,
+      "case_success": {
+        "passed": 25,
+        "applicable": 40,
+        "rate": 0.625
+      }
+    },
+    {
+      "command": "python scripts/generate_examples.py --output <temporary-examples>",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "duration_seconds": 0.983
+    }
+  ],
+  "http": {
+    "transport": "real_loopback_http",
+    "get_health": 200,
+    "post_sessions": 201,
+    "post_chat": 200,
+    "execution_mode": "offline_scripted",
+    "private_orders_enabled": false,
+    "tokens_exported": false
+  },
+  "all_checks_passed": true,
+  "real_provider_called": false,
+  "raw_logs_published": false,
+  "command_representation": "normalized argv display; temporary paths redacted; use quoted commands in README",
+  "dependency_lock_matched": true,
+  "verified_executable_fixture_files": 94,
+  "verification_scope": "initial_phase10_snapshot_before_senior_review",
+  "verified_executable_fixture_hashes_match_verified_snapshot": true,
+  "superseded_by": "phase10_review_validation.json"
+}

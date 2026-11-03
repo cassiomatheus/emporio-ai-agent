@@ -1,0 +1,375 @@
+{
+  "date": "2026-11-02",
+  "model": "qwen3.5:9b",
+  "execution": "real_local_qwen_before_and_after_no_mocks",
+  "before": [
+    {
+      "message": "Posso parcelar até quantas vezes o Giannini GNF-3 CEQ Elétrico Nylon Natural?",
+      "latency_ms": 13397.65,
+      "status": "answered",
+      "text": "Olá! Consultei as fontes da loja para você.\n\nDetalhes verificados no snapshot:\n- Giannini GNF-3 CEQ Elétrico Nylon Natural (ID 101): R$ 1.049,00; disponível; estoque registrado: 4.\n\nProduto 101: preço de tabela R$ 1.049,00.\n- cartão de crédito: R$ 1.049,00 (0% de desconto, sem acumulação).\nParcelamento sem juros: até 10x.\n\n| Parcelas | Valor de cada parcela |\n| --- | --- |\n| 1x | R$ 1.049,00 |\n| 2x | R$ 524,50 |\n| 3x | R$ 349,66 a R$ 349,67 |\n| 4x | R$ 262,25 |\n| 5x | R$ 209,80 |\n| 6x | R$ 174,83 a R$ 174,84 |\n| 7x | R$ 149,85 a R$ 149,86 |\n| 8x | R$ 131,12 a R$ 131,13 |\n| 9x | R$ 116,55 a R$ 116,56 |\n| 10x | R$ 104,90 |\n\nOs intervalos indicam ajuste de centavos entre parcelas; o total da compra é preservado.\nPlano de 1x: 1 × R$ 1.049,00; total R$ 1.049,00.\nCondições calculadas sobre o snapshot; PIX e promoção não se somam.",
+      "tools": [
+        {
+          "call_id": "call_5vlhd5e1",
+          "name": "get_product_details",
+          "status": "ok",
+          "error_code": null
+        },
+        {
+          "call_id": "call_61m3p5k8",
+          "name": "get_product_offers",
+          "status": "error",
+          "error_code": "invalid_arguments"
+        },
+        {
+          "call_id": "call_pr55x3zj",
+          "name": "get_product_offers",
+          "status": "ok",
+          "error_code": null
+        }
+      ],
+      "provider_turns": [
+        {
+          "calls": [
+            {
+              "call_id": "call_5vlhd5e1",
+              "name": "get_product_details",
+              "arguments": "{\"name\":\"Giannini GNF-3 CEQ Elétrico Nylon Natural\"}"
+            }
+          ],
+          "final_plan": null,
+          "usage": {
+            "input_tokens": 1811,
+            "output_tokens": 39,
+            "total_tokens": 1850
+          }
+        },
+        {
+          "calls": [
+            {
+              "call_id": "call_61m3p5k8",
+              "name": "get_product_offers",
+              "arguments": "{\"product_id\":101,\"payment_method\":\"credit\",\"installments\":24}"
+            }
+          ],
+          "final_plan": null,
+          "usage": {
+            "input_tokens": 2027,
+            "output_tokens": 58,
+            "total_tokens": 2085
+          }
+        },
+        {
+          "calls": [
+            {
+              "call_id": "call_pr55x3zj",
+              "name": "get_product_offers",
+              "arguments": "{\"product_id\":101,\"payment_method\":\"credit\",\"installments\":null}"
+            }
+          ],
+          "final_plan": null,
+          "usage": {
+            "input_tokens": 2132,
+            "output_tokens": 57,
+            "total_tokens": 2189
+          }
+        },
+        {
+          "calls": [],
+          "final_plan": "{\"intent\":\"answer\",\"evidence_call_ids\":[\"call_5vlhd5e1\",\"call_pr55x3zj\"],\"clarification\":null}",
+          "usage": {
+            "input_tokens": 5259,
+            "output_tokens": 369,
+            "total_tokens": 5628
+          }
+        }
+      ],
+      "guards": {
+        "suspicious": false,
+        "accessory": false,
+        "reference": false
+      }
+    },
+    {
+      "message": "Se eu pagasse com dinheiro teria desconto?",
+      "latency_ms": 6121.1,
+      "status": "answered",
+      "text": "Olá! Consultei as fontes da loja para você.\n\nProduto 101: preço de tabela R$ 1.049,00.\n- PIX: R$ 996,55 (5% de desconto, sem acumulação).\nCondições calculadas sobre o snapshot; PIX e promoção não se somam.",
+      "tools": [
+        {
+          "call_id": "call_z5p9mzo3",
+          "name": "get_product_offers",
+          "status": "ok",
+          "error_code": null
+        }
+      ],
+      "provider_turns": [
+        {
+          "calls": [
+            {
+              "call_id": "call_z5p9mzo3",
+              "name": "get_product_offers",
+              "arguments": "{\"installments\":1,\"payment_method\":\"pix\",\"product_id\":101}"
+            }
+          ],
+          "final_plan": null,
+          "usage": {
+            "input_tokens": 2261,
+            "output_tokens": 99,
+            "total_tokens": 2360
+          }
+        },
+        {
+          "calls": [],
+          "final_plan": "{\n  \"intent\": \"answer\",\n  \"evidence_call_ids\": [\"call_z5p9mzo3\"],\n  \"clarification\": null\n}",
+          "usage": {
+            "input_tokens": 3977,
+            "output_tokens": 107,
+            "total_tokens": 4084
+          }
+        }
+      ],
+      "guards": {
+        "suspicious": false,
+        "accessory": false,
+        "reference": false
+      }
+    }
+  ],
+  "after": [
+    {
+      "message": "Posso parcelar até quantas vezes o Giannini GNF-3 CEQ Elétrico Nylon Natural?",
+      "latency_ms": 12924.43,
+      "status": "answered",
+      "text": "Olá! Consultei as fontes da loja para você.\n\nDetalhes verificados no snapshot:\n- Giannini GNF-3 CEQ Elétrico Nylon Natural (ID 101): R$ 1.049,00; disponível; estoque registrado: 4.\n\nProduto 101: preço de tabela R$ 1.049,00.\n- cartão de crédito: R$ 1.049,00 (0% de desconto, sem acumulação).\nParcelamento sem juros: até 10x.\n\n| Parcelas | Valor de cada parcela |\n| --- | --- |\n| 1x | R$ 1.049,00 |\n| 2x | R$ 524,50 |\n| 3x | R$ 349,66 a R$ 349,67 |\n| 4x | R$ 262,25 |\n| 5x | R$ 209,80 |\n| 6x | R$ 174,83 a R$ 174,84 |\n| 7x | R$ 149,85 a R$ 149,86 |\n| 8x | R$ 131,12 a R$ 131,13 |\n| 9x | R$ 116,55 a R$ 116,56 |\n| 10x | R$ 104,90 |\n\nOs intervalos indicam ajuste de centavos entre parcelas; o total da compra é preservado.\nPlano de 1x: 1 × R$ 1.049,00; total R$ 1.049,00.\nCondições calculadas sobre o snapshot; PIX e promoção não se somam.",
+      "tools": [
+        {
+          "call_id": "call_v9hg13xz",
+          "name": "get_product_details",
+          "status": "ok",
+          "error_code": null
+        },
+        {
+          "call_id": "call_ujhq145b",
+          "name": "get_product_offers",
+          "status": "error",
+          "error_code": "invalid_arguments"
+        },
+        {
+          "call_id": "call_qhr0znmd",
+          "name": "get_product_offers",
+          "status": "ok",
+          "error_code": null
+        }
+      ],
+      "provider_turns": [
+        {
+          "calls": [
+            {
+              "call_id": "call_v9hg13xz",
+              "name": "get_product_details",
+              "arguments": "{\"name\":\"Giannini GNF-3 CEQ Elétrico Nylon Natural\"}"
+            }
+          ],
+          "final_plan": null,
+          "usage": {
+            "input_tokens": 1868,
+            "output_tokens": 39,
+            "total_tokens": 1907
+          }
+        },
+        {
+          "calls": [
+            {
+              "call_id": "call_ujhq145b",
+              "name": "get_product_offers",
+              "arguments": "{\"product_id\":101,\"payment_method\":\"credit\",\"installments\":24}"
+            }
+          ],
+          "final_plan": null,
+          "usage": {
+            "input_tokens": 2083,
+            "output_tokens": 58,
+            "total_tokens": 2141
+          }
+        },
+        {
+          "calls": [
+            {
+              "call_id": "call_qhr0znmd",
+              "name": "get_product_offers",
+              "arguments": "{\"product_id\":101,\"payment_method\":\"credit\",\"installments\":null}"
+            }
+          ],
+          "final_plan": null,
+          "usage": {
+            "input_tokens": 2188,
+            "output_tokens": 57,
+            "total_tokens": 2245
+          }
+        },
+        {
+          "calls": [],
+          "final_plan": "{\"intent\":\"answer\",\"evidence_call_ids\":[\"call_v9hg13xz\",\"call_qhr0znmd\"],\"clarification\":null}",
+          "usage": {
+            "input_tokens": 5367,
+            "output_tokens": 265,
+            "total_tokens": 5632
+          }
+        }
+      ],
+      "guards": {
+        "suspicious": false,
+        "accessory": false,
+        "reference": false
+      }
+    },
+    {
+      "message": "Se eu pagasse com dinheiro teria desconto?",
+      "latency_ms": 2033.58,
+      "status": "answered",
+      "text": "Não consegui confirmar nas fontes disponíveis as condições para essa forma de pagamento. Confirme com um atendente da loja antes de contar com um desconto.",
+      "tools": [
+        {
+          "call_id": "call_dezgcv1f",
+          "name": "search_store_policies",
+          "status": "error",
+          "error_code": "no_evidence"
+        }
+      ],
+      "provider_turns": [
+        {
+          "calls": [
+            {
+              "call_id": "call_dezgcv1f",
+              "name": "search_store_policies",
+              "arguments": "{\"query\":\"pagamento dinheiro desconto\",\"top_k\":3}"
+            }
+          ],
+          "final_plan": null,
+          "usage": {
+            "input_tokens": 1678,
+            "output_tokens": 42,
+            "total_tokens": 1720
+          }
+        }
+      ],
+      "guards": {
+        "suspicious": false,
+        "accessory": false,
+        "reference": false
+      }
+    },
+    {
+      "message": "E no PIX?",
+      "latency_ms": 5393.33,
+      "status": "answered",
+      "text": "Olá! Consultei as fontes da loja para você.\n\nProduto 101: preço de tabela R$ 1.049,00.\n- PIX: R$ 996,55 (5% de desconto, sem acumulação).\nCondições calculadas sobre o snapshot; PIX e promoção não se somam.",
+      "tools": [
+        {
+          "call_id": "call_m7l851bs",
+          "name": "get_product_offers",
+          "status": "ok",
+          "error_code": null
+        }
+      ],
+      "provider_turns": [
+        {
+          "calls": [
+            {
+              "call_id": "call_m7l851bs",
+              "name": "get_product_offers",
+              "arguments": "{\"product_id\":101,\"payment_method\":\"pix\"}"
+            }
+          ],
+          "final_plan": null,
+          "usage": {
+            "input_tokens": 2393,
+            "output_tokens": 44,
+            "total_tokens": 2437
+          }
+        },
+        {
+          "calls": [],
+          "final_plan": "{\n  \"intent\": \"answer\",\n  \"evidence_call_ids\": [\"call_m7l851bs\"],\n  \"clarification\": null\n}",
+          "usage": {
+            "input_tokens": 4215,
+            "output_tokens": 95,
+            "total_tokens": 4310
+          }
+        }
+      ],
+      "guards": {
+        "suspicious": false,
+        "accessory": false,
+        "reference": true
+      }
+    }
+  ],
+  "http_after": [
+    {
+      "message": "Mostre o produto 101",
+      "http_status": 200,
+      "latency_ms": 5898.41,
+      "status": "answered",
+      "text": "Olá! Consultei as fontes da loja para você.\n\nDetalhes verificados no snapshot:\n- Giannini GNF-3 CEQ Elétrico Nylon Natural (ID 101): R$ 1.049,00; disponível; estoque registrado: 4.",
+      "rounds": 2,
+      "execution_mode": "real",
+      "tools": [
+        {
+          "name": "get_product_details",
+          "status": "ok",
+          "error_code": null
+        }
+      ]
+    },
+    {
+      "message": "Se eu pagasse com dinheiro teria desconto?",
+      "http_status": 200,
+      "latency_ms": 1124.15,
+      "status": "answered",
+      "text": "Não consegui confirmar nas fontes disponíveis as condições para essa forma de pagamento. Confirme com um atendente da loja antes de contar com um desconto.",
+      "rounds": 1,
+      "execution_mode": "real",
+      "tools": [
+        {
+          "name": "search_store_policies",
+          "status": "error",
+          "error_code": "no_evidence"
+        }
+      ]
+    },
+    {
+      "message": "E no PIX?",
+      "http_status": 200,
+      "latency_ms": 3892.25,
+      "status": "answered",
+      "text": "Olá! Consultei as fontes da loja para você.\n\nProduto 101: preço de tabela R$ 1.049,00.\n- PIX: R$ 996,55 (5% de desconto, sem acumulação).\nCondições calculadas sobre o snapshot; PIX e promoção não se somam.",
+      "rounds": 2,
+      "execution_mode": "real",
+      "tools": [
+        {
+          "name": "get_product_offers",
+          "status": "ok",
+          "error_code": null
+        }
+      ]
+    }
+  ],
+  "automated_tests": {
+    "new_cases": 16,
+    "execution": "offline_mocks_and_synthetic_sqlite",
+    "focused_pytest": "86 passed in 1.97s",
+    "full_pytest": "542 passed in 17.84s",
+    "ruff": "All checks passed!",
+    "compileall_exit": 0
+  },
+  "source_inspection": {
+    "cash_mentions_found": 0,
+    "cash_specific_query": "no_evidence",
+    "does_not_establish_cash_acceptance_or_discount": true
+  },
+  "protected_files_hashes_match": true,
+  "renderer_unchanged": true,
+  "original_user_out_of_scope_trace_available": false
+}

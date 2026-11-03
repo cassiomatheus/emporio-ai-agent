@@ -1,0 +1,1087 @@
+{
+  "report_version": "1.0",
+  "validated_at_utc": "2026-11-01T14:52:29.262022+00:00",
+  "phase": 11,
+  "verdict": "NO-GO_external_delivery",
+  "local_validation": "GO",
+  "scope": "final_validation_only_no_functional_changes",
+  "configuration": {
+    "settings_valid": true,
+    "provider": null,
+    "model_configured": false,
+    "credential_available": false,
+    "base_url_configured": false,
+    "real_configuration_complete": false,
+    "chat_mode": "real",
+    "catalog_database_exists": true,
+    "demo_database_exists": false,
+    "policy_pdf_configured": false,
+    "policy_pdf_exists": false,
+    "dotenv_exists": true,
+    "credential_value_recorded": false,
+    "required_missing": [
+      "EMPORIO_LLM_PROVIDER",
+      "EMPORIO_LLM_MODEL",
+      "EMPORIO_LLM_API_KEY or OPENAI_API_KEY"
+    ]
+  },
+  "real_provider_called": false,
+  "real_end_to_end": [
+    {
+      "scenario": "catalog",
+      "execution": "not_run",
+      "reason": "provider_not_configured",
+      "observed_tool_calls": null,
+      "latency_ms": null,
+      "tokens": null,
+      "cost_usd": null
+    },
+    {
+      "scenario": "promotions_pix",
+      "execution": "not_run",
+      "reason": "provider_not_configured",
+      "observed_tool_calls": null,
+      "latency_ms": null,
+      "tokens": null,
+      "cost_usd": null
+    },
+    {
+      "scenario": "return_policies",
+      "execution": "not_run",
+      "reason": "provider_not_configured",
+      "observed_tool_calls": null,
+      "latency_ms": null,
+      "tokens": null,
+      "cost_usd": null
+    },
+    {
+      "scenario": "backend_authorized_synthetic_orders",
+      "execution": "not_run",
+      "reason": "provider_not_configured",
+      "observed_tool_calls": null,
+      "latency_ms": null,
+      "tokens": null,
+      "cost_usd": null
+    },
+    {
+      "scenario": "conversation_context",
+      "execution": "not_run",
+      "reason": "provider_not_configured",
+      "observed_tool_calls": null,
+      "latency_ms": null,
+      "tokens": null,
+      "cost_usd": null
+    },
+    {
+      "scenario": "out_of_scope",
+      "execution": "not_run",
+      "reason": "provider_not_configured",
+      "observed_tool_calls": null,
+      "latency_ms": null,
+      "tokens": null,
+      "cost_usd": null
+    }
+  ],
+  "pytest": [
+    {
+      "profile": "workspace_full",
+      "command": "python -m pytest -q  --junitxml=<temporary-report>",
+      "exit_code": 0,
+      "duration_seconds": 19.263,
+      "summary": "444 passed in 18.37s",
+      "counts": {
+        "passed": 444,
+        "skipped": 0,
+        "failed": 0,
+        "error": 0
+      }
+    },
+    {
+      "profile": "workspace_local_data",
+      "command": "python -m pytest -q -m local_data -rs --junitxml=<temporary-report>",
+      "exit_code": 0,
+      "duration_seconds": 2.614,
+      "summary": "35 passed, 409 deselected in 2.01s",
+      "counts": {
+        "passed": 35,
+        "skipped": 0,
+        "failed": 0,
+        "error": 0
+      }
+    },
+    {
+      "profile": "isolated_full",
+      "command": "python -m pytest -q  --junitxml=<temporary-report>",
+      "exit_code": 0,
+      "duration_seconds": 17.524,
+      "summary": "409 passed, 35 skipped in 16.84s",
+      "counts": {
+        "passed": 409,
+        "skipped": 35,
+        "failed": 0,
+        "error": 0
+      }
+    },
+    {
+      "profile": "isolated_local_data",
+      "command": "python -m pytest -q -m local_data -rs --junitxml=<temporary-report>",
+      "exit_code": 0,
+      "duration_seconds": 1.361,
+      "summary": "35 skipped, 409 deselected in 0.72s",
+      "counts": {
+        "passed": 0,
+        "skipped": 35,
+        "failed": 0,
+        "error": 0
+      }
+    }
+  ],
+  "local_data_investigation": {
+    "same_test_ids_pass_with_originals_skip_without_originals": true,
+    "test_count": 35,
+    "pdf_dependent": 31,
+    "csv_dependent": 4,
+    "modules": {
+      "tests.integration.test_agent": 1,
+      "tests.integration.test_local_snapshot": 1,
+      "tests.integration.test_policy_retrieval": 30,
+      "tests.integration.test_services": 1,
+      "tests.integration.test_tools": 2
+    },
+    "skip_reasons": {
+      "CSVs privados ausentes; o corte sintético continua disponível.": 1,
+      "Anexos privados ausentes; testes com fixtures sintéticas continuam disponíveis.": 1,
+      "Manual privado ausente; extração/ranking continuam testados com fontes sintéticas.": 30,
+      "Anexos privados ausentes; serviços continuam testáveis com fontes sintéticas.": 1,
+      "PDF privado ausente; contratos continuam testados com fontes sintéticas.": 1,
+      "CSVs privados ausentes; contratos usam fixtures sintéticas na suíte pública.": 1
+    },
+    "test_ids": [
+      "tests.integration.test_agent.test_first_question_on_original_csvs_with_mock_llm",
+      "tests.integration.test_local_snapshot.test_original_snapshot_acceptance",
+      "tests.integration.test_policy_retrieval.test_original_document_structure_and_tables",
+      "tests.integration.test_policy_retrieval.test_excerpts_include_requested_conditions_and_table_rows",
+      "tests.integration.test_policy_retrieval.test_reference_question_retrieval[pix_01]",
+      "tests.integration.test_policy_retrieval.test_reference_question_retrieval[pix_02]",
+      "tests.integration.test_policy_retrieval.test_reference_question_retrieval[pix_03]",
+      "tests.integration.test_policy_retrieval.test_reference_question_retrieval[parcelas_01]",
+      "tests.integration.test_policy_retrieval.test_reference_question_retrieval[parcelas_02]",
+      "tests.integration.test_policy_retrieval.test_reference_question_retrieval[parcelas_03]",
+      "tests.integration.test_policy_retrieval.test_reference_question_retrieval[parcelas_04]",
+      "tests.integration.test_policy_retrieval.test_reference_question_retrieval[devolucao_01]",
+      "tests.integration.test_policy_retrieval.test_reference_question_retrieval[devolucao_02]",
+      "tests.integration.test_policy_retrieval.test_reference_question_retrieval[devolucao_03]",
+      "tests.integration.test_policy_retrieval.test_reference_question_retrieval[devolucao_04]",
+      "tests.integration.test_policy_retrieval.test_reference_question_retrieval[devolucao_05]",
+      "tests.integration.test_policy_retrieval.test_reference_question_retrieval[frete_01]",
+      "tests.integration.test_policy_retrieval.test_reference_question_retrieval[frete_02]",
+      "tests.integration.test_policy_retrieval.test_reference_question_retrieval[frete_03]",
+      "tests.integration.test_policy_retrieval.test_reference_question_retrieval[frete_04]",
+      "tests.integration.test_policy_retrieval.test_reference_question_retrieval[garantia_01]",
+      "tests.integration.test_policy_retrieval.test_reference_question_retrieval[garantia_02]",
+      "tests.integration.test_policy_retrieval.test_reference_question_retrieval[garantia_03]",
+      "tests.integration.test_policy_retrieval.test_reference_question_retrieval[garantia_04]",
+      "tests.integration.test_policy_retrieval.test_reference_question_retrieval[ausencia_01]",
+      "tests.integration.test_policy_retrieval.test_reference_question_retrieval[ausencia_02]",
+      "tests.integration.test_policy_retrieval.test_reference_question_retrieval[ausencia_03]",
+      "tests.integration.test_policy_retrieval.test_reference_question_retrieval[ausencia_04]",
+      "tests.integration.test_policy_retrieval.test_reference_question_retrieval[ausencia_05]",
+      "tests.integration.test_policy_retrieval.test_reference_question_retrieval[ausencia_06]",
+      "tests.integration.test_policy_retrieval.test_metric_reproducibility_without_source_export",
+      "tests.integration.test_policy_retrieval.test_evaluation_script",
+      "tests.integration.test_services.test_original_business_acceptance",
+      "tests.integration.test_tools.test_original_pdf_public_info_and_policy_sources",
+      "tests.integration.test_tools.test_original_catalog_and_protected_order_tools"
+    ],
+    "defect_found": false,
+    "isolated_copy_received_originals": false,
+    "original_csv_agent_case_uses_mock_llm": true
+  },
+  "checks": [
+    {
+      "command": "python -m ruff check .",
+      "exit_code": 0,
+      "summary": "All checks passed!"
+    },
+    {
+      "command": "python -m ruff format --check .",
+      "exit_code": 0,
+      "summary": "104 files already formatted"
+    },
+    {
+      "command": "python -m pip check",
+      "exit_code": 0,
+      "summary": "No broken requirements found.",
+      "warning": "sandbox_cache_not_writable_cache_disabled"
+    },
+    {
+      "command": "python -c <import config, api, orchestrator, configured_provider, services>",
+      "exit_code": 0,
+      "summary": "imports ok"
+    }
+  ],
+  "validation_command_corrections": [
+    {
+      "initial_attempt": "import create_provider from app.agent.provider",
+      "initial_result": "ImportError",
+      "corrected_attempt": "import configured_provider from app.agent.provider",
+      "corrected_exit_code": 0,
+      "product_changed": false
+    }
+  ],
+  "runtime": {
+    "python": "3.14.6",
+    "sqlite": "3.53.2",
+    "packages": {
+      "openai": "3.42.0",
+      "fastapi": "0.162.0",
+      "pytest": "9.2.0",
+      "ruff": "0.17.3",
+      "pymupdf": "1.28.2",
+      "pydantic": "2.14.2",
+      "uvicorn": "0.54.0"
+    },
+    "lock_package_count": 32,
+    "installed_versions_match_lock": true
+  },
+  "isolation": {
+    "source": "reused_public_copy_from_phase10_review",
+    "venv_created_in_this_phase": false,
+    "new_install_performed_in_this_phase": false,
+    "code_fixture_config_files_identical": 95,
+    "raw_absent": true,
+    "inherited_provider_environment_removed": true,
+    "prior_clean_install_evidence": "docs/phase10_review_validation.json",
+    "async_checks_outside_sandbox": true
+  },
+  "reproduction_checks": [
+    {
+      "name": "ingest_synthetic_1",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "exit_code_expected": true,
+      "duration_seconds": 0.262
+    },
+    {
+      "name": "ingest_synthetic_2",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "exit_code_expected": true,
+      "duration_seconds": 0.137
+    },
+    {
+      "name": "cli_catalog",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "exit_code_expected": true,
+      "duration_seconds": 0.854,
+      "facts_verified": {
+        "mode_offline": true,
+        "price_250": true,
+        "stock_4": true
+      }
+    },
+    {
+      "name": "cli_context",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "exit_code_expected": true,
+      "duration_seconds": 0.751,
+      "facts_verified": {
+        "first_product_price": true,
+        "referenced_pix_price": true
+      }
+    },
+    {
+      "name": "cli_order_authorized",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "exit_code_expected": true,
+      "duration_seconds": 0.73,
+      "facts_verified": {
+        "historical_total": true,
+        "tracking_absent": true,
+        "delivery_estimate_absent": true
+      },
+      "check_refinement": {
+        "initial_tracking_literal_matched": false,
+        "initial_probe_issue": "validation_helper_literal_did_not_match_actual_safe_response",
+        "product_defect": false
+      }
+    },
+    {
+      "name": "cli_order_denied",
+      "exit_code": 1,
+      "expected_exit_code": 1,
+      "exit_code_expected": true,
+      "duration_seconds": 0.818
+    },
+    {
+      "name": "api_offline",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "exit_code_expected": true,
+      "duration_seconds": 0.949,
+      "observed": {
+        "transport": "TestClient_inprocess",
+        "health": 200,
+        "session": 201,
+        "chat": 200,
+        "order_denied": 403,
+        "price_verified": true,
+        "token_exported": false,
+        "real_provider_called": false
+      }
+    },
+    {
+      "name": "api_current_unconfigured",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "exit_code_expected": true,
+      "duration_seconds": 1.615,
+      "observed": {
+        "health_status": 200,
+        "chat_ready": false,
+        "session_status": 503,
+        "error_code": "service_unavailable",
+        "real_provider_called": false
+      }
+    },
+    {
+      "name": "examples_optimized",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "exit_code_expected": true,
+      "duration_seconds": 1.049,
+      "observed": {
+        "count": 5,
+        "execution": "scripted_simulation",
+        "real_provider_called": false,
+        "all_hashes_match": true
+      }
+    },
+    {
+      "name": "real_diagnostic_gate",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "exit_code_expected": true,
+      "duration_seconds": 0.858,
+      "observed": {
+        "execution": "not_run",
+        "requested_mode": "real",
+        "real_provider_called": false,
+        "reason": "provider_not_configured"
+      }
+    },
+    {
+      "name": "real_evaluation_gate",
+      "exit_code": 3,
+      "expected_exit_code": 3,
+      "exit_code_expected": true,
+      "duration_seconds": 2.026,
+      "observed": {
+        "execution": "not_run",
+        "executed_cases": 0,
+        "case_success": null
+      }
+    },
+    {
+      "name": "offline_evaluation",
+      "exit_code": 1,
+      "expected_exit_code": 1,
+      "exit_code_expected": true,
+      "duration_seconds": 4.067
+    }
+  ],
+  "offline_evaluation": {
+    "command": "python scripts/evaluate_agent.py --output <temporary>/offline_evaluation.json",
+    "exit_code": 1,
+    "execution": "offline_scripted",
+    "real_provider_called": false,
+    "executed_cases": 40,
+    "executed_turns": 46,
+    "suite_sha256": "6f94fe24cd3402f310b3254fce5b3d9c973e2416301e6fa30c9bab90f824e26a",
+    "summary": {
+      "case_success": {
+        "passed": 25,
+        "applicable": 40,
+        "rate": 0.625
+      },
+      "turn_metrics": {
+        "tool_selection": {
+          "passed": 36,
+          "applicable": 46,
+          "rate": 0.782608695652174
+        },
+        "tool_arguments": {
+          "passed": 30,
+          "applicable": 46,
+          "rate": 0.6521739130434783
+        },
+        "task_success": {
+          "passed": 30,
+          "applicable": 46,
+          "rate": 0.6521739130434783
+        },
+        "grounding": {
+          "passed": 22,
+          "applicable": 22,
+          "rate": 1.0
+        },
+        "compliance": {
+          "passed": 43,
+          "applicable": 46,
+          "rate": 0.9347826086956522
+        }
+      },
+      "reference_tool_checks": {
+        "passed": 39,
+        "applicable": 39,
+        "rate": 1.0
+      },
+      "turn_latency": {
+        "samples": 46,
+        "median_ms": 20.7584,
+        "p95_ms": 46.0529,
+        "p95_method": "nearest_rank"
+      },
+      "case_latency": {
+        "samples": 40,
+        "median_ms": 21.1763,
+        "p95_ms": 48.4527,
+        "p95_method": "nearest_rank"
+      },
+      "error_components": {
+        "compliance": 3,
+        "provider_selection": 16,
+        "provider_answer_plan": 1
+      },
+      "tokens": {
+        "reported_turns": 0,
+        "total_turns": 46,
+        "known_usage": null,
+        "complete_usage": null
+      },
+      "cost": {
+        "billed_usd": null,
+        "estimated_usd": null,
+        "reason": "No billed cost returned by adapter; no pricing assumptions."
+      },
+      "policy_recall_at_3": {
+        "applicable": 7,
+        "agent_mean": 0.0,
+        "reference_mean": 1.0
+      },
+      "provider_latency": {
+        "samples": 74,
+        "median_ms": 0.0431,
+        "p95_ms": 0.067,
+        "p95_method": "nearest_rank"
+      }
+    },
+    "by_category": {
+      "catalog": {
+        "case_success": {
+          "passed": 5,
+          "applicable": 8,
+          "rate": 0.625
+        },
+        "turn_metrics": {
+          "tool_selection": {
+            "passed": 8,
+            "applicable": 8,
+            "rate": 1.0
+          },
+          "tool_arguments": {
+            "passed": 4,
+            "applicable": 8,
+            "rate": 0.5
+          },
+          "task_success": {
+            "passed": 5,
+            "applicable": 8,
+            "rate": 0.625
+          },
+          "grounding": {
+            "passed": 7,
+            "applicable": 7,
+            "rate": 1.0
+          },
+          "compliance": {
+            "passed": 5,
+            "applicable": 8,
+            "rate": 0.625
+          }
+        },
+        "reference_tool_checks": {
+          "passed": 8,
+          "applicable": 8,
+          "rate": 1.0
+        },
+        "turn_latency": {
+          "samples": 8,
+          "median_ms": 21.8621,
+          "p95_ms": 78.2242,
+          "p95_method": "nearest_rank"
+        },
+        "case_latency": {
+          "samples": 8,
+          "median_ms": 21.8621,
+          "p95_ms": 78.2242,
+          "p95_method": "nearest_rank"
+        },
+        "error_components": {
+          "compliance": 3,
+          "provider_selection": 4
+        }
+      },
+      "multi_step": {
+        "case_success": {
+          "passed": 3,
+          "applicable": 5,
+          "rate": 0.6
+        },
+        "turn_metrics": {
+          "tool_selection": {
+            "passed": 7,
+            "applicable": 9,
+            "rate": 0.7777777777777778
+          },
+          "tool_arguments": {
+            "passed": 7,
+            "applicable": 9,
+            "rate": 0.7777777777777778
+          },
+          "task_success": {
+            "passed": 7,
+            "applicable": 9,
+            "rate": 0.7777777777777778
+          },
+          "grounding": {
+            "passed": 7,
+            "applicable": 7,
+            "rate": 1.0
+          },
+          "compliance": {
+            "passed": 9,
+            "applicable": 9,
+            "rate": 1.0
+          }
+        },
+        "reference_tool_checks": {
+          "passed": 7,
+          "applicable": 7,
+          "rate": 1.0
+        },
+        "turn_latency": {
+          "samples": 9,
+          "median_ms": 21.8041,
+          "p95_ms": 29.856,
+          "p95_method": "nearest_rank"
+        },
+        "case_latency": {
+          "samples": 5,
+          "median_ms": 29.856,
+          "p95_ms": 48.4527,
+          "p95_method": "nearest_rank"
+        },
+        "error_components": {
+          "provider_selection": 2
+        }
+      },
+      "orders": {
+        "case_success": {
+          "passed": 6,
+          "applicable": 6,
+          "rate": 1.0
+        },
+        "turn_metrics": {
+          "tool_selection": {
+            "passed": 6,
+            "applicable": 6,
+            "rate": 1.0
+          },
+          "tool_arguments": {
+            "passed": 6,
+            "applicable": 6,
+            "rate": 1.0
+          },
+          "task_success": {
+            "passed": 6,
+            "applicable": 6,
+            "rate": 1.0
+          },
+          "grounding": {
+            "passed": 3,
+            "applicable": 3,
+            "rate": 1.0
+          },
+          "compliance": {
+            "passed": 6,
+            "applicable": 6,
+            "rate": 1.0
+          }
+        },
+        "reference_tool_checks": {
+          "passed": 6,
+          "applicable": 6,
+          "rate": 1.0
+        },
+        "turn_latency": {
+          "samples": 6,
+          "median_ms": 20.8739,
+          "p95_ms": 23.768,
+          "p95_method": "nearest_rank"
+        },
+        "case_latency": {
+          "samples": 6,
+          "median_ms": 20.8739,
+          "p95_ms": 23.768,
+          "p95_method": "nearest_rank"
+        },
+        "error_components": {}
+      },
+      "policies": {
+        "case_success": {
+          "passed": 0,
+          "applicable": 8,
+          "rate": 0.0
+        },
+        "turn_metrics": {
+          "tool_selection": {
+            "passed": 1,
+            "applicable": 9,
+            "rate": 0.1111111111111111
+          },
+          "tool_arguments": {
+            "passed": 1,
+            "applicable": 9,
+            "rate": 0.1111111111111111
+          },
+          "task_success": {
+            "passed": 0,
+            "applicable": 9,
+            "rate": 0.0
+          },
+          "grounding": {
+            "passed": 0,
+            "applicable": 0,
+            "rate": null
+          },
+          "compliance": {
+            "passed": 9,
+            "applicable": 9,
+            "rate": 1.0
+          }
+        },
+        "reference_tool_checks": {
+          "passed": 8,
+          "applicable": 8,
+          "rate": 1.0
+        },
+        "turn_latency": {
+          "samples": 9,
+          "median_ms": 11.1633,
+          "p95_ms": 11.6562,
+          "p95_method": "nearest_rank"
+        },
+        "case_latency": {
+          "samples": 8,
+          "median_ms": 11.1791,
+          "p95_ms": 21.0534,
+          "p95_method": "nearest_rank"
+        },
+        "error_components": {
+          "provider_selection": 8,
+          "provider_answer_plan": 1
+        }
+      },
+      "pricing": {
+        "case_success": {
+          "passed": 4,
+          "applicable": 6,
+          "rate": 0.6666666666666666
+        },
+        "turn_metrics": {
+          "tool_selection": {
+            "passed": 7,
+            "applicable": 7,
+            "rate": 1.0
+          },
+          "tool_arguments": {
+            "passed": 5,
+            "applicable": 7,
+            "rate": 0.7142857142857143
+          },
+          "task_success": {
+            "passed": 5,
+            "applicable": 7,
+            "rate": 0.7142857142857143
+          },
+          "grounding": {
+            "passed": 5,
+            "applicable": 5,
+            "rate": 1.0
+          },
+          "compliance": {
+            "passed": 7,
+            "applicable": 7,
+            "rate": 1.0
+          }
+        },
+        "reference_tool_checks": {
+          "passed": 7,
+          "applicable": 7,
+          "rate": 1.0
+        },
+        "turn_latency": {
+          "samples": 7,
+          "median_ms": 22.2388,
+          "p95_ms": 27.236,
+          "p95_method": "nearest_rank"
+        },
+        "case_latency": {
+          "samples": 6,
+          "median_ms": 23.9732,
+          "p95_ms": 43.7551,
+          "p95_method": "nearest_rank"
+        },
+        "error_components": {
+          "provider_selection": 2
+        }
+      },
+      "robustness": {
+        "case_success": {
+          "passed": 7,
+          "applicable": 7,
+          "rate": 1.0
+        },
+        "turn_metrics": {
+          "tool_selection": {
+            "passed": 7,
+            "applicable": 7,
+            "rate": 1.0
+          },
+          "tool_arguments": {
+            "passed": 7,
+            "applicable": 7,
+            "rate": 1.0
+          },
+          "task_success": {
+            "passed": 7,
+            "applicable": 7,
+            "rate": 1.0
+          },
+          "grounding": {
+            "passed": 0,
+            "applicable": 0,
+            "rate": null
+          },
+          "compliance": {
+            "passed": 7,
+            "applicable": 7,
+            "rate": 1.0
+          }
+        },
+        "reference_tool_checks": {
+          "passed": 3,
+          "applicable": 3,
+          "rate": 1.0
+        },
+        "turn_latency": {
+          "samples": 7,
+          "median_ms": 20.1917,
+          "p95_ms": 147.0353,
+          "p95_method": "nearest_rank"
+        },
+        "case_latency": {
+          "samples": 7,
+          "median_ms": 20.1917,
+          "p95_ms": 147.0353,
+          "p95_method": "nearest_rank"
+        },
+        "error_components": {}
+      }
+    },
+    "original_phase09_reports_overwritten": false
+  },
+  "real_evaluation_gate": {
+    "execution": "not_run",
+    "executed_cases": 0,
+    "exit_code": 3,
+    "real_provider_called": false
+  },
+  "examples": {
+    "execution": "scripted_simulation",
+    "real_provider_called": false,
+    "existing_examples_overwritten": false,
+    "files": [
+      {
+        "file": "01_catalogo.md",
+        "sha256": "f854b314968e75b3947a35ab6aedc7855aed9d65653ca47835a65c6f779a6378",
+        "turns": 1,
+        "provider_calls": 2,
+        "tool_calls": 1,
+        "hash_matches": true,
+        "simulation_label_present": true,
+        "tools_in_captured_output": [
+          "search_products"
+        ]
+      },
+      {
+        "file": "02_promocao_pagamento.md",
+        "sha256": "2302331a7e7325d0a1b9d6679a1a6ccb19d89a840306d9ab136aa57bf27f7812",
+        "turns": 3,
+        "provider_calls": 6,
+        "tool_calls": 4,
+        "hash_matches": true,
+        "simulation_label_present": true,
+        "tools_in_captured_output": [
+          "get_product_details",
+          "get_product_offers",
+          "get_product_offers",
+          "get_product_offers"
+        ]
+      },
+      {
+        "file": "03_pedido_protegido.md",
+        "sha256": "396ff33395d74798c0ce5c566197c40eeab18275494690f594a7b71e0f9a6ba5",
+        "turns": 2,
+        "provider_calls": 4,
+        "tool_calls": 2,
+        "hash_matches": true,
+        "simulation_label_present": true,
+        "tools_in_captured_output": [
+          "get_order_status",
+          "get_order_status"
+        ]
+      },
+      {
+        "file": "04_devolucao.md",
+        "sha256": "ede89de942990c36c80eeff9b683628a43954e920e32cd4cd80becc9292c3947",
+        "turns": 2,
+        "provider_calls": 3,
+        "tool_calls": 2,
+        "hash_matches": true,
+        "simulation_label_present": true,
+        "tools_in_captured_output": [
+          "search_store_policies",
+          "search_store_policies"
+        ]
+      },
+      {
+        "file": "05_fora_escopo.md",
+        "sha256": "4ea395cb2756b8f16ab49e29243ec668e03498b4ec124f1ef83a7cb67013f719",
+        "turns": 2,
+        "provider_calls": 0,
+        "tool_calls": 0,
+        "hash_matches": true,
+        "simulation_label_present": true,
+        "tools_in_captured_output": []
+      }
+    ]
+  },
+  "git_checks": [
+    {
+      "command": "git status --short",
+      "exit_code": 0,
+      "stdout_lines": 12,
+      "stderr_present": false,
+      "status_entries": [
+        "?? .env.example",
+        "?? .gitignore",
+        "?? AGENTS.md",
+        "?? README.md",
+        "?? app/",
+        "?? data/",
+        "?? docs/",
+        "?? examples/",
+        "?? pyproject.toml",
+        "?? requirements-dev.lock",
+        "?? scripts/",
+        "?? tests/"
+      ]
+    },
+    {
+      "command": "git log --oneline",
+      "exit_code": 128,
+      "stdout_lines": 0,
+      "stderr_present": true,
+      "interpretation": "unborn_HEAD_no_commits"
+    },
+    {
+      "command": "git log --all --format=%H %aI %cI",
+      "exit_code": 0,
+      "stdout_lines": 0,
+      "stderr_present": false
+    },
+    {
+      "command": "git rev-list --all --count",
+      "exit_code": 0,
+      "stdout_lines": 1,
+      "stderr_present": false,
+      "commits": 0
+    },
+    {
+      "command": "git diff --no-ext-diff --no-textconv",
+      "exit_code": 0,
+      "stdout_lines": 0,
+      "stderr_present": false
+    },
+    {
+      "command": "git diff --cached --no-ext-diff --no-textconv",
+      "exit_code": 0,
+      "stdout_lines": 0,
+      "stderr_present": false
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0,
+      "stdout_lines": 0,
+      "stderr_present": false
+    },
+    {
+      "command": "git ls-files --stage",
+      "exit_code": 0,
+      "stdout_lines": 0,
+      "stderr_present": false
+    },
+    {
+      "command": "git ls-files --cached",
+      "exit_code": 0,
+      "stdout_lines": 0,
+      "stderr_present": false
+    }
+  ],
+  "release_audit_initial": {
+    "auditor_version": "1.2",
+    "audited_at_utc": "2026-11-01T14:47:59.969492+00:00",
+    "scope": "git_index_blobs_and_worktree_candidates",
+    "candidate_count": 129,
+    "text_files_scanned": 129,
+    "index_text_files_scanned": 0,
+    "self_report_excluded": true,
+    "findings": [],
+    "technical_scan_passed": true,
+    "protected_probes": {
+      ".env": true,
+      ".env.production": true,
+      "token.key": true,
+      "data/raw/products.csv": true,
+      "data/raw/políticas_da_loja.pdf": true,
+      "data/emporio.sqlite3": true,
+      "logs/debug.log": true
+    },
+    "customer_fingerprint_check": "performed_locally",
+    "fingerprints_or_matching_values_exported": false,
+    "tracked_files": 0,
+    "git_commits": 0,
+    "remote_configured": false,
+    "annex_redistribution_permission": "not_documented_in_workspace",
+    "publication_authorized": false,
+    "publication_attempted": false,
+    "limits": [
+      "heuristic_secret_patterns",
+      "no_external_permission_or_deadline_confirmation",
+      "no_complete_secret_history_audit_when_history_is_absent"
+    ]
+  },
+  "integrity": {
+    "preexisting_project_files_changed": [],
+    "outer_originals_checked": 9,
+    "outer_originals_unchanged": true,
+    "functional_components_changed": false,
+    "files_added": [
+      "docs/final_readiness_report.md",
+      "docs/final_readiness_evidence.json"
+    ]
+  },
+  "challenge": {
+    "original_pdf_pages": 3,
+    "requirements_locations": {
+      "python": [
+        1,
+        2
+      ],
+      "public_github_and_progressive_commits": [
+        2
+      ],
+      "examples": [
+        2
+      ],
+      "readme": [
+        1,
+        2,
+        3
+      ],
+      "deadline_email": [
+        3
+      ],
+      "ai_assistant_disclosure": [
+        2
+      ]
+    },
+    "deadline_provided": false,
+    "annex_redistribution_permission": "not_documented",
+    "public_repository_exists": false,
+    "readme_local_links_valid": true
+  },
+  "publication_authorized": false,
+  "commit_performed": false,
+  "push_performed": false,
+  "publication_performed": false,
+  "history_rewritten": false,
+  "credentials_exported": false,
+  "session_tokens_exported": false,
+  "raw_logs_published": false,
+  "owner_actions": [
+    "configure_available_provider_model_credential_and_budget_locally",
+    "confirm_actual_email_deadline_timezone_and_allowed_changes",
+    "review_absent_progressive_history_with_evaluator",
+    "review_and_explicitly_authorize_future_commit_push_publication_and_submission",
+    "obtain_annex_permission_only_if_redistribution_or_external_internal_document_use_is_requested"
+  ],
+  "release_audit_final": {
+    "auditor_version": "1.2",
+    "audited_at_utc": "2026-11-01T14:53:10.403319+00:00",
+    "scope": "git_index_blobs_and_worktree_candidates",
+    "candidate_count": 131,
+    "text_files_scanned": 131,
+    "index_text_files_scanned": 0,
+    "self_report_excluded": true,
+    "findings": [],
+    "technical_scan_passed": true,
+    "protected_probes": {
+      ".env": true,
+      ".env.production": true,
+      "token.key": true,
+      "data/raw/products.csv": true,
+      "data/raw/políticas_da_loja.pdf": true,
+      "data/emporio.sqlite3": true,
+      "logs/debug.log": true
+    },
+    "customer_fingerprint_check": "performed_locally",
+    "fingerprints_or_matching_values_exported": false,
+    "tracked_files": 0,
+    "git_commits": 0,
+    "remote_configured": false,
+    "annex_redistribution_permission": "not_documented_in_workspace",
+    "publication_authorized": false,
+    "publication_attempted": false,
+    "limits": [
+      "heuristic_secret_patterns",
+      "no_external_permission_or_deadline_confirmation",
+      "no_complete_secret_history_audit_when_history_is_absent"
+    ]
+  },
+  "final_document_checks": {
+    "new_documents": 2,
+    "preexisting_files_changed": 0,
+    "broken_report_links": 0,
+    "git_status_top_level_untracked_entries": 12,
+    "git_diff_check_exit_code": 0,
+    "git_index_empty": true,
+    "git_commits": 0,
+    "all_synthetic_cli_fact_checks_passed": true
+  }
+}

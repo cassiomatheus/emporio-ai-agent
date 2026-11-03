@@ -1,0 +1,33 @@
+{
+  "auditor_version": "1.2",
+  "audited_at_utc": "2026-11-01T03:35:27.098454+00:00",
+  "scope": "git_index_blobs_and_worktree_candidates",
+  "candidate_count": 129,
+  "text_files_scanned": 128,
+  "index_text_files_scanned": 0,
+  "self_report_excluded": true,
+  "findings": [],
+  "technical_scan_passed": true,
+  "protected_probes": {
+    ".env": true,
+    ".env.production": true,
+    "token.key": true,
+    "data/raw/products.csv": true,
+    "data/raw/políticas_da_loja.pdf": true,
+    "data/emporio.sqlite3": true,
+    "logs/debug.log": true
+  },
+  "customer_fingerprint_check": "performed_locally",
+  "fingerprints_or_matching_values_exported": false,
+  "tracked_files": 0,
+  "git_commits": 0,
+  "remote_configured": false,
+  "annex_redistribution_permission": "not_documented_in_workspace",
+  "publication_authorized": false,
+  "publication_attempted": false,
+  "limits": [
+    "heuristic_secret_patterns",
+    "no_external_permission_or_deadline_confirmation",
+    "no_complete_secret_history_audit_when_history_is_absent"
+  ]
+}

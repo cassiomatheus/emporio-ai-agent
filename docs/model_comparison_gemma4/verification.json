@@ -1,0 +1,27 @@
+{
+  "source_unchanged": true,
+  "goldens_unchanged": true,
+  "samples_unchanged": true,
+  "runtime_model": "qwen3.5:9b",
+  "ollama_version": "0.35.0",
+  "loaded_models": [
+    {
+      "name": "qwen3.5:9b",
+      "context_length": 4096,
+      "size_vram": 5589560196
+    }
+  ],
+  "service": [
+    "ActiveState=active",
+    "NRestarts=2"
+  ],
+  "configuration_changed": false,
+  "model_downloads_performed": false,
+  "commit_performed": false,
+  "push_performed": false,
+  "publication_performed": false,
+  "publication_scan": {
+    "findings": 0,
+    "technical_scan_passed": true
+  }
+}

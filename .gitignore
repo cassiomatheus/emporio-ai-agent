@@ -1,0 +1,41 @@
+# Ambiente e credenciais locais
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.aws/
+.codex/
+.agents/
+
+# Ambiente Python, build e caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Fontes restritas e artefatos locais derivados
+data/raw/
+data/derived/
+data/*.csv
+*.pdf
+*.db
+*.db-*
+*.sqlite
+*.sqlite-*
+*.sqlite3
+*.sqlite3-*
+logs/
+*.log
+
+# Arquivos do sistema/editor
+.DS_Store
+.idea/
+.vscode/

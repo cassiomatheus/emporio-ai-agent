@@ -1,0 +1,22 @@
+{
+  "execution": "simulated",
+  "real_provider_called": false,
+  "provider": "scripted_mock",
+  "model": null,
+  "question": "Quais violões de nylon disponíveis custam até R$ 1.000?",
+  "data_source": "local_sqlite_snapshot",
+  "result": {
+    "status": "answered",
+    "text": "Olá! Consultei as fontes da loja para você.\n\nEstas são as opções consultadas no snapshot:\n- Tagima Memphis AC-39 Nylon Natural (ID 83): R$ 429,90; disponível; estoque registrado: 15.\n- Rozini RC-104 Nylon Estudante (ID 85): R$ 459,90; disponível; estoque registrado: 10.\n- Yamaha C40 Nylon Natural (ID 81): R$ 599,90; disponível; estoque registrado: 12.\n- Giannini GN-15 Nylon Cedr Natural (ID 84): R$ 689,00; disponível; estoque registrado: 6.\n- Yamaha C70 Nylon Natural (ID 82): R$ 849,00; disponível; estoque registrado: 8.",
+    "rounds": 2,
+    "tools": [
+      {
+        "call_id": "demo_catalog",
+        "name": "search_products",
+        "status": "ok",
+        "error_code": null
+      }
+    ],
+    "usage": null
+  }
+}

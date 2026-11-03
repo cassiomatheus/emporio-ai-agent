@@ -1,0 +1,92 @@
+{
+  "date": "2026-11-02",
+  "scope": "installment_table_and_single_page_search_presentation",
+  "real_execution": {
+    "execution": "real_local_qwen_http",
+    "model": "qwen3.5:9b",
+    "rows": [
+      {
+        "message": "Posso parcelar a Crafter D-8 Dreadnought Natural em até quantas vezes sem juros?",
+        "http_status": 200,
+        "latency_ms": 39980.81,
+        "status": "answered",
+        "text": "Olá! Consultei as fontes da loja para você.\n\nProduto 97: preço de tabela R$ 4.599,00.\n- cartão de crédito: R$ 4.599,00 (0% de desconto, sem acumulação).\nParcelamento sem juros: até 12x.\n\n| Parcelas | Valor de cada parcela |\n| --- | --- |\n| 1x | R$ 4.599,00 |\n| 2x | R$ 2.299,50 |\n| 3x | R$ 1.533,00 |\n| 4x | R$ 1.149,75 |\n| 5x | R$ 919,80 |\n| 6x | R$ 766,50 |\n| 7x | R$ 657,00 |\n| 8x | R$ 574,87 a R$ 574,88 |\n| 9x | R$ 511,00 |\n| 10x | R$ 459,90 |\n| 11x | R$ 418,09 a R$ 418,10 |\n| 12x | R$ 383,25 |\n\nOs intervalos indicam ajuste de centavos entre parcelas; o total da compra é preservado.\nPlano de 12x: 12 × R$ 383,25; total R$ 4.599,00.\nCondições calculadas sobre o snapshot; PIX e promoção não se somam.\n\nEncontrei este instrumento no catálogo consultado:\n- Crafter D-8 Dreadnought Natural (ID 97): R$ 4.599,00; disponível; estoque registrado: 2.",
+        "rounds": 3,
+        "execution_mode": "real",
+        "tools": [
+          {
+            "name": "search_products",
+            "status": "ok",
+            "error_code": null
+          },
+          {
+            "name": "get_product_offers",
+            "status": "ok",
+            "error_code": null
+          }
+        ]
+      },
+      {
+        "message": "E em 12x?",
+        "http_status": 200,
+        "latency_ms": 6815.65,
+        "status": "answered",
+        "text": "Olá! Consultei as fontes da loja para você.\n\nProduto 97: preço de tabela R$ 4.599,00.\n- cartão de crédito: R$ 4.599,00 (0% de desconto, sem acumulação).\nParcelamento sem juros: até 12x.\n\n| Parcelas | Valor de cada parcela |\n| --- | --- |\n| 1x | R$ 4.599,00 |\n| 2x | R$ 2.299,50 |\n| 3x | R$ 1.533,00 |\n| 4x | R$ 1.149,75 |\n| 5x | R$ 919,80 |\n| 6x | R$ 766,50 |\n| 7x | R$ 657,00 |\n| 8x | R$ 574,87 a R$ 574,88 |\n| 9x | R$ 511,00 |\n| 10x | R$ 459,90 |\n| 11x | R$ 418,09 a R$ 418,10 |\n| 12x | R$ 383,25 |\n\nOs intervalos indicam ajuste de centavos entre parcelas; o total da compra é preservado.\nPlano de 12x: 12 × R$ 383,25; total R$ 4.599,00.\nCondições calculadas sobre o snapshot; PIX e promoção não se somam.",
+        "rounds": 2,
+        "execution_mode": "real",
+        "tools": [
+          {
+            "name": "get_product_offers",
+            "status": "ok",
+            "error_code": null
+          }
+        ]
+      }
+    ]
+  },
+  "automated_tests": {
+    "focused_pytest": "25 passed in 1.25s",
+    "full_pytest": "526 passed in 17.51s",
+    "ruff": "All checks passed!",
+    "compileall_exit": 0,
+    "js": {
+      "passed": 16,
+      "tests": [
+        "reusa sessão e envia token somente no cabeçalho",
+        "nova conversa e clientes independentes não reutilizam sessão",
+        "entradas inválidas são recusadas antes da rede",
+        "erro do servidor usa mensagem pública e não repete pedido",
+        "falha de rede e timeout não expõem exceção original",
+        "resposta de sessão malformada falha de forma controlada",
+        "tabela de parcelas tem cabeçalhos acessíveis, todas as linhas e preserva o texto ao redor",
+        "conteúdo HTML nas células permanece texto literal",
+        "tabelas inválidas e outros formatos ficam como texto, sem perder conteúdo",
+        "somente respostas da loja renderizam tabelas; mensagem do usuário permanece literal",
+        "sugestões só preenchem campo; modo simulado é identificado",
+        "conversa renderiza texto sem executar markup e mostra consultas",
+        "envio pendente impede envio duplicado e reinício no meio da resposta",
+        "sessão expirada exige novo contexto e não reenvia mensagem",
+        "configuração indisponível bloqueia envio",
+        "tempo é duração medida, formatada em português"
+      ],
+      "execution": "mock_http_and_mock_dom_no_llm_no_browser"
+    }
+  },
+  "qa_limits": {
+    "browser_inventory": {
+      "apps": [],
+      "browsers": []
+    },
+    "iab": "Browser is not available: iab",
+    "visual_browser_qa": false
+  },
+  "unchanged": [
+    "pricing_rules",
+    "tools_contracts",
+    "api_contracts",
+    "model_configuration",
+    "raw_sources",
+    "evaluation_gold_answers"
+  ],
+  "protected_files_hashes_match": true
+}

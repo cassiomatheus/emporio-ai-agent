@@ -1,0 +1,20 @@
+{
+  "frozen_at_utc": "2026-11-01T19:42:09.619779+00:00",
+  "source_sha256": "ff7beed2693e4adb527c7e1551e4f70d92ee4973b45d19d1ec1866ac26fb536b",
+  "model": "qwen3.5:9b",
+  "ollama_version": "0.35.0",
+  "context": 4096,
+  "temperature": 0,
+  "thinking": "none",
+  "structured_finalization": true,
+  "answer_keys": {
+    "tests/evaluations/agent_cases.json": "6b76f2c8d35902603346ec1f9d5e6ab4c906b5c573b67c375e05cf893fe6c7b5",
+    "tests/evaluations/holdout_12c.json": "2debda24cc513e2bed49c2b9f24beec625a07227956bdd1919976d09553d8b93"
+  },
+  "rule": "Não alterar o agente nem os gabaritos após iniciar as execuções de avaliação final; holdout nunca usado para ajuste.",
+  "previous_freeze": {
+    "frozen_at_utc": "2026-11-01T19:25:36.830900+00:00",
+    "source_sha256": "c4b4a8542c73143b488500143bf519f4e9d790e4483a52877324186c3255641a",
+    "reason": "Descrição de term alinhada ao serviço (somente nome). Nenhum resultado de holdout foi observado."
+  }
+}

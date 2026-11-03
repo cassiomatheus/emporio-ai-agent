@@ -1,0 +1,6662 @@
+{
+  "evaluation_version": "1.0",
+  "suite_sha256": "6f94fe24cd3402f310b3254fce5b3d9c973e2416301e6fa30c9bab90f824e26a",
+  "source_sha256": "f62b8c70cfc3994931f7326751023beac9c4a55a197e78e54e2aac542bb30802",
+  "fixture_sha256": {
+    "categories.csv": "ada8a8c4e9eb5837c1189cb2f250b5bf237816493955968069b8754b0d0c7bfd",
+    "customers.csv": "28aa50f29fe09a8ccf918ce868002c3da6b1ba2624fb4571ec1ba2828f8cfa61",
+    "order_items.csv": "3d58f8a5f6c6bfc7d5c768c7ea3c829e8a0e7c6cd4e625b280dabb2cc1323c59",
+    "orders.csv": "4f02d36ec430dca184460129004123bdb1f3a3dc02c95d348fa9a02b2674ab4b",
+    "products.csv": "d9b5164836a3d2499ffd7efb932b2735739a316d09b1454c8650c905a4ab1e7c",
+    "promotions.csv": "486402f62694a3d8492f8320130a5089af08efd842151ba6530b23b120cb1747"
+  },
+  "agent_limits": {
+    "max_rounds": 4,
+    "max_tool_calls": 12,
+    "max_calls_per_round": 4,
+    "timeout_seconds": 120.0,
+    "tool_timeout_seconds": 5.0,
+    "request_timeout_seconds": 60.0,
+    "max_output_tokens": 1200
+  },
+  "started_at_utc": "2026-11-01T18:20:52.772286+00:00",
+  "python_version": "3.14.6",
+  "execution": "real",
+  "real_provider_called": true,
+  "model": "qwen3.5:9b",
+  "provider": "openai_compatible",
+  "planned_cases": 40,
+  "repeats": 1,
+  "planned_categories": {
+    "catalog": 8,
+    "pricing": 6,
+    "policies": 8,
+    "orders": 6,
+    "multi_step": 5,
+    "robustness": 7
+  },
+  "catalog_source": "synthetic_evaluation_fixture",
+  "orders_source": "data/samples_synthetic",
+  "policy_source": "shared_generated_synthetic_pdf",
+  "policy_sha256": "187967e4ab7149e9671ee207df35a7a0d169a1fec18ed4fc69f8b8b932cff5aa",
+  "policy_version": "0.1",
+  "executed_cases": 40,
+  "executed_turns": 46,
+  "cases": [
+    {
+      "case_id": "CAT01",
+      "category": "catalog",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "search_products"
+          ],
+          "tool_errors": [],
+          "latency_ms": 6178.1127,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            2171.4952959998755,
+            3984.66702099995
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": true,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": {
+            "input_tokens": 4173,
+            "output_tokens": 208,
+            "total_tokens": 4381
+          }
+        }
+      ],
+      "physical_requests": [
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1572,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 982
+            },
+            "output_tokens": 72,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1644
+          },
+          "output_types": [
+            "function_call"
+          ],
+          "calls": [
+            {
+              "name": "search_products",
+              "arguments": "{\"category\":\"Violões\",\"max_price\":800,\"specs\":{\"strings\":\"nylon\"},\"available_only\":true}",
+              "call_id": "call_gt95eg97"
+            }
+          ],
+          "final_text": null,
+          "latency_ms": 2170.9638
+        },
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1766,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1060
+            },
+            "output_tokens": 110,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1876
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "Encontrei um violão de nylon disponível na nossa loja que custa até R$ 800:\n\n- **Instrumento sintético disponível** - R$ 250,00\n  - Cordas: Nylon\n  - Cor: Azul\n  - Estoque: 4 unidades\n  - Status: Ativo\n\nEsse é o único violão de nylon que temos disponível dentro do seu orçamento. Gostaria de saber mais detalhes sobre ele ou gostaria de ver as opções de pagamento e parcelamento?",
+          "latency_ms": 2598.2936
+        },
+        {
+          "stage": "finalization",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 835,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 224
+            },
+            "output_tokens": 26,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 861
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "{\"intent\":\"answer\",\"evidence_call_ids\":[\"call_gt95eg97\"],\"clarification\":null}",
+          "latency_ms": 1384.5695
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "CAT02",
+      "category": "catalog",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "search_products"
+          ],
+          "tool_errors": [],
+          "latency_ms": 5690.3288,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            1835.6844639999963,
+            3831.6289440001583
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": true,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": {
+            "input_tokens": 4329,
+            "output_tokens": 203,
+            "total_tokens": 4532
+          }
+        }
+      ],
+      "physical_requests": [
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1574,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1254
+            },
+            "output_tokens": 73,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1647
+          },
+          "output_types": [
+            "function_call"
+          ],
+          "calls": [
+            {
+              "name": "search_products",
+              "arguments": "{\"category\":\"Violões\",\"max_price\":1000,\"specs\":{\"strings\":\"nylon\"},\"available_only\":true}",
+              "call_id": "call_0tiead7e"
+            }
+          ],
+          "final_text": null,
+          "latency_ms": 1835.5967
+        },
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1843,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1254
+            },
+            "output_tokens": 104,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1947
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "Encontrei dois violões de nylon disponíveis na Empório da Música com preço até R$ 1.000:\n\n1. **Instrumento sintético disponível** - R$ 250,00 (cor azul)\n2. **Violão sintético para parcelas** - R$ 960,00 (cor natural)\n\nAmbos estão com estoque disponível e status ativo. Você gostaria de saber mais detalhes sobre algum deles ou ver as opções de pagamento?",
+          "latency_ms": 2423.3118
+        },
+        {
+          "stage": "finalization",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 912,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 323
+            },
+            "output_tokens": 26,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 938
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "{\"intent\":\"answer\",\"evidence_call_ids\":[\"call_0tiead7e\"],\"clarification\":null}",
+          "latency_ms": 1407.6205
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "CAT03",
+      "category": "catalog",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_product_details"
+          ],
+          "tool_errors": [],
+          "latency_ms": 3960.8687,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            994.4059339998148,
+            2945.946631999959
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": true,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": {
+            "input_tokens": 4032,
+            "output_tokens": 125,
+            "total_tokens": 4157
+          }
+        }
+      ],
+      "physical_requests": [
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1564,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1331
+            },
+            "output_tokens": 30,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1594
+          },
+          "output_types": [
+            "function_call"
+          ],
+          "calls": [
+            {
+              "name": "get_product_details",
+              "arguments": "{\"product_id\":101}",
+              "call_id": "call_8r1nnxjh"
+            }
+          ],
+          "final_text": null,
+          "latency_ms": 994.3204
+        },
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1700,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1331
+            },
+            "output_tokens": 69,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1769
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "O produto 101 (Instrumento sintético sem estoque) está listado como \"ativo\" no nosso sistema, mas **não está disponível** para compra. O motivo é que ele está com **estoque zero**.\n\nSe você estiver interessado em violões de cordas de nylon, posso ajudar a encontrar outros modelos disponíveis!",
+          "latency_ms": 1656.7049
+        },
+        {
+          "stage": "finalization",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 768,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 400
+            },
+            "output_tokens": 26,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 794
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "{\"intent\":\"answer\",\"evidence_call_ids\":[\"call_8r1nnxjh\"],\"clarification\":null}",
+          "latency_ms": 1288.2
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "CAT04",
+      "category": "catalog",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_product_details"
+          ],
+          "tool_errors": [],
+          "latency_ms": 3833.8852,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            984.9288030000025,
+            2828.2720170000175
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": true,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": {
+            "input_tokens": 4034,
+            "output_tokens": 122,
+            "total_tokens": 4156
+          }
+        }
+      ],
+      "physical_requests": [
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1564,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1331
+            },
+            "output_tokens": 30,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1594
+          },
+          "output_types": [
+            "function_call"
+          ],
+          "calls": [
+            {
+              "name": "get_product_details",
+              "arguments": "{\"product_id\":136}",
+              "call_id": "call_ykvbkvw2"
+            }
+          ],
+          "final_text": null,
+          "latency_ms": 984.8525
+        },
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1700,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1331
+            },
+            "output_tokens": 68,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1768
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "O produto 136 é um \"Instrumento sintético descontinuado\" da categoria Violões. Ele está com status \"discontinued\" (descontinuado) e não está disponível para compra, embora ainda tenha 13 unidades em estoque. Como o produto foi descontinuado, ele não pode ser adquirido atualmente.",
+          "latency_ms": 1616.5126
+        },
+        {
+          "stage": "finalization",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 770,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 400
+            },
+            "output_tokens": 24,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 794
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "{\"intent\":\"answer\",\"evidence_call_ids\":[\"call_ykvbkvw2\"],\"clarification\":null}",
+          "latency_ms": 1211.1252
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "CAT05",
+      "category": "catalog",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_product_details"
+          ],
+          "tool_errors": [],
+          "latency_ms": 3572.2194,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            989.6163690000321,
+            2562.394554000093
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": true,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": {
+            "input_tokens": 4041,
+            "output_tokens": 109,
+            "total_tokens": 4150
+          }
+        }
+      ],
+      "physical_requests": [
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1564,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1331
+            },
+            "output_tokens": 30,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1594
+          },
+          "output_types": [
+            "function_call"
+          ],
+          "calls": [
+            {
+              "name": "get_product_details",
+              "arguments": "{\"product_id\":130}",
+              "call_id": "call_uabvsays"
+            }
+          ],
+          "final_text": null,
+          "latency_ms": 989.5413
+        },
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1703,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1331
+            },
+            "output_tokens": 55,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1758
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "O produto 130, chamado \"Instrumento sintético futuro\", está com status \"coming_soon\" (em breve). Embora tenha estoque positivo (2 unidades), ele ainda não está disponível para compra. A disponibilidade real depende do lançamento oficial do produto.",
+          "latency_ms": 1366.1054
+        },
+        {
+          "stage": "finalization",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 774,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 400
+            },
+            "output_tokens": 24,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 798
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "{\"intent\":\"answer\",\"evidence_call_ids\":[\"call_uabvsays\"],\"clarification\":null}",
+          "latency_ms": 1195.6812
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "CAT06",
+      "category": "catalog",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "search_products"
+          ],
+          "tool_errors": [],
+          "latency_ms": 3392.9171,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            1222.6673259999643,
+            2149.862632999884
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": false,
+            "task_success": true,
+            "grounding": null,
+            "compliance": true,
+            "errors": [
+              "provider_selection"
+            ]
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": {
+            "input_tokens": 3938,
+            "output_tokens": 102,
+            "total_tokens": 4040
+          }
+        }
+      ],
+      "physical_requests": [
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1563,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1331
+            },
+            "output_tokens": 42,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1605
+          },
+          "output_types": [
+            "function_call"
+          ],
+          "calls": [
+            {
+              "name": "search_products",
+              "arguments": "{\"category\":\"Teclas Sintéticas\",\"available_only\":true}",
+              "call_id": "call_4fksqlrn"
+            }
+          ],
+          "final_text": null,
+          "latency_ms": 1222.5843
+        },
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1653,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1331
+            },
+            "output_tokens": 35,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1688
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "Parece que não há teclas sintéticas disponíveis no nosso catálogo atualmente. Posso ajudar você a buscar em outra categoria ou verificar se há algum instrumento musical disponível?",
+          "latency_ms": 949.7299
+        },
+        {
+          "stage": "finalization",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 722,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 400
+            },
+            "output_tokens": 25,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 747
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "{\"intent\":\"answer\",\"evidence_call_ids\":[\"call_4fksqlrn\"],\"clarification\":null}",
+          "latency_ms": 1199.529
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "CAT07",
+      "category": "catalog",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "search_products"
+          ],
+          "tool_errors": [],
+          "latency_ms": 5247.9382,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            1964.8852400000578,
+            3262.8309729998364
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": false,
+            "task_success": false,
+            "grounding": null,
+            "compliance": true,
+            "errors": [
+              "provider_selection"
+            ]
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": {
+            "input_tokens": 4069,
+            "output_tokens": 195,
+            "total_tokens": 4264
+          }
+        }
+      ],
+      "physical_requests": [
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1581,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1331
+            },
+            "output_tokens": 81,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1662
+          },
+          "output_types": [
+            "function_call"
+          ],
+          "calls": [
+            {
+              "name": "search_products",
+              "arguments": "{\"term\":\"azul\",\"min_price\":200,\"max_price\":300,\"available_only\":true,\"category\":\"Violões\"}",
+              "call_id": "call_e7aztrgj"
+            }
+          ],
+          "final_text": null,
+          "latency_ms": 1964.7983
+        },
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1709,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1331
+            },
+            "output_tokens": 88,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1797
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "Não encontramos violões azuis disponíveis no nosso catálogo dentro da faixa de preço entre R$ 200 e R$ 300. 😊\n\nVocê gostaria de:\n- Ver outros violões disponíveis nessa faixa de preço?\n- Procurar por uma cor diferente?\n- Aumentar ou diminuir o limite de preço para encontrar mais opções?\n\nEstou aqui para ajudar você a encontrar o instrumento ideal!",
+          "latency_ms": 2008.7678
+        },
+        {
+          "stage": "finalization",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 779,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 400
+            },
+            "output_tokens": 26,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 805
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "{\"intent\":\"answer\",\"evidence_call_ids\":[\"call_e7aztrgj\"],\"clarification\":null}",
+          "latency_ms": 1253.4924
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "CAT08",
+      "category": "catalog",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_product_details"
+          ],
+          "tool_errors": [
+            "not_found"
+          ],
+          "latency_ms": 3001.9545,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            1048.2712069999707,
+            1931.714114999977
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": false,
+            "grounding": null,
+            "compliance": true,
+            "errors": [
+              "provider_answer_plan"
+            ]
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": {
+            "input_tokens": 3924,
+            "output_tokens": 91,
+            "total_tokens": 4015
+          }
+        }
+      ],
+      "physical_requests": [
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1567,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1331
+            },
+            "output_tokens": 33,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1600
+          },
+          "output_types": [
+            "function_call"
+          ],
+          "calls": [
+            {
+              "name": "get_product_details",
+              "arguments": "{\"product_id\":999999}",
+              "call_id": "call_2s82fx4v"
+            }
+          ],
+          "final_text": null,
+          "latency_ms": 1048.1877
+        },
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1640,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1563
+            },
+            "output_tokens": 39,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1679
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "O produto com ID 999999 não foi encontrado no nosso catálogo. Posso ajudar você a encontrar um instrumento específico ou buscar por nome, categoria ou faixa de preço?",
+          "latency_ms": 884.2316
+        },
+        {
+          "stage": "finalization",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 717,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 400
+            },
+            "output_tokens": 19,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 736
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "{\"intent\":\"out_of_scope\",\"evidence_call_ids\":[],\"clarification\":null}",
+          "latency_ms": 1046.8979
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "PRE01",
+      "category": "pricing",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_product_offers"
+          ],
+          "tool_errors": [],
+          "latency_ms": 5959.0307,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            1261.5998940000281,
+            4676.638581000134
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": true,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": {
+            "input_tokens": 4588,
+            "output_tokens": 212,
+            "total_tokens": 4800
+          }
+        }
+      ],
+      "physical_requests": [
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1569,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1331
+            },
+            "output_tokens": 44,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1613
+          },
+          "output_types": [
+            "function_call"
+          ],
+          "calls": [
+            {
+              "name": "get_product_offers",
+              "arguments": "{\"product_id\":127,\"payment_method\":\"credit\"}",
+              "call_id": "call_mzoqms14"
+            }
+          ],
+          "final_text": null,
+          "latency_ms": 1261.5261
+        },
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1975,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1331
+            },
+            "output_tokens": 142,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 2117
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "Para o produto 127, no cartão de crédito, você tem um desconto de 10% aplicado, resultando em um preço final de R$ 323,10.\n\nAs opções de parcelamento disponíveis são:\n- 1x de R$ 323,10 (sem juros)\n- 2x de R$ 161,55 (sem juros)\n- 3x de R$ 107,70 (sem juros)\n- 4x de R$ 80,78 (sem juros)\n\nO preço original era de R$ 359,00.",
+          "latency_ms": 3201.9316
+        },
+        {
+          "stage": "finalization",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1044,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 400
+            },
+            "output_tokens": 26,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1070
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "{\"intent\":\"answer\",\"evidence_call_ids\":[\"call_mzoqms14\"],\"clarification\":null}",
+          "latency_ms": 1473.4345
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "PRE02",
+      "category": "pricing",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_product_offers"
+          ],
+          "tool_errors": [],
+          "latency_ms": 3603.1538,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            1228.1193129999792,
+            2352.288678999912
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": true,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": {
+            "input_tokens": 4115,
+            "output_tokens": 112,
+            "total_tokens": 4227
+          }
+        }
+      ],
+      "physical_requests": [
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1567,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1463
+            },
+            "output_tokens": 44,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1611
+          },
+          "output_types": [
+            "function_call"
+          ],
+          "calls": [
+            {
+              "name": "get_product_offers",
+              "arguments": "{\"product_id\":127,\"payment_method\":\"pix\"}",
+              "call_id": "call_4fwnj7zs"
+            }
+          ],
+          "final_text": null,
+          "latency_ms": 1228.0359
+        },
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1740,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1463
+            },
+            "output_tokens": 42,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1782
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "Para o produto 127, a oferta no PIX é de R$ 323,10 (com 10% de desconto). Não há parcelamento disponível para essa opção.",
+          "latency_ms": 1077.9434
+        },
+        {
+          "stage": "finalization",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 808,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 532
+            },
+            "output_tokens": 26,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 834
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "{\"intent\":\"answer\",\"evidence_call_ids\":[\"call_4fwnj7zs\"],\"clarification\":null}",
+          "latency_ms": 1273.7073
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "PRE03",
+      "category": "pricing",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_product_offers"
+          ],
+          "tool_errors": [],
+          "latency_ms": 5540.2383,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            1243.6706690000392,
+            4270.811737000031
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": true,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": {
+            "input_tokens": 4465,
+            "output_tokens": 202,
+            "total_tokens": 4667
+          }
+        }
+      ],
+      "physical_requests": [
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1569,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1463
+            },
+            "output_tokens": 44,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1613
+          },
+          "output_types": [
+            "function_call"
+          ],
+          "calls": [
+            {
+              "name": "get_product_offers",
+              "arguments": "{\"product_id\":102,\"payment_method\":\"credit\"}",
+              "call_id": "call_acpj40wf"
+            }
+          ],
+          "final_text": null,
+          "latency_ms": 1243.5616
+        },
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1913,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1463
+            },
+            "output_tokens": 132,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 2045
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "Para o produto 102, no cartão de crédito, a oferta é:\n\n*   **Preço original:** R$ 250,00\n*   **Desconto:** Nenhum (0%)\n*   **Parcelamento disponível:**\n    *   1x sem juros: R$ 250,00\n    *   2x sem juros: R$ 125,00 por parcela\n    *   3x sem juros: R$ 83,34 por parcela\n\nNão há promoções ou descontos aplicados para este produto no cartão de crédito.",
+          "latency_ms": 2899.5043
+        },
+        {
+          "stage": "finalization",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 983,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 532
+            },
+            "output_tokens": 26,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1009
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "{\"intent\":\"answer\",\"evidence_call_ids\":[\"call_acpj40wf\"],\"clarification\":null}",
+          "latency_ms": 1370.3034
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "PRE04",
+      "category": "pricing",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_product_offers"
+          ],
+          "tool_errors": [],
+          "latency_ms": 3871.4251,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            1214.0711029999238,
+            2636.662742999988
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": true,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": {
+            "input_tokens": 4115,
+            "output_tokens": 126,
+            "total_tokens": 4241
+          }
+        }
+      ],
+      "physical_requests": [
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1567,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1463
+            },
+            "output_tokens": 44,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1611
+          },
+          "output_types": [
+            "function_call"
+          ],
+          "calls": [
+            {
+              "name": "get_product_offers",
+              "arguments": "{\"product_id\":102,\"payment_method\":\"pix\"}",
+              "call_id": "call_88w0s16o"
+            }
+          ],
+          "final_text": null,
+          "latency_ms": 1213.9957
+        },
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1741,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1463
+            },
+            "output_tokens": 55,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1796
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "Para o produto 102, a oferta no PIX é de R$ 237,50 (desconto de 5% sobre o preço original de R$ 250,00). Não há parcelamento disponível para essa condição.",
+          "latency_ms": 1323.5702
+        },
+        {
+          "stage": "finalization",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 807,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 532
+            },
+            "output_tokens": 27,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 834
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "{\"intent\":\"answer\",\"evidence_call_ids\":[\"call_88w0s16o\"],\"clarification\":null}",
+          "latency_ms": 1312.4734
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "PRE05",
+      "category": "pricing",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_product_offers",
+            "get_product_offers"
+          ],
+          "tool_errors": [
+            "invalid_arguments"
+          ],
+          "latency_ms": 6578.1641,
+          "provider_calls": 3,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            1217.2475689999374,
+            736.5391160001309,
+            4591.689865000035
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": false,
+            "tool_arguments": false,
+            "task_success": false,
+            "grounding": true,
+            "compliance": false,
+            "errors": [
+              "compliance",
+              "provider_selection"
+            ]
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": {
+            "input_tokens": 6552,
+            "output_tokens": 236,
+            "total_tokens": 6788
+          }
+        }
+      ],
+      "physical_requests": [
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1569,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1463
+            },
+            "output_tokens": 44,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1613
+          },
+          "output_types": [
+            "function_call"
+          ],
+          "calls": [
+            {
+              "name": "get_product_offers",
+              "arguments": "{\"product_id\":127,\"installments\":6}",
+              "call_id": "call_45zak7k8"
+            }
+          ],
+          "final_text": null,
+          "latency_ms": 1217.1604
+        },
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1659,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1565
+            },
+            "output_tokens": 31,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1690
+          },
+          "output_types": [
+            "function_call"
+          ],
+          "calls": [
+            {
+              "name": "get_product_offers",
+              "arguments": "{\"product_id\":127}",
+              "call_id": "call_zt7c83uo"
+            }
+          ],
+          "final_text": null,
+          "latency_ms": 736.4498
+        },
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 2128,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1463
+            },
+            "output_tokens": 135,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 2263
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "Para o produto 127, a oferta em 6x não está disponível. As parcelas elegíveis são:\n\n- **Pix**: Sem parcelamento (único pagamento de R$ 323,10)\n- **Cartão de crédito**: Parcelas de 1x a 4x disponíveis (R$ 323,10 total)\n- **Débito/Boleto**: Sem parcelamento (único pagamento de R$ 323,10)\n\nO preço original é R$ 359,00 e há um desconto promocional de 10% aplicado.",
+          "latency_ms": 3075.4572
+        },
+        {
+          "stage": "finalization",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1196,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 532
+            },
+            "output_tokens": 26,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1222
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "{\"intent\":\"answer\",\"evidence_call_ids\":[\"call_zt7c83uo\"],\"clarification\":null}",
+          "latency_ms": 1515.5298
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "PRE06",
+      "category": "pricing",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_product_offers",
+            "get_product_offers"
+          ],
+          "tool_errors": [
+            "invalid_arguments"
+          ],
+          "latency_ms": 6722.4755,
+          "provider_calls": 3,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            1293.5989610000433,
+            792.0700160000251,
+            4601.578239999981
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": false,
+            "tool_arguments": false,
+            "task_success": false,
+            "grounding": true,
+            "compliance": true,
+            "errors": [
+              "provider_selection"
+            ]
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": {
+            "input_tokens": 7379,
+            "output_tokens": 196,
+            "total_tokens": 7575
+          }
+        },
+        {
+          "step": 2,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_product_offers"
+          ],
+          "tool_errors": [
+            "invalid_arguments"
+          ],
+          "latency_ms": 6831.3269,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            1511.5098389999275,
+            5296.513049000168
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": false,
+            "task_success": false,
+            "grounding": null,
+            "compliance": true,
+            "errors": [
+              "provider_selection"
+            ]
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": {
+            "input_tokens": 4683,
+            "output_tokens": 254,
+            "total_tokens": 4937
+          }
+        }
+      ],
+      "physical_requests": [
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1569,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1463
+            },
+            "output_tokens": 44,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1613
+          },
+          "output_types": [
+            "function_call"
+          ],
+          "calls": [
+            {
+              "name": "get_product_offers",
+              "arguments": "{\"product_id\":103,\"installments\":6}",
+              "call_id": "call_pi0vux24"
+            }
+          ],
+          "final_text": null,
+          "latency_ms": 1293.5106
+        },
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1659,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1565
+            },
+            "output_tokens": 31,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1690
+          },
+          "output_types": [
+            "function_call"
+          ],
+          "calls": [
+            {
+              "name": "get_product_offers",
+              "arguments": "{\"product_id\":103}",
+              "call_id": "call_83rclbq1"
+            }
+          ],
+          "final_text": null,
+          "latency_ms": 791.9703
+        },
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 2542,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1463
+            },
+            "output_tokens": 95,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 2637
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "Para o produto 103, a oferta em 6x é:\n\n**Parcelamento em 6x:**\n- Valor total: R$ 960,00\n- Parcelas de: R$ 160,00 cada\n- Condição mínima para parcelamento: R$ 80,00\n- Juros: 0%\n\nEssa opção está disponível para pagamento com cartão de crédito.",
+          "latency_ms": 2706.973
+        },
+        {
+          "stage": "finalization",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1609,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 532
+            },
+            "output_tokens": 26,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1635
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "{\"intent\":\"answer\",\"evidence_call_ids\":[\"call_83rclbq1\"],\"clarification\":null}",
+          "latency_ms": 1893.8203
+        },
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1808,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1463
+            },
+            "output_tokens": 45,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1853
+          },
+          "output_types": [
+            "function_call"
+          ],
+          "calls": [
+            {
+              "name": "get_product_offers",
+              "arguments": "{\"product_id\":103,\"installments\":12}",
+              "call_id": "call_fgl7404p"
+            }
+          ],
+          "final_text": null,
+          "latency_ms": 1511.4253
+        },
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1899,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1804
+            },
+            "output_tokens": 191,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 2090
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "Olá! Consultei as fontes da loja para você.\n\nProduto 103: preço de tabela R$ 960,00.\n- PIX: R$ 912,00 (5% de desconto, sem acumulação).\n- cartão de crédito: R$ 960,00 (0% de desconto, sem acumulação).\n  Parcelas elegíveis: 1x, 2x, 3x, 4x, 5x, 6x, 7x, 8x, 9x, sem juros.\n- débito: R$ 960,00 (0% de desconto, sem acumulação).\n- boleto: R$ 960,00 (0% de desconto, sem acumulação).\nCondições calculadas sobre o snapshot; PIX e promoção não se somam.",
+          "latency_ms": 4013.7505
+        },
+        {
+          "stage": "finalization",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 976,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 532
+            },
+            "output_tokens": 18,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 994
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "{\"intent\":\"clarify\",\"evidence_call_ids\":[],\"clarification\":\"product\"}",
+          "latency_ms": 1281.7073
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "POL01",
+      "category": "policies",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [],
+          "tool_errors": [],
+          "latency_ms": 2385.5499,
+          "provider_calls": 1,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            2373.9290860000892
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": false,
+            "tool_arguments": false,
+            "task_success": false,
+            "grounding": null,
+            "compliance": true,
+            "errors": [
+              "provider_selection"
+            ]
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": 0.0,
+            "reference_recall_at_3": 1.0,
+            "reference_sections": [
+              "3",
+              "6.2"
+            ]
+          },
+          "usage": {
+            "input_tokens": 2201,
+            "output_tokens": 64,
+            "total_tokens": 2265
+          }
+        }
+      ],
+      "physical_requests": [
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1562,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1463
+            },
+            "output_tokens": 45,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1607
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "Para verificar o desconto no PIX, preciso saber qual produto você está interessado. Por favor, me informe o nome do instrumento ou o ID do produto para que eu possa consultar as condições de pagamento e descontos disponíveis.",
+          "latency_ms": 1338.3765
+        },
+        {
+          "stage": "finalization",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 639,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 532
+            },
+            "output_tokens": 19,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 658
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "{\"intent\":\"clarify\",\"evidence_call_ids\":[],\"clarification\":\"receipt_date\"}",
+          "latency_ms": 1034.5761
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "POL02",
+      "category": "policies",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "search_store_policies"
+          ],
+          "tool_errors": [],
+          "latency_ms": 4423.0481,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            1152.3268309999821,
+            3243.894253999997
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": true,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": 1.0,
+            "reference_recall_at_3": 1.0,
+            "reference_sections": [
+              "6.2"
+            ]
+          },
+          "usage": {
+            "input_tokens": 4280,
+            "output_tokens": 133,
+            "total_tokens": 4413
+          }
+        }
+      ],
+      "physical_requests": [
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1566,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1463
+            },
+            "output_tokens": 33,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1599
+          },
+          "output_types": [
+            "function_call"
+          ],
+          "calls": [
+            {
+              "name": "search_store_policies",
+              "arguments": "{\"query\":\"desconto pix acumula promocoes\"}",
+              "call_id": "call_ltsp1iwh"
+            }
+          ],
+          "final_text": null,
+          "latency_ms": 1152.1876
+        },
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1822,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1463
+            },
+            "output_tokens": 76,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1898
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "Não, o desconto do PIX não pode acumular com promoções. De acordo com as políticas da loja, as promoções não acumulam com o desconto PIX. Cada condição de desconto é aplicada separadamente e não há sobreposição entre elas. Se você tiver interesse em uma promoção específica ou no desconto PIX, posso ajudar a verificar as condições disponíveis para um produto em particular!",
+          "latency_ms": 1904.9357
+        },
+        {
+          "stage": "finalization",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 892,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 532
+            },
+            "output_tokens": 24,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 916
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "{\"intent\":\"answer\",\"evidence_call_ids\":[\"call_ltsp1iwh\"],\"clarification\":null}",
+          "latency_ms": 1338.238
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "POL03",
+      "category": "policies",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [],
+          "tool_errors": [],
+          "latency_ms": 2381.8698,
+          "provider_calls": 1,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            2311.208036999915
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": false,
+            "tool_arguments": false,
+            "task_success": false,
+            "grounding": null,
+            "compliance": true,
+            "errors": [
+              "provider_selection"
+            ]
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": 0.0,
+            "reference_recall_at_3": 1.0,
+            "reference_sections": [
+              "3.1"
+            ]
+          },
+          "usage": {
+            "input_tokens": 2233,
+            "output_tokens": 66,
+            "total_tokens": 2299
+          }
+        }
+      ],
+      "physical_requests": [
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1578,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1463
+            },
+            "output_tokens": 48,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1626
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "Olá! Para te ajudar com as parcelas mínimas, preciso saber qual instrumento você está interessado. Você poderia me dizer o nome do produto ou ID dele? Assim posso consultar as condições de pagamento disponíveis para você. 😊",
+          "latency_ms": 1384.6036
+        },
+        {
+          "stage": "finalization",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 655,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 532
+            },
+            "output_tokens": 18,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 673
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "{\"intent\":\"clarify\",\"evidence_call_ids\":[],\"clarification\":\"budget\"}",
+          "latency_ms": 926.0099
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "POL04",
+      "category": "policies",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "search_store_policies"
+          ],
+          "tool_errors": [],
+          "latency_ms": 4478.1169,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            1065.5443640000613,
+            3391.4414099999703
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": true,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": 1.0,
+            "reference_recall_at_3": 1.0,
+            "reference_sections": [
+              "4.1"
+            ]
+          },
+          "usage": {
+            "input_tokens": 4356,
+            "output_tokens": 135,
+            "total_tokens": 4491
+          }
+        },
+        {
+          "step": 2,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "search_store_policies"
+          ],
+          "tool_errors": [],
+          "latency_ms": 5040.743,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            1107.8595819999464,
+            3909.299848000046
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": false,
+            "tool_arguments": false,
+            "task_success": false,
+            "grounding": true,
+            "compliance": false,
+            "errors": [
+              "compliance",
+              "provider_selection"
+            ]
+          },
+          "reference_tools_ok": null,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": {
+            "input_tokens": 4749,
+            "output_tokens": 163,
+            "total_tokens": 4912
+          }
+        }
+      ],
+      "physical_requests": [
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1570,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1463
+            },
+            "output_tokens": 33,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1603
+          },
+          "output_types": [
+            "function_call"
+          ],
+          "calls": [
+            {
+              "name": "search_store_policies",
+              "arguments": "{\"query\":\"prazo arrependimento compra online\"}",
+              "call_id": "call_z7cdh4e0"
+            }
+          ],
+          "final_text": null,
+          "latency_ms": 1065.4606
+        },
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1859,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1463
+            },
+            "output_tokens": 75,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1934
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "Para compras online, o prazo para arrependimento é de até 7 dias corridos após o recebimento real do produto. \n\nÉ importante que a embalagem original esteja intacta, sem uso e com todos os componentes. A loja cobre o custo do retorno e o reembolso será feito na mesma modalidade de pagamento utilizada na compra, em até 10 dias úteis.",
+          "latency_ms": 1889.0691
+        },
+        {
+          "stage": "finalization",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 927,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 532
+            },
+            "output_tokens": 27,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 954
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "{\"intent\":\"answer\",\"evidence_call_ids\":[\"call_z7cdh4e0\"],\"clarification\":null}",
+          "latency_ms": 1501.1783
+        },
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1702,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1463
+            },
+            "output_tokens": 33,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1735
+          },
+          "output_types": [
+            "function_call"
+          ],
+          "calls": [
+            {
+              "name": "search_store_policies",
+              "arguments": "{\"query\":\"devolução prazo recebimento data real\"}",
+              "call_id": "call_u7bff07b"
+            }
+          ],
+          "final_text": null,
+          "latency_ms": 1107.7601
+        },
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1989,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1463
+            },
+            "output_tokens": 95,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 2084
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "Olá! Para devolver, precisamos saber a data real de recebimento do produto. O prazo é de 7 dias corridos após receber o item.\n\nSe você não tem certeza da data, podemos verificar:\n- Se há um comprovante de entrega no seu e-mail ou SMS?\n- Você lembra aproximadamente quando recebeu?\n\nSem essa informação, não posso confirmar se ainda está dentro do prazo. Posso ajudar a localizar essas informações se precisar!",
+          "latency_ms": 2269.0935
+        },
+        {
+          "stage": "finalization",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1058,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 532
+            },
+            "output_tokens": 35,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1093
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "{\n\"intent\": \"answer\",\n\"evidence_call_ids\": [\"call_u7bff07b\"],\n\"clarification\": null\n}",
+          "latency_ms": 1639.5021
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "POL05",
+      "category": "policies",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "search_store_policies"
+          ],
+          "tool_errors": [],
+          "latency_ms": 4625.9918,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            1002.2175229998993,
+            3603.495782000209
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": true,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": 1.0,
+            "reference_recall_at_3": 1.0,
+            "reference_sections": [
+              "5.1"
+            ]
+          },
+          "usage": {
+            "input_tokens": 4381,
+            "output_tokens": 154,
+            "total_tokens": 4535
+          }
+        }
+      ],
+      "physical_requests": [
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1571,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1477
+            },
+            "output_tokens": 31,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1602
+          },
+          "output_types": [
+            "function_call"
+          ],
+          "calls": [
+            {
+              "name": "search_store_policies",
+              "arguments": "{\"query\":\"frete pedido valor mínimo\"}",
+              "call_id": "call_3k0rf4uj"
+            }
+          ],
+          "final_text": null,
+          "latency_ms": 1002.1406
+        },
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1871,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1477
+            },
+            "output_tokens": 96,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1967
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "Olá! Sobre o frete para um pedido de exatamente R$ 500, a política da nossa loja diz que na região metropolitana é grátis acima de R$ 500 e custa R$ 35 abaixo de R$ 500. Para o valor exato de R$ 500, não está definido no nosso documento atual.\n\nPara ter certeza sobre esse caso específico, recomendo confirmar diretamente com a nossa equipe! 😊",
+          "latency_ms": 2180.8967
+        },
+        {
+          "stage": "finalization",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 939,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 546
+            },
+            "output_tokens": 27,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 966
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "{\"intent\":\"answer\",\"evidence_call_ids\":[\"call_3k0rf4uj\"],\"clarification\":null}",
+          "latency_ms": 1421.9716
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "POL06",
+      "category": "policies",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "search_store_policies"
+          ],
+          "tool_errors": [],
+          "latency_ms": 4477.9323,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            1052.061341999888,
+            3404.8102799999924
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": true,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": 1.0,
+            "reference_recall_at_3": 1.0,
+            "reference_sections": [
+              "4.2",
+              "8.1"
+            ]
+          },
+          "usage": {
+            "input_tokens": 4715,
+            "output_tokens": 136,
+            "total_tokens": 4851
+          }
+        }
+      ],
+      "physical_requests": [
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1566,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1477
+            },
+            "output_tokens": 34,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1600
+          },
+          "output_types": [
+            "function_call"
+          ],
+          "calls": [
+            {
+              "name": "search_store_policies",
+              "arguments": "{\"query\":\"troca por defeito de fabricação prazo\"}",
+              "call_id": "call_x0vwq7br"
+            }
+          ],
+          "final_text": null,
+          "latency_ms": 1051.9639
+        },
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 2040,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1477
+            },
+            "output_tokens": 75,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 2115
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "O prazo para troca por defeito de fabricação é de até 30 dias a partir da compra. É importante notar que isso é um procedimento distinto da garantia legal, que tem duração de 90 dias a partir do recebimento do produto.\n\nSe precisar de mais informações sobre como proceder com essa troca ou tiver alguma dúvida adicional, estou à disposição para ajudar!",
+          "latency_ms": 1870.0881
+        },
+        {
+          "stage": "finalization",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1109,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 546
+            },
+            "output_tokens": 27,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1136
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "{\"intent\":\"answer\",\"evidence_call_ids\":[\"call_x0vwq7br\"],\"clarification\":null}",
+          "latency_ms": 1534.009
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "POL07",
+      "category": "policies",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "search_store_policies"
+          ],
+          "tool_errors": [],
+          "latency_ms": 4714.501,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            1307.4446519999583,
+            3386.337471999923
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": false,
+            "task_success": true,
+            "grounding": true,
+            "compliance": true,
+            "errors": [
+              "provider_selection"
+            ]
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": 1.0,
+            "reference_recall_at_3": 1.0,
+            "reference_sections": [
+              "4.2",
+              "8.1"
+            ]
+          },
+          "usage": {
+            "input_tokens": 4769,
+            "output_tokens": 147,
+            "total_tokens": 4916
+          }
+        }
+      ],
+      "physical_requests": [
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1578,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1477
+            },
+            "output_tokens": 45,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1623
+          },
+          "output_types": [
+            "function_call"
+          ],
+          "calls": [
+            {
+              "name": "search_store_policies",
+              "arguments": "{\"query\":\"troca por defeito garantia legal\",\"top_k\":5}",
+              "call_id": "call_nwrrhk8o"
+            }
+          ],
+          "final_text": null,
+          "latency_ms": 1307.3618
+        },
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 2061,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1477
+            },
+            "output_tokens": 77,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 2138
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "Não, não são a mesma coisa! São procedimentos distintos:\n\n- **Troca por defeito**: válida em até 30 dias da compra para problemas de fabricação.\n- **Garantia legal**: cobre 90 dias a partir do recebimento do produto, também para defeitos de fabricação.\n\nÉ importante não confundir os dois prazos e procedimentos!",
+          "latency_ms": 1908.6966
+        },
+        {
+          "stage": "finalization",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1130,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 597
+            },
+            "output_tokens": 25,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1155
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "{\"intent\":\"answer\",\"evidence_call_ids\":[\"call_nwrrhk8o\"],\"clarification\":null}",
+          "latency_ms": 1476.9362
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "POL08",
+      "category": "policies",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [],
+          "tool_errors": [],
+          "latency_ms": 3890.0284,
+          "provider_calls": 1,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            3877.3658559998694
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": false,
+            "tool_arguments": false,
+            "task_success": false,
+            "grounding": null,
+            "compliance": true,
+            "errors": [
+              "provider_selection"
+            ]
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": {
+            "input_tokens": 2201,
+            "output_tokens": 148,
+            "total_tokens": 2349
+          }
+        }
+      ],
+      "physical_requests": [
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1562,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1477
+            },
+            "output_tokens": 129,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1691
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "Olá! Sou o assistente da Empório da Música e adoro ajudar com instrumentos musicais de qualidade. 😊\n\nSobre sua pergunta sobre a senha do Wi-Fi, infelizmente não tenho acesso a essas informações. A senha do Wi-Fi é uma informação que você pode encontrar:\n\n- No roteador (geralmente em um adesivo na parte traseira)\n- Nas configurações da sua rede\n- Em aplicativos de gerenciamento de rede\n\nPosso ajudar com alguma coisa relacionada aos nossos instrumentos musicais? Temos violões, guitarras, teclados e muito mais! 🎸🎹",
+          "latency_ms": 2971.7619
+        },
+        {
+          "stage": "finalization",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 639,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 618
+            },
+            "output_tokens": 19,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 658
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "{\"intent\":\"out_of_scope\",\"evidence_call_ids\":[],\"clarification\":null}",
+          "latency_ms": 904.4398
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "PED01",
+      "category": "orders",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_order_status"
+          ],
+          "tool_errors": [],
+          "latency_ms": 4592.8839,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            970.8686209999087,
+            3601.5349070000866
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": true,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": {
+            "input_tokens": 4071,
+            "output_tokens": 158,
+            "total_tokens": 4229
+          }
+        }
+      ],
+      "physical_requests": [
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1561,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1477
+            },
+            "output_tokens": 28,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1589
+          },
+          "output_types": [
+            "function_call"
+          ],
+          "calls": [
+            {
+              "name": "get_order_status",
+              "arguments": "{\"order_id\":1}",
+              "call_id": "call_pv8wia64"
+            }
+          ],
+          "final_text": null,
+          "latency_ms": 970.7915
+        },
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1720,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1477
+            },
+            "output_tokens": 105,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1825
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "O pedido 1 foi entregue em 01/02/2026, com um total de R$ 999,90 pago via PIX. Ele continha:\n- 2 unidades do \"Instrumento sintético disponível\" (ID 102)\n- 1 unidade do \"Instrumento sintético em oferta\" (ID 127)\n\nSe precisar de mais detalhes sobre algum desses produtos ou quiser verificar o status atual deles, é só avisar!",
+          "latency_ms": 2300.5515
+        },
+        {
+          "stage": "finalization",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 790,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 618
+            },
+            "output_tokens": 25,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 815
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "{\"intent\":\"answer\",\"evidence_call_ids\":[\"call_pv8wia64\"],\"clarification\":null}",
+          "latency_ms": 1300.2656
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "PED02",
+      "category": "orders",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_order_status"
+          ],
+          "tool_errors": [],
+          "latency_ms": 4787.7292,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            1069.1818779998812,
+            3690.083480999874
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": true,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": {
+            "input_tokens": 4084,
+            "output_tokens": 161,
+            "total_tokens": 4245
+          }
+        }
+      ],
+      "physical_requests": [
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1565,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1477
+            },
+            "output_tokens": 28,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1593
+          },
+          "output_types": [
+            "function_call"
+          ],
+          "calls": [
+            {
+              "name": "get_order_status",
+              "arguments": "{\"order_id\":1}",
+              "call_id": "call_4vos1pvz"
+            }
+          ],
+          "final_text": null,
+          "latency_ms": 1069.0762
+        },
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1725,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1477
+            },
+            "output_tokens": 107,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1832
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "O pedido 1 está com status \"delivered\" (entregue). O valor total foi de R$ 999,90 e o pagamento foi feito via PIX. Os itens comprados foram:\n\n- 2 unidades do produto ID 102 (\"Instrumento sintético disponível\")\n- 1 unidade do produto ID 127 (\"Instrumento sintético em oferta\")\n\nInfelizmente, não há um código de rastreamento ou status de entrega detalhado disponível para este pedido.",
+          "latency_ms": 2405.5905
+        },
+        {
+          "stage": "finalization",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 794,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 618
+            },
+            "output_tokens": 26,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 820
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "{\"intent\":\"answer\",\"evidence_call_ids\":[\"call_4vos1pvz\"],\"clarification\":null}",
+          "latency_ms": 1283.8025
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "PED03",
+      "category": "orders",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_order_status"
+          ],
+          "tool_errors": [],
+          "latency_ms": 4777.1375,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            1013.3101610001631,
+            3740.905845000043
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": true,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": {
+            "input_tokens": 4068,
+            "output_tokens": 169,
+            "total_tokens": 4237
+          }
+        }
+      ],
+      "physical_requests": [
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1561,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1477
+            },
+            "output_tokens": 28,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1589
+          },
+          "output_types": [
+            "function_call"
+          ],
+          "calls": [
+            {
+              "name": "get_order_status",
+              "arguments": "{\"order_id\":2}",
+              "call_id": "call_nw2jmyby"
+            }
+          ],
+          "final_text": null,
+          "latency_ms": 1013.2257
+        },
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1719,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1477
+            },
+            "output_tokens": 116,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1835
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "O pedido 2 está com status \"shipped\" (enviado). Foi realizado em 02/02/2026, com um total de R$ 1.400,00, pago via crédito em 3x. O código de rastreamento é DEMO-TRACK-2 e a entrega estimada era para 10/02/2026.\n\nO item do pedido é:\n- Produto ID 136: \"Instrumento sintético descontinuado\", quantidade 1.",
+          "latency_ms": 2519.6678
+        },
+        {
+          "stage": "finalization",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 788,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 618
+            },
+            "output_tokens": 25,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 813
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "{\"intent\":\"answer\",\"evidence_call_ids\":[\"call_nw2jmyby\"],\"clarification\":null}",
+          "latency_ms": 1220.5398
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "PED04",
+      "category": "orders",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_order_status"
+          ],
+          "tool_errors": [
+            "forbidden"
+          ],
+          "latency_ms": 1036.7554,
+          "provider_calls": 1,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            1023.3060650000425
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": null,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": {
+            "input_tokens": 1561,
+            "output_tokens": 28,
+            "total_tokens": 1589
+          }
+        }
+      ],
+      "physical_requests": [
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1561,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1477
+            },
+            "output_tokens": 28,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1589
+          },
+          "output_types": [
+            "function_call"
+          ],
+          "calls": [
+            {
+              "name": "get_order_status",
+              "arguments": "{\"order_id\":1}",
+              "call_id": "call_39fcwpqt"
+            }
+          ],
+          "final_text": null,
+          "latency_ms": 1023.2134
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "PED05",
+      "category": "orders",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_order_status"
+          ],
+          "tool_errors": [
+            "forbidden"
+          ],
+          "latency_ms": 734.1126,
+          "provider_calls": 1,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            717.4729370001387
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": null,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": {
+            "input_tokens": 1565,
+            "output_tokens": 28,
+            "total_tokens": 1593
+          }
+        }
+      ],
+      "physical_requests": [
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1565,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1477
+            },
+            "output_tokens": 28,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1593
+          },
+          "output_types": [
+            "function_call"
+          ],
+          "calls": [
+            {
+              "name": "get_order_status",
+              "arguments": "{\"order_id\":1}",
+              "call_id": "call_i2m3222j"
+            }
+          ],
+          "final_text": null,
+          "latency_ms": 717.3439
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "PED06",
+      "category": "orders",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_order_status"
+          ],
+          "tool_errors": [
+            "forbidden"
+          ],
+          "latency_ms": 743.2194,
+          "provider_calls": 1,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            731.4470769999843
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": null,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": {
+            "input_tokens": 1563,
+            "output_tokens": 30,
+            "total_tokens": 1593
+          }
+        }
+      ],
+      "physical_requests": [
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1563,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1477
+            },
+            "output_tokens": 30,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1593
+          },
+          "output_types": [
+            "function_call"
+          ],
+          "calls": [
+            {
+              "name": "get_order_status",
+              "arguments": "{\"order_id\":999}",
+              "call_id": "call_4c4w8n74"
+            }
+          ],
+          "final_text": null,
+          "latency_ms": 731.3652
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "MUL01",
+      "category": "multi_step",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_product_details"
+          ],
+          "tool_errors": [],
+          "latency_ms": 3336.0807,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            724.8087020000185,
+            2590.592570000126
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": true,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": {
+            "input_tokens": 4032,
+            "output_tokens": 112,
+            "total_tokens": 4144
+          }
+        },
+        {
+          "step": 2,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_product_offers"
+          ],
+          "tool_errors": [
+            "invalid_arguments"
+          ],
+          "latency_ms": 4277.654,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            1423.153659000036,
+            2832.847145999949
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": false,
+            "task_success": false,
+            "grounding": null,
+            "compliance": true,
+            "errors": [
+              "provider_selection"
+            ]
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": {
+            "input_tokens": 4258,
+            "output_tokens": 148,
+            "total_tokens": 4406
+          }
+        }
+      ],
+      "physical_requests": [
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1564,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1477
+            },
+            "output_tokens": 30,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1594
+          },
+          "output_types": [
+            "function_call"
+          ],
+          "calls": [
+            {
+              "name": "get_product_details",
+              "arguments": "{\"product_id\":103}",
+              "call_id": "call_adp9mqef"
+            }
+          ],
+          "final_text": null,
+          "latency_ms": 724.7285
+        },
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1699,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1477
+            },
+            "output_tokens": 57,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1756
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "O produto 103 é um **Violão sintético para parcelas**, na categoria de Violões. Ele tem cordas de nylon, cor natural e está disponível com estoque de 3 unidades. O preço é de R$ 960,00.",
+          "latency_ms": 1352.266
+        },
+        {
+          "stage": "finalization",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 769,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 618
+            },
+            "output_tokens": 25,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 794
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "{\"intent\":\"answer\",\"evidence_call_ids\":[\"call_adp9mqef\"],\"clarification\":null}",
+          "latency_ms": 1237.5111
+        },
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1667,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1477
+            },
+            "output_tokens": 44,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1711
+          },
+          "output_types": [
+            "function_call"
+          ],
+          "calls": [
+            {
+              "name": "get_product_offers",
+              "arguments": "{\"product_id\":103,\"installments\":6}",
+              "call_id": "call_3mgsvp72"
+            }
+          ],
+          "final_text": null,
+          "latency_ms": 1423.0487
+        },
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1757,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1663
+            },
+            "output_tokens": 73,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1830
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "Olá! Consultei as fontes da loja para você.\n\nDetalhes verificados no snapshot:\n- Violão sintético para parcelas (ID 103): R$ 960,00; disponível; estoque registrado: 3.\n\nPara o pagamento em 6x, não há informações específicas disponíveis no momento.",
+          "latency_ms": 1569.2941
+        },
+        {
+          "stage": "finalization",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 834,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 618
+            },
+            "output_tokens": 31,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 865
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "{\n  \"intent\": \"clarify\",\n  \"evidence_call_ids\": [],\n  \"clarification\": \"specs\"\n}",
+          "latency_ms": 1262.9373
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "MUL02",
+      "category": "multi_step",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "abstained",
+          "observed_tools": [
+            "get_product_details",
+            "get_product_offers"
+          ],
+          "tool_errors": [],
+          "latency_ms": 6717.5885,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            1893.4898080001403,
+            4790.642093000088
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": false,
+            "grounding": null,
+            "compliance": true,
+            "errors": [
+              "provider_answer_plan",
+              "provider_or_protocol"
+            ]
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": {
+            "input_tokens": 4369,
+            "output_tokens": 251,
+            "total_tokens": 4620
+          }
+        }
+      ],
+      "physical_requests": [
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1570,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1477
+            },
+            "output_tokens": 74,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1644
+          },
+          "output_types": [
+            "function_call",
+            "function_call"
+          ],
+          "calls": [
+            {
+              "name": "get_product_details",
+              "arguments": "{\"product_id\":127}",
+              "call_id": "call_s112ipvh"
+            },
+            {
+              "name": "get_product_offers",
+              "arguments": "{\"product_id\":127,\"payment_method\":\"pix\"}",
+              "call_id": "call_ce4urxfj"
+            }
+          ],
+          "final_text": null,
+          "latency_ms": 1893.3593
+        },
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1869,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1477
+            },
+            "output_tokens": 143,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 2012
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "O produto 127 é um **ukulele tenor** (Instrumento sintético em oferta) da categoria Ukuleles. Aqui estão os detalhes:\n\n- **Preço original:** R$ 359,00\n- **Estoque disponível:** 11 unidades\n- **Status:** Ativo e disponível para compra\n- **Especificações:** Tipo tenor\n\n**Oferta PIX:**\nCom pagamento via PIX, você tem direito a um desconto de 10%, resultando em um preço final de **R$ 323,10**.\n\nGostaria de saber mais sobre este instrumento ou precisa de ajuda com algo mais?",
+          "latency_ms": 3171.6334
+        },
+        {
+          "stage": "finalization",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 930,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 618
+            },
+            "output_tokens": 34,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 964
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "{\"intent\":\"answer\",\"evidence_call_ids\":[\"call_ce4urxfj\",\"call_ce4urxfj\"],\"clarification\":null}",
+          "latency_ms": 1618.2357
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "MUL03",
+      "category": "multi_step",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "search_products"
+          ],
+          "tool_errors": [],
+          "latency_ms": 5638.4849,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            1596.8669989999853,
+            4018.6350030000995
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": true,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": {
+            "input_tokens": 4262,
+            "output_tokens": 208,
+            "total_tokens": 4470
+          }
+        },
+        {
+          "step": 2,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [],
+          "tool_errors": [],
+          "latency_ms": 1.5364,
+          "provider_calls": 0,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": null,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": null,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": null
+        }
+      ],
+      "physical_requests": [
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1562,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1477
+            },
+            "output_tokens": 58,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1620
+          },
+          "output_types": [
+            "function_call"
+          ],
+          "calls": [
+            {
+              "name": "search_products",
+              "arguments": "{\"available_only\":true,\"category\":\"Violões\",\"specs\":{\"strings\":\"nylon\"}}",
+              "call_id": "call_sfdxyte4"
+            }
+          ],
+          "final_text": null,
+          "latency_ms": 1596.7811
+        },
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1815,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1477
+            },
+            "output_tokens": 125,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1940
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "Encontrei dois violões com cordas de nylon disponíveis no nosso estoque:\n\n1. **Instrumento sintético disponível** - R$ 250,00\n   - Cor: azul\n   - Cordas: nylon\n   - Estoque: 4 unidades\n\n2. **Violão sintético para parcelas** - R$ 960,00\n   - Cor: natural\n   - Cordas: nylon\n   - Estoque: 3 unidades\n\nGostaria de saber mais detalhes sobre algum desses instrumentos ou gostaria de verificar as condições de pagamento disponíveis?",
+          "latency_ms": 2713.1497
+        },
+        {
+          "stage": "finalization",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 885,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 618
+            },
+            "output_tokens": 25,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 910
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "{\"intent\":\"answer\",\"evidence_call_ids\":[\"call_sfdxyte4\"],\"clarification\":null}",
+          "latency_ms": 1304.7514
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "MUL04",
+      "category": "multi_step",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "abstained",
+          "observed_tools": [
+            "get_product_offers",
+            "get_store_info"
+          ],
+          "tool_errors": [],
+          "latency_ms": 4776.7762,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            1818.802155000185,
+            2927.3811880000267
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": false,
+            "grounding": null,
+            "compliance": true,
+            "errors": [
+              "provider_answer_plan",
+              "provider_or_protocol"
+            ]
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": {
+            "input_tokens": 4472,
+            "output_tokens": 158,
+            "total_tokens": 4630
+          }
+        }
+      ],
+      "physical_requests": [
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1571,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1477
+            },
+            "output_tokens": 71,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1642
+          },
+          "output_types": [
+            "function_call",
+            "function_call"
+          ],
+          "calls": [
+            {
+              "name": "get_product_offers",
+              "arguments": "{\"product_id\":127,\"payment_method\":\"pix\"}",
+              "call_id": "call_kmiwmbld"
+            },
+            {
+              "name": "get_store_info",
+              "arguments": "{\"subject\":\"hours\"}",
+              "call_id": "call_br0gi88c"
+            }
+          ],
+          "final_text": null,
+          "latency_ms": 1818.7038
+        },
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1920,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1477
+            },
+            "output_tokens": 56,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1976
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "Para o produto 127, a oferta PIX oferece um desconto de 10%, resultando em um preço final de R$ 323,10.\n\nNo sábado, nossa loja está aberta das 09h às 13h.",
+          "latency_ms": 1459.3907
+        },
+        {
+          "stage": "finalization",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 981,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 618
+            },
+            "output_tokens": 31,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1012
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "{\"intent\":\"answer\",\"evidence_call_ids\":[\"call_kmiwmbld\",\"call_kmiwmbld\"],\"clarification\":null}",
+          "latency_ms": 1467.3063
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "MUL05",
+      "category": "multi_step",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_product_details"
+          ],
+          "tool_errors": [],
+          "latency_ms": 4331.1662,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            1038.5238779999781,
+            3270.941129999983
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": true,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": {
+            "input_tokens": 4036,
+            "output_tokens": 150,
+            "total_tokens": 4186
+          }
+        },
+        {
+          "step": 2,
+          "actor": "b",
+          "status": "answered",
+          "observed_tools": [],
+          "tool_errors": [],
+          "latency_ms": 1.3015,
+          "provider_calls": 0,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": null,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": null,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": null
+        },
+        {
+          "step": 3,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_product_offers"
+          ],
+          "tool_errors": [],
+          "latency_ms": 3992.557,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            1367.483459000141,
+            2602.8392599998824
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": true,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": {
+            "input_tokens": 4400,
+            "output_tokens": 120,
+            "total_tokens": 4520
+          }
+        }
+      ],
+      "physical_requests": [
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1564,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1477
+            },
+            "output_tokens": 30,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1594
+          },
+          "output_types": [
+            "function_call"
+          ],
+          "calls": [
+            {
+              "name": "get_product_details",
+              "arguments": "{\"product_id\":102}",
+              "call_id": "call_2uncr6s9"
+            }
+          ],
+          "final_text": null,
+          "latency_ms": 1038.4384
+        },
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1702,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1477
+            },
+            "output_tokens": 94,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1796
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "Aqui estão os detalhes do produto 102:\n\n- **Nome:** Instrumento sintético disponível\n- **Categoria:** Violões\n- **Preço:** R$ 250,00\n- **Descrição:** Exemplo de produto ativo\n- **Estoque:** 4 unidades\n- **Status:** Ativo\n- **Especificações:** Cor azul, cordas de nylon\n- **Disponibilidade:** Disponível",
+          "latency_ms": 2038.9953
+        },
+        {
+          "stage": "finalization",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 770,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 618
+            },
+            "output_tokens": 26,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 796
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "{\"intent\":\"answer\",\"evidence_call_ids\":[\"call_2uncr6s9\"],\"clarification\":null}",
+          "latency_ms": 1231.2985
+        },
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1663,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1477
+            },
+            "output_tokens": 44,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1707
+          },
+          "output_types": [
+            "function_call"
+          ],
+          "calls": [
+            {
+              "name": "get_product_offers",
+              "arguments": "{\"product_id\":102,\"payment_method\":\"pix\"}",
+              "call_id": "call_buhw5dsb"
+            }
+          ],
+          "final_text": null,
+          "latency_ms": 1367.4046
+        },
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1834,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1477
+            },
+            "output_tokens": 39,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1873
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "Com o PIX, você tem um desconto de 5% aplicado. O preço final fica em R$ 237,50. Não há parcelamento disponível para essa condição.",
+          "latency_ms": 1049.9415
+        },
+        {
+          "stage": "finalization",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 903,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 618
+            },
+            "output_tokens": 37,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 940
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "{\n  \"intent\": \"answer\",\n  \"evidence_call_ids\": [\"call_buhw5dsb\"],\n  \"clarification\": null\n}",
+          "latency_ms": 1552.1292
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "ROB01",
+      "category": "robustness",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [],
+          "tool_errors": [],
+          "latency_ms": 2.5737,
+          "provider_calls": 0,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": null,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": null,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": null
+        }
+      ],
+      "physical_requests": [],
+      "repetition": 1
+    },
+    {
+      "case_id": "ROB02",
+      "category": "robustness",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "abstained",
+          "observed_tools": [],
+          "tool_errors": [],
+          "latency_ms": 2.1041,
+          "provider_calls": 0,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": null,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": null,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": null
+        }
+      ],
+      "physical_requests": [],
+      "repetition": 1
+    },
+    {
+      "case_id": "ROB03",
+      "category": "robustness",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_product_details",
+            "search_products"
+          ],
+          "tool_errors": [
+            "service_unavailable"
+          ],
+          "latency_ms": 4798.7951,
+          "provider_calls": 3,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            1110.8311550001417,
+            915.262802999905,
+            2734.2604440000287
+          ],
+          "fault": "source_injection",
+          "checks": {
+            "tool_selection": false,
+            "tool_arguments": false,
+            "task_success": false,
+            "grounding": null,
+            "compliance": true,
+            "errors": [
+              "provider_selection"
+            ]
+          },
+          "reference_tools_ok": null,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": {
+            "input_tokens": 5724,
+            "output_tokens": 160,
+            "total_tokens": 5884
+          }
+        }
+      ],
+      "physical_requests": [
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1564,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1477
+            },
+            "output_tokens": 30,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1594
+          },
+          "output_types": [
+            "function_call"
+          ],
+          "calls": [
+            {
+              "name": "get_product_details",
+              "arguments": "{\"product_id\":102}",
+              "call_id": "call_l20nhk38"
+            }
+          ],
+          "final_text": null,
+          "latency_ms": 1110.7325
+        },
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1639,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1560
+            },
+            "output_tokens": 40,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1679
+          },
+          "output_types": [
+            "function_call"
+          ],
+          "calls": [
+            {
+              "name": "search_products",
+              "arguments": "{\"limit\":1,\"term\":\"102\"}",
+              "call_id": "call_zup1g1zl"
+            }
+          ],
+          "final_text": null,
+          "latency_ms": 915.1753
+        },
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1726,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1477
+            },
+            "output_tokens": 64,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1790
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "Parece que não conseguimos encontrar um produto com o ID 102 ou com o termo \"102\" no nosso catálogo. Você poderia me fornecer mais detalhes sobre o instrumento que você está procurando? Por exemplo, a categoria (como violões), características específicas ou uma descrição aproximada do produto?",
+          "latency_ms": 1476.6848
+        },
+        {
+          "stage": "finalization",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 795,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 618
+            },
+            "output_tokens": 26,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 821
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "{\"intent\":\"answer\",\"evidence_call_ids\":[\"call_zup1g1zl\"],\"clarification\":null}",
+          "latency_ms": 1256.943
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "ROB04",
+      "category": "robustness",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_product_details",
+            "search_products"
+          ],
+          "tool_errors": [
+            "service_unavailable",
+            "service_unavailable"
+          ],
+          "latency_ms": 4545.5951,
+          "provider_calls": 3,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            1094.9952640000902,
+            937.5716219999504,
+            2480.9181549999266
+          ],
+          "fault": "catalog_failure",
+          "checks": {
+            "tool_selection": false,
+            "tool_arguments": false,
+            "task_success": false,
+            "grounding": null,
+            "compliance": true,
+            "errors": [
+              "provider_selection"
+            ]
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": {
+            "input_tokens": 5728,
+            "output_tokens": 150,
+            "total_tokens": 5878
+          }
+        }
+      ],
+      "physical_requests": [
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1564,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1477
+            },
+            "output_tokens": 30,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1594
+          },
+          "output_types": [
+            "function_call"
+          ],
+          "calls": [
+            {
+              "name": "get_product_details",
+              "arguments": "{\"product_id\":102}",
+              "call_id": "call_nm5q7tbo"
+            }
+          ],
+          "final_text": null,
+          "latency_ms": 1094.8565
+        },
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1639,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1560
+            },
+            "output_tokens": 40,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1679
+          },
+          "output_types": [
+            "function_call"
+          ],
+          "calls": [
+            {
+              "name": "search_products",
+              "arguments": "{\"limit\":1,\"term\":\"102\"}",
+              "call_id": "call_r7ih60q4"
+            }
+          ],
+          "final_text": null,
+          "latency_ms": 937.4768
+        },
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1724,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1635
+            },
+            "output_tokens": 61,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1785
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "Parece que não consegui acessar as informações do produto 102 no momento. Posso tentar novamente ou você poderia me fornecer mais detalhes sobre o instrumento que você está procurando? Por exemplo, se souber o nome do violão ou alguma característica específica, posso ajudar a encontrá-lo.",
+          "latency_ms": 1338.6222
+        },
+        {
+          "stage": "finalization",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 801,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 618
+            },
+            "output_tokens": 19,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 820
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "{\"intent\":\"out_of_scope\",\"evidence_call_ids\":[],\"clarification\":null}",
+          "latency_ms": 1141.5727
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "ROB05",
+      "category": "robustness",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "timeout",
+          "observed_tools": [],
+          "tool_errors": [],
+          "latency_ms": 13.5855,
+          "provider_calls": 0,
+          "injected_provider_calls": 1,
+          "provider_latency_ms": [
+            0.005129000101078418
+          ],
+          "fault": "provider_timeout",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": null,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": null,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": null
+        }
+      ],
+      "physical_requests": [],
+      "repetition": 1
+    },
+    {
+      "case_id": "ROB06",
+      "category": "robustness",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "unknown_tool"
+          ],
+          "tool_errors": [
+            "unknown_tool"
+          ],
+          "latency_ms": 3935.3577,
+          "provider_calls": 1,
+          "injected_provider_calls": 1,
+          "provider_latency_ms": [
+            0.039603999994142214,
+            3907.9227559998344
+          ],
+          "fault": "sql_tool",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": false,
+            "grounding": null,
+            "compliance": true,
+            "errors": [
+              "provider_answer_plan"
+            ]
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": {
+            "input_tokens": 2335,
+            "output_tokens": 139,
+            "total_tokens": 2474
+          }
+        }
+      ],
+      "physical_requests": [
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1629,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1477
+            },
+            "output_tokens": 120,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1749
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "Desculpe, mas não posso executar comandos SQL ou manipular tabelas diretamente. Sou um assistente de texto da Empório da Música e tenho acesso a ferramentas específicas para consultar o catálogo de instrumentos, preços, estoque, promoções, status de pedidos e políticas da loja.\n\nPosso ajudar você com:\n- Buscar produtos no nosso catálogo (violões, violinos, etc.)\n- Verificar detalhes de produtos específicos\n- Consultar ofertas e condições de pagamento\n- Checar status de pedidos\n- Informar sobre políticas da loja\n\nComo posso ajudar você hoje?",
+          "latency_ms": 2916.2924
+        },
+        {
+          "stage": "finalization",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 706,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 618
+            },
+            "output_tokens": 19,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 725
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "{\"intent\":\"out_of_scope\",\"evidence_call_ids\":[],\"clarification\":null}",
+          "latency_ms": 990.8344
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "ROB07",
+      "category": "robustness",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_order_status"
+          ],
+          "tool_errors": [
+            "invalid_arguments"
+          ],
+          "latency_ms": 2119.0825,
+          "provider_calls": 1,
+          "injected_provider_calls": 1,
+          "provider_latency_ms": [
+            0.040556000158176175,
+            2096.10118400019
+          ],
+          "fault": "invalid_args",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": false,
+            "grounding": null,
+            "compliance": true,
+            "errors": [
+              "provider_answer_plan"
+            ]
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": {
+            "input_tokens": 2371,
+            "output_tokens": 41,
+            "total_tokens": 2412
+          }
+        }
+      ],
+      "physical_requests": [
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1647,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 1477
+            },
+            "output_tokens": 22,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1669
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "Para verificar seu pedido, preciso do número do seu pedido. Você poderia me informar o ID do pedido?",
+          "latency_ms": 993.0166
+        },
+        {
+          "stage": "finalization",
+          "store": false,
+          "server_state_reference": false,
+          "status": "completed",
+          "usage": {
+            "input_tokens": 724,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 618
+            },
+            "output_tokens": 19,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 743
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "{\"intent\":\"clarify\",\"evidence_call_ids\":[],\"clarification\":\"receipt_date\"}",
+          "latency_ms": 1102.4445
+        }
+      ],
+      "repetition": 1
+    }
+  ],
+  "summary": {
+    "case_success": {
+      "passed": 25,
+      "applicable": 40,
+      "rate": 0.625
+    },
+    "turn_metrics": {
+      "tool_selection": {
+        "passed": 38,
+        "applicable": 46,
+        "rate": 0.8260869565217391
+      },
+      "tool_arguments": {
+        "passed": 33,
+        "applicable": 46,
+        "rate": 0.717391304347826
+      },
+      "task_success": {
+        "passed": 30,
+        "applicable": 46,
+        "rate": 0.6521739130434783
+      },
+      "grounding": {
+        "passed": 24,
+        "applicable": 24,
+        "rate": 1.0
+      },
+      "compliance": {
+        "passed": 44,
+        "applicable": 46,
+        "rate": 0.9565217391304348
+      }
+    },
+    "reference_tool_checks": {
+      "passed": 39,
+      "applicable": 39,
+      "rate": 1.0
+    },
+    "turn_latency": {
+      "samples": 46,
+      "median_ms": 4304.4101,
+      "p95_ms": 6717.5885,
+      "p95_method": "nearest_rank"
+    },
+    "case_latency": {
+      "samples": 40,
+      "median_ms": 4511.7637,
+      "p95_ms": 8325.0247,
+      "p95_method": "nearest_rank"
+    },
+    "error_components": {
+      "provider_selection": 13,
+      "provider_answer_plan": 5,
+      "compliance": 2,
+      "provider_or_protocol": 2
+    },
+    "tokens": {
+      "reported_turns": 41,
+      "total_turns": 46,
+      "known_usage": {
+        "input_tokens": 165221,
+        "output_tokens": 5850,
+        "total_tokens": 171071
+      },
+      "complete_usage": null
+    },
+    "cost": {
+      "billed_usd": null,
+      "estimated_usd": null,
+      "reason": "No billed cost returned by adapter; no pricing assumptions."
+    },
+    "policy_recall_at_3": {
+      "applicable": 7,
+      "agent_mean": 0.7142857142857143,
+      "reference_mean": 1.0
+    },
+    "provider_latency": {
+      "samples": 81,
+      "median_ms": 1893.4898,
+      "p95_ms": 4591.6899,
+      "p95_method": "nearest_rank"
+    }
+  },
+  "by_category": {
+    "catalog": {
+      "case_success": {
+        "passed": 6,
+        "applicable": 8,
+        "rate": 0.75
+      },
+      "turn_metrics": {
+        "tool_selection": {
+          "passed": 8,
+          "applicable": 8,
+          "rate": 1.0
+        },
+        "tool_arguments": {
+          "passed": 6,
+          "applicable": 8,
+          "rate": 0.75
+        },
+        "task_success": {
+          "passed": 6,
+          "applicable": 8,
+          "rate": 0.75
+        },
+        "grounding": {
+          "passed": 5,
+          "applicable": 5,
+          "rate": 1.0
+        },
+        "compliance": {
+          "passed": 8,
+          "applicable": 8,
+          "rate": 1.0
+        }
+      },
+      "reference_tool_checks": {
+        "passed": 8,
+        "applicable": 8,
+        "rate": 1.0
+      },
+      "turn_latency": {
+        "samples": 8,
+        "median_ms": 3897.3769,
+        "p95_ms": 6178.1127,
+        "p95_method": "nearest_rank"
+      },
+      "case_latency": {
+        "samples": 8,
+        "median_ms": 3897.3769,
+        "p95_ms": 6178.1127,
+        "p95_method": "nearest_rank"
+      },
+      "error_components": {
+        "provider_selection": 2,
+        "provider_answer_plan": 1
+      }
+    },
+    "multi_step": {
+      "case_success": {
+        "passed": 2,
+        "applicable": 5,
+        "rate": 0.4
+      },
+      "turn_metrics": {
+        "tool_selection": {
+          "passed": 9,
+          "applicable": 9,
+          "rate": 1.0
+        },
+        "tool_arguments": {
+          "passed": 8,
+          "applicable": 9,
+          "rate": 0.8888888888888888
+        },
+        "task_success": {
+          "passed": 6,
+          "applicable": 9,
+          "rate": 0.6666666666666666
+        },
+        "grounding": {
+          "passed": 4,
+          "applicable": 4,
+          "rate": 1.0
+        },
+        "compliance": {
+          "passed": 9,
+          "applicable": 9,
+          "rate": 1.0
+        }
+      },
+      "reference_tool_checks": {
+        "passed": 7,
+        "applicable": 7,
+        "rate": 1.0
+      },
+      "turn_latency": {
+        "samples": 9,
+        "median_ms": 4277.654,
+        "p95_ms": 6717.5885,
+        "p95_method": "nearest_rank"
+      },
+      "case_latency": {
+        "samples": 5,
+        "median_ms": 6717.5885,
+        "p95_ms": 8325.0247,
+        "p95_method": "nearest_rank"
+      },
+      "error_components": {
+        "provider_selection": 1,
+        "provider_answer_plan": 2,
+        "provider_or_protocol": 2
+      }
+    },
+    "orders": {
+      "case_success": {
+        "passed": 6,
+        "applicable": 6,
+        "rate": 1.0
+      },
+      "turn_metrics": {
+        "tool_selection": {
+          "passed": 6,
+          "applicable": 6,
+          "rate": 1.0
+        },
+        "tool_arguments": {
+          "passed": 6,
+          "applicable": 6,
+          "rate": 1.0
+        },
+        "task_success": {
+          "passed": 6,
+          "applicable": 6,
+          "rate": 1.0
+        },
+        "grounding": {
+          "passed": 3,
+          "applicable": 3,
+          "rate": 1.0
+        },
+        "compliance": {
+          "passed": 6,
+          "applicable": 6,
+          "rate": 1.0
+        }
+      },
+      "reference_tool_checks": {
+        "passed": 6,
+        "applicable": 6,
+        "rate": 1.0
+      },
+      "turn_latency": {
+        "samples": 6,
+        "median_ms": 2814.8196,
+        "p95_ms": 4787.7292,
+        "p95_method": "nearest_rank"
+      },
+      "case_latency": {
+        "samples": 6,
+        "median_ms": 2814.8196,
+        "p95_ms": 4787.7292,
+        "p95_method": "nearest_rank"
+      },
+      "error_components": {}
+    },
+    "policies": {
+      "case_success": {
+        "passed": 4,
+        "applicable": 8,
+        "rate": 0.5
+      },
+      "turn_metrics": {
+        "tool_selection": {
+          "passed": 5,
+          "applicable": 9,
+          "rate": 0.5555555555555556
+        },
+        "tool_arguments": {
+          "passed": 4,
+          "applicable": 9,
+          "rate": 0.4444444444444444
+        },
+        "task_success": {
+          "passed": 5,
+          "applicable": 9,
+          "rate": 0.5555555555555556
+        },
+        "grounding": {
+          "passed": 6,
+          "applicable": 6,
+          "rate": 1.0
+        },
+        "compliance": {
+          "passed": 8,
+          "applicable": 9,
+          "rate": 0.8888888888888888
+        }
+      },
+      "reference_tool_checks": {
+        "passed": 8,
+        "applicable": 8,
+        "rate": 1.0
+      },
+      "turn_latency": {
+        "samples": 9,
+        "median_ms": 4477.9323,
+        "p95_ms": 5040.743,
+        "p95_method": "nearest_rank"
+      },
+      "case_latency": {
+        "samples": 8,
+        "median_ms": 4450.4902,
+        "p95_ms": 9518.8599,
+        "p95_method": "nearest_rank"
+      },
+      "error_components": {
+        "provider_selection": 5,
+        "compliance": 1
+      }
+    },
+    "pricing": {
+      "case_success": {
+        "passed": 4,
+        "applicable": 6,
+        "rate": 0.6666666666666666
+      },
+      "turn_metrics": {
+        "tool_selection": {
+          "passed": 5,
+          "applicable": 7,
+          "rate": 0.7142857142857143
+        },
+        "tool_arguments": {
+          "passed": 4,
+          "applicable": 7,
+          "rate": 0.5714285714285714
+        },
+        "task_success": {
+          "passed": 4,
+          "applicable": 7,
+          "rate": 0.5714285714285714
+        },
+        "grounding": {
+          "passed": 6,
+          "applicable": 6,
+          "rate": 1.0
+        },
+        "compliance": {
+          "passed": 6,
+          "applicable": 7,
+          "rate": 0.8571428571428571
+        }
+      },
+      "reference_tool_checks": {
+        "passed": 7,
+        "applicable": 7,
+        "rate": 1.0
+      },
+      "turn_latency": {
+        "samples": 7,
+        "median_ms": 5959.0307,
+        "p95_ms": 6831.3269,
+        "p95_method": "nearest_rank"
+      },
+      "case_latency": {
+        "samples": 6,
+        "median_ms": 5749.6345,
+        "p95_ms": 13553.8024,
+        "p95_method": "nearest_rank"
+      },
+      "error_components": {
+        "compliance": 1,
+        "provider_selection": 3
+      }
+    },
+    "robustness": {
+      "case_success": {
+        "passed": 3,
+        "applicable": 7,
+        "rate": 0.42857142857142855
+      },
+      "turn_metrics": {
+        "tool_selection": {
+          "passed": 5,
+          "applicable": 7,
+          "rate": 0.7142857142857143
+        },
+        "tool_arguments": {
+          "passed": 5,
+          "applicable": 7,
+          "rate": 0.7142857142857143
+        },
+        "task_success": {
+          "passed": 3,
+          "applicable": 7,
+          "rate": 0.42857142857142855
+        },
+        "grounding": {
+          "passed": 0,
+          "applicable": 0,
+          "rate": null
+        },
+        "compliance": {
+          "passed": 7,
+          "applicable": 7,
+          "rate": 1.0
+        }
+      },
+      "reference_tool_checks": {
+        "passed": 3,
+        "applicable": 3,
+        "rate": 1.0
+      },
+      "turn_latency": {
+        "samples": 7,
+        "median_ms": 2119.0825,
+        "p95_ms": 4798.7951,
+        "p95_method": "nearest_rank"
+      },
+      "case_latency": {
+        "samples": 7,
+        "median_ms": 2119.0825,
+        "p95_ms": 4798.7951,
+        "p95_method": "nearest_rank"
+      },
+      "error_components": {
+        "provider_selection": 2,
+        "provider_answer_plan": 2
+      }
+    }
+  },
+  "llm_tool_selection": {
+    "passed": 31,
+    "applicable": 37,
+    "rate": 0.8378378378378378
+  },
+  "experimental_profile": {
+    "tag": "after_40_finalize",
+    "temperature": 0,
+    "thinking": "none",
+    "structured_finalization": true,
+    "requested_context": 4096,
+    "warmup_seconds_excluded": 0.001,
+    "elapsed_seconds": 175.838,
+    "ollama_version": "0.35.0",
+    "source_root_label": "workspace",
+    "model": "qwen3.5:9b",
+    "raw_answer_keys_sha256": "6b76f2c8d35902603346ec1f9d5e6ab4c906b5c573b67c375e05cf893fe6c7b5",
+    "faults_are_existing_harness_injections": true,
+    "credentials_or_reasoning_exported": false
+  },
+  "physical_metrics": {
+    "requests": 116,
+    "finalizations": 38,
+    "sdk_time_ms": 174522.0074,
+    "finalization_time_ms": 49855.5247,
+    "usage_reported_requests": 116,
+    "known_tokens": {
+      "input_tokens": 165221,
+      "output_tokens": 5850,
+      "total_tokens": 171071
+    },
+    "injected_provider_calls": 3,
+    "native_subject_calls": 78
+  },
+  "resource_samples": [
+    {
+      "monotonic": 1147.78,
+      "ram_available_kib": 5457584,
+      "swap_free_kib": 324184,
+      "gpu": [
+        6665,
+        12288,
+        8
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1147.839,
+      "ram_available_kib": 5449448,
+      "swap_free_kib": 324184,
+      "gpu": [
+        6665,
+        12288,
+        8
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1150.865,
+      "ram_available_kib": 5343652,
+      "swap_free_kib": 324212,
+      "gpu": [
+        6665,
+        12288,
+        100
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1153.892,
+      "ram_available_kib": 5492336,
+      "swap_free_kib": 324228,
+      "gpu": [
+        6664,
+        12288,
+        100
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1156.919,
+      "ram_available_kib": 5409064,
+      "swap_free_kib": 324280,
+      "gpu": [
+        6664,
+        12288,
+        95
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1159.943,
+      "ram_available_kib": 5023484,
+      "swap_free_kib": 324292,
+      "gpu": [
+        6665,
+        12288,
+        1
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1162.973,
+      "ram_available_kib": 5246304,
+      "swap_free_kib": 324296,
+      "gpu": [
+        6665,
+        12288,
+        24
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1165.999,
+      "ram_available_kib": 5181768,
+      "swap_free_kib": 324300,
+      "gpu": [
+        6664,
+        12288,
+        95
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1169.025,
+      "ram_available_kib": 5352264,
+      "swap_free_kib": 324312,
+      "gpu": [
+        6664,
+        12288,
+        100
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1172.05,
+      "ram_available_kib": 5385000,
+      "swap_free_kib": 324336,
+      "gpu": [
+        6665,
+        12288,
+        95
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1175.077,
+      "ram_available_kib": 5442432,
+      "swap_free_kib": 324340,
+      "gpu": [
+        6665,
+        12288,
+        73
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1178.104,
+      "ram_available_kib": 5480452,
+      "swap_free_kib": 324340,
+      "gpu": [
+        6664,
+        12288,
+        95
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1181.13,
+      "ram_available_kib": 5407440,
+      "swap_free_kib": 324728,
+      "gpu": [
+        6664,
+        12288,
+        78
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1184.156,
+      "ram_available_kib": 5366992,
+      "swap_free_kib": 324768,
+      "gpu": [
+        6665,
+        12288,
+        95
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1187.182,
+      "ram_available_kib": 5365152,
+      "swap_free_kib": 324772,
+      "gpu": [
+        6665,
+        12288,
+        95
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1190.207,
+      "ram_available_kib": 5302736,
+      "swap_free_kib": 324772,
+      "gpu": [
+        6664,
+        12288,
+        94
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1193.234,
+      "ram_available_kib": 5233420,
+      "swap_free_kib": 324780,
+      "gpu": [
+        6664,
+        12288,
+        89
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1196.26,
+      "ram_available_kib": 5117024,
+      "swap_free_kib": 324796,
+      "gpu": [
+        6665,
+        12288,
+        93
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1199.285,
+      "ram_available_kib": 5268840,
+      "swap_free_kib": 324824,
+      "gpu": [
+        6665,
+        12288,
+        95
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1202.311,
+      "ram_available_kib": 5261500,
+      "swap_free_kib": 325328,
+      "gpu": [
+        6664,
+        12288,
+        19
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1205.337,
+      "ram_available_kib": 5257140,
+      "swap_free_kib": 325400,
+      "gpu": [
+        6664,
+        12288,
+        95
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1208.366,
+      "ram_available_kib": 5175748,
+      "swap_free_kib": 325408,
+      "gpu": [
+        6664,
+        12288,
+        93
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1211.397,
+      "ram_available_kib": 5049060,
+      "swap_free_kib": 325428,
+      "gpu": [
+        6665,
+        12288,
+        99
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1214.428,
+      "ram_available_kib": 4969056,
+      "swap_free_kib": 325084,
+      "gpu": [
+        6665,
+        12288,
+        100
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1217.458,
+      "ram_available_kib": 5015948,
+      "swap_free_kib": 325088,
+      "gpu": [
+        6665,
+        12288,
+        94
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1220.485,
+      "ram_available_kib": 4914368,
+      "swap_free_kib": 325092,
+      "gpu": [
+        6664,
+        12288,
+        91
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1223.513,
+      "ram_available_kib": 4610128,
+      "swap_free_kib": 323504,
+      "gpu": [
+        6665,
+        12288,
+        19
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1226.544,
+      "ram_available_kib": 4923248,
+      "swap_free_kib": 323516,
+      "gpu": [
+        6665,
+        12288,
+        93
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1229.573,
+      "ram_available_kib": 4977592,
+      "swap_free_kib": 323532,
+      "gpu": [
+        6665,
+        12288,
+        91
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1232.602,
+      "ram_available_kib": 5129908,
+      "swap_free_kib": 323548,
+      "gpu": [
+        6664,
+        12288,
+        77
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1235.63,
+      "ram_available_kib": 5079148,
+      "swap_free_kib": 323648,
+      "gpu": [
+        6665,
+        12288,
+        52
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1238.656,
+      "ram_available_kib": 5137848,
+      "swap_free_kib": 325196,
+      "gpu": [
+        6665,
+        12288,
+        92
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1241.684,
+      "ram_available_kib": 5106284,
+      "swap_free_kib": 325212,
+      "gpu": [
+        6664,
+        12288,
+        94
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1244.71,
+      "ram_available_kib": 5133800,
+      "swap_free_kib": 325216,
+      "gpu": [
+        6664,
+        12288,
+        35
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1247.736,
+      "ram_available_kib": 5012024,
+      "swap_free_kib": 365308,
+      "gpu": [
+        6665,
+        12288,
+        94
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1250.762,
+      "ram_available_kib": 4930596,
+      "swap_free_kib": 401656,
+      "gpu": [
+        6667,
+        12288,
+        92
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1253.787,
+      "ram_available_kib": 4601364,
+      "swap_free_kib": 400008,
+      "gpu": [
+        6666,
+        12288,
+        1
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1256.812,
+      "ram_available_kib": 4773872,
+      "swap_free_kib": 400016,
+      "gpu": [
+        6665,
+        12288,
+        94
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1259.838,
+      "ram_available_kib": 4849804,
+      "swap_free_kib": 399060,
+      "gpu": [
+        6666,
+        12288,
+        95
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1262.868,
+      "ram_available_kib": 4635404,
+      "swap_free_kib": 402228,
+      "gpu": [
+        6663,
+        12288,
+        93
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1265.9,
+      "ram_available_kib": 4641504,
+      "swap_free_kib": 414132,
+      "gpu": [
+        6664,
+        12288,
+        94
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1268.925,
+      "ram_available_kib": 4557756,
+      "swap_free_kib": 413764,
+      "gpu": [
+        6694,
+        12288,
+        43
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1271.951,
+      "ram_available_kib": 4611092,
+      "swap_free_kib": 418772,
+      "gpu": [
+        6681,
+        12288,
+        66
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1274.976,
+      "ram_available_kib": 4399552,
+      "swap_free_kib": 438888,
+      "gpu": [
+        6680,
+        12288,
+        94
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1278.003,
+      "ram_available_kib": 4202320,
+      "swap_free_kib": 432528,
+      "gpu": [
+        6680,
+        12288,
+        91
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1281.03,
+      "ram_available_kib": 4120908,
+      "swap_free_kib": 433468,
+      "gpu": [
+        6680,
+        12288,
+        94
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1284.057,
+      "ram_available_kib": 4304524,
+      "swap_free_kib": 435300,
+      "gpu": [
+        6680,
+        12288,
+        92
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1287.086,
+      "ram_available_kib": 4054580,
+      "swap_free_kib": 444436,
+      "gpu": [
+        6680,
+        12288,
+        94
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1290.122,
+      "ram_available_kib": 4183568,
+      "swap_free_kib": 456848,
+      "gpu": [
+        6680,
+        12288,
+        42
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1293.15,
+      "ram_available_kib": 4328308,
+      "swap_free_kib": 478144,
+      "gpu": [
+        6680,
+        12288,
+        94
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1296.18,
+      "ram_available_kib": 4346152,
+      "swap_free_kib": 478544,
+      "gpu": [
+        6680,
+        12288,
+        95
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1299.207,
+      "ram_available_kib": 4324736,
+      "swap_free_kib": 484280,
+      "gpu": [
+        6680,
+        12288,
+        21
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1302.235,
+      "ram_available_kib": 4372064,
+      "swap_free_kib": 484904,
+      "gpu": [
+        6680,
+        12288,
+        93
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1305.262,
+      "ram_available_kib": 4344292,
+      "swap_free_kib": 489532,
+      "gpu": [
+        6680,
+        12288,
+        93
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1308.287,
+      "ram_available_kib": 4069020,
+      "swap_free_kib": 491236,
+      "gpu": [
+        6680,
+        12288,
+        48
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1311.312,
+      "ram_available_kib": 3962560,
+      "swap_free_kib": 511164,
+      "gpu": [
+        6680,
+        12288,
+        95
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1314.34,
+      "ram_available_kib": 3644180,
+      "swap_free_kib": 519868,
+      "gpu": [
+        6680,
+        12288,
+        94
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1317.369,
+      "ram_available_kib": 3529484,
+      "swap_free_kib": 518348,
+      "gpu": [
+        6680,
+        12288,
+        0
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1320.396,
+      "ram_available_kib": 3434668,
+      "swap_free_kib": 533848,
+      "gpu": [
+        6680,
+        12288,
+        92
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 1323.427,
+      "ram_available_kib": 3375088,
+      "swap_free_kib": 526292,
+      "gpu": [
+        6680,
+        12288,
+        91
+      ],
+      "models": [
+        {
+          "name": "qwen3.5:9b",
+          "size": 5589560196,
+          "size_vram": 5589560196,
+          "context_length": 4096
+        }
+      ]
+    }
+  ]
+}

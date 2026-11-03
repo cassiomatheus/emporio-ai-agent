@@ -1,0 +1,2230 @@
+{
+  "evaluation_version": "1.0",
+  "suite_sha256": "6f94fe24cd3402f310b3254fce5b3d9c973e2416301e6fa30c9bab90f824e26a",
+  "source_sha256": "977c3cfe3f11446a9eedc26acef8e60ae07825767e1157e757415c37e0fd064e",
+  "fixture_sha256": {
+    "categories.csv": "ada8a8c4e9eb5837c1189cb2f250b5bf237816493955968069b8754b0d0c7bfd",
+    "customers.csv": "28aa50f29fe09a8ccf918ce868002c3da6b1ba2624fb4571ec1ba2828f8cfa61",
+    "order_items.csv": "3d58f8a5f6c6bfc7d5c768c7ea3c829e8a0e7c6cd4e625b280dabb2cc1323c59",
+    "orders.csv": "4f02d36ec430dca184460129004123bdb1f3a3dc02c95d348fa9a02b2674ab4b",
+    "products.csv": "d9b5164836a3d2499ffd7efb932b2735739a316d09b1454c8650c905a4ab1e7c",
+    "promotions.csv": "486402f62694a3d8492f8320130a5089af08efd842151ba6530b23b120cb1747"
+  },
+  "agent_limits": {
+    "max_rounds": 4,
+    "max_tool_calls": 12,
+    "max_calls_per_round": 4,
+    "timeout_seconds": 30.0,
+    "tool_timeout_seconds": 5.0,
+    "request_timeout_seconds": 20.0,
+    "max_output_tokens": 1200
+  },
+  "started_at_utc": "2026-11-01T02:40:06.214223+00:00",
+  "python_version": "3.14.6",
+  "execution": "offline_scripted",
+  "real_provider_called": false,
+  "model": null,
+  "provider": "OfflineDemoProvider",
+  "planned_cases": 40,
+  "repeats": 1,
+  "planned_categories": {
+    "catalog": 8,
+    "pricing": 6,
+    "policies": 8,
+    "orders": 6,
+    "multi_step": 5,
+    "robustness": 7
+  },
+  "catalog_source": "synthetic_evaluation_fixture",
+  "orders_source": "data/samples_synthetic",
+  "policy_source": "synthetic_pdf",
+  "policy_sha256": "71ce07d172ee130613c7f475e97a449065deb33b5cba9e1aef0fdc426268f532",
+  "policy_version": "0.1",
+  "executed_cases": 40,
+  "executed_turns": 46,
+  "cases": [
+    {
+      "case_id": "CAT01",
+      "category": "catalog",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "search_products"
+          ],
+          "tool_errors": [],
+          "latency_ms": 25.3755,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            0.26454299222677946,
+            0.055262993555516005
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": false,
+            "task_success": false,
+            "grounding": true,
+            "compliance": false,
+            "errors": [
+              "compliance",
+              "provider_selection"
+            ]
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": null
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "CAT02",
+      "category": "catalog",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "search_products"
+          ],
+          "tool_errors": [],
+          "latency_ms": 22.509,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            0.0719740055501461,
+            0.04992296453565359
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": false,
+            "task_success": true,
+            "grounding": true,
+            "compliance": true,
+            "errors": [
+              "provider_selection"
+            ]
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": null
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "CAT03",
+      "category": "catalog",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_product_details"
+          ],
+          "tool_errors": [],
+          "latency_ms": 21.7668,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            0.13896898599341512,
+            0.05181698361411691
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": true,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": null
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "CAT04",
+      "category": "catalog",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_product_details"
+          ],
+          "tool_errors": [],
+          "latency_ms": 21.0693,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            0.06444996688514948,
+            0.04226900637149811
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": true,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": null
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "CAT05",
+      "category": "catalog",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_product_details"
+          ],
+          "tool_errors": [],
+          "latency_ms": 22.1804,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            0.055684009566903114,
+            0.05125504685565829
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": true,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": null
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "CAT06",
+      "category": "catalog",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "search_products"
+          ],
+          "tool_errors": [],
+          "latency_ms": 24.6257,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            0.06802700227126479,
+            0.04880101187154651
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": false,
+            "task_success": false,
+            "grounding": true,
+            "compliance": false,
+            "errors": [
+              "compliance",
+              "provider_selection"
+            ]
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": null
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "CAT07",
+      "category": "catalog",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "search_products"
+          ],
+          "tool_errors": [],
+          "latency_ms": 21.0598,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            0.06015202961862087,
+            0.048991001676768064
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": false,
+            "task_success": false,
+            "grounding": true,
+            "compliance": false,
+            "errors": [
+              "compliance",
+              "provider_selection"
+            ]
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": null
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "CAT08",
+      "category": "catalog",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_product_details"
+          ],
+          "tool_errors": [
+            "not_found"
+          ],
+          "latency_ms": 20.5538,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            0.05662499461323023,
+            0.03712903708219528
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": null,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": null
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "PRE01",
+      "category": "pricing",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_product_offers"
+          ],
+          "tool_errors": [],
+          "latency_ms": 21.895,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            0.06412999937310815,
+            0.04352105315774679
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": false,
+            "task_success": false,
+            "grounding": true,
+            "compliance": true,
+            "errors": [
+              "provider_selection"
+            ]
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": null
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "PRE02",
+      "category": "pricing",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_product_offers"
+          ],
+          "tool_errors": [],
+          "latency_ms": 20.9804,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            0.06630399730056524,
+            0.03848201595246792
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": true,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": null
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "PRE03",
+      "category": "pricing",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_product_offers"
+          ],
+          "tool_errors": [],
+          "latency_ms": 21.0915,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            0.06034201942384243,
+            0.041827966924756765
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": false,
+            "task_success": false,
+            "grounding": true,
+            "compliance": true,
+            "errors": [
+              "provider_selection"
+            ]
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": null
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "PRE04",
+      "category": "pricing",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_product_offers"
+          ],
+          "tool_errors": [],
+          "latency_ms": 21.779,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            0.06391899660229683,
+            0.04096602788195014
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": true,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": null
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "PRE05",
+      "category": "pricing",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_product_offers"
+          ],
+          "tool_errors": [
+            "invalid_installments"
+          ],
+          "latency_ms": 21.161,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            0.05557399708777666,
+            0.03849097993224859
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": null,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": null
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "PRE06",
+      "category": "pricing",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_product_offers"
+          ],
+          "tool_errors": [],
+          "latency_ms": 23.0647,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            0.05856901407241821,
+            0.056675984524190426
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": true,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": null
+        },
+        {
+          "step": 2,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_product_offers"
+          ],
+          "tool_errors": [
+            "invalid_installments"
+          ],
+          "latency_ms": 21.5213,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            0.055383017752319574,
+            0.0339229591190815
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": null,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": null
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "POL01",
+      "category": "policies",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [],
+          "tool_errors": [],
+          "latency_ms": 11.3008,
+          "provider_calls": 1,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            0.048520974814891815
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": false,
+            "tool_arguments": false,
+            "task_success": false,
+            "grounding": null,
+            "compliance": true,
+            "errors": [
+              "provider_selection"
+            ]
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": 0.0,
+            "reference_recall_at_3": 1.0,
+            "reference_sections": [
+              "3",
+              "6.2"
+            ]
+          },
+          "usage": null
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "POL02",
+      "category": "policies",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [],
+          "tool_errors": [],
+          "latency_ms": 13.1489,
+          "provider_calls": 1,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            0.05608500214293599
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": false,
+            "tool_arguments": false,
+            "task_success": false,
+            "grounding": null,
+            "compliance": true,
+            "errors": [
+              "provider_selection"
+            ]
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": 0.0,
+            "reference_recall_at_3": 1.0,
+            "reference_sections": [
+              "6.2"
+            ]
+          },
+          "usage": null
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "POL03",
+      "category": "policies",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [],
+          "tool_errors": [],
+          "latency_ms": 10.9632,
+          "provider_calls": 1,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            0.06696500349789858
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": false,
+            "tool_arguments": false,
+            "task_success": false,
+            "grounding": null,
+            "compliance": true,
+            "errors": [
+              "provider_selection"
+            ]
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": 0.0,
+            "reference_recall_at_3": 1.0,
+            "reference_sections": [
+              "3.1"
+            ]
+          },
+          "usage": null
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "POL04",
+      "category": "policies",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [],
+          "tool_errors": [],
+          "latency_ms": 10.7975,
+          "provider_calls": 1,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            0.06138498429208994
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": false,
+            "tool_arguments": false,
+            "task_success": false,
+            "grounding": null,
+            "compliance": true,
+            "errors": [
+              "provider_selection"
+            ]
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": 0.0,
+            "reference_recall_at_3": 1.0,
+            "reference_sections": [
+              "4.1"
+            ]
+          },
+          "usage": null
+        },
+        {
+          "step": 2,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [],
+          "tool_errors": [],
+          "latency_ms": 10.8453,
+          "provider_calls": 1,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            0.05225697532296181
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": false,
+            "grounding": null,
+            "compliance": true,
+            "errors": [
+              "provider_answer_plan"
+            ]
+          },
+          "reference_tools_ok": null,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": null
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "POL05",
+      "category": "policies",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [],
+          "tool_errors": [],
+          "latency_ms": 10.8393,
+          "provider_calls": 1,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            0.04796002758666873
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": false,
+            "tool_arguments": false,
+            "task_success": false,
+            "grounding": null,
+            "compliance": true,
+            "errors": [
+              "provider_selection"
+            ]
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": 0.0,
+            "reference_recall_at_3": 1.0,
+            "reference_sections": [
+              "5.1"
+            ]
+          },
+          "usage": null
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "POL06",
+      "category": "policies",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [],
+          "tool_errors": [],
+          "latency_ms": 10.5865,
+          "provider_calls": 1,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            0.042689964175224304
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": false,
+            "tool_arguments": false,
+            "task_success": false,
+            "grounding": null,
+            "compliance": true,
+            "errors": [
+              "provider_selection"
+            ]
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": 0.0,
+            "reference_recall_at_3": 1.0,
+            "reference_sections": [
+              "4.2",
+              "8.1"
+            ]
+          },
+          "usage": null
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "POL07",
+      "category": "policies",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [],
+          "tool_errors": [],
+          "latency_ms": 11.7619,
+          "provider_calls": 1,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            0.057906960137188435
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": false,
+            "tool_arguments": false,
+            "task_success": false,
+            "grounding": null,
+            "compliance": true,
+            "errors": [
+              "provider_selection"
+            ]
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": 0.0,
+            "reference_recall_at_3": 1.0,
+            "reference_sections": [
+              "4.2",
+              "8.1"
+            ]
+          },
+          "usage": null
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "POL08",
+      "category": "policies",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [],
+          "tool_errors": [],
+          "latency_ms": 10.3929,
+          "provider_calls": 1,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            0.04033598816022277
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": false,
+            "tool_arguments": false,
+            "task_success": false,
+            "grounding": null,
+            "compliance": true,
+            "errors": [
+              "provider_selection"
+            ]
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": null
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "PED01",
+      "category": "orders",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_order_status"
+          ],
+          "tool_errors": [],
+          "latency_ms": 21.3184,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            0.055915035773068666,
+            0.04505401011556387
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": true,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": null
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "PED02",
+      "category": "orders",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_order_status"
+          ],
+          "tool_errors": [],
+          "latency_ms": 22.3552,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            0.05706597585231066,
+            0.044603017158806324
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": true,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": null
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "PED03",
+      "category": "orders",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_order_status"
+          ],
+          "tool_errors": [],
+          "latency_ms": 23.0862,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            0.0527380034327507,
+            0.04345097113400698
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": true,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": null
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "PED04",
+      "category": "orders",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_order_status"
+          ],
+          "tool_errors": [
+            "forbidden"
+          ],
+          "latency_ms": 21.3326,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            0.056034012231975794,
+            0.048690999392420053
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": null,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": null
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "PED05",
+      "category": "orders",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_order_status"
+          ],
+          "tool_errors": [
+            "forbidden"
+          ],
+          "latency_ms": 20.0493,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            0.05569402128458023,
+            0.048780988436192274
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": null,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": null
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "PED06",
+      "category": "orders",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_order_status"
+          ],
+          "tool_errors": [
+            "forbidden"
+          ],
+          "latency_ms": 21.5453,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            0.06029201904311776,
+            0.03404304152354598
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": null,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": null
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "MUL01",
+      "category": "multi_step",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_product_details"
+          ],
+          "tool_errors": [],
+          "latency_ms": 21.6045,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            0.055543030612170696,
+            0.0437319977208972
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": true,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": null
+        },
+        {
+          "step": 2,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_product_offers"
+          ],
+          "tool_errors": [],
+          "latency_ms": 23.2964,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            0.05569402128458023,
+            0.053169962484389544
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": true,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": null
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "MUL02",
+      "category": "multi_step",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_product_offers"
+          ],
+          "tool_errors": [],
+          "latency_ms": 24.0258,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            0.0603319494985044,
+            0.04299997817724943
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": false,
+            "tool_arguments": false,
+            "task_success": false,
+            "grounding": true,
+            "compliance": true,
+            "errors": [
+              "provider_selection"
+            ]
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": null
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "MUL03",
+      "category": "multi_step",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "search_products"
+          ],
+          "tool_errors": [],
+          "latency_ms": 21.2435,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            0.05876895738765597,
+            0.047547975555062294
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": true,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": null
+        },
+        {
+          "step": 2,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [],
+          "tool_errors": [],
+          "latency_ms": 1.3878,
+          "provider_calls": 0,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": null,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": null,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": null
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "MUL04",
+      "category": "multi_step",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_product_offers"
+          ],
+          "tool_errors": [],
+          "latency_ms": 20.963,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            0.06375898374244571,
+            0.04308001371100545
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": false,
+            "tool_arguments": false,
+            "task_success": false,
+            "grounding": true,
+            "compliance": true,
+            "errors": [
+              "provider_selection"
+            ]
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": null
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "MUL05",
+      "category": "multi_step",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_product_details"
+          ],
+          "tool_errors": [],
+          "latency_ms": 20.5625,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            0.05590403452515602,
+            0.03329198807477951
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": true,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": null
+        },
+        {
+          "step": 2,
+          "actor": "b",
+          "status": "answered",
+          "observed_tools": [],
+          "tool_errors": [],
+          "latency_ms": 1.4507,
+          "provider_calls": 0,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": null,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": null,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": null
+        },
+        {
+          "step": 3,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_product_offers"
+          ],
+          "tool_errors": [],
+          "latency_ms": 20.3854,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            0.04263903247192502,
+            0.04032498691231012
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": true,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": null
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "ROB01",
+      "category": "robustness",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [],
+          "tool_errors": [],
+          "latency_ms": 1.3599,
+          "provider_calls": 0,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": null,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": null,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": null
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "ROB02",
+      "category": "robustness",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "abstained",
+          "observed_tools": [],
+          "tool_errors": [],
+          "latency_ms": 1.4168,
+          "provider_calls": 0,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": null,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": null,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": null
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "ROB03",
+      "category": "robustness",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_product_details"
+          ],
+          "tool_errors": [
+            "service_unavailable"
+          ],
+          "latency_ms": 63.5277,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            0.05859899101778865,
+            0.04518398782238364
+          ],
+          "fault": "source_injection",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": null,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": null,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": null
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "ROB04",
+      "category": "robustness",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_product_details"
+          ],
+          "tool_errors": [
+            "service_unavailable"
+          ],
+          "latency_ms": 20.973,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            0.0704820267856121,
+            0.038282014429569244
+          ],
+          "fault": "catalog_failure",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": null,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": null
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "ROB05",
+      "category": "robustness",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "timeout",
+          "observed_tools": [],
+          "tool_errors": [],
+          "latency_ms": 11.3703,
+          "provider_calls": 0,
+          "injected_provider_calls": 1,
+          "provider_latency_ms": [
+            0.003597000613808632
+          ],
+          "fault": "provider_timeout",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": null,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": null,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": null
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "ROB06",
+      "category": "robustness",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "unknown_tool"
+          ],
+          "tool_errors": [
+            "unknown_tool"
+          ],
+          "latency_ms": 21.3685,
+          "provider_calls": 1,
+          "injected_provider_calls": 1,
+          "provider_latency_ms": [
+            0.03367301542311907,
+            0.041015970055013895
+          ],
+          "fault": "sql_tool",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": null,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": null
+        }
+      ],
+      "repetition": 1
+    },
+    {
+      "case_id": "ROB07",
+      "category": "robustness",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "get_order_status"
+          ],
+          "tool_errors": [
+            "invalid_arguments"
+          ],
+          "latency_ms": 21.6826,
+          "provider_calls": 1,
+          "injected_provider_calls": 1,
+          "provider_latency_ms": [
+            0.033581978641450405,
+            0.048269983381032944
+          ],
+          "fault": "invalid_args",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": null,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": null
+        }
+      ],
+      "repetition": 1
+    }
+  ],
+  "summary": {
+    "case_success": {
+      "passed": 25,
+      "applicable": 40,
+      "rate": 0.625
+    },
+    "turn_metrics": {
+      "tool_selection": {
+        "passed": 36,
+        "applicable": 46,
+        "rate": 0.782608695652174
+      },
+      "tool_arguments": {
+        "passed": 30,
+        "applicable": 46,
+        "rate": 0.6521739130434783
+      },
+      "task_success": {
+        "passed": 30,
+        "applicable": 46,
+        "rate": 0.6521739130434783
+      },
+      "grounding": {
+        "passed": 22,
+        "applicable": 22,
+        "rate": 1.0
+      },
+      "compliance": {
+        "passed": 43,
+        "applicable": 46,
+        "rate": 0.9347826086956522
+      }
+    },
+    "reference_tool_checks": {
+      "passed": 39,
+      "applicable": 39,
+      "rate": 1.0
+    },
+    "turn_latency": {
+      "samples": 46,
+      "median_ms": 21.0804,
+      "p95_ms": 24.6257,
+      "p95_method": "nearest_rank"
+    },
+    "case_latency": {
+      "samples": 40,
+      "median_ms": 21.3255,
+      "p95_ms": 44.586,
+      "p95_method": "nearest_rank"
+    },
+    "error_components": {
+      "compliance": 3,
+      "provider_selection": 16,
+      "provider_answer_plan": 1
+    },
+    "tokens": {
+      "reported_turns": 0,
+      "total_turns": 46,
+      "known_usage": null,
+      "complete_usage": null
+    },
+    "cost": {
+      "billed_usd": null,
+      "estimated_usd": null,
+      "reason": "No billed cost returned by adapter; no pricing assumptions."
+    },
+    "policy_recall_at_3": {
+      "applicable": 7,
+      "agent_mean": 0.0,
+      "reference_mean": 1.0
+    },
+    "provider_latency": {
+      "samples": 74,
+      "median_ms": 0.052,
+      "p95_ms": 0.0705,
+      "p95_method": "nearest_rank"
+    }
+  },
+  "by_category": {
+    "catalog": {
+      "case_success": {
+        "passed": 5,
+        "applicable": 8,
+        "rate": 0.625
+      },
+      "turn_metrics": {
+        "tool_selection": {
+          "passed": 8,
+          "applicable": 8,
+          "rate": 1.0
+        },
+        "tool_arguments": {
+          "passed": 4,
+          "applicable": 8,
+          "rate": 0.5
+        },
+        "task_success": {
+          "passed": 5,
+          "applicable": 8,
+          "rate": 0.625
+        },
+        "grounding": {
+          "passed": 7,
+          "applicable": 7,
+          "rate": 1.0
+        },
+        "compliance": {
+          "passed": 5,
+          "applicable": 8,
+          "rate": 0.625
+        }
+      },
+      "reference_tool_checks": {
+        "passed": 8,
+        "applicable": 8,
+        "rate": 1.0
+      },
+      "turn_latency": {
+        "samples": 8,
+        "median_ms": 21.9736,
+        "p95_ms": 25.3755,
+        "p95_method": "nearest_rank"
+      },
+      "case_latency": {
+        "samples": 8,
+        "median_ms": 21.9736,
+        "p95_ms": 25.3755,
+        "p95_method": "nearest_rank"
+      },
+      "error_components": {
+        "compliance": 3,
+        "provider_selection": 4
+      }
+    },
+    "multi_step": {
+      "case_success": {
+        "passed": 3,
+        "applicable": 5,
+        "rate": 0.6
+      },
+      "turn_metrics": {
+        "tool_selection": {
+          "passed": 7,
+          "applicable": 9,
+          "rate": 0.7777777777777778
+        },
+        "tool_arguments": {
+          "passed": 7,
+          "applicable": 9,
+          "rate": 0.7777777777777778
+        },
+        "task_success": {
+          "passed": 7,
+          "applicable": 9,
+          "rate": 0.7777777777777778
+        },
+        "grounding": {
+          "passed": 7,
+          "applicable": 7,
+          "rate": 1.0
+        },
+        "compliance": {
+          "passed": 9,
+          "applicable": 9,
+          "rate": 1.0
+        }
+      },
+      "reference_tool_checks": {
+        "passed": 7,
+        "applicable": 7,
+        "rate": 1.0
+      },
+      "turn_latency": {
+        "samples": 9,
+        "median_ms": 20.963,
+        "p95_ms": 24.0258,
+        "p95_method": "nearest_rank"
+      },
+      "case_latency": {
+        "samples": 5,
+        "median_ms": 24.0258,
+        "p95_ms": 44.9009,
+        "p95_method": "nearest_rank"
+      },
+      "error_components": {
+        "provider_selection": 2
+      }
+    },
+    "orders": {
+      "case_success": {
+        "passed": 6,
+        "applicable": 6,
+        "rate": 1.0
+      },
+      "turn_metrics": {
+        "tool_selection": {
+          "passed": 6,
+          "applicable": 6,
+          "rate": 1.0
+        },
+        "tool_arguments": {
+          "passed": 6,
+          "applicable": 6,
+          "rate": 1.0
+        },
+        "task_success": {
+          "passed": 6,
+          "applicable": 6,
+          "rate": 1.0
+        },
+        "grounding": {
+          "passed": 3,
+          "applicable": 3,
+          "rate": 1.0
+        },
+        "compliance": {
+          "passed": 6,
+          "applicable": 6,
+          "rate": 1.0
+        }
+      },
+      "reference_tool_checks": {
+        "passed": 6,
+        "applicable": 6,
+        "rate": 1.0
+      },
+      "turn_latency": {
+        "samples": 6,
+        "median_ms": 21.4389,
+        "p95_ms": 23.0862,
+        "p95_method": "nearest_rank"
+      },
+      "case_latency": {
+        "samples": 6,
+        "median_ms": 21.4389,
+        "p95_ms": 23.0862,
+        "p95_method": "nearest_rank"
+      },
+      "error_components": {}
+    },
+    "policies": {
+      "case_success": {
+        "passed": 0,
+        "applicable": 8,
+        "rate": 0.0
+      },
+      "turn_metrics": {
+        "tool_selection": {
+          "passed": 1,
+          "applicable": 9,
+          "rate": 0.1111111111111111
+        },
+        "tool_arguments": {
+          "passed": 1,
+          "applicable": 9,
+          "rate": 0.1111111111111111
+        },
+        "task_success": {
+          "passed": 0,
+          "applicable": 9,
+          "rate": 0.0
+        },
+        "grounding": {
+          "passed": 0,
+          "applicable": 0,
+          "rate": null
+        },
+        "compliance": {
+          "passed": 9,
+          "applicable": 9,
+          "rate": 1.0
+        }
+      },
+      "reference_tool_checks": {
+        "passed": 8,
+        "applicable": 8,
+        "rate": 1.0
+      },
+      "turn_latency": {
+        "samples": 9,
+        "median_ms": 10.8453,
+        "p95_ms": 13.1489,
+        "p95_method": "nearest_rank"
+      },
+      "case_latency": {
+        "samples": 8,
+        "median_ms": 11.132,
+        "p95_ms": 21.6428,
+        "p95_method": "nearest_rank"
+      },
+      "error_components": {
+        "provider_selection": 8,
+        "provider_answer_plan": 1
+      }
+    },
+    "pricing": {
+      "case_success": {
+        "passed": 4,
+        "applicable": 6,
+        "rate": 0.6666666666666666
+      },
+      "turn_metrics": {
+        "tool_selection": {
+          "passed": 7,
+          "applicable": 7,
+          "rate": 1.0
+        },
+        "tool_arguments": {
+          "passed": 5,
+          "applicable": 7,
+          "rate": 0.7142857142857143
+        },
+        "task_success": {
+          "passed": 5,
+          "applicable": 7,
+          "rate": 0.7142857142857143
+        },
+        "grounding": {
+          "passed": 5,
+          "applicable": 5,
+          "rate": 1.0
+        },
+        "compliance": {
+          "passed": 7,
+          "applicable": 7,
+          "rate": 1.0
+        }
+      },
+      "reference_tool_checks": {
+        "passed": 7,
+        "applicable": 7,
+        "rate": 1.0
+      },
+      "turn_latency": {
+        "samples": 7,
+        "median_ms": 21.5213,
+        "p95_ms": 23.0647,
+        "p95_method": "nearest_rank"
+      },
+      "case_latency": {
+        "samples": 6,
+        "median_ms": 21.47,
+        "p95_ms": 44.586,
+        "p95_method": "nearest_rank"
+      },
+      "error_components": {
+        "provider_selection": 2
+      }
+    },
+    "robustness": {
+      "case_success": {
+        "passed": 7,
+        "applicable": 7,
+        "rate": 1.0
+      },
+      "turn_metrics": {
+        "tool_selection": {
+          "passed": 7,
+          "applicable": 7,
+          "rate": 1.0
+        },
+        "tool_arguments": {
+          "passed": 7,
+          "applicable": 7,
+          "rate": 1.0
+        },
+        "task_success": {
+          "passed": 7,
+          "applicable": 7,
+          "rate": 1.0
+        },
+        "grounding": {
+          "passed": 0,
+          "applicable": 0,
+          "rate": null
+        },
+        "compliance": {
+          "passed": 7,
+          "applicable": 7,
+          "rate": 1.0
+        }
+      },
+      "reference_tool_checks": {
+        "passed": 3,
+        "applicable": 3,
+        "rate": 1.0
+      },
+      "turn_latency": {
+        "samples": 7,
+        "median_ms": 20.973,
+        "p95_ms": 63.5277,
+        "p95_method": "nearest_rank"
+      },
+      "case_latency": {
+        "samples": 7,
+        "median_ms": 20.973,
+        "p95_ms": 63.5277,
+        "p95_method": "nearest_rank"
+      },
+      "error_components": {}
+    }
+  },
+  "llm_tool_selection": {
+    "passed": 0,
+    "applicable": 0,
+    "rate": null
+  }
+}

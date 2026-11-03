@@ -1,0 +1,119 @@
+{
+  "verified_at_utc": "2026-11-02T20:38:32.959897+00:00",
+  "scope": "local_chat_ui_only",
+  "python_tests": {
+    "execution": "offline_pytest",
+    "passed": 495,
+    "seconds": 22.57
+  },
+  "targeted_http_tests": {
+    "passed": 43,
+    "seconds": 1.97
+  },
+  "javascript_tests": {
+    "file": "docs/chat_ui_js_tests.json",
+    "passed": 12,
+    "execution": "mock_http_and_mock_dom_no_llm_no_browser",
+    "runtime": "tool_node_repl; Node not installed on terminal PATH"
+  },
+  "lint": {
+    "ruff_check": "All checks passed!",
+    "ruff_format": "118 files already formatted"
+  },
+  "dependencies": "No broken requirements found.",
+  "package": {
+    "wheel_built": true,
+    "builder": "existing system Python/setuptools, no dependencies downloaded",
+    "ui_assets_in_wheel": true,
+    "initial_venv_build": "failed: missing setuptools.build_meta; build succeeded with existing system backend"
+  },
+  "real_http": {
+    "execution": "real_http_qwen_existing_backend",
+    "model": "qwen3.5:9b",
+    "sources": "existing_synthetic_ollama_validation",
+    "health": {
+      "status": "ok",
+      "chat_ready": true,
+      "execution_mode": "real",
+      "private_orders_enabled": false
+    },
+    "turns": [
+      {
+        "question": "Mostre o produto 103.",
+        "http_status": 200,
+        "response": {
+          "status": "answered",
+          "text": "Olá! Consultei as fontes da loja para você.\n\nDetalhes verificados no snapshot:\n- Violão sintético para parcelas (ID 103): R$ 960,00; disponível; estoque registrado: 3.",
+          "rounds": 2,
+          "execution_mode": "real",
+          "tools": [
+            {
+              "name": "get_product_details",
+              "status": "ok",
+              "error_code": null
+            }
+          ]
+        },
+        "latency_ms": 29498.53
+      },
+      {
+        "question": "E em 6x?",
+        "http_status": 200,
+        "response": {
+          "status": "answered",
+          "text": "Olá! Consultei as fontes da loja para você.\n\nProduto 103: preço de tabela R$ 960,00.\n- cartão de crédito: R$ 960,00 (0% de desconto, sem acumulação).\n  Parcelas elegíveis: 1x, 2x, 3x, 4x, 5x, 6x, 7x, 8x, 9x, sem juros.\nPlano de 6x: R$ 160,00, R$ 160,00, R$ 160,00, R$ 160,00, R$ 160,00, R$ 160,00; total R$ 960,00.\nCondições calculadas sobre o snapshot; PIX e promoção não se somam.",
+          "rounds": 2,
+          "execution_mode": "real",
+          "tools": [
+            {
+              "name": "get_product_offers",
+              "status": "ok",
+              "error_code": null
+            }
+          ]
+        },
+        "latency_ms": 5359.22
+      },
+      {
+        "question": "Consulte pedido 1.",
+        "http_status": 403,
+        "response": {
+          "error": {
+            "code": "forbidden",
+            "message": "Acesso ao pedido não autorizado."
+          }
+        },
+        "latency_ms": 1202.5
+      }
+    ],
+    "credentials_exported": false,
+    "browser_execution": false
+  },
+  "browser_visual_qa": {
+    "executed": false,
+    "reason": "No browsers in CUA inventory; createBrowserTab(iab) returned Browser is not available."
+  },
+  "node_to_live_server": {
+    "executed": true,
+    "success": false,
+    "observed": "network_error; exact networking cause not isolated; real HTTP verified from host Python"
+  },
+  "file_sha256": {
+    "app/ui.py": "fe0bbe97b45fe93e5dc75e4747aad1cd0c6d75dbb0882360fa39430c400bbfa7",
+    "app/web/index.html": "6e9ce8ec0ce8fb930fe63a700a92e3ea42fe7c0e3fd520ec55cd8229791b7614",
+    "app/web/chat.css": "7960b1d33749aa83c54c9b19c58cb6c078bcaa138bc78b2b04630bb284bd7671",
+    "app/web/chat.js": "d42e6c434d01c64aea64a71192320f42a8648278b0cbcbe28a43c39a8e18ab50",
+    "app/api.py": "4517e4dd0885f6575616e74b61482f840957a3931dc9fa1202cb67aefcf66ff1",
+    "app/api_schemas.py": "c1d005ef5509c0ca26fbcd4275bdfbc652d03eb8e37c900ed7844555eb493522",
+    "pyproject.toml": "14af4a3ad6de8128a986d9cab0a98f43b3fecdc8d3b566c121149b769aa66ed2",
+    "tests/web/chat.test.mjs": "c99d25b8e18eb7a153bef10a66849cbaae6b2ed0bb9aa6b1ad5084718f8bb066",
+    "tests/integration/test_chat_ui.py": "77bb3481ab65e5bcaa5fbab4b090872b7f29ead2f5bef55ecda7b11c8655b0c9",
+    "tests/integration/test_api.py": "52e8381c501f4a2c6a95e458a9b9c8647e27f626da85bf5448fc8da0ce20c247"
+  },
+  "answer_keys_unchanged": true,
+  "environment_file_edited": false,
+  "models_downloaded": false,
+  "commit_performed": false,
+  "push_performed": false,
+  "publication_performed": false
+}

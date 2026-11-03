@@ -1,0 +1,98 @@
+{
+  "execution": "offline_scripted",
+  "transport": "FastAPI TestClient in-process",
+  "real_provider_called": false,
+  "data_source": "data/samples via temporary SQLite",
+  "redactions": [
+    "session_id",
+    "session_token"
+  ],
+  "examples": [
+    {
+      "method": "GET",
+      "path": "/health",
+      "status": 200,
+      "response": {
+        "status": "ok",
+        "chat_ready": true,
+        "execution_mode": "offline_scripted",
+        "private_orders_enabled": false
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/sessions",
+      "body": {},
+      "status": 201,
+      "response": {
+        "session_id": "<SESSION_ID>",
+        "session_token": "<SESSION_TOKEN>",
+        "expires_in_seconds": 1800.0,
+        "access": "guest",
+        "execution_mode": "offline_scripted"
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/chat",
+      "authorization": "Bearer <SESSION_TOKEN>",
+      "body": {
+        "session_id": "<SESSION_ID>",
+        "message": "Mostre o produto 102"
+      },
+      "status": 200,
+      "response": {
+        "status": "answered",
+        "text": "Olá! Consultei as fontes da loja para você.\n\nDetalhes verificados no snapshot:\n- Instrumento sintético disponível (ID 102): R$ 250,00; disponível; estoque registrado: 4.",
+        "rounds": 2,
+        "execution_mode": "offline_scripted"
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/chat",
+      "authorization": "Bearer <SESSION_TOKEN>",
+      "body": {
+        "session_id": "<SESSION_ID>",
+        "message": "E no PIX?"
+      },
+      "status": 200,
+      "response": {
+        "status": "answered",
+        "text": "Olá! Consultei as fontes da loja para você.\n\nProduto 102: preço de tabela R$ 250,00.\n- PIX: R$ 237,50 (5% de desconto, sem acumulação).\nCondições calculadas sobre o snapshot; PIX e promoção não se somam.",
+        "rounds": 2,
+        "execution_mode": "offline_scripted"
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/chat",
+      "authorization": "Bearer <SESSION_TOKEN>",
+      "body": {
+        "session_id": "<SESSION_ID>",
+        "message": "Consulte pedido 1"
+      },
+      "status": 403,
+      "response": {
+        "error": {
+          "code": "forbidden",
+          "message": "Acesso ao pedido não autorizado."
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/sessions",
+      "body": {
+        "customer_id": 1
+      },
+      "status": 422,
+      "response": {
+        "error": {
+          "code": "invalid_request",
+          "message": "Requisição inválida. Confira os campos e limites."
+        }
+      }
+    }
+  ]
+}

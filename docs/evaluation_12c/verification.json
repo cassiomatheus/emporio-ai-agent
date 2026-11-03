@@ -1,0 +1,100 @@
+{
+  "verified_at_utc": "2026-11-01T19:53:02.475234+00:00",
+  "before_correction_regressions": {
+    "command": "python -m pytest tests/unit/test_agent_residual.py -q --tb=short",
+    "passed": 5,
+    "failed": 13,
+    "seconds": 0.79,
+    "evidence": "Saída de ferramenta observada antes da retomada; arquivo temporário do log não persistiu."
+  },
+  "pytest": {
+    "command": "python -m pytest -q --tb=short",
+    "exit_code": 0,
+    "observed_summary": "487 passed in 15.89s",
+    "environment": "workspace existing venv; offline; local annex tests present; not a new clean installation"
+  },
+  "ruff_check": {
+    "command": "python -m ruff check .",
+    "exit_code": 0,
+    "output": "All checks passed!"
+  },
+  "ruff_format_check": {
+    "command": "python -m ruff format --check .",
+    "exit_code": 0,
+    "output": "115 files already formatted"
+  },
+  "pip_check": {
+    "command": "python -m pip check",
+    "exit_code": 0,
+    "output": "No broken requirements found."
+  },
+  "benchmarks": [
+    {
+      "file": "docs/evaluation_12c/final_40_run1.json",
+      "sha256": "50ac41d97aa48f0aa04813fcdf991272a9d18f4549e0098f626fc93a161456c7",
+      "executed_cases": 40,
+      "executed_turns": 46,
+      "exit_code": 1,
+      "error_types": [],
+      "max_reported_input_tokens": 2779,
+      "requests": 96
+    },
+    {
+      "file": "docs/evaluation_12c/final_40_run2.json",
+      "sha256": "d40208002342b3ed8a99028b7c6ffdd4029b9c04108e981f8c3bae3cb9787ce4",
+      "executed_cases": 40,
+      "executed_turns": 46,
+      "exit_code": 1,
+      "error_types": [],
+      "max_reported_input_tokens": 2776,
+      "requests": 95
+    },
+    {
+      "file": "docs/evaluation_12c/holdout_18.json",
+      "sha256": "a46e0b8c74f335e358ad352332cd2a087dbba8ac0c1d26ba072a946931ee5ebe",
+      "executed_cases": 18,
+      "executed_turns": 20,
+      "exit_code": 1,
+      "error_types": [],
+      "max_reported_input_tokens": 2771,
+      "requests": 46
+    }
+  ],
+  "source_frozen_unchanged": true,
+  "goldens_frozen_unchanged": true,
+  "sample_files_unchanged_since_baseline": true,
+  "git": {
+    "commits": {
+      "exit_code": 0,
+      "output": "0"
+    },
+    "tracked_count": 0,
+    "status": {
+      "exit_code": 0,
+      "output": "?? .env.example\n?? .gitignore\n?? AGENTS.md\n?? README.md\n?? app/\n?? data/\n?? docs/\n?? examples/\n?? pyproject.toml\n?? requirements-dev.lock\n?? scripts/\n?? tests/"
+    },
+    "diff_stat": {
+      "exit_code": 0,
+      "output": ""
+    },
+    "log": {
+      "command": "git log -1 --format=%h",
+      "exit_code": 128
+    },
+    "remote_configured": false
+  },
+  "local_env": {
+    "mode": "0o600",
+    "ignored": true,
+    "values_exported": false
+  },
+  "commit_performed": false,
+  "push_performed": false,
+  "publication_performed": false,
+  "release_audit": {
+    "file": "docs/evaluation_12c/release_audit.json",
+    "technical_scan_passed": true,
+    "findings": 0,
+    "text_files_scanned": 170
+  }
+}

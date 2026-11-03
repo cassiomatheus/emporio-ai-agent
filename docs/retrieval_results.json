@@ -1,0 +1,479 @@
+{
+  "retrieval_version": "lexical-v1",
+  "top_k": 3,
+  "source_name": "políticas_da_loja.pdf",
+  "source_sha256": "b7527f96896929f4ba929de117651c6717e25b7a3b92b34bc54d5ba32f6156f7",
+  "document_version": "2.1",
+  "pages": 8,
+  "sections": 28,
+  "chunks": 30,
+  "tables": 4,
+  "positive_cases": 20,
+  "negative_cases": 6,
+  "macro_recall_at_3": 1.0,
+  "hit_rate_at_3": 1.0,
+  "negative_abstention_rate": 1.0,
+  "recall_by_topic": {
+    "devolucoes": 1.0,
+    "frete": 1.0,
+    "garantia": 1.0,
+    "parcelas": 1.0,
+    "pix": 1.0
+  },
+  "results": [
+    {
+      "case_id": "pix_01",
+      "topic": "pix",
+      "relevant_sections": [
+        "3"
+      ],
+      "retrieved": [
+        {
+          "section_id": "6.2",
+          "pages": [
+            6
+          ],
+          "chunk_id": "b7527f968969:6.2:1"
+        },
+        {
+          "section_id": "3",
+          "pages": [
+            3
+          ],
+          "chunk_id": "b7527f968969:3:2"
+        }
+      ],
+      "recall_at_3": 1.0,
+      "abstained": false
+    },
+    {
+      "case_id": "pix_02",
+      "topic": "pix",
+      "relevant_sections": [
+        "6.2"
+      ],
+      "retrieved": [
+        {
+          "section_id": "6.2",
+          "pages": [
+            6
+          ],
+          "chunk_id": "b7527f968969:6.2:1"
+        },
+        {
+          "section_id": "6.1",
+          "pages": [
+            6
+          ],
+          "chunk_id": "b7527f968969:6.1:1"
+        }
+      ],
+      "recall_at_3": 1.0,
+      "abstained": false
+    },
+    {
+      "case_id": "pix_03",
+      "topic": "pix",
+      "relevant_sections": [
+        "3.1"
+      ],
+      "retrieved": [
+        {
+          "section_id": "3.1",
+          "pages": [
+            3
+          ],
+          "chunk_id": "b7527f968969:3.1:1"
+        }
+      ],
+      "recall_at_3": 1.0,
+      "abstained": false
+    },
+    {
+      "case_id": "parcelas_01",
+      "topic": "parcelas",
+      "relevant_sections": [
+        "3.1"
+      ],
+      "retrieved": [
+        {
+          "section_id": "3.1",
+          "pages": [
+            3
+          ],
+          "chunk_id": "b7527f968969:3.1:1"
+        }
+      ],
+      "recall_at_3": 1.0,
+      "abstained": false
+    },
+    {
+      "case_id": "parcelas_02",
+      "topic": "parcelas",
+      "relevant_sections": [
+        "3.1"
+      ],
+      "retrieved": [
+        {
+          "section_id": "3.1",
+          "pages": [
+            3
+          ],
+          "chunk_id": "b7527f968969:3.1:1"
+        },
+        {
+          "section_id": "3",
+          "pages": [
+            3
+          ],
+          "chunk_id": "b7527f968969:3:2"
+        }
+      ],
+      "recall_at_3": 1.0,
+      "abstained": false
+    },
+    {
+      "case_id": "parcelas_03",
+      "topic": "parcelas",
+      "relevant_sections": [
+        "3.1"
+      ],
+      "retrieved": [
+        {
+          "section_id": "3.1",
+          "pages": [
+            3
+          ],
+          "chunk_id": "b7527f968969:3.1:1"
+        }
+      ],
+      "recall_at_3": 1.0,
+      "abstained": false
+    },
+    {
+      "case_id": "parcelas_04",
+      "topic": "parcelas",
+      "relevant_sections": [
+        "3",
+        "3.1"
+      ],
+      "retrieved": [
+        {
+          "section_id": "3.1",
+          "pages": [
+            3
+          ],
+          "chunk_id": "b7527f968969:3.1:1"
+        },
+        {
+          "section_id": "3",
+          "pages": [
+            3
+          ],
+          "chunk_id": "b7527f968969:3:2"
+        }
+      ],
+      "recall_at_3": 1.0,
+      "abstained": false
+    },
+    {
+      "case_id": "devolucao_01",
+      "topic": "devolucoes",
+      "relevant_sections": [
+        "4.1"
+      ],
+      "retrieved": [
+        {
+          "section_id": "4.1",
+          "pages": [
+            4
+          ],
+          "chunk_id": "b7527f968969:4.1:1"
+        }
+      ],
+      "recall_at_3": 1.0,
+      "abstained": false
+    },
+    {
+      "case_id": "devolucao_02",
+      "topic": "devolucoes",
+      "relevant_sections": [
+        "4.1"
+      ],
+      "retrieved": [
+        {
+          "section_id": "4.1",
+          "pages": [
+            4
+          ],
+          "chunk_id": "b7527f968969:4.1:1"
+        }
+      ],
+      "recall_at_3": 1.0,
+      "abstained": false
+    },
+    {
+      "case_id": "devolucao_03",
+      "topic": "devolucoes",
+      "relevant_sections": [
+        "4.1"
+      ],
+      "retrieved": [
+        {
+          "section_id": "4.1",
+          "pages": [
+            4
+          ],
+          "chunk_id": "b7527f968969:4.1:1"
+        }
+      ],
+      "recall_at_3": 1.0,
+      "abstained": false
+    },
+    {
+      "case_id": "devolucao_04",
+      "topic": "devolucoes",
+      "relevant_sections": [
+        "4.2"
+      ],
+      "retrieved": [
+        {
+          "section_id": "4.2",
+          "pages": [
+            4
+          ],
+          "chunk_id": "b7527f968969:4.2:1"
+        }
+      ],
+      "recall_at_3": 1.0,
+      "abstained": false
+    },
+    {
+      "case_id": "devolucao_05",
+      "topic": "devolucoes",
+      "relevant_sections": [
+        "4.3"
+      ],
+      "retrieved": [
+        {
+          "section_id": "4.3",
+          "pages": [
+            4
+          ],
+          "chunk_id": "b7527f968969:4.3:1"
+        }
+      ],
+      "recall_at_3": 1.0,
+      "abstained": false
+    },
+    {
+      "case_id": "frete_01",
+      "topic": "frete",
+      "relevant_sections": [
+        "5.1"
+      ],
+      "retrieved": [
+        {
+          "section_id": "5.1",
+          "pages": [
+            4
+          ],
+          "chunk_id": "b7527f968969:5.1:1"
+        }
+      ],
+      "recall_at_3": 1.0,
+      "abstained": false
+    },
+    {
+      "case_id": "frete_02",
+      "topic": "frete",
+      "relevant_sections": [
+        "5.1"
+      ],
+      "retrieved": [
+        {
+          "section_id": "5.1",
+          "pages": [
+            4
+          ],
+          "chunk_id": "b7527f968969:5.1:1"
+        }
+      ],
+      "recall_at_3": 1.0,
+      "abstained": false
+    },
+    {
+      "case_id": "frete_03",
+      "topic": "frete",
+      "relevant_sections": [
+        "5.2"
+      ],
+      "retrieved": [
+        {
+          "section_id": "5.2",
+          "pages": [
+            5
+          ],
+          "chunk_id": "b7527f968969:5.2:2"
+        }
+      ],
+      "recall_at_3": 1.0,
+      "abstained": false
+    },
+    {
+      "case_id": "frete_04",
+      "topic": "frete",
+      "relevant_sections": [
+        "5.1"
+      ],
+      "retrieved": [
+        {
+          "section_id": "5.1",
+          "pages": [
+            4
+          ],
+          "chunk_id": "b7527f968969:5.1:1"
+        }
+      ],
+      "recall_at_3": 1.0,
+      "abstained": false
+    },
+    {
+      "case_id": "garantia_01",
+      "topic": "garantia",
+      "relevant_sections": [
+        "8.1"
+      ],
+      "retrieved": [
+        {
+          "section_id": "8.1",
+          "pages": [
+            7
+          ],
+          "chunk_id": "b7527f968969:8.1:1"
+        },
+        {
+          "section_id": "8.2",
+          "pages": [
+            7
+          ],
+          "chunk_id": "b7527f968969:8.2:1"
+        }
+      ],
+      "recall_at_3": 1.0,
+      "abstained": false
+    },
+    {
+      "case_id": "garantia_02",
+      "topic": "garantia",
+      "relevant_sections": [
+        "4.2",
+        "8.1"
+      ],
+      "retrieved": [
+        {
+          "section_id": "8.1",
+          "pages": [
+            7
+          ],
+          "chunk_id": "b7527f968969:8.1:1"
+        },
+        {
+          "section_id": "4.2",
+          "pages": [
+            4
+          ],
+          "chunk_id": "b7527f968969:4.2:1"
+        }
+      ],
+      "recall_at_3": 1.0,
+      "abstained": false
+    },
+    {
+      "case_id": "garantia_03",
+      "topic": "garantia",
+      "relevant_sections": [
+        "8.2"
+      ],
+      "retrieved": [
+        {
+          "section_id": "8.2",
+          "pages": [
+            7
+          ],
+          "chunk_id": "b7527f968969:8.2:1"
+        }
+      ],
+      "recall_at_3": 1.0,
+      "abstained": false
+    },
+    {
+      "case_id": "garantia_04",
+      "topic": "garantia",
+      "relevant_sections": [
+        "8.3"
+      ],
+      "retrieved": [
+        {
+          "section_id": "8.3",
+          "pages": [
+            7
+          ],
+          "chunk_id": "b7527f968969:8.3:1"
+        }
+      ],
+      "recall_at_3": 1.0,
+      "abstained": false
+    },
+    {
+      "case_id": "ausencia_01",
+      "topic": "ausencia",
+      "relevant_sections": [],
+      "retrieved": [],
+      "recall_at_3": null,
+      "abstained": true
+    },
+    {
+      "case_id": "ausencia_02",
+      "topic": "ausencia",
+      "relevant_sections": [],
+      "retrieved": [],
+      "recall_at_3": null,
+      "abstained": true
+    },
+    {
+      "case_id": "ausencia_03",
+      "topic": "ausencia",
+      "relevant_sections": [],
+      "retrieved": [],
+      "recall_at_3": null,
+      "abstained": true
+    },
+    {
+      "case_id": "ausencia_04",
+      "topic": "ausencia",
+      "relevant_sections": [],
+      "retrieved": [],
+      "recall_at_3": null,
+      "abstained": true
+    },
+    {
+      "case_id": "ausencia_05",
+      "topic": "ausencia",
+      "relevant_sections": [],
+      "retrieved": [],
+      "recall_at_3": null,
+      "abstained": true
+    },
+    {
+      "case_id": "ausencia_06",
+      "topic": "ausencia",
+      "relevant_sections": [],
+      "retrieved": [],
+      "recall_at_3": null,
+      "abstained": true
+    }
+  ],
+  "cases_sha256": "cf0fd0975f406cdeba4890ab2c63e3d709d1fbfb55f19acc597d59b9b8d8dd0e",
+  "pymupdf_version": "1.28.2"
+}

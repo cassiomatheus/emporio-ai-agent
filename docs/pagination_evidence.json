@@ -1,0 +1,353 @@
+{
+  "execution_date": "2026-11-02",
+  "scope": "Correção de paginação, catálogo original, pedidos HTTP continuam bloqueados.",
+  "model": "qwen3.5:9b",
+  "temperature": 0.0,
+  "thinking": "none",
+  "structured_finalization": true,
+  "before": [
+    {
+      "message": "Quais são os violões disponíveis?",
+      "status": "answered",
+      "latency_ms": 38634.3,
+      "provider_complete_calls": 2,
+      "tools_requested": [
+        {
+          "name": "search_products",
+          "arguments": "{\"category\":\"Violões\",\"available_only\":true}",
+          "call_id": "call_6539eeva"
+        }
+      ]
+    },
+    {
+      "message": "Continue",
+      "status": "answered",
+      "latency_ms": 14008.91,
+      "provider_complete_calls": 2,
+      "tools_requested": [
+        {
+          "name": "search_products",
+          "arguments": "{\"category\":\"Violões\",\"limit\":10,\"offset\":10}",
+          "call_id": "call_0ime7hf5"
+        }
+      ]
+    }
+  ],
+  "after": [
+    {
+      "message": "Quais são os violões disponíveis?",
+      "status": "answered",
+      "latency_ms": 37853.4,
+      "provider_complete_calls": 2,
+      "tool_calls": [
+        {
+          "name": "search_products",
+          "arguments": {
+            "category": "Violões",
+            "available_only": true
+          }
+        }
+      ],
+      "product_ids": [
+        83,
+        85,
+        89,
+        88,
+        81,
+        84,
+        87,
+        86,
+        107,
+        82
+      ],
+      "usage": {
+        "input_tokens": 7256,
+        "output_tokens": 423,
+        "total_tokens": 7679
+      },
+      "pagination_text": [
+        "Mostrando 1 a 10 de 33 resultados.",
+        "Digite 'continuar' para ver a próxima página."
+      ]
+    },
+    {
+      "message": "Continue",
+      "status": "answered",
+      "latency_ms": 4.88,
+      "provider_complete_calls": 0,
+      "tool_calls": [
+        {
+          "name": "search_products",
+          "arguments": {
+            "term": null,
+            "category": "Violões",
+            "category_id": null,
+            "min_price": null,
+            "max_price": null,
+            "specs": {},
+            "available_only": true,
+            "status": null,
+            "limit": 10,
+            "offset": 10
+          }
+        }
+      ],
+      "product_ids": [
+        91,
+        112,
+        101,
+        110,
+        99,
+        92,
+        109,
+        103,
+        111,
+        114
+      ],
+      "usage": null,
+      "pagination_text": [
+        "Mostrando 11 a 20 de 33 resultados.",
+        "Digite 'continuar' para ver a próxima página."
+      ]
+    },
+    {
+      "message": "Pode continuar?",
+      "status": "answered",
+      "latency_ms": 5.79,
+      "provider_complete_calls": 0,
+      "tool_calls": [
+        {
+          "name": "search_products",
+          "arguments": {
+            "term": null,
+            "category": "Violões",
+            "category_id": null,
+            "min_price": null,
+            "max_price": null,
+            "specs": {},
+            "available_only": true,
+            "status": null,
+            "limit": 10,
+            "offset": 20
+          }
+        }
+      ],
+      "product_ids": [
+        104,
+        95,
+        90,
+        115,
+        100,
+        98,
+        102,
+        105,
+        97,
+        94
+      ],
+      "usage": null,
+      "pagination_text": [
+        "Mostrando 21 a 30 de 33 resultados.",
+        "Digite 'continuar' para ver a próxima página."
+      ]
+    },
+    {
+      "message": "Próxima página",
+      "status": "answered",
+      "latency_ms": 4.63,
+      "provider_complete_calls": 0,
+      "tool_calls": [
+        {
+          "name": "search_products",
+          "arguments": {
+            "term": null,
+            "category": "Violões",
+            "category_id": null,
+            "min_price": null,
+            "max_price": null,
+            "specs": {},
+            "available_only": true,
+            "status": null,
+            "limit": 10,
+            "offset": 30
+          }
+        }
+      ],
+      "product_ids": [
+        106,
+        93,
+        108
+      ],
+      "usage": null,
+      "pagination_text": [
+        "Mostrando 31 a 33 de 33 resultados.",
+        "Esta é a última página desta busca."
+      ]
+    },
+    {
+      "message": "continuar",
+      "status": "answered",
+      "latency_ms": 3.86,
+      "provider_complete_calls": 0,
+      "tool_calls": [
+        {
+          "name": "search_products",
+          "arguments": {
+            "term": null,
+            "category": "Violões",
+            "category_id": null,
+            "min_price": null,
+            "max_price": null,
+            "specs": {},
+            "available_only": true,
+            "status": null,
+            "limit": 10,
+            "offset": 33
+          }
+        }
+      ],
+      "product_ids": [],
+      "usage": null,
+      "pagination_text": [
+        "",
+        "Não há mais resultados para estes filtros no snapshot consultado."
+      ]
+    }
+  ],
+  "checks": {
+    "expected_count": 33,
+    "page_sizes": [
+      10,
+      10,
+      10,
+      3,
+      0
+    ],
+    "all_ids_match_database": true,
+    "no_duplicates": true,
+    "continuation_provider_turns": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "automated_tests": {
+    "before_new_integration_tests": "10 failed",
+    "after_full_suite": "519 passed in 18.13s",
+    "ruff_check": "All checks passed!",
+    "compileall": "exit 0"
+  },
+  "evaluation_gold_hashes": {
+    "tests/evaluations/agent_cases.json": "6b76f2c8d35902603346ec1f9d5e6ab4c906b5c573b67c375e05cf893fe6c7b5",
+    "tests/evaluations/holdout_12c.json": "2debda24cc513e2bed49c2b9f24beec625a07227956bdd1919976d09553d8b93"
+  },
+  "http_after": [
+    {
+      "message": "Quais são os violões disponíveis?",
+      "http_status": 200,
+      "latency_ms": 12207.63,
+      "product_ids": [
+        83,
+        85,
+        89,
+        88,
+        81,
+        84,
+        87,
+        86,
+        107,
+        82
+      ],
+      "tools": [
+        {
+          "name": "search_products",
+          "status": "ok",
+          "error_code": null
+        }
+      ]
+    },
+    {
+      "message": "Continue",
+      "http_status": 200,
+      "latency_ms": 6.77,
+      "product_ids": [
+        91,
+        112,
+        101,
+        110,
+        99,
+        92,
+        109,
+        103,
+        111,
+        114
+      ],
+      "tools": [
+        {
+          "name": "search_products",
+          "status": "ok",
+          "error_code": null
+        }
+      ]
+    },
+    {
+      "message": "Pode continuar?",
+      "http_status": 200,
+      "latency_ms": 6.55,
+      "product_ids": [
+        104,
+        95,
+        90,
+        115,
+        100,
+        98,
+        102,
+        105,
+        97,
+        94
+      ],
+      "tools": [
+        {
+          "name": "search_products",
+          "status": "ok",
+          "error_code": null
+        }
+      ]
+    },
+    {
+      "message": "Próxima página",
+      "http_status": 200,
+      "latency_ms": 5.43,
+      "product_ids": [
+        106,
+        93,
+        108
+      ],
+      "tools": [
+        {
+          "name": "search_products",
+          "status": "ok",
+          "error_code": null
+        }
+      ]
+    },
+    {
+      "message": "continuar",
+      "http_status": 200,
+      "latency_ms": 4.8,
+      "product_ids": [],
+      "tools": [
+        {
+          "name": "search_products",
+          "status": "ok",
+          "error_code": null
+        }
+      ]
+    }
+  ],
+  "http_session_isolation": {
+    "status": "answered",
+    "text": "Qual busca de produtos você quer continuar? Faça uma busca por vez para que eu possa mostrar as próximas opções.",
+    "tools": []
+  }
+}

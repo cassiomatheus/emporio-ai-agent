@@ -1,0 +1,836 @@
+{
+  "evaluation_version": "1.0",
+  "suite_sha256": "4d861eaba43d43abcfb45e7f8791f641d55b6f5647e338a455c0e7c44849878f",
+  "source_sha256": "38e06ad26f8fee3deed98a30256b7dd0e3d780cc785bb93c16327e82ca641c25",
+  "fixture_sha256": {
+    "categories.csv": "ada8a8c4e9eb5837c1189cb2f250b5bf237816493955968069b8754b0d0c7bfd",
+    "customers.csv": "28aa50f29fe09a8ccf918ce868002c3da6b1ba2624fb4571ec1ba2828f8cfa61",
+    "order_items.csv": "3d58f8a5f6c6bfc7d5c768c7ea3c829e8a0e7c6cd4e625b280dabb2cc1323c59",
+    "orders.csv": "4f02d36ec430dca184460129004123bdb1f3a3dc02c95d348fa9a02b2674ab4b",
+    "products.csv": "d9b5164836a3d2499ffd7efb932b2735739a316d09b1454c8650c905a4ab1e7c",
+    "promotions.csv": "486402f62694a3d8492f8320130a5089af08efd842151ba6530b23b120cb1747"
+  },
+  "agent_limits": {
+    "max_rounds": 4,
+    "max_tool_calls": 12,
+    "max_calls_per_round": 4,
+    "timeout_seconds": 120.0,
+    "tool_timeout_seconds": 5.0,
+    "request_timeout_seconds": 60.0,
+    "max_output_tokens": 1200
+  },
+  "started_at_utc": "2026-11-02T21:04:11.002839+00:00",
+  "python_version": "3.14.6",
+  "execution": "real",
+  "real_provider_called": true,
+  "model": "gemma4:12b",
+  "provider": "openai_compatible",
+  "planned_cases": 1,
+  "repeats": 1,
+  "planned_categories": {
+    "catalog": 1
+  },
+  "catalog_source": "synthetic_evaluation_fixture",
+  "orders_source": "data/samples_synthetic",
+  "policy_source": "shared_generated_synthetic_pdf",
+  "policy_sha256": "8d3c19a4d7621514af965c5aa3892c74e338b05e595f82ad6007518e5b9bb8d5",
+  "policy_version": "0.1",
+  "executed_cases": 1,
+  "executed_turns": 1,
+  "cases": [
+    {
+      "case_id": "CAT01",
+      "category": "catalog",
+      "turns": [
+        {
+          "step": 1,
+          "actor": "a",
+          "status": "answered",
+          "observed_tools": [
+            "search_products"
+          ],
+          "tool_errors": [],
+          "latency_ms": 26372.1518,
+          "provider_calls": 2,
+          "injected_provider_calls": 0,
+          "provider_latency_ms": [
+            21097.458253003424,
+            5251.28945299366
+          ],
+          "fault": "none",
+          "checks": {
+            "tool_selection": true,
+            "tool_arguments": true,
+            "task_success": true,
+            "grounding": true,
+            "compliance": true,
+            "errors": []
+          },
+          "reference_tools_ok": true,
+          "policy": {
+            "agent_recall_at_3": null,
+            "reference_recall_at_3": null,
+            "reference_sections": []
+          },
+          "usage": {
+            "input_tokens": 4106,
+            "output_tokens": 193,
+            "total_tokens": 4299
+          },
+          "input": "Quais violões de nylon disponíveis custam até R$ 800?",
+          "audit": {
+            "delivered": {
+              "status": "answered",
+              "text": "Olá! Consultei as fontes da loja para você.\n\nEstas são as opções consultadas no snapshot:\n- Instrumento sintético disponível (ID 102): R$ 250,00; disponível; estoque registrado: 4.",
+              "rounds": 2,
+              "tools": [
+                {
+                  "call_id": "call_2lri0euc",
+                  "name": "search_products",
+                  "status": "ok",
+                  "error_code": null
+                }
+              ],
+              "usage": {
+                "input_tokens": 4106,
+                "output_tokens": 193,
+                "total_tokens": 4299
+              }
+            },
+            "requested_tools_and_raw_results": [
+              {
+                "name": "search_products",
+                "arguments": {
+                  "available_only": true,
+                  "category": "Violões",
+                  "max_price": 800,
+                  "specs": {
+                    "strings": "nylon"
+                  }
+                },
+                "payload": {
+                  "status": "ok",
+                  "data": {
+                    "items": [
+                      {
+                        "product_id": 102,
+                        "name": "Instrumento sintético disponível",
+                        "category_id": 1,
+                        "category_name": "Violões",
+                        "price_brl": "250.00",
+                        "description": "Exemplo de produto ativo",
+                        "stock_quantity": 4,
+                        "status": "active",
+                        "specs": {
+                          "color": "azul",
+                          "strings": "nylon"
+                        },
+                        "available": true,
+                        "availability_reason": "available"
+                      }
+                    ],
+                    "total": 1,
+                    "limit": 10,
+                    "offset": 0
+                  },
+                  "error": null
+                }
+              }
+            ],
+            "physical_requests": [
+              {
+                "stage": "native",
+                "store": false,
+                "server_state_reference": false,
+                "tool_outputs_visible_to_model": [],
+                "status": "completed",
+                "usage": {
+                  "input_tokens": 1438,
+                  "input_tokens_details": {
+                    "cache_write_tokens": null,
+                    "cached_tokens": 0
+                  },
+                  "output_tokens": 39,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 0
+                  },
+                  "total_tokens": 1477
+                },
+                "output_types": [
+                  "function_call"
+                ],
+                "calls": [
+                  {
+                    "name": "search_products",
+                    "arguments": "{\"available_only\":true,\"category\":\"Violões\",\"max_price\":800,\"specs\":{\"strings\":\"nylon\"}}",
+                    "call_id": "call_2lri0euc"
+                  }
+                ],
+                "final_text": null,
+                "latency_ms": 21096.907
+              },
+              {
+                "stage": "native",
+                "store": false,
+                "server_state_reference": false,
+                "tool_outputs_visible_to_model": [
+                  {
+                    "call_id": "call_2lri0euc",
+                    "output": {
+                      "status": "ok",
+                      "data": {
+                        "items": [
+                          {
+                            "product_id": 102,
+                            "name": "Instrumento sintético disponível",
+                            "category_id": 1,
+                            "category_name": "Violões",
+                            "price_brl": "250.00",
+                            "description": "Exemplo de produto ativo",
+                            "stock_quantity": 4,
+                            "status": "active",
+                            "specs": {
+                              "color": "azul",
+                              "strings": "nylon"
+                            },
+                            "available": true,
+                            "availability_reason": "available"
+                          }
+                        ],
+                        "total": 1,
+                        "limit": 10,
+                        "offset": 0
+                      },
+                      "error": null
+                    }
+                  }
+                ],
+                "status": "completed",
+                "usage": {
+                  "input_tokens": 1607,
+                  "input_tokens_details": {
+                    "cache_write_tokens": null,
+                    "cached_tokens": 0
+                  },
+                  "output_tokens": 128,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 0
+                  },
+                  "total_tokens": 1735
+                },
+                "output_types": [
+                  "message"
+                ],
+                "calls": [],
+                "final_text": "Olá! Tudo bem? Encontrei uma opção de violão de nylon disponível para você dentro do seu orçamento:\n\n**Instrumento sintético disponível**\n*   **Preço:** R$ 250,00\n*   **Descrição:** Exemplo de produto ativo.\n*   **Estoque:** 4 unidades disponíveis.\n\nSe precisar de mais detalhes sobre este modelo ou quiser ver outras opções, é só me avisar!\n\n```json\n{\"intent\":\"answer\",\"evidence_call_ids\":[\"call_2lri0euc\"],\"clarification\":null}\n```",
+                "latency_ms": 3622.8981
+              },
+              {
+                "stage": "finalization",
+                "store": false,
+                "server_state_reference": false,
+                "tool_outputs_visible_to_model": [
+                  {
+                    "call_id": "call_2lri0euc",
+                    "output": {
+                      "status": "ok",
+                      "data": {
+                        "items": [
+                          {
+                            "product_id": 102,
+                            "name": "Instrumento sintético disponível",
+                            "category_id": 1,
+                            "category_name": "Violões",
+                            "price_brl": "250.00",
+                            "description": "Exemplo de produto ativo",
+                            "stock_quantity": 4,
+                            "status": "active",
+                            "specs": {
+                              "color": "azul",
+                              "strings": "nylon"
+                            },
+                            "available": true,
+                            "availability_reason": "available"
+                          }
+                        ],
+                        "total": 1,
+                        "limit": 10,
+                        "offset": 0
+                      },
+                      "error": null
+                    }
+                  }
+                ],
+                "status": "completed",
+                "usage": {
+                  "input_tokens": 1061,
+                  "input_tokens_details": {
+                    "cache_write_tokens": null,
+                    "cached_tokens": 0
+                  },
+                  "output_tokens": 26,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 0
+                  },
+                  "total_tokens": 1087
+                },
+                "output_types": [
+                  "message"
+                ],
+                "calls": [],
+                "final_text": "{\"intent\":\"answer\",\"evidence_call_ids\":[\"call_2lri0euc\"],\"clarification\":null}",
+                "latency_ms": 1625.8668
+              }
+            ]
+          }
+        }
+      ],
+      "physical_requests": [
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "tool_outputs_visible_to_model": [],
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1438,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 0
+            },
+            "output_tokens": 39,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1477
+          },
+          "output_types": [
+            "function_call"
+          ],
+          "calls": [
+            {
+              "name": "search_products",
+              "arguments": "{\"available_only\":true,\"category\":\"Violões\",\"max_price\":800,\"specs\":{\"strings\":\"nylon\"}}",
+              "call_id": "call_2lri0euc"
+            }
+          ],
+          "final_text": null,
+          "latency_ms": 21096.907
+        },
+        {
+          "stage": "native",
+          "store": false,
+          "server_state_reference": false,
+          "tool_outputs_visible_to_model": [
+            {
+              "call_id": "call_2lri0euc",
+              "output": {
+                "status": "ok",
+                "data": {
+                  "items": [
+                    {
+                      "product_id": 102,
+                      "name": "Instrumento sintético disponível",
+                      "category_id": 1,
+                      "category_name": "Violões",
+                      "price_brl": "250.00",
+                      "description": "Exemplo de produto ativo",
+                      "stock_quantity": 4,
+                      "status": "active",
+                      "specs": {
+                        "color": "azul",
+                        "strings": "nylon"
+                      },
+                      "available": true,
+                      "availability_reason": "available"
+                    }
+                  ],
+                  "total": 1,
+                  "limit": 10,
+                  "offset": 0
+                },
+                "error": null
+              }
+            }
+          ],
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1607,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 0
+            },
+            "output_tokens": 128,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1735
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "Olá! Tudo bem? Encontrei uma opção de violão de nylon disponível para você dentro do seu orçamento:\n\n**Instrumento sintético disponível**\n*   **Preço:** R$ 250,00\n*   **Descrição:** Exemplo de produto ativo.\n*   **Estoque:** 4 unidades disponíveis.\n\nSe precisar de mais detalhes sobre este modelo ou quiser ver outras opções, é só me avisar!\n\n```json\n{\"intent\":\"answer\",\"evidence_call_ids\":[\"call_2lri0euc\"],\"clarification\":null}\n```",
+          "latency_ms": 3622.8981
+        },
+        {
+          "stage": "finalization",
+          "store": false,
+          "server_state_reference": false,
+          "tool_outputs_visible_to_model": [
+            {
+              "call_id": "call_2lri0euc",
+              "output": {
+                "status": "ok",
+                "data": {
+                  "items": [
+                    {
+                      "product_id": 102,
+                      "name": "Instrumento sintético disponível",
+                      "category_id": 1,
+                      "category_name": "Violões",
+                      "price_brl": "250.00",
+                      "description": "Exemplo de produto ativo",
+                      "stock_quantity": 4,
+                      "status": "active",
+                      "specs": {
+                        "color": "azul",
+                        "strings": "nylon"
+                      },
+                      "available": true,
+                      "availability_reason": "available"
+                    }
+                  ],
+                  "total": 1,
+                  "limit": 10,
+                  "offset": 0
+                },
+                "error": null
+              }
+            }
+          ],
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1061,
+            "input_tokens_details": {
+              "cache_write_tokens": null,
+              "cached_tokens": 0
+            },
+            "output_tokens": 26,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1087
+          },
+          "output_types": [
+            "message"
+          ],
+          "calls": [],
+          "final_text": "{\"intent\":\"answer\",\"evidence_call_ids\":[\"call_2lri0euc\"],\"clarification\":null}",
+          "latency_ms": 1625.8668
+        }
+      ],
+      "frozen_answer_key": {
+        "case_id": "CAT01",
+        "category": "catalog",
+        "answer_key": "Violões nylon até 800: somente 102; 103 custa 960.",
+        "authorization": {},
+        "steps": [
+          {
+            "question": "Quais violões de nylon disponíveis custam até R$ 800?",
+            "actor": "a",
+            "calls": [
+              {
+                "name": "search_products",
+                "arguments": {
+                  "category": "Violões",
+                  "max_price": "800",
+                  "specs": {
+                    "strings": "nylon"
+                  }
+                },
+                "match_arguments": null,
+                "checks": [
+                  {
+                    "path": "data.items.*.product_id",
+                    "op": "equals",
+                    "value": [
+                      102
+                    ]
+                  }
+                ]
+              }
+            ],
+            "statuses": [
+              "answered"
+            ],
+            "required": [
+              "ID 102"
+            ],
+            "forbidden": [
+              "ID 103",
+              "ID 101",
+              "ID 136"
+            ],
+            "no_facts": false,
+            "trace_errors": [],
+            "fault": "none"
+          }
+        ]
+      },
+      "repetition": 1
+    }
+  ],
+  "summary": {
+    "case_success": {
+      "passed": 1,
+      "applicable": 1,
+      "rate": 1.0
+    },
+    "turn_metrics": {
+      "tool_selection": {
+        "passed": 1,
+        "applicable": 1,
+        "rate": 1.0
+      },
+      "tool_arguments": {
+        "passed": 1,
+        "applicable": 1,
+        "rate": 1.0
+      },
+      "task_success": {
+        "passed": 1,
+        "applicable": 1,
+        "rate": 1.0
+      },
+      "grounding": {
+        "passed": 1,
+        "applicable": 1,
+        "rate": 1.0
+      },
+      "compliance": {
+        "passed": 1,
+        "applicable": 1,
+        "rate": 1.0
+      }
+    },
+    "reference_tool_checks": {
+      "passed": 1,
+      "applicable": 1,
+      "rate": 1.0
+    },
+    "turn_latency": {
+      "samples": 1,
+      "median_ms": 26372.1518,
+      "p95_ms": 26372.1518,
+      "p95_method": "nearest_rank"
+    },
+    "case_latency": {
+      "samples": 1,
+      "median_ms": 26372.1518,
+      "p95_ms": 26372.1518,
+      "p95_method": "nearest_rank"
+    },
+    "error_components": {},
+    "tokens": {
+      "reported_turns": 1,
+      "total_turns": 1,
+      "known_usage": {
+        "input_tokens": 4106,
+        "output_tokens": 193,
+        "total_tokens": 4299
+      },
+      "complete_usage": {
+        "input_tokens": 4106,
+        "output_tokens": 193,
+        "total_tokens": 4299
+      }
+    },
+    "cost": {
+      "billed_usd": null,
+      "estimated_usd": null,
+      "reason": "No billed cost returned by adapter; no pricing assumptions."
+    },
+    "policy_recall_at_3": {
+      "applicable": 0,
+      "agent_mean": null,
+      "reference_mean": null
+    },
+    "provider_latency": {
+      "samples": 2,
+      "median_ms": 13174.3739,
+      "p95_ms": 21097.4583,
+      "p95_method": "nearest_rank"
+    }
+  },
+  "by_category": {
+    "catalog": {
+      "case_success": {
+        "passed": 1,
+        "applicable": 1,
+        "rate": 1.0
+      },
+      "turn_metrics": {
+        "tool_selection": {
+          "passed": 1,
+          "applicable": 1,
+          "rate": 1.0
+        },
+        "tool_arguments": {
+          "passed": 1,
+          "applicable": 1,
+          "rate": 1.0
+        },
+        "task_success": {
+          "passed": 1,
+          "applicable": 1,
+          "rate": 1.0
+        },
+        "grounding": {
+          "passed": 1,
+          "applicable": 1,
+          "rate": 1.0
+        },
+        "compliance": {
+          "passed": 1,
+          "applicable": 1,
+          "rate": 1.0
+        }
+      },
+      "reference_tool_checks": {
+        "passed": 1,
+        "applicable": 1,
+        "rate": 1.0
+      },
+      "turn_latency": {
+        "samples": 1,
+        "median_ms": 26372.1518,
+        "p95_ms": 26372.1518,
+        "p95_method": "nearest_rank"
+      },
+      "case_latency": {
+        "samples": 1,
+        "median_ms": 26372.1518,
+        "p95_ms": 26372.1518,
+        "p95_method": "nearest_rank"
+      },
+      "error_components": {}
+    }
+  },
+  "llm_tool_selection": {
+    "passed": 1,
+    "applicable": 1,
+    "rate": 1.0
+  },
+  "experimental_profile": {
+    "tag": "gemma4_preflight",
+    "temperature": 0,
+    "thinking": "none",
+    "structured_finalization": true,
+    "requested_context": 4096,
+    "warmup_seconds_excluded": 50.734,
+    "elapsed_seconds": 26.558,
+    "ollama_version": "0.35.0",
+    "source_root_label": "workspace",
+    "model": "gemma4:12b",
+    "raw_answer_keys_sha256": "6b76f2c8d35902603346ec1f9d5e6ab4c906b5c573b67c375e05cf893fe6c7b5",
+    "faults_are_existing_harness_injections": true,
+    "credentials_or_reasoning_exported": false
+  },
+  "physical_metrics": {
+    "requests": 3,
+    "finalizations": 1,
+    "sdk_time_ms": 26345.671899999998,
+    "finalization_time_ms": 1625.8668,
+    "usage_reported_requests": 3,
+    "known_tokens": {
+      "input_tokens": 4106,
+      "output_tokens": 193,
+      "total_tokens": 4299
+    },
+    "injected_provider_calls": 0,
+    "native_subject_calls": 2
+  },
+  "resource_samples": [
+    {
+      "monotonic": 62580.567,
+      "ram_available_kib": 7244112,
+      "swap_free_kib": 387776,
+      "gpu": [
+        9050,
+        12288,
+        1
+      ],
+      "models": [
+        {
+          "name": "gemma4:12b",
+          "size": 1085926276,
+          "size_vram": 1085926276,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 62580.591,
+      "ram_available_kib": 7240720,
+      "swap_free_kib": 387776,
+      "gpu": [
+        9050,
+        12288,
+        1
+      ],
+      "models": [
+        {
+          "name": "gemma4:12b",
+          "size": 1085926276,
+          "size_vram": 1085926276,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 62583.615,
+      "ram_available_kib": 7266652,
+      "swap_free_kib": 387844,
+      "gpu": [
+        9062,
+        12288,
+        1
+      ],
+      "models": [
+        {
+          "name": "gemma4:12b",
+          "size": 1085926276,
+          "size_vram": 1085926276,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 62586.641,
+      "ram_available_kib": 7229288,
+      "swap_free_kib": 387844,
+      "gpu": [
+        9061,
+        12288,
+        2
+      ],
+      "models": [
+        {
+          "name": "gemma4:12b",
+          "size": 1085926276,
+          "size_vram": 1085926276,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 62589.667,
+      "ram_available_kib": 7113532,
+      "swap_free_kib": 387844,
+      "gpu": [
+        9058,
+        12288,
+        100
+      ],
+      "models": [
+        {
+          "name": "gemma4:12b",
+          "size": 1085926276,
+          "size_vram": 1085926276,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 62592.691,
+      "ram_available_kib": 6352404,
+      "swap_free_kib": 387844,
+      "gpu": [
+        9060,
+        12288,
+        1
+      ],
+      "models": [
+        {
+          "name": "gemma4:12b",
+          "size": 1085926276,
+          "size_vram": 1085926276,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 62595.715,
+      "ram_available_kib": 6438284,
+      "swap_free_kib": 387848,
+      "gpu": [
+        9062,
+        12288,
+        36
+      ],
+      "models": [
+        {
+          "name": "gemma4:12b",
+          "size": 1085926276,
+          "size_vram": 1085926276,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 62598.739,
+      "ram_available_kib": 6465924,
+      "swap_free_kib": 387848,
+      "gpu": [
+        9062,
+        12288,
+        1
+      ],
+      "models": [
+        {
+          "name": "gemma4:12b",
+          "size": 1085926276,
+          "size_vram": 1085926276,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 62601.764,
+      "ram_available_kib": 6603144,
+      "swap_free_kib": 387848,
+      "gpu": [
+        9070,
+        12288,
+        1
+      ],
+      "models": [
+        {
+          "name": "gemma4:12b",
+          "size": 1085926276,
+          "size_vram": 1085926276,
+          "context_length": 4096
+        }
+      ]
+    },
+    {
+      "monotonic": 62604.789,
+      "ram_available_kib": 6591528,
+      "swap_free_kib": 387856,
+      "gpu": [
+        9071,
+        12288,
+        96
+      ],
+      "models": [
+        {
+          "name": "gemma4:12b",
+          "size": 1085926276,
+          "size_vram": 1085926276,
+          "context_length": 4096
+        }
+      ]
+    }
+  ]
+}

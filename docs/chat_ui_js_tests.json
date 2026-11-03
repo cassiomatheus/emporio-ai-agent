@@ -1,0 +1,18 @@
+{
+  "passed": 12,
+  "tests": [
+    "reusa sessão e envia token somente no cabeçalho",
+    "nova conversa e clientes independentes não reutilizam sessão",
+    "entradas inválidas são recusadas antes da rede",
+    "erro do servidor usa mensagem pública e não repete pedido",
+    "falha de rede e timeout não expõem exceção original",
+    "resposta de sessão malformada falha de forma controlada",
+    "sugestões só preenchem campo; modo simulado é identificado",
+    "conversa renderiza texto sem executar markup e mostra consultas",
+    "envio pendente impede envio duplicado e reinício no meio da resposta",
+    "sessão expirada exige novo contexto e não reenvia mensagem",
+    "configuração indisponível bloqueia envio",
+    "tempo é duração medida, formatada em português"
+  ],
+  "execution": "mock_http_and_mock_dom_no_llm_no_browser"
+}

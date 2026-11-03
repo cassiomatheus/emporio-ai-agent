@@ -1,0 +1,37 @@
+{
+  "events": [
+    {
+      "time_us": "1793653576527134",
+      "message": "time=2026-11-02T18:06:16.526-03:00 level=WARN source=llama_server.go:1208 msg=\"llama-server process no longer running\" sys=9 string=\"signal: killed\""
+    },
+    {
+      "time_us": "1793653576528584",
+      "message": "time=2026-11-02T18:06:16.528-03:00 level=WARN source=llama_server.go:1208 msg=\"llama-server process no longer running\" sys=9 string=\"signal: killed\""
+    },
+    {
+      "time_us": "1793653577679356",
+      "message": "ollama.service: The kernel OOM killer killed some processes in this unit."
+    },
+    {
+      "time_us": "1793653577699978",
+      "message": "ollama.service: Failed with result 'oom-kill'."
+    },
+    {
+      "time_us": "1793653580889556",
+      "message": "ollama.service: Scheduled restart job, restart counter is at 1."
+    },
+    {
+      "time_us": "1793653721571426",
+      "message": "ollama.service: The kernel OOM killer killed some processes in this unit."
+    },
+    {
+      "time_us": "1793653722187394",
+      "message": "ollama.service: Failed with result 'oom-kill'."
+    },
+    {
+      "time_us": "1793653725388630",
+      "message": "ollama.service: Scheduled restart job, restart counter is at 2."
+    }
+  ],
+  "reasoning": "Ollama service journal, filtered to kill/restart events only."
+}

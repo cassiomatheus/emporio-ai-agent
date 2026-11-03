@@ -1,0 +1,158 @@
+{
+  "verified_at_utc": "2026-11-02T21:46:45.455690+00:00",
+  "scope": "challenge_catalog_and_policies_activation",
+  "runtime": {
+    "model": "qwen3.5:9b",
+    "mode": "real",
+    "local_ollama": true,
+    "catalog": "data/emporio.sqlite3",
+    "policy": "data/raw/políticas_da_loja.pdf",
+    "policy_version": "2.1",
+    "policy_chunks": 30,
+    "demo_orders_remain_synthetic": true,
+    "public_order_access": false
+  },
+  "source_counts": {
+    "categories": 9,
+    "products": 65,
+    "customers": 50,
+    "orders": 20,
+    "order_items": 22,
+    "promotions": 25
+  },
+  "database_matches_csv": {
+    "categories": true,
+    "products": true,
+    "customers": true,
+    "orders": true,
+    "order_items": true,
+    "promotions": true
+  },
+  "foreign_key_violations": 0,
+  "integrity_check": "ok",
+  "raw_files_checked": 7,
+  "raw_files_unchanged": true,
+  "existing_database_reused_no_reingestion": true,
+  "configuration": {
+    "changed_keys": [
+      "EMPORIO_CHAT_CATALOG_DATABASE",
+      "EMPORIO_CHAT_POLICY_PDF"
+    ],
+    "credentials_exported": false,
+    "env_mode": "0o600",
+    "env_ignored": true,
+    "demo_database_path_preserved": true
+  },
+  "automated_tests": {
+    "command": "python -m pytest tests/integration/test_local_snapshot.py tests/integration/test_services.py tests/integration/test_policy_retrieval.py tests/integration/test_api.py -q --tb=short",
+    "execution": "offline",
+    "result": "72 passed in 7.43s"
+  },
+  "ruff_check": "All checks passed!",
+  "real_http": {
+    "health": {
+      "status": "ok",
+      "chat_ready": true,
+      "execution_mode": "real",
+      "private_orders_enabled": false
+    },
+    "tests": [
+      {
+        "case": "original_product",
+        "http_status": 200,
+        "check_passed": true,
+        "tools": [
+          {
+            "name": "get_product_details",
+            "status": "ok",
+            "error_code": null
+          }
+        ],
+        "latency_ms": 37918.31,
+        "original_policy_version_cited": null
+      },
+      {
+        "case": "pix_reference",
+        "http_status": 200,
+        "check_passed": true,
+        "tools": [
+          {
+            "name": "get_product_offers",
+            "status": "ok",
+            "error_code": null
+          }
+        ],
+        "latency_ms": 3966.75,
+        "original_policy_version_cited": null
+      },
+      {
+        "case": "nylon_search",
+        "http_status": 200,
+        "check_passed": true,
+        "tools": [
+          {
+            "name": "search_products",
+            "status": "ok",
+            "error_code": null
+          }
+        ],
+        "latency_ms": 8506.48,
+        "original_policy_version_cited": null
+      },
+      {
+        "case": "original_policy",
+        "http_status": 200,
+        "check_passed": true,
+        "tools": [
+          {
+            "name": "search_store_policies",
+            "status": "ok",
+            "error_code": null
+          }
+        ],
+        "latency_ms": 5414.22,
+        "original_policy_version_cited": true
+      },
+      {
+        "case": "order_denied",
+        "http_status": 200,
+        "check_passed": false,
+        "tools": [],
+        "latency_ms": 2755.73,
+        "original_policy_version_cited": null
+      },
+      {
+        "case": "order_denied_fresh_session",
+        "http_status": 403,
+        "check_passed": true,
+        "latency_ms": 974.11,
+        "error_code": "forbidden",
+        "tools": []
+      }
+    ],
+    "sensitive_content_exported": false,
+    "private_files_http_status": 404,
+    "initial_order_check_note": "Em conversa longa, modelo encaminhou a um atendente sem chamar ferramenta; a expectativa inicial de HTTP 403 não foi atendida, sem divulgação de pedido.",
+    "nylon_expected_ids": [
+      83,
+      85,
+      81,
+      84,
+      82
+    ],
+    "nylon_observed_ids": [
+      83,
+      85,
+      81,
+      84,
+      82
+    ],
+    "nylon_matches_service": true
+  },
+  "internal_document_text_exported_to_public_report": false,
+  "private_full_results": "data/derived/challenge_activation/http_private.json (ignored)",
+  "functional_code_changed": false,
+  "commit_performed": false,
+  "push_performed": false,
+  "publication_performed": false
+}

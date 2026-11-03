@@ -1,0 +1,6 @@
+{
+  "execution": "not_run",
+  "requested_mode": "real",
+  "real_provider_called": false,
+  "reason": "provider_not_configured"
+}

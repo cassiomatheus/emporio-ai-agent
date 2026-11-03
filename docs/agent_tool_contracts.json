@@ -1,0 +1,1547 @@
+[
+  {
+    "name": "search_products",
+    "description": "Busca produtos a partir de um pedido estruturado. Extraia product.category como o tipo pedido pelo cliente, product.subtype como a variante, product.name somente para marca/modelo. characteristics recebe cor, cordas e demais características pedidas; min_price/max_price preservam o orçamento em reais. O backend normaliza categorias e atributos contra o catálogo. Use o objeto product obrigatório, sem espalhar category/subtype na raiz. Formato: {\"product\":{\"category\":\"tipo de instrumento\",\"subtype\":null,\"name\":null},\"characteristics\":{},\"max_price\":null}. Não gere category_id, term, specs, SQL ou identidade do cliente.",
+    "input_schema": {
+      "additionalProperties": false,
+      "properties": {
+        "product": {
+          "additionalProperties": false,
+          "properties": {
+            "category": {
+              "anyOf": [
+                {
+                  "maxLength": 80,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Category"
+            },
+            "subtype": {
+              "anyOf": [
+                {
+                  "maxLength": 80,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Subtype"
+            },
+            "name": {
+              "anyOf": [
+                {
+                  "maxLength": 120,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Name"
+            }
+          },
+          "title": "ProductCriteria",
+          "type": "object"
+        },
+        "characteristics": {
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "maxLength": 120,
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              }
+            ]
+          },
+          "maxProperties": 10,
+          "propertyNames": {
+            "maxLength": 64,
+            "minLength": 1
+          },
+          "title": "Characteristics",
+          "type": "object"
+        },
+        "min_price": {
+          "anyOf": [
+            {
+              "maxLength": 20,
+              "pattern": "^\\d{1,17}(?:\\.\\d{1,2})?$",
+              "type": "string"
+            },
+            {
+              "maximum": 92233720368547758,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Min Price"
+        },
+        "max_price": {
+          "anyOf": [
+            {
+              "maxLength": 20,
+              "pattern": "^\\d{1,17}(?:\\.\\d{1,2})?$",
+              "type": "string"
+            },
+            {
+              "maximum": 92233720368547758,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Max Price"
+        },
+        "available_only": {
+          "default": true,
+          "title": "Available Only",
+          "type": "boolean"
+        },
+        "status": {
+          "anyOf": [
+            {
+              "enum": [
+                "active",
+                "discontinued",
+                "coming_soon"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Status"
+        },
+        "limit": {
+          "default": 10,
+          "maximum": 20,
+          "minimum": 1,
+          "title": "Limit",
+          "type": "integer"
+        },
+        "offset": {
+          "default": 0,
+          "maximum": 10000,
+          "minimum": 0,
+          "title": "Offset",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "product"
+      ],
+      "title": "CatalogSearchRequest",
+      "type": "object"
+    },
+    "output_schema": {
+      "$defs": {
+        "JsonValue": {},
+        "ProductDetails": {
+          "additionalProperties": false,
+          "properties": {
+            "product_id": {
+              "title": "Product Id",
+              "type": "integer"
+            },
+            "name": {
+              "title": "Name",
+              "type": "string"
+            },
+            "category_id": {
+              "title": "Category Id",
+              "type": "integer"
+            },
+            "category_name": {
+              "title": "Category Name",
+              "type": "string"
+            },
+            "price_brl": {
+              "decimal_places": 2,
+              "ge": 0,
+              "le": "92233720368547758.07",
+              "title": "Price Brl",
+              "type": "string"
+            },
+            "description": {
+              "title": "Description",
+              "type": "string"
+            },
+            "stock_quantity": {
+              "title": "Stock Quantity",
+              "type": "integer"
+            },
+            "status": {
+              "enum": [
+                "active",
+                "discontinued",
+                "coming_soon"
+              ],
+              "title": "Status",
+              "type": "string"
+            },
+            "specs": {
+              "additionalProperties": {
+                "$ref": "#/$defs/JsonValue"
+              },
+              "title": "Specs",
+              "type": "object"
+            },
+            "available": {
+              "title": "Available",
+              "type": "boolean"
+            },
+            "availability_reason": {
+              "enum": [
+                "available",
+                "out_of_stock",
+                "discontinued",
+                "coming_soon"
+              ],
+              "title": "Availability Reason",
+              "type": "string"
+            }
+          },
+          "required": [
+            "product_id",
+            "name",
+            "category_id",
+            "category_name",
+            "price_brl",
+            "description",
+            "stock_quantity",
+            "status",
+            "specs",
+            "available",
+            "availability_reason"
+          ],
+          "title": "ProductDetails",
+          "type": "object"
+        },
+        "SearchProductsData": {
+          "additionalProperties": false,
+          "properties": {
+            "items": {
+              "items": {
+                "$ref": "#/$defs/ProductDetails"
+              },
+              "maxItems": 20,
+              "title": "Items",
+              "type": "array"
+            },
+            "total": {
+              "minimum": 0,
+              "title": "Total",
+              "type": "integer"
+            },
+            "limit": {
+              "maximum": 20,
+              "minimum": 1,
+              "title": "Limit",
+              "type": "integer"
+            },
+            "offset": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Offset",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "items",
+            "total",
+            "limit",
+            "offset"
+          ],
+          "title": "SearchProductsData",
+          "type": "object"
+        },
+        "ToolError": {
+          "additionalProperties": false,
+          "properties": {
+            "code": {
+              "enum": [
+                "unknown_tool",
+                "invalid_arguments",
+                "not_found",
+                "ambiguous",
+                "unavailable",
+                "invalid_installments",
+                "forbidden",
+                "no_evidence",
+                "service_unavailable",
+                "response_too_large"
+              ],
+              "title": "Code",
+              "type": "string"
+            },
+            "message": {
+              "title": "Message",
+              "type": "string"
+            },
+            "invalid_fields": {
+              "default": [],
+              "items": {
+                "type": "string"
+              },
+              "title": "Invalid Fields",
+              "type": "array"
+            }
+          },
+          "required": [
+            "code",
+            "message"
+          ],
+          "title": "ToolError",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "ok",
+            "error"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "data": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SearchProductsData"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "error": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ToolError"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "status",
+        "data",
+        "error"
+      ],
+      "title": "ToolResponse[SearchProductsData]",
+      "type": "object"
+    }
+  },
+  {
+    "name": "get_product_details",
+    "description": "Consulta ID ou nome exato, status, estoque e disponibilidade.",
+    "input_schema": {
+      "additionalProperties": false,
+      "properties": {
+        "product_id": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "maximum": 9223372036854775807,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Product Id"
+        },
+        "name": {
+          "anyOf": [
+            {
+              "maxLength": 120,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Name"
+        }
+      },
+      "title": "ProductDetailsInput",
+      "type": "object"
+    },
+    "output_schema": {
+      "$defs": {
+        "JsonValue": {},
+        "ProductDetails": {
+          "additionalProperties": false,
+          "properties": {
+            "product_id": {
+              "title": "Product Id",
+              "type": "integer"
+            },
+            "name": {
+              "title": "Name",
+              "type": "string"
+            },
+            "category_id": {
+              "title": "Category Id",
+              "type": "integer"
+            },
+            "category_name": {
+              "title": "Category Name",
+              "type": "string"
+            },
+            "price_brl": {
+              "decimal_places": 2,
+              "ge": 0,
+              "le": "92233720368547758.07",
+              "title": "Price Brl",
+              "type": "string"
+            },
+            "description": {
+              "title": "Description",
+              "type": "string"
+            },
+            "stock_quantity": {
+              "title": "Stock Quantity",
+              "type": "integer"
+            },
+            "status": {
+              "enum": [
+                "active",
+                "discontinued",
+                "coming_soon"
+              ],
+              "title": "Status",
+              "type": "string"
+            },
+            "specs": {
+              "additionalProperties": {
+                "$ref": "#/$defs/JsonValue"
+              },
+              "title": "Specs",
+              "type": "object"
+            },
+            "available": {
+              "title": "Available",
+              "type": "boolean"
+            },
+            "availability_reason": {
+              "enum": [
+                "available",
+                "out_of_stock",
+                "discontinued",
+                "coming_soon"
+              ],
+              "title": "Availability Reason",
+              "type": "string"
+            }
+          },
+          "required": [
+            "product_id",
+            "name",
+            "category_id",
+            "category_name",
+            "price_brl",
+            "description",
+            "stock_quantity",
+            "status",
+            "specs",
+            "available",
+            "availability_reason"
+          ],
+          "title": "ProductDetails",
+          "type": "object"
+        },
+        "ToolError": {
+          "additionalProperties": false,
+          "properties": {
+            "code": {
+              "enum": [
+                "unknown_tool",
+                "invalid_arguments",
+                "not_found",
+                "ambiguous",
+                "unavailable",
+                "invalid_installments",
+                "forbidden",
+                "no_evidence",
+                "service_unavailable",
+                "response_too_large"
+              ],
+              "title": "Code",
+              "type": "string"
+            },
+            "message": {
+              "title": "Message",
+              "type": "string"
+            },
+            "invalid_fields": {
+              "default": [],
+              "items": {
+                "type": "string"
+              },
+              "title": "Invalid Fields",
+              "type": "array"
+            }
+          },
+          "required": [
+            "code",
+            "message"
+          ],
+          "title": "ToolError",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "ok",
+            "error"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "data": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ProductDetails"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "error": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ToolError"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "status",
+        "data",
+        "error"
+      ],
+      "title": "ToolResponse[ProductDetails]",
+      "type": "object"
+    }
+  },
+  {
+    "name": "get_product_offers",
+    "description": "Consulta ofertas de um produto. Para N parcelas envie payment_method='credit' e installments=N. Não calcule valores nem substitua um plano rejeitado.",
+    "input_schema": {
+      "additionalProperties": false,
+      "properties": {
+        "product_id": {
+          "exclusiveMinimum": 0,
+          "maximum": 9223372036854775807,
+          "title": "Product Id",
+          "type": "integer"
+        },
+        "payment_method": {
+          "anyOf": [
+            {
+              "enum": [
+                "pix",
+                "credit",
+                "debit",
+                "boleto"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Payment Method"
+        },
+        "installments": {
+          "anyOf": [
+            {
+              "maximum": 12,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Installments"
+        }
+      },
+      "required": [
+        "product_id"
+      ],
+      "title": "ProductOffersInput",
+      "type": "object"
+    },
+    "output_schema": {
+      "$defs": {
+        "InstallmentPlan": {
+          "additionalProperties": false,
+          "properties": {
+            "count": {
+              "title": "Count",
+              "type": "integer"
+            },
+            "amounts": {
+              "items": {
+                "decimal_places": 2,
+                "ge": 0,
+                "le": "92233720368547758.07",
+                "type": "string"
+              },
+              "title": "Amounts",
+              "type": "array"
+            },
+            "total_brl": {
+              "decimal_places": 2,
+              "ge": 0,
+              "le": "92233720368547758.07",
+              "title": "Total Brl",
+              "type": "string"
+            },
+            "minimum_brl": {
+              "decimal_places": 2,
+              "ge": 0,
+              "le": "92233720368547758.07",
+              "title": "Minimum Brl",
+              "type": "string"
+            },
+            "interest_percent": {
+              "default": "0",
+              "title": "Interest Percent",
+              "type": "string"
+            }
+          },
+          "required": [
+            "count",
+            "amounts",
+            "total_brl",
+            "minimum_brl"
+          ],
+          "title": "InstallmentPlan",
+          "type": "object"
+        },
+        "PaymentOffer": {
+          "additionalProperties": false,
+          "properties": {
+            "payment_method": {
+              "enum": [
+                "pix",
+                "credit",
+                "debit",
+                "boleto"
+              ],
+              "title": "Payment Method",
+              "type": "string"
+            },
+            "discount_percent": {
+              "title": "Discount Percent",
+              "type": "string"
+            },
+            "final_price": {
+              "decimal_places": 2,
+              "ge": 0,
+              "le": "92233720368547758.07",
+              "title": "Final Price",
+              "type": "string"
+            },
+            "discount_source": {
+              "enum": [
+                "promotion",
+                "pix",
+                "none"
+              ],
+              "title": "Discount Source",
+              "type": "string"
+            },
+            "promotion_id": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Promotion Id"
+            },
+            "eligible_installments": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/InstallmentPlan"
+              },
+              "title": "Eligible Installments",
+              "type": "array"
+            }
+          },
+          "required": [
+            "payment_method",
+            "discount_percent",
+            "final_price",
+            "discount_source"
+          ],
+          "title": "PaymentOffer",
+          "type": "object"
+        },
+        "ProductOffersData": {
+          "additionalProperties": false,
+          "properties": {
+            "product_id": {
+              "title": "Product Id",
+              "type": "integer"
+            },
+            "original_price": {
+              "decimal_places": 2,
+              "ge": 0,
+              "le": "92233720368547758.07",
+              "title": "Original Price",
+              "type": "string"
+            },
+            "options": {
+              "items": {
+                "$ref": "#/$defs/PaymentOffer"
+              },
+              "maxItems": 4,
+              "minItems": 1,
+              "title": "Options",
+              "type": "array"
+            },
+            "selected_plan": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/InstallmentPlan"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "applied_rules": {
+              "default": [
+                "RN-01",
+                "RN-02",
+                "RN-03",
+                "RN-04",
+                "RN-05",
+                "RN-11"
+              ],
+              "items": {
+                "type": "string"
+              },
+              "title": "Applied Rules",
+              "type": "array"
+            }
+          },
+          "required": [
+            "product_id",
+            "original_price",
+            "options"
+          ],
+          "title": "ProductOffersData",
+          "type": "object"
+        },
+        "ToolError": {
+          "additionalProperties": false,
+          "properties": {
+            "code": {
+              "enum": [
+                "unknown_tool",
+                "invalid_arguments",
+                "not_found",
+                "ambiguous",
+                "unavailable",
+                "invalid_installments",
+                "forbidden",
+                "no_evidence",
+                "service_unavailable",
+                "response_too_large"
+              ],
+              "title": "Code",
+              "type": "string"
+            },
+            "message": {
+              "title": "Message",
+              "type": "string"
+            },
+            "invalid_fields": {
+              "default": [],
+              "items": {
+                "type": "string"
+              },
+              "title": "Invalid Fields",
+              "type": "array"
+            }
+          },
+          "required": [
+            "code",
+            "message"
+          ],
+          "title": "ToolError",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "ok",
+            "error"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "data": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ProductOffersData"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "error": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ToolError"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "status",
+        "data",
+        "error"
+      ],
+      "title": "ToolResponse[ProductOffersData]",
+      "type": "object"
+    }
+  },
+  {
+    "name": "get_order_status",
+    "description": "Consulta pedido com autorização externa do backend; ID não autentica.",
+    "input_schema": {
+      "additionalProperties": false,
+      "properties": {
+        "order_id": {
+          "exclusiveMinimum": 0,
+          "maximum": 9223372036854775807,
+          "title": "Order Id",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "order_id"
+      ],
+      "title": "OrderStatusInput",
+      "type": "object"
+    },
+    "output_schema": {
+      "$defs": {
+        "OrderItem": {
+          "additionalProperties": false,
+          "properties": {
+            "product_id": {
+              "title": "Product Id",
+              "type": "integer"
+            },
+            "name": {
+              "title": "Name",
+              "type": "string"
+            },
+            "quantity": {
+              "title": "Quantity",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "product_id",
+            "name",
+            "quantity"
+          ],
+          "title": "OrderItem",
+          "type": "object"
+        },
+        "OrderStatusData": {
+          "additionalProperties": false,
+          "properties": {
+            "order_id": {
+              "title": "Order Id",
+              "type": "integer"
+            },
+            "order_date": {
+              "format": "date",
+              "title": "Order Date",
+              "type": "string"
+            },
+            "status": {
+              "enum": [
+                "delivered",
+                "confirmed",
+                "pending",
+                "cancelled",
+                "shipped"
+              ],
+              "title": "Status",
+              "type": "string"
+            },
+            "total_brl": {
+              "decimal_places": 2,
+              "ge": 0,
+              "le": "92233720368547758.07",
+              "title": "Total Brl",
+              "type": "string"
+            },
+            "payment_method": {
+              "title": "Payment Method",
+              "type": "string"
+            },
+            "tracking_code": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Tracking Code"
+            },
+            "estimated_delivery": {
+              "anyOf": [
+                {
+                  "format": "date",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Estimated Delivery"
+            },
+            "tracking_status": {
+              "enum": [
+                "available",
+                "not_provided"
+              ],
+              "title": "Tracking Status",
+              "type": "string"
+            },
+            "items": {
+              "items": {
+                "$ref": "#/$defs/OrderItem"
+              },
+              "maxItems": 100,
+              "title": "Items",
+              "type": "array"
+            }
+          },
+          "required": [
+            "order_id",
+            "order_date",
+            "status",
+            "total_brl",
+            "payment_method",
+            "tracking_code",
+            "estimated_delivery",
+            "tracking_status",
+            "items"
+          ],
+          "title": "OrderStatusData",
+          "type": "object"
+        },
+        "ToolError": {
+          "additionalProperties": false,
+          "properties": {
+            "code": {
+              "enum": [
+                "unknown_tool",
+                "invalid_arguments",
+                "not_found",
+                "ambiguous",
+                "unavailable",
+                "invalid_installments",
+                "forbidden",
+                "no_evidence",
+                "service_unavailable",
+                "response_too_large"
+              ],
+              "title": "Code",
+              "type": "string"
+            },
+            "message": {
+              "title": "Message",
+              "type": "string"
+            },
+            "invalid_fields": {
+              "default": [],
+              "items": {
+                "type": "string"
+              },
+              "title": "Invalid Fields",
+              "type": "array"
+            }
+          },
+          "required": [
+            "code",
+            "message"
+          ],
+          "title": "ToolError",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "ok",
+            "error"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "data": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/OrderStatusData"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "error": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ToolError"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "status",
+        "data",
+        "error"
+      ],
+      "title": "ToolResponse[OrderStatusData]",
+      "type": "object"
+    }
+  },
+  {
+    "name": "search_store_policies",
+    "description": "Consulta regras gerais (inclusive parcelas mínimas, sem exigir produto), com seção, página e versão. Use top_k=3 salvo pedido de mais referências.",
+    "input_schema": {
+      "additionalProperties": false,
+      "properties": {
+        "query": {
+          "maxLength": 500,
+          "minLength": 1,
+          "title": "Query",
+          "type": "string"
+        },
+        "top_k": {
+          "default": 3,
+          "maximum": 5,
+          "minimum": 1,
+          "title": "Top K",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "query"
+      ],
+      "title": "PolicySearchInput",
+      "type": "object"
+    },
+    "output_schema": {
+      "$defs": {
+        "ChunkMetadata": {
+          "additionalProperties": false,
+          "properties": {
+            "source_name": {
+              "title": "Source Name",
+              "type": "string"
+            },
+            "source_sha256": {
+              "title": "Source Sha256",
+              "type": "string"
+            },
+            "version": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Version"
+            },
+            "section_id": {
+              "title": "Section Id",
+              "type": "string"
+            },
+            "section_title": {
+              "title": "Section Title",
+              "type": "string"
+            },
+            "section_path": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Section Path",
+              "type": "array"
+            },
+            "pages": {
+              "items": {
+                "type": "integer"
+              },
+              "title": "Pages",
+              "type": "array"
+            },
+            "section_pages": {
+              "items": {
+                "type": "integer"
+              },
+              "title": "Section Pages",
+              "type": "array"
+            }
+          },
+          "required": [
+            "source_name",
+            "source_sha256",
+            "version",
+            "section_id",
+            "section_title",
+            "section_path",
+            "pages",
+            "section_pages"
+          ],
+          "title": "ChunkMetadata",
+          "type": "object"
+        },
+        "PolicyMatchesData": {
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "const": "matched",
+              "title": "Status",
+              "type": "string"
+            },
+            "hits": {
+              "items": {
+                "$ref": "#/$defs/ToolPolicyHit"
+              },
+              "maxItems": 5,
+              "minItems": 1,
+              "title": "Hits",
+              "type": "array"
+            }
+          },
+          "required": [
+            "status",
+            "hits"
+          ],
+          "title": "PolicyMatchesData",
+          "type": "object"
+        },
+        "ToolError": {
+          "additionalProperties": false,
+          "properties": {
+            "code": {
+              "enum": [
+                "unknown_tool",
+                "invalid_arguments",
+                "not_found",
+                "ambiguous",
+                "unavailable",
+                "invalid_installments",
+                "forbidden",
+                "no_evidence",
+                "service_unavailable",
+                "response_too_large"
+              ],
+              "title": "Code",
+              "type": "string"
+            },
+            "message": {
+              "title": "Message",
+              "type": "string"
+            },
+            "invalid_fields": {
+              "default": [],
+              "items": {
+                "type": "string"
+              },
+              "title": "Invalid Fields",
+              "type": "array"
+            }
+          },
+          "required": [
+            "code",
+            "message"
+          ],
+          "title": "ToolError",
+          "type": "object"
+        },
+        "ToolPolicyHit": {
+          "additionalProperties": false,
+          "properties": {
+            "chunk_id": {
+              "title": "Chunk Id",
+              "type": "string"
+            },
+            "metadata": {
+              "$ref": "#/$defs/ChunkMetadata"
+            },
+            "excerpt": {
+              "maxLength": 420,
+              "minLength": 1,
+              "title": "Excerpt",
+              "type": "string"
+            },
+            "excerpt_truncated": {
+              "title": "Excerpt Truncated",
+              "type": "boolean"
+            },
+            "score": {
+              "title": "Score",
+              "type": "number"
+            },
+            "lexical_coverage": {
+              "title": "Lexical Coverage",
+              "type": "number"
+            },
+            "match_grade": {
+              "enum": [
+                "strong",
+                "partial"
+              ],
+              "title": "Match Grade",
+              "type": "string"
+            }
+          },
+          "required": [
+            "chunk_id",
+            "metadata",
+            "excerpt",
+            "excerpt_truncated",
+            "score",
+            "lexical_coverage",
+            "match_grade"
+          ],
+          "title": "ToolPolicyHit",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "ok",
+            "error"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "data": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PolicyMatchesData"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "error": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ToolError"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "status",
+        "data",
+        "error"
+      ],
+      "title": "ToolResponse[PolicyMatchesData]",
+      "type": "object"
+    }
+  },
+  {
+    "name": "get_store_info",
+    "description": "Consulta endereço, horários ou contatos públicos com fontes e ambiguidades.",
+    "input_schema": {
+      "additionalProperties": false,
+      "properties": {
+        "subject": {
+          "enum": [
+            "address",
+            "hours",
+            "contacts"
+          ],
+          "title": "Subject",
+          "type": "string"
+        }
+      },
+      "required": [
+        "subject"
+      ],
+      "title": "StoreInfoInput",
+      "type": "object"
+    },
+    "output_schema": {
+      "$defs": {
+        "StoreInfo": {
+          "additionalProperties": false,
+          "properties": {
+            "subject": {
+              "enum": [
+                "address",
+                "hours",
+                "contacts"
+              ],
+              "title": "Subject",
+              "type": "string"
+            },
+            "entries": {
+              "items": {
+                "$ref": "#/$defs/StoreInfoEntry"
+              },
+              "maxItems": 8,
+              "title": "Entries",
+              "type": "array"
+            },
+            "cautions": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Cautions",
+              "type": "array"
+            }
+          },
+          "required": [
+            "subject",
+            "entries",
+            "cautions"
+          ],
+          "title": "StoreInfo",
+          "type": "object"
+        },
+        "StoreInfoEntry": {
+          "additionalProperties": false,
+          "properties": {
+            "label": {
+              "maxLength": 80,
+              "minLength": 1,
+              "title": "Label",
+              "type": "string"
+            },
+            "value": {
+              "maxLength": 300,
+              "minLength": 1,
+              "title": "Value",
+              "type": "string"
+            },
+            "source": {
+              "$ref": "#/$defs/StoreInfoSource"
+            }
+          },
+          "required": [
+            "label",
+            "value",
+            "source"
+          ],
+          "title": "StoreInfoEntry",
+          "type": "object"
+        },
+        "StoreInfoSource": {
+          "additionalProperties": false,
+          "properties": {
+            "source_name": {
+              "title": "Source Name",
+              "type": "string"
+            },
+            "source_sha256": {
+              "title": "Source Sha256",
+              "type": "string"
+            },
+            "version": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Version"
+            },
+            "section_id": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Section Id"
+            },
+            "pages": {
+              "items": {
+                "type": "integer"
+              },
+              "title": "Pages",
+              "type": "array"
+            }
+          },
+          "required": [
+            "source_name",
+            "source_sha256",
+            "version",
+            "section_id",
+            "pages"
+          ],
+          "title": "StoreInfoSource",
+          "type": "object"
+        },
+        "ToolError": {
+          "additionalProperties": false,
+          "properties": {
+            "code": {
+              "enum": [
+                "unknown_tool",
+                "invalid_arguments",
+                "not_found",
+                "ambiguous",
+                "unavailable",
+                "invalid_installments",
+                "forbidden",
+                "no_evidence",
+                "service_unavailable",
+                "response_too_large"
+              ],
+              "title": "Code",
+              "type": "string"
+            },
+            "message": {
+              "title": "Message",
+              "type": "string"
+            },
+            "invalid_fields": {
+              "default": [],
+              "items": {
+                "type": "string"
+              },
+              "title": "Invalid Fields",
+              "type": "array"
+            }
+          },
+          "required": [
+            "code",
+            "message"
+          ],
+          "title": "ToolError",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "ok",
+            "error"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "data": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/StoreInfo"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "error": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ToolError"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "status",
+        "data",
+        "error"
+      ],
+      "title": "ToolResponse[StoreInfo]",
+      "type": "object"
+    }
+  }
+]

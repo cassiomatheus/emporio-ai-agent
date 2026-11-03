@@ -1,0 +1,49 @@
+--- before_contract_review/app/agent/prompts.py
++++ after_contract_review/app/agent/prompts.py
+@@ -7,7 +7,7 @@
+ Use as descrições e schemas fornecidos. Para busca de violões, a categoria é
+ "Violões"; cordas de nylon são specs {"strings":"nylon"}. Preços de entrada
+ devem ser inteiros ou strings decimais. Não calcule descontos ou parcelas.
+-Em buscas, term pesquisa nome/descrição; use specs para cor, cordas e características.
++Em buscas, term pesquisa o nome; use specs para cor, cordas e características.
+ Preserve todos os filtros pedidos. Para N parcelas, envie payment_method="credit"
+ e installments=N juntos, também em seguimentos. Não omita a modalidade nem substitua
+ uma quantidade de parcelas rejeitada por outra condição sem pedido do usuário.
+--- before_contract_review/app/tools/registry.py
++++ after_contract_review/app/tools/registry.py
+@@ -31,7 +31,7 @@
+ }
+ DESCRIPTIONS = {
+     "search_products": (
+-        "Filtra catálogo no snapshot. term pesquisa nome/descrição; categoria em category; "
++        "Filtra catálogo no snapshot. term pesquisa o nome; categoria em category; "
+         "características em specs (ex.: color=azul, strings=nylon). Preserve todos os filtros."
+     ),
+     "get_product_details": "Consulta ID ou nome exato, status, estoque e disponibilidade.",
+--- before_atomic_tests/tests/unit/test_benchmark_cli.py
++++ after_atomic_tests/tests/unit/test_benchmark_cli.py
+@@ -11,6 +11,24 @@
+ )
+ benchmark = importlib.util.module_from_spec(spec)
+ spec.loader.exec_module(benchmark)
++
++
++def test_report_is_published_complete_and_exclusively(tmp_path):
++    import json
++
++    output = tmp_path / "report.json"
++    benchmark._write_report_exclusive(output, {"complete": True})
++    assert json.loads(output.read_text()) == {"complete": True}
++    with pytest.raises(FileExistsError):
++        benchmark._write_report_exclusive(output, {"replacement": True})
++    assert json.loads(output.read_text()) == {"complete": True}
++    assert list(tmp_path.iterdir()) == [output]
++
++
++def test_serialization_failure_leaves_no_partial_report(tmp_path):
++    with pytest.raises(TypeError):
++        benchmark._write_report_exclusive(tmp_path / "report.json", {"invalid": object()})
++    assert list(tmp_path.iterdir()) == []
+ 
+ 
+ def test_benchmark_never_overwrites_existing_evidence(tmp_path, monkeypatch):

@@ -1,0 +1,2641 @@
+{
+  "description": "Gabaritos congelados, fixtures sintéticas, guards e injeções separados da inferência real. O resumo anterior à retomada foi preservado separadamente, mas não é usado como rodada final.",
+  "profiles": {
+    "before_12b": {
+      "file": "docs/optimization/qwen35_4096_finalize.json",
+      "file_sha256": "323f63536b116aec463b35162db0e38050ccd6c344930bc70928eab6342624b2",
+      "source_sha256": "63472b848d8db42a7374e82262a9ba718c827c468f0a0cc33fbac37a2f19f6a6",
+      "suite_sha256": "6f94fe24cd3402f310b3254fce5b3d9c973e2416301e6fa30c9bab90f824e26a",
+      "policy_sha256": "187967e4ab7149e9671ee207df35a7a0d169a1fec18ed4fc69f8b8b932cff5aa",
+      "summary": {
+        "case_success": {
+          "passed": 28,
+          "applicable": 40,
+          "rate": 0.7
+        },
+        "turn_metrics": {
+          "tool_selection": {
+            "passed": 37,
+            "applicable": 46,
+            "rate": 0.8043478260869565
+          },
+          "tool_arguments": {
+            "passed": 34,
+            "applicable": 46,
+            "rate": 0.7391304347826086
+          },
+          "task_success": {
+            "passed": 33,
+            "applicable": 46,
+            "rate": 0.717391304347826
+          },
+          "grounding": {
+            "passed": 26,
+            "applicable": 26,
+            "rate": 1.0
+          },
+          "compliance": {
+            "passed": 44,
+            "applicable": 46,
+            "rate": 0.9565217391304348
+          }
+        },
+        "reference_tool_checks": {
+          "passed": 39,
+          "applicable": 39,
+          "rate": 1.0
+        },
+        "turn_latency": {
+          "samples": 46,
+          "median_ms": 4045.6009,
+          "p95_ms": 5664.916,
+          "p95_method": "nearest_rank"
+        },
+        "case_latency": {
+          "samples": 40,
+          "median_ms": 4234.8049,
+          "p95_ms": 8968.7033,
+          "p95_method": "nearest_rank"
+        },
+        "error_components": {
+          "provider_selection": 12,
+          "provider_answer_plan": 3,
+          "provider_or_protocol": 2,
+          "compliance": 2
+        },
+        "tokens": {
+          "reported_turns": 40,
+          "total_turns": 46,
+          "known_usage": {
+            "input_tokens": 169202,
+            "output_tokens": 5468,
+            "total_tokens": 174670
+          },
+          "complete_usage": null
+        },
+        "cost": {
+          "billed_usd": null,
+          "estimated_usd": null,
+          "reason": "No billed cost returned by adapter; no pricing assumptions."
+        },
+        "policy_recall_at_3": {
+          "applicable": 7,
+          "agent_mean": 0.8571428571428571,
+          "reference_mean": 1.0
+        },
+        "provider_latency": {
+          "samples": 83,
+          "median_ms": 1544.5899,
+          "p95_ms": 3848.082,
+          "p95_method": "nearest_rank"
+        }
+      },
+      "physical_metrics": {
+        "requests": 115,
+        "finalizations": 35,
+        "sdk_time_ms": 166377.851,
+        "finalization_time_ms": 44287.2307,
+        "usage_reported_requests": 115,
+        "known_tokens": {
+          "input_tokens": 169202,
+          "output_tokens": 5468,
+          "total_tokens": 174670
+        },
+        "injected_provider_calls": 3,
+        "native_subject_calls": 80
+      },
+      "llm_tool_selection_without_faults_or_guards": {
+        "passed": 30,
+        "applicable": 36,
+        "rate": 0.8333333333333334
+      },
+      "split": {
+        "real_no_fault": {
+          "turns": 36,
+          "task_success": {
+            "passed": 28,
+            "applicable": 36,
+            "rate": 0.7777777777777778
+          },
+          "tool_selection": {
+            "passed": 30,
+            "applicable": 36,
+            "rate": 0.8333333333333334
+          },
+          "tool_arguments": {
+            "passed": 27,
+            "applicable": 36,
+            "rate": 0.75
+          },
+          "grounding": {
+            "passed": 25,
+            "applicable": 25,
+            "rate": 1.0
+          },
+          "compliance": {
+            "passed": 35,
+            "applicable": 36,
+            "rate": 0.9722222222222222
+          },
+          "latency": {
+            "samples": 36,
+            "median_ms": 4234.8049,
+            "p95_ms": 5784.4524,
+            "p95_method": "nearest_rank"
+          },
+          "native_subject_calls": 72,
+          "injected_provider_calls": 0
+        },
+        "real_with_tool_fault": {
+          "turns": 2,
+          "task_success": {
+            "passed": 0,
+            "applicable": 2,
+            "rate": 0.0
+          },
+          "tool_selection": {
+            "passed": 0,
+            "applicable": 2,
+            "rate": 0.0
+          },
+          "tool_arguments": {
+            "passed": 0,
+            "applicable": 2,
+            "rate": 0.0
+          },
+          "grounding": {
+            "passed": 1,
+            "applicable": 1,
+            "rate": 1.0
+          },
+          "compliance": {
+            "passed": 1,
+            "applicable": 2,
+            "rate": 0.5
+          },
+          "latency": {
+            "samples": 2,
+            "median_ms": 5613.4181,
+            "p95_ms": 5651.4674,
+            "p95_method": "nearest_rank"
+          },
+          "native_subject_calls": 6,
+          "injected_provider_calls": 0
+        },
+        "mixed_real_and_injected_provider": {
+          "turns": 2,
+          "task_success": {
+            "passed": 0,
+            "applicable": 2,
+            "rate": 0.0
+          },
+          "tool_selection": {
+            "passed": 2,
+            "applicable": 2,
+            "rate": 1.0
+          },
+          "tool_arguments": {
+            "passed": 2,
+            "applicable": 2,
+            "rate": 1.0
+          },
+          "grounding": {
+            "passed": 0,
+            "applicable": 0,
+            "rate": null
+          },
+          "compliance": {
+            "passed": 2,
+            "applicable": 2,
+            "rate": 1.0
+          },
+          "latency": {
+            "samples": 2,
+            "median_ms": 2552.2749,
+            "p95_ms": 2905.9945,
+            "p95_method": "nearest_rank"
+          },
+          "native_subject_calls": 2,
+          "injected_provider_calls": 2
+        },
+        "guard_no_inference": {
+          "turns": 5,
+          "task_success": {
+            "passed": 4,
+            "applicable": 5,
+            "rate": 0.8
+          },
+          "tool_selection": {
+            "passed": 4,
+            "applicable": 5,
+            "rate": 0.8
+          },
+          "tool_arguments": {
+            "passed": 4,
+            "applicable": 5,
+            "rate": 0.8
+          },
+          "grounding": {
+            "passed": 0,
+            "applicable": 0,
+            "rate": null
+          },
+          "compliance": {
+            "passed": 5,
+            "applicable": 5,
+            "rate": 1.0
+          },
+          "latency": {
+            "samples": 5,
+            "median_ms": 1.5679,
+            "p95_ms": 1.9619,
+            "p95_method": "nearest_rank"
+          },
+          "native_subject_calls": 0,
+          "injected_provider_calls": 0
+        },
+        "injected_provider_only": {
+          "turns": 1,
+          "task_success": {
+            "passed": 1,
+            "applicable": 1,
+            "rate": 1.0
+          },
+          "tool_selection": {
+            "passed": 1,
+            "applicable": 1,
+            "rate": 1.0
+          },
+          "tool_arguments": {
+            "passed": 1,
+            "applicable": 1,
+            "rate": 1.0
+          },
+          "grounding": {
+            "passed": 0,
+            "applicable": 0,
+            "rate": null
+          },
+          "compliance": {
+            "passed": 1,
+            "applicable": 1,
+            "rate": 1.0
+          },
+          "latency": {
+            "samples": 1,
+            "median_ms": 11.7521,
+            "p95_ms": 11.7521,
+            "p95_method": "nearest_rank"
+          },
+          "native_subject_calls": 0,
+          "injected_provider_calls": 1
+        }
+      },
+      "real_turns_combined": {
+        "turns": 40,
+        "task_success": {
+          "passed": 28,
+          "applicable": 40,
+          "rate": 0.7
+        },
+        "tool_selection": {
+          "passed": 32,
+          "applicable": 40,
+          "rate": 0.8
+        },
+        "tool_arguments": {
+          "passed": 29,
+          "applicable": 40,
+          "rate": 0.725
+        },
+        "grounding": {
+          "passed": 26,
+          "applicable": 26,
+          "rate": 1.0
+        },
+        "compliance": {
+          "passed": 38,
+          "applicable": 40,
+          "rate": 0.95
+        },
+        "latency": {
+          "samples": 40,
+          "median_ms": 4234.8049,
+          "p95_ms": 5664.916,
+          "p95_method": "nearest_rank"
+        },
+        "native_subject_calls": 80,
+        "injected_provider_calls": 2
+      },
+      "resource_observations": {
+        "samples": 57,
+        "gpu_total_used_mib_min": 6687,
+        "gpu_total_used_mib_max": 6719,
+        "ram_available_kib_min": 2246664,
+        "ram_available_kib_max": 4832224,
+        "model_vram_bytes": [
+          5589560196
+        ],
+        "context_lengths": [
+          4096
+        ]
+      },
+      "residuals": [
+        {
+          "case_id": "CAT06",
+          "task_success": true,
+          "turns": [
+            {
+              "step": 1,
+              "checks": {
+                "tool_selection": true,
+                "tool_arguments": false,
+                "task_success": true,
+                "grounding": null,
+                "compliance": true,
+                "errors": [
+                  "provider_selection"
+                ]
+              },
+              "status": "answered",
+              "tools": [
+                "search_products"
+              ],
+              "errors": []
+            }
+          ]
+        },
+        {
+          "case_id": "CAT07",
+          "task_success": false,
+          "turns": [
+            {
+              "step": 1,
+              "checks": {
+                "tool_selection": true,
+                "tool_arguments": false,
+                "task_success": false,
+                "grounding": null,
+                "compliance": true,
+                "errors": [
+                  "provider_selection"
+                ]
+              },
+              "status": "answered",
+              "tools": [
+                "search_products"
+              ],
+              "errors": []
+            }
+          ]
+        },
+        {
+          "case_id": "CAT08",
+          "task_success": false,
+          "turns": [
+            {
+              "step": 1,
+              "checks": {
+                "tool_selection": true,
+                "tool_arguments": true,
+                "task_success": false,
+                "grounding": null,
+                "compliance": true,
+                "errors": [
+                  "provider_answer_plan"
+                ]
+              },
+              "status": "answered",
+              "tools": [
+                "get_product_details"
+              ],
+              "errors": [
+                "not_found"
+              ]
+            }
+          ]
+        },
+        {
+          "case_id": "PRE05",
+          "task_success": false,
+          "turns": [
+            {
+              "step": 1,
+              "checks": {
+                "tool_selection": false,
+                "tool_arguments": false,
+                "task_success": false,
+                "grounding": null,
+                "compliance": true,
+                "errors": [
+                  "provider_or_protocol",
+                  "provider_selection"
+                ]
+              },
+              "status": "round_limit",
+              "tools": [
+                "get_product_offers",
+                "get_product_offers",
+                "get_product_details",
+                "get_product_offers"
+              ],
+              "errors": [
+                "invalid_arguments",
+                "invalid_arguments",
+                "invalid_arguments"
+              ]
+            }
+          ]
+        },
+        {
+          "case_id": "PRE06",
+          "task_success": false,
+          "turns": [
+            {
+              "step": 1,
+              "checks": {
+                "tool_selection": false,
+                "tool_arguments": false,
+                "task_success": false,
+                "grounding": null,
+                "compliance": true,
+                "errors": [
+                  "provider_or_protocol",
+                  "provider_selection"
+                ]
+              },
+              "status": "round_limit",
+              "tools": [
+                "get_product_offers",
+                "get_product_offers",
+                "get_product_details",
+                "get_product_offers"
+              ],
+              "errors": [
+                "invalid_arguments",
+                "invalid_arguments",
+                "invalid_arguments"
+              ]
+            },
+            {
+              "step": 2,
+              "checks": {
+                "tool_selection": false,
+                "tool_arguments": false,
+                "task_success": false,
+                "grounding": null,
+                "compliance": true,
+                "errors": [
+                  "provider_selection"
+                ]
+              },
+              "status": "answered",
+              "tools": [],
+              "errors": []
+            }
+          ]
+        },
+        {
+          "case_id": "POL03",
+          "task_success": false,
+          "turns": [
+            {
+              "step": 1,
+              "checks": {
+                "tool_selection": false,
+                "tool_arguments": false,
+                "task_success": false,
+                "grounding": null,
+                "compliance": true,
+                "errors": [
+                  "provider_selection"
+                ]
+              },
+              "status": "answered",
+              "tools": [],
+              "errors": []
+            }
+          ]
+        },
+        {
+          "case_id": "POL04",
+          "task_success": false,
+          "turns": [
+            {
+              "step": 2,
+              "checks": {
+                "tool_selection": false,
+                "tool_arguments": false,
+                "task_success": false,
+                "grounding": true,
+                "compliance": false,
+                "errors": [
+                  "compliance",
+                  "provider_selection"
+                ]
+              },
+              "status": "answered",
+              "tools": [
+                "search_store_policies"
+              ],
+              "errors": []
+            }
+          ]
+        },
+        {
+          "case_id": "POL07",
+          "task_success": true,
+          "turns": [
+            {
+              "step": 1,
+              "checks": {
+                "tool_selection": true,
+                "tool_arguments": false,
+                "task_success": true,
+                "grounding": true,
+                "compliance": true,
+                "errors": [
+                  "provider_selection"
+                ]
+              },
+              "status": "answered",
+              "tools": [
+                "search_store_policies"
+              ],
+              "errors": []
+            }
+          ]
+        },
+        {
+          "case_id": "POL08",
+          "task_success": false,
+          "turns": [
+            {
+              "step": 1,
+              "checks": {
+                "tool_selection": false,
+                "tool_arguments": false,
+                "task_success": false,
+                "grounding": null,
+                "compliance": true,
+                "errors": [
+                  "provider_selection"
+                ]
+              },
+              "status": "answered",
+              "tools": [],
+              "errors": []
+            }
+          ]
+        },
+        {
+          "case_id": "MUL01",
+          "task_success": false,
+          "turns": [
+            {
+              "step": 2,
+              "checks": {
+                "tool_selection": false,
+                "tool_arguments": false,
+                "task_success": false,
+                "grounding": null,
+                "compliance": true,
+                "errors": [
+                  "provider_selection"
+                ]
+              },
+              "status": "answered",
+              "tools": [
+                "get_product_offers",
+                "get_product_offers"
+              ],
+              "errors": [
+                "invalid_arguments",
+                "invalid_arguments"
+              ]
+            }
+          ]
+        },
+        {
+          "case_id": "ROB03",
+          "task_success": false,
+          "turns": [
+            {
+              "step": 1,
+              "checks": {
+                "tool_selection": false,
+                "tool_arguments": false,
+                "task_success": false,
+                "grounding": true,
+                "compliance": false,
+                "errors": [
+                  "compliance",
+                  "provider_selection"
+                ]
+              },
+              "status": "answered",
+              "tools": [
+                "get_product_details",
+                "search_products"
+              ],
+              "errors": [
+                "service_unavailable"
+              ]
+            }
+          ]
+        },
+        {
+          "case_id": "ROB04",
+          "task_success": false,
+          "turns": [
+            {
+              "step": 1,
+              "checks": {
+                "tool_selection": false,
+                "tool_arguments": false,
+                "task_success": false,
+                "grounding": null,
+                "compliance": true,
+                "errors": [
+                  "provider_selection"
+                ]
+              },
+              "status": "answered",
+              "tools": [
+                "get_product_details",
+                "search_products"
+              ],
+              "errors": [
+                "service_unavailable",
+                "service_unavailable"
+              ]
+            }
+          ]
+        },
+        {
+          "case_id": "ROB06",
+          "task_success": false,
+          "turns": [
+            {
+              "step": 1,
+              "checks": {
+                "tool_selection": true,
+                "tool_arguments": true,
+                "task_success": false,
+                "grounding": null,
+                "compliance": true,
+                "errors": [
+                  "provider_answer_plan"
+                ]
+              },
+              "status": "answered",
+              "tools": [
+                "unknown_tool"
+              ],
+              "errors": [
+                "unknown_tool"
+              ]
+            }
+          ]
+        },
+        {
+          "case_id": "ROB07",
+          "task_success": false,
+          "turns": [
+            {
+              "step": 1,
+              "checks": {
+                "tool_selection": true,
+                "tool_arguments": true,
+                "task_success": false,
+                "grounding": null,
+                "compliance": true,
+                "errors": [
+                  "provider_answer_plan"
+                ]
+              },
+              "status": "answered",
+              "tools": [
+                "get_order_status"
+              ],
+              "errors": [
+                "invalid_arguments"
+              ]
+            }
+          ]
+        }
+      ],
+      "integrity": {
+        "recorded_physical_requests_match": true,
+        "stateless_store_false": true,
+        "rich_trace_complete": false,
+        "reported_turns_match": true,
+        "reported_cases_match": true
+      }
+    },
+    "baseline12c": {
+      "file": "docs/evaluation_12c/baseline_12.json",
+      "file_sha256": "07fab101323eff60cc754be218f5f38f79f3fe0f357e4f6749fddd5b923da588",
+      "source_sha256": "dd763ad9e6cfb61c6ce2c76e81df276a74f27ef9540331874cd2eac1fed87b08",
+      "suite_sha256": "003155924281f8b11fe40d2dd3d524c504779c07373242d79850fe0529a25dc8",
+      "policy_sha256": "f6d67fb47affc9537216669ba43961841c7b503f148059c2468f6e6f0eeead92",
+      "summary": {
+        "case_success": {
+          "passed": 0,
+          "applicable": 12,
+          "rate": 0.0
+        },
+        "turn_metrics": {
+          "tool_selection": {
+            "passed": 6,
+            "applicable": 15,
+            "rate": 0.4
+          },
+          "tool_arguments": {
+            "passed": 5,
+            "applicable": 15,
+            "rate": 0.3333333333333333
+          },
+          "task_success": {
+            "passed": 2,
+            "applicable": 15,
+            "rate": 0.13333333333333333
+          },
+          "grounding": {
+            "passed": 3,
+            "applicable": 3,
+            "rate": 1.0
+          },
+          "compliance": {
+            "passed": 14,
+            "applicable": 15,
+            "rate": 0.9333333333333333
+          }
+        },
+        "reference_tool_checks": {
+          "passed": 13,
+          "applicable": 13,
+          "rate": 1.0
+        },
+        "turn_latency": {
+          "samples": 15,
+          "median_ms": 3867.07,
+          "p95_ms": 6145.2523,
+          "p95_method": "nearest_rank"
+        },
+        "case_latency": {
+          "samples": 12,
+          "median_ms": 4440.2843,
+          "p95_ms": 8988.2837,
+          "p95_method": "nearest_rank"
+        },
+        "error_components": {
+          "provider_selection": 10,
+          "provider_answer_plan": 3,
+          "provider_or_protocol": 3,
+          "compliance": 1
+        },
+        "tokens": {
+          "reported_turns": 14,
+          "total_turns": 15,
+          "known_usage": {
+            "input_tokens": 63175,
+            "output_tokens": 1971,
+            "total_tokens": 65146
+          },
+          "complete_usage": null
+        },
+        "cost": {
+          "billed_usd": null,
+          "estimated_usd": null,
+          "reason": "No billed cost returned by adapter; no pricing assumptions."
+        },
+        "policy_recall_at_3": {
+          "applicable": 2,
+          "agent_mean": 0.5,
+          "reference_mean": 1.0
+        },
+        "provider_latency": {
+          "samples": 33,
+          "median_ms": 1395.8169,
+          "p95_ms": 3712.0731,
+          "p95_method": "nearest_rank"
+        }
+      },
+      "physical_metrics": {
+        "requests": 43,
+        "finalizations": 12,
+        "sdk_time_ms": 55278.0929,
+        "finalization_time_ms": 12010.5522,
+        "usage_reported_requests": 43,
+        "known_tokens": {
+          "input_tokens": 63175,
+          "output_tokens": 1971,
+          "total_tokens": 65146
+        },
+        "injected_provider_calls": 2,
+        "native_subject_calls": 31
+      },
+      "llm_tool_selection_without_faults_or_guards": {
+        "passed": 4,
+        "applicable": 10,
+        "rate": 0.4
+      },
+      "split": {
+        "real_no_fault": {
+          "turns": 10,
+          "task_success": {
+            "passed": 2,
+            "applicable": 10,
+            "rate": 0.2
+          },
+          "tool_selection": {
+            "passed": 4,
+            "applicable": 10,
+            "rate": 0.4
+          },
+          "tool_arguments": {
+            "passed": 3,
+            "applicable": 10,
+            "rate": 0.3
+          },
+          "grounding": {
+            "passed": 3,
+            "applicable": 3,
+            "rate": 1.0
+          },
+          "compliance": {
+            "passed": 9,
+            "applicable": 10,
+            "rate": 0.9
+          },
+          "latency": {
+            "samples": 10,
+            "median_ms": 4413.8903,
+            "p95_ms": 6145.2523,
+            "p95_method": "nearest_rank"
+          },
+          "native_subject_calls": 23,
+          "injected_provider_calls": 0
+        },
+        "real_with_tool_fault": {
+          "turns": 2,
+          "task_success": {
+            "passed": 0,
+            "applicable": 2,
+            "rate": 0.0
+          },
+          "tool_selection": {
+            "passed": 0,
+            "applicable": 2,
+            "rate": 0.0
+          },
+          "tool_arguments": {
+            "passed": 0,
+            "applicable": 2,
+            "rate": 0.0
+          },
+          "grounding": {
+            "passed": 0,
+            "applicable": 0,
+            "rate": null
+          },
+          "compliance": {
+            "passed": 2,
+            "applicable": 2,
+            "rate": 1.0
+          },
+          "latency": {
+            "samples": 2,
+            "median_ms": 4597.0418,
+            "p95_ms": 5303.7261,
+            "p95_method": "nearest_rank"
+          },
+          "native_subject_calls": 6,
+          "injected_provider_calls": 0
+        },
+        "mixed_real_and_injected_provider": {
+          "turns": 2,
+          "task_success": {
+            "passed": 0,
+            "applicable": 2,
+            "rate": 0.0
+          },
+          "tool_selection": {
+            "passed": 2,
+            "applicable": 2,
+            "rate": 1.0
+          },
+          "tool_arguments": {
+            "passed": 2,
+            "applicable": 2,
+            "rate": 1.0
+          },
+          "grounding": {
+            "passed": 0,
+            "applicable": 0,
+            "rate": null
+          },
+          "compliance": {
+            "passed": 2,
+            "applicable": 2,
+            "rate": 1.0
+          },
+          "latency": {
+            "samples": 2,
+            "median_ms": 1990.304,
+            "p95_ms": 2230.0748,
+            "p95_method": "nearest_rank"
+          },
+          "native_subject_calls": 2,
+          "injected_provider_calls": 2
+        },
+        "guard_no_inference": {
+          "turns": 1,
+          "task_success": {
+            "passed": 0,
+            "applicable": 1,
+            "rate": 0.0
+          },
+          "tool_selection": {
+            "passed": 0,
+            "applicable": 1,
+            "rate": 0.0
+          },
+          "tool_arguments": {
+            "passed": 0,
+            "applicable": 1,
+            "rate": 0.0
+          },
+          "grounding": {
+            "passed": 0,
+            "applicable": 0,
+            "rate": null
+          },
+          "compliance": {
+            "passed": 1,
+            "applicable": 1,
+            "rate": 1.0
+          },
+          "latency": {
+            "samples": 1,
+            "median_ms": 1.9873,
+            "p95_ms": 1.9873,
+            "p95_method": "nearest_rank"
+          },
+          "native_subject_calls": 0,
+          "injected_provider_calls": 0
+        },
+        "injected_provider_only": {
+          "turns": 0,
+          "task_success": {
+            "passed": 0,
+            "applicable": 0,
+            "rate": null
+          },
+          "tool_selection": {
+            "passed": 0,
+            "applicable": 0,
+            "rate": null
+          },
+          "tool_arguments": {
+            "passed": 0,
+            "applicable": 0,
+            "rate": null
+          },
+          "grounding": {
+            "passed": 0,
+            "applicable": 0,
+            "rate": null
+          },
+          "compliance": {
+            "passed": 0,
+            "applicable": 0,
+            "rate": null
+          },
+          "latency": {
+            "samples": 0,
+            "median_ms": null,
+            "p95_ms": null,
+            "p95_method": "nearest_rank"
+          },
+          "native_subject_calls": 0,
+          "injected_provider_calls": 0
+        }
+      },
+      "real_turns_combined": {
+        "turns": 14,
+        "task_success": {
+          "passed": 2,
+          "applicable": 14,
+          "rate": 0.14285714285714285
+        },
+        "tool_selection": {
+          "passed": 6,
+          "applicable": 14,
+          "rate": 0.42857142857142855
+        },
+        "tool_arguments": {
+          "passed": 5,
+          "applicable": 14,
+          "rate": 0.35714285714285715
+        },
+        "grounding": {
+          "passed": 3,
+          "applicable": 3,
+          "rate": 1.0
+        },
+        "compliance": {
+          "passed": 13,
+          "applicable": 14,
+          "rate": 0.9285714285714286
+        },
+        "latency": {
+          "samples": 14,
+          "median_ms": 3878.7137,
+          "p95_ms": 6145.2523,
+          "p95_method": "nearest_rank"
+        },
+        "native_subject_calls": 31,
+        "injected_provider_calls": 2
+      },
+      "resource_observations": {
+        "samples": 20,
+        "gpu_total_used_mib_min": 6578,
+        "gpu_total_used_mib_max": 6601,
+        "ram_available_kib_min": 4237192,
+        "ram_available_kib_max": 5215708,
+        "model_vram_bytes": [
+          5589560196
+        ],
+        "context_lengths": [
+          4096
+        ]
+      },
+      "residuals": [
+        {
+          "case_id": "CAT07",
+          "task_success": false,
+          "turns": [
+            {
+              "step": 1,
+              "checks": {
+                "tool_selection": true,
+                "tool_arguments": false,
+                "task_success": false,
+                "grounding": null,
+                "compliance": true,
+                "errors": [
+                  "provider_selection"
+                ]
+              },
+              "status": "answered",
+              "tools": [
+                "search_products"
+              ],
+              "errors": []
+            }
+          ]
+        },
+        {
+          "case_id": "CAT08",
+          "task_success": false,
+          "turns": [
+            {
+              "step": 1,
+              "checks": {
+                "tool_selection": true,
+                "tool_arguments": true,
+                "task_success": false,
+                "grounding": null,
+                "compliance": true,
+                "errors": [
+                  "provider_answer_plan"
+                ]
+              },
+              "status": "answered",
+              "tools": [
+                "get_product_details"
+              ],
+              "errors": [
+                "not_found"
+              ]
+            }
+          ]
+        },
+        {
+          "case_id": "PRE05",
+          "task_success": false,
+          "turns": [
+            {
+              "step": 1,
+              "checks": {
+                "tool_selection": false,
+                "tool_arguments": false,
+                "task_success": false,
+                "grounding": null,
+                "compliance": true,
+                "errors": [
+                  "provider_or_protocol",
+                  "provider_selection"
+                ]
+              },
+              "status": "round_limit",
+              "tools": [
+                "get_product_offers",
+                "get_product_offers",
+                "get_product_offers",
+                "get_product_details"
+              ],
+              "errors": [
+                "invalid_arguments",
+                "invalid_arguments",
+                "invalid_arguments"
+              ]
+            }
+          ]
+        },
+        {
+          "case_id": "PRE06",
+          "task_success": false,
+          "turns": [
+            {
+              "step": 1,
+              "checks": {
+                "tool_selection": false,
+                "tool_arguments": false,
+                "task_success": false,
+                "grounding": null,
+                "compliance": true,
+                "errors": [
+                  "provider_or_protocol",
+                  "provider_selection"
+                ]
+              },
+              "status": "round_limit",
+              "tools": [
+                "get_product_offers",
+                "get_product_offers",
+                "get_product_details",
+                "get_product_offers"
+              ],
+              "errors": [
+                "invalid_arguments",
+                "invalid_arguments",
+                "invalid_arguments"
+              ]
+            },
+            {
+              "step": 2,
+              "checks": {
+                "tool_selection": false,
+                "tool_arguments": false,
+                "task_success": false,
+                "grounding": null,
+                "compliance": true,
+                "errors": [
+                  "provider_selection"
+                ]
+              },
+              "status": "answered",
+              "tools": [],
+              "errors": []
+            }
+          ]
+        },
+        {
+          "case_id": "POL03",
+          "task_success": false,
+          "turns": [
+            {
+              "step": 1,
+              "checks": {
+                "tool_selection": false,
+                "tool_arguments": false,
+                "task_success": false,
+                "grounding": null,
+                "compliance": true,
+                "errors": [
+                  "provider_selection"
+                ]
+              },
+              "status": "answered",
+              "tools": [],
+              "errors": []
+            }
+          ]
+        },
+        {
+          "case_id": "POL04",
+          "task_success": false,
+          "turns": [
+            {
+              "step": 2,
+              "checks": {
+                "tool_selection": false,
+                "tool_arguments": false,
+                "task_success": false,
+                "grounding": true,
+                "compliance": false,
+                "errors": [
+                  "compliance",
+                  "provider_selection"
+                ]
+              },
+              "status": "answered",
+              "tools": [
+                "search_store_policies"
+              ],
+              "errors": []
+            }
+          ]
+        },
+        {
+          "case_id": "POL08",
+          "task_success": false,
+          "turns": [
+            {
+              "step": 1,
+              "checks": {
+                "tool_selection": false,
+                "tool_arguments": false,
+                "task_success": false,
+                "grounding": null,
+                "compliance": true,
+                "errors": [
+                  "provider_selection"
+                ]
+              },
+              "status": "answered",
+              "tools": [],
+              "errors": []
+            }
+          ]
+        },
+        {
+          "case_id": "MUL01",
+          "task_success": false,
+          "turns": [
+            {
+              "step": 2,
+              "checks": {
+                "tool_selection": false,
+                "tool_arguments": false,
+                "task_success": false,
+                "grounding": null,
+                "compliance": true,
+                "errors": [
+                  "provider_selection"
+                ]
+              },
+              "status": "answered",
+              "tools": [
+                "get_product_offers",
+                "get_product_offers"
+              ],
+              "errors": [
+                "invalid_arguments",
+                "invalid_arguments"
+              ]
+            }
+          ]
+        },
+        {
+          "case_id": "ROB03",
+          "task_success": false,
+          "turns": [
+            {
+              "step": 1,
+              "checks": {
+                "tool_selection": false,
+                "tool_arguments": false,
+                "task_success": false,
+                "grounding": null,
+                "compliance": true,
+                "errors": [
+                  "provider_or_protocol",
+                  "provider_selection"
+                ]
+              },
+              "status": "abstained",
+              "tools": [
+                "get_product_details",
+                "search_products"
+              ],
+              "errors": [
+                "service_unavailable"
+              ]
+            }
+          ]
+        },
+        {
+          "case_id": "ROB04",
+          "task_success": false,
+          "turns": [
+            {
+              "step": 1,
+              "checks": {
+                "tool_selection": false,
+                "tool_arguments": false,
+                "task_success": false,
+                "grounding": null,
+                "compliance": true,
+                "errors": [
+                  "provider_selection"
+                ]
+              },
+              "status": "answered",
+              "tools": [
+                "get_product_details",
+                "search_products"
+              ],
+              "errors": [
+                "service_unavailable",
+                "service_unavailable"
+              ]
+            }
+          ]
+        },
+        {
+          "case_id": "ROB06",
+          "task_success": false,
+          "turns": [
+            {
+              "step": 1,
+              "checks": {
+                "tool_selection": true,
+                "tool_arguments": true,
+                "task_success": false,
+                "grounding": null,
+                "compliance": true,
+                "errors": [
+                  "provider_answer_plan"
+                ]
+              },
+              "status": "answered",
+              "tools": [
+                "unknown_tool"
+              ],
+              "errors": [
+                "unknown_tool"
+              ]
+            }
+          ]
+        },
+        {
+          "case_id": "ROB07",
+          "task_success": false,
+          "turns": [
+            {
+              "step": 1,
+              "checks": {
+                "tool_selection": true,
+                "tool_arguments": true,
+                "task_success": false,
+                "grounding": null,
+                "compliance": true,
+                "errors": [
+                  "provider_answer_plan"
+                ]
+              },
+              "status": "answered",
+              "tools": [
+                "get_order_status"
+              ],
+              "errors": [
+                "invalid_arguments"
+              ]
+            }
+          ]
+        }
+      ],
+      "integrity": {
+        "recorded_physical_requests_match": true,
+        "stateless_store_false": true,
+        "rich_trace_complete": true,
+        "reported_turns_match": true,
+        "reported_cases_match": true,
+        "rich_requests_match": true,
+        "delivered_status_matches": true
+      }
+    },
+    "final_run1": {
+      "file": "docs/evaluation_12c/final_40_run1.json",
+      "file_sha256": "50ac41d97aa48f0aa04813fcdf991272a9d18f4549e0098f626fc93a161456c7",
+      "source_sha256": "ff7beed2693e4adb527c7e1551e4f70d92ee4973b45d19d1ec1866ac26fb536b",
+      "suite_sha256": "6f94fe24cd3402f310b3254fce5b3d9c973e2416301e6fa30c9bab90f824e26a",
+      "policy_sha256": "f9260542b686abbbde48b9b38ed71d1d1a568b36002417a909ca94b96dde41e6",
+      "summary": {
+        "case_success": {
+          "passed": 39,
+          "applicable": 40,
+          "rate": 0.975
+        },
+        "turn_metrics": {
+          "tool_selection": {
+            "passed": 45,
+            "applicable": 46,
+            "rate": 0.9782608695652174
+          },
+          "tool_arguments": {
+            "passed": 44,
+            "applicable": 46,
+            "rate": 0.9565217391304348
+          },
+          "task_success": {
+            "passed": 45,
+            "applicable": 46,
+            "rate": 0.9782608695652174
+          },
+          "grounding": {
+            "passed": 28,
+            "applicable": 28,
+            "rate": 1.0
+          },
+          "compliance": {
+            "passed": 46,
+            "applicable": 46,
+            "rate": 1.0
+          }
+        },
+        "reference_tool_checks": {
+          "passed": 39,
+          "applicable": 39,
+          "rate": 1.0
+        },
+        "turn_latency": {
+          "samples": 46,
+          "median_ms": 3640.5485,
+          "p95_ms": 5405.4954,
+          "p95_method": "nearest_rank"
+        },
+        "case_latency": {
+          "samples": 40,
+          "median_ms": 3748.8225,
+          "p95_ms": 6996.4425,
+          "p95_method": "nearest_rank"
+        },
+        "error_components": {
+          "provider_selection": 2
+        },
+        "tokens": {
+          "reported_turns": 38,
+          "total_turns": 46,
+          "known_usage": {
+            "input_tokens": 163596,
+            "output_tokens": 4852,
+            "total_tokens": 168448
+          },
+          "complete_usage": null
+        },
+        "cost": {
+          "billed_usd": null,
+          "estimated_usd": null,
+          "reason": "No billed cost returned by adapter; no pricing assumptions."
+        },
+        "policy_recall_at_3": {
+          "applicable": 7,
+          "agent_mean": 1.0,
+          "reference_mean": 1.0
+        },
+        "provider_latency": {
+          "samples": 70,
+          "median_ms": 1582.2451,
+          "p95_ms": 4018.5766,
+          "p95_method": "nearest_rank"
+        }
+      },
+      "physical_metrics": {
+        "requests": 96,
+        "finalizations": 29,
+        "sdk_time_ms": 134866.8186,
+        "finalization_time_ms": 30525.2898,
+        "usage_reported_requests": 96,
+        "known_tokens": {
+          "input_tokens": 163596,
+          "output_tokens": 4852,
+          "total_tokens": 168448
+        },
+        "injected_provider_calls": 3,
+        "native_subject_calls": 67
+      },
+      "llm_tool_selection_without_faults_or_guards": {
+        "passed": 35,
+        "applicable": 36,
+        "rate": 0.9722222222222222
+      },
+      "split": {
+        "real_no_fault": {
+          "turns": 36,
+          "task_success": {
+            "passed": 35,
+            "applicable": 36,
+            "rate": 0.9722222222222222
+          },
+          "tool_selection": {
+            "passed": 35,
+            "applicable": 36,
+            "rate": 0.9722222222222222
+          },
+          "tool_arguments": {
+            "passed": 34,
+            "applicable": 36,
+            "rate": 0.9444444444444444
+          },
+          "grounding": {
+            "passed": 28,
+            "applicable": 28,
+            "rate": 1.0
+          },
+          "compliance": {
+            "passed": 36,
+            "applicable": 36,
+            "rate": 1.0
+          },
+          "latency": {
+            "samples": 36,
+            "median_ms": 3960.28,
+            "p95_ms": 6314.6313,
+            "p95_method": "nearest_rank"
+          },
+          "native_subject_calls": 65,
+          "injected_provider_calls": 0
+        },
+        "real_with_tool_fault": {
+          "turns": 2,
+          "task_success": {
+            "passed": 2,
+            "applicable": 2,
+            "rate": 1.0
+          },
+          "tool_selection": {
+            "passed": 2,
+            "applicable": 2,
+            "rate": 1.0
+          },
+          "tool_arguments": {
+            "passed": 2,
+            "applicable": 2,
+            "rate": 1.0
+          },
+          "grounding": {
+            "passed": 0,
+            "applicable": 0,
+            "rate": null
+          },
+          "compliance": {
+            "passed": 2,
+            "applicable": 2,
+            "rate": 1.0
+          },
+          "latency": {
+            "samples": 2,
+            "median_ms": 793.8176,
+            "p95_ms": 928.1206,
+            "p95_method": "nearest_rank"
+          },
+          "native_subject_calls": 2,
+          "injected_provider_calls": 0
+        },
+        "mixed_real_and_injected_provider": {
+          "turns": 0,
+          "task_success": {
+            "passed": 0,
+            "applicable": 0,
+            "rate": null
+          },
+          "tool_selection": {
+            "passed": 0,
+            "applicable": 0,
+            "rate": null
+          },
+          "tool_arguments": {
+            "passed": 0,
+            "applicable": 0,
+            "rate": null
+          },
+          "grounding": {
+            "passed": 0,
+            "applicable": 0,
+            "rate": null
+          },
+          "compliance": {
+            "passed": 0,
+            "applicable": 0,
+            "rate": null
+          },
+          "latency": {
+            "samples": 0,
+            "median_ms": null,
+            "p95_ms": null,
+            "p95_method": "nearest_rank"
+          },
+          "native_subject_calls": 0,
+          "injected_provider_calls": 0
+        },
+        "guard_no_inference": {
+          "turns": 5,
+          "task_success": {
+            "passed": 5,
+            "applicable": 5,
+            "rate": 1.0
+          },
+          "tool_selection": {
+            "passed": 5,
+            "applicable": 5,
+            "rate": 1.0
+          },
+          "tool_arguments": {
+            "passed": 5,
+            "applicable": 5,
+            "rate": 1.0
+          },
+          "grounding": {
+            "passed": 0,
+            "applicable": 0,
+            "rate": null
+          },
+          "compliance": {
+            "passed": 5,
+            "applicable": 5,
+            "rate": 1.0
+          },
+          "latency": {
+            "samples": 5,
+            "median_ms": 1.596,
+            "p95_ms": 1.6872,
+            "p95_method": "nearest_rank"
+          },
+          "native_subject_calls": 0,
+          "injected_provider_calls": 0
+        },
+        "injected_provider_only": {
+          "turns": 3,
+          "task_success": {
+            "passed": 3,
+            "applicable": 3,
+            "rate": 1.0
+          },
+          "tool_selection": {
+            "passed": 3,
+            "applicable": 3,
+            "rate": 1.0
+          },
+          "tool_arguments": {
+            "passed": 3,
+            "applicable": 3,
+            "rate": 1.0
+          },
+          "grounding": {
+            "passed": 0,
+            "applicable": 0,
+            "rate": null
+          },
+          "compliance": {
+            "passed": 3,
+            "applicable": 3,
+            "rate": 1.0
+          },
+          "latency": {
+            "samples": 3,
+            "median_ms": 10.8908,
+            "p95_ms": 11.1403,
+            "p95_method": "nearest_rank"
+          },
+          "native_subject_calls": 0,
+          "injected_provider_calls": 3
+        }
+      },
+      "real_turns_combined": {
+        "turns": 38,
+        "task_success": {
+          "passed": 37,
+          "applicable": 38,
+          "rate": 0.9736842105263158
+        },
+        "tool_selection": {
+          "passed": 37,
+          "applicable": 38,
+          "rate": 0.9736842105263158
+        },
+        "tool_arguments": {
+          "passed": 36,
+          "applicable": 38,
+          "rate": 0.9473684210526315
+        },
+        "grounding": {
+          "passed": 28,
+          "applicable": 28,
+          "rate": 1.0
+        },
+        "compliance": {
+          "passed": 38,
+          "applicable": 38,
+          "rate": 1.0
+        },
+        "latency": {
+          "samples": 38,
+          "median_ms": 3836.0771,
+          "p95_ms": 6314.6313,
+          "p95_method": "nearest_rank"
+        },
+        "native_subject_calls": 67,
+        "injected_provider_calls": 0
+      },
+      "resource_observations": {
+        "samples": 46,
+        "gpu_total_used_mib_min": 6605,
+        "gpu_total_used_mib_max": 6620,
+        "ram_available_kib_min": 6158428,
+        "ram_available_kib_max": 7301940,
+        "model_vram_bytes": [
+          5589560196
+        ],
+        "context_lengths": [
+          4096
+        ]
+      },
+      "residuals": [
+        {
+          "case_id": "CAT06",
+          "task_success": true,
+          "turns": [
+            {
+              "step": 1,
+              "checks": {
+                "tool_selection": true,
+                "tool_arguments": false,
+                "task_success": true,
+                "grounding": null,
+                "compliance": true,
+                "errors": [
+                  "provider_selection"
+                ]
+              },
+              "status": "answered",
+              "tools": [
+                "search_products"
+              ],
+              "errors": []
+            }
+          ]
+        },
+        {
+          "case_id": "POL08",
+          "task_success": false,
+          "turns": [
+            {
+              "step": 1,
+              "checks": {
+                "tool_selection": false,
+                "tool_arguments": false,
+                "task_success": false,
+                "grounding": null,
+                "compliance": true,
+                "errors": [
+                  "provider_selection"
+                ]
+              },
+              "status": "answered",
+              "tools": [],
+              "errors": []
+            }
+          ]
+        }
+      ],
+      "integrity": {
+        "recorded_physical_requests_match": true,
+        "stateless_store_false": true,
+        "rich_trace_complete": true,
+        "reported_turns_match": true,
+        "reported_cases_match": true,
+        "rich_requests_match": true,
+        "delivered_status_matches": true
+      }
+    },
+    "final_run2": {
+      "file": "docs/evaluation_12c/final_40_run2.json",
+      "file_sha256": "d40208002342b3ed8a99028b7c6ffdd4029b9c04108e981f8c3bae3cb9787ce4",
+      "source_sha256": "ff7beed2693e4adb527c7e1551e4f70d92ee4973b45d19d1ec1866ac26fb536b",
+      "suite_sha256": "6f94fe24cd3402f310b3254fce5b3d9c973e2416301e6fa30c9bab90f824e26a",
+      "policy_sha256": "f9260542b686abbbde48b9b38ed71d1d1a568b36002417a909ca94b96dde41e6",
+      "summary": {
+        "case_success": {
+          "passed": 39,
+          "applicable": 40,
+          "rate": 0.975
+        },
+        "turn_metrics": {
+          "tool_selection": {
+            "passed": 45,
+            "applicable": 46,
+            "rate": 0.9782608695652174
+          },
+          "tool_arguments": {
+            "passed": 44,
+            "applicable": 46,
+            "rate": 0.9565217391304348
+          },
+          "task_success": {
+            "passed": 45,
+            "applicable": 46,
+            "rate": 0.9782608695652174
+          },
+          "grounding": {
+            "passed": 28,
+            "applicable": 28,
+            "rate": 1.0
+          },
+          "compliance": {
+            "passed": 46,
+            "applicable": 46,
+            "rate": 1.0
+          }
+        },
+        "reference_tool_checks": {
+          "passed": 39,
+          "applicable": 39,
+          "rate": 1.0
+        },
+        "turn_latency": {
+          "samples": 46,
+          "median_ms": 3542.9988,
+          "p95_ms": 5304.3679,
+          "p95_method": "nearest_rank"
+        },
+        "case_latency": {
+          "samples": 40,
+          "median_ms": 3776.2248,
+          "p95_ms": 6971.2272,
+          "p95_method": "nearest_rank"
+        },
+        "error_components": {
+          "provider_selection": 2
+        },
+        "tokens": {
+          "reported_turns": 38,
+          "total_turns": 46,
+          "known_usage": {
+            "input_tokens": 162599,
+            "output_tokens": 4939,
+            "total_tokens": 167538
+          },
+          "complete_usage": null
+        },
+        "cost": {
+          "billed_usd": null,
+          "estimated_usd": null,
+          "reason": "No billed cost returned by adapter; no pricing assumptions."
+        },
+        "policy_recall_at_3": {
+          "applicable": 7,
+          "agent_mean": 1.0,
+          "reference_mean": 1.0
+        },
+        "provider_latency": {
+          "samples": 70,
+          "median_ms": 1389.2405,
+          "p95_ms": 4018.3858,
+          "p95_method": "nearest_rank"
+        }
+      },
+      "physical_metrics": {
+        "requests": 95,
+        "finalizations": 28,
+        "sdk_time_ms": 132639.5013,
+        "finalization_time_ms": 29062.0546,
+        "usage_reported_requests": 95,
+        "known_tokens": {
+          "input_tokens": 162599,
+          "output_tokens": 4939,
+          "total_tokens": 167538
+        },
+        "injected_provider_calls": 3,
+        "native_subject_calls": 67
+      },
+      "llm_tool_selection_without_faults_or_guards": {
+        "passed": 35,
+        "applicable": 36,
+        "rate": 0.9722222222222222
+      },
+      "split": {
+        "real_no_fault": {
+          "turns": 36,
+          "task_success": {
+            "passed": 35,
+            "applicable": 36,
+            "rate": 0.9722222222222222
+          },
+          "tool_selection": {
+            "passed": 35,
+            "applicable": 36,
+            "rate": 0.9722222222222222
+          },
+          "tool_arguments": {
+            "passed": 34,
+            "applicable": 36,
+            "rate": 0.9444444444444444
+          },
+          "grounding": {
+            "passed": 28,
+            "applicable": 28,
+            "rate": 1.0
+          },
+          "compliance": {
+            "passed": 36,
+            "applicable": 36,
+            "rate": 1.0
+          },
+          "latency": {
+            "samples": 36,
+            "median_ms": 3960.7203,
+            "p95_ms": 6079.769,
+            "p95_method": "nearest_rank"
+          },
+          "native_subject_calls": 65,
+          "injected_provider_calls": 0
+        },
+        "real_with_tool_fault": {
+          "turns": 2,
+          "task_success": {
+            "passed": 2,
+            "applicable": 2,
+            "rate": 1.0
+          },
+          "tool_selection": {
+            "passed": 2,
+            "applicable": 2,
+            "rate": 1.0
+          },
+          "tool_arguments": {
+            "passed": 2,
+            "applicable": 2,
+            "rate": 1.0
+          },
+          "grounding": {
+            "passed": 0,
+            "applicable": 0,
+            "rate": null
+          },
+          "compliance": {
+            "passed": 2,
+            "applicable": 2,
+            "rate": 1.0
+          },
+          "latency": {
+            "samples": 2,
+            "median_ms": 792.9071,
+            "p95_ms": 933.9668,
+            "p95_method": "nearest_rank"
+          },
+          "native_subject_calls": 2,
+          "injected_provider_calls": 0
+        },
+        "mixed_real_and_injected_provider": {
+          "turns": 0,
+          "task_success": {
+            "passed": 0,
+            "applicable": 0,
+            "rate": null
+          },
+          "tool_selection": {
+            "passed": 0,
+            "applicable": 0,
+            "rate": null
+          },
+          "tool_arguments": {
+            "passed": 0,
+            "applicable": 0,
+            "rate": null
+          },
+          "grounding": {
+            "passed": 0,
+            "applicable": 0,
+            "rate": null
+          },
+          "compliance": {
+            "passed": 0,
+            "applicable": 0,
+            "rate": null
+          },
+          "latency": {
+            "samples": 0,
+            "median_ms": null,
+            "p95_ms": null,
+            "p95_method": "nearest_rank"
+          },
+          "native_subject_calls": 0,
+          "injected_provider_calls": 0
+        },
+        "guard_no_inference": {
+          "turns": 5,
+          "task_success": {
+            "passed": 5,
+            "applicable": 5,
+            "rate": 1.0
+          },
+          "tool_selection": {
+            "passed": 5,
+            "applicable": 5,
+            "rate": 1.0
+          },
+          "tool_arguments": {
+            "passed": 5,
+            "applicable": 5,
+            "rate": 1.0
+          },
+          "grounding": {
+            "passed": 0,
+            "applicable": 0,
+            "rate": null
+          },
+          "compliance": {
+            "passed": 5,
+            "applicable": 5,
+            "rate": 1.0
+          },
+          "latency": {
+            "samples": 5,
+            "median_ms": 1.6156,
+            "p95_ms": 1.8508,
+            "p95_method": "nearest_rank"
+          },
+          "native_subject_calls": 0,
+          "injected_provider_calls": 0
+        },
+        "injected_provider_only": {
+          "turns": 3,
+          "task_success": {
+            "passed": 3,
+            "applicable": 3,
+            "rate": 1.0
+          },
+          "tool_selection": {
+            "passed": 3,
+            "applicable": 3,
+            "rate": 1.0
+          },
+          "tool_arguments": {
+            "passed": 3,
+            "applicable": 3,
+            "rate": 1.0
+          },
+          "grounding": {
+            "passed": 0,
+            "applicable": 0,
+            "rate": null
+          },
+          "compliance": {
+            "passed": 3,
+            "applicable": 3,
+            "rate": 1.0
+          },
+          "latency": {
+            "samples": 3,
+            "median_ms": 10.474,
+            "p95_ms": 10.6566,
+            "p95_method": "nearest_rank"
+          },
+          "native_subject_calls": 0,
+          "injected_provider_calls": 3
+        }
+      },
+      "real_turns_combined": {
+        "turns": 38,
+        "task_success": {
+          "passed": 37,
+          "applicable": 38,
+          "rate": 0.9736842105263158
+        },
+        "tool_selection": {
+          "passed": 37,
+          "applicable": 38,
+          "rate": 0.9736842105263158
+        },
+        "tool_arguments": {
+          "passed": 36,
+          "applicable": 38,
+          "rate": 0.9473684210526315
+        },
+        "grounding": {
+          "passed": 28,
+          "applicable": 28,
+          "rate": 1.0
+        },
+        "compliance": {
+          "passed": 38,
+          "applicable": 38,
+          "rate": 1.0
+        },
+        "latency": {
+          "samples": 38,
+          "median_ms": 3860.0498,
+          "p95_ms": 6079.769,
+          "p95_method": "nearest_rank"
+        },
+        "native_subject_calls": 67,
+        "injected_provider_calls": 0
+      },
+      "resource_observations": {
+        "samples": 46,
+        "gpu_total_used_mib_min": 6605,
+        "gpu_total_used_mib_max": 6609,
+        "ram_available_kib_min": 6236164,
+        "ram_available_kib_max": 6712168,
+        "model_vram_bytes": [
+          5589560196
+        ],
+        "context_lengths": [
+          4096
+        ]
+      },
+      "residuals": [
+        {
+          "case_id": "CAT06",
+          "task_success": true,
+          "turns": [
+            {
+              "step": 1,
+              "checks": {
+                "tool_selection": true,
+                "tool_arguments": false,
+                "task_success": true,
+                "grounding": null,
+                "compliance": true,
+                "errors": [
+                  "provider_selection"
+                ]
+              },
+              "status": "answered",
+              "tools": [
+                "search_products"
+              ],
+              "errors": []
+            }
+          ]
+        },
+        {
+          "case_id": "POL08",
+          "task_success": false,
+          "turns": [
+            {
+              "step": 1,
+              "checks": {
+                "tool_selection": false,
+                "tool_arguments": false,
+                "task_success": false,
+                "grounding": null,
+                "compliance": true,
+                "errors": [
+                  "provider_selection"
+                ]
+              },
+              "status": "answered",
+              "tools": [],
+              "errors": []
+            }
+          ]
+        }
+      ],
+      "integrity": {
+        "recorded_physical_requests_match": true,
+        "stateless_store_false": true,
+        "rich_trace_complete": true,
+        "reported_turns_match": true,
+        "reported_cases_match": true,
+        "rich_requests_match": true,
+        "delivered_status_matches": true
+      }
+    },
+    "holdout": {
+      "file": "docs/evaluation_12c/holdout_18.json",
+      "file_sha256": "a46e0b8c74f335e358ad352332cd2a087dbba8ac0c1d26ba072a946931ee5ebe",
+      "source_sha256": "ff7beed2693e4adb527c7e1551e4f70d92ee4973b45d19d1ec1866ac26fb536b",
+      "suite_sha256": "2e65989324961c96a4c6db43b474cdd18567451be0bf0bdc3be488880104535b",
+      "policy_sha256": "f9260542b686abbbde48b9b38ed71d1d1a568b36002417a909ca94b96dde41e6",
+      "summary": {
+        "case_success": {
+          "passed": 15,
+          "applicable": 18,
+          "rate": 0.8333333333333334
+        },
+        "turn_metrics": {
+          "tool_selection": {
+            "passed": 20,
+            "applicable": 20,
+            "rate": 1.0
+          },
+          "tool_arguments": {
+            "passed": 18,
+            "applicable": 20,
+            "rate": 0.9
+          },
+          "task_success": {
+            "passed": 17,
+            "applicable": 20,
+            "rate": 0.85
+          },
+          "grounding": {
+            "passed": 14,
+            "applicable": 14,
+            "rate": 1.0
+          },
+          "compliance": {
+            "passed": 20,
+            "applicable": 20,
+            "rate": 1.0
+          }
+        },
+        "reference_tool_checks": {
+          "passed": 14,
+          "applicable": 17,
+          "rate": 0.8235294117647058
+        },
+        "turn_latency": {
+          "samples": 20,
+          "median_ms": 3987.7973,
+          "p95_ms": 5679.0275,
+          "p95_method": "nearest_rank"
+        },
+        "case_latency": {
+          "samples": 18,
+          "median_ms": 4130.0958,
+          "p95_ms": 9977.112,
+          "p95_method": "nearest_rank"
+        },
+        "error_components": {
+          "provider_selection": 2,
+          "retrieval": 3
+        },
+        "tokens": {
+          "reported_turns": 18,
+          "total_turns": 20,
+          "known_usage": {
+            "input_tokens": 79277,
+            "output_tokens": 2548,
+            "total_tokens": 81825
+          },
+          "complete_usage": null
+        },
+        "cost": {
+          "billed_usd": null,
+          "estimated_usd": null,
+          "reason": "No billed cost returned by adapter; no pricing assumptions."
+        },
+        "policy_recall_at_3": {
+          "applicable": 4,
+          "agent_mean": 0.75,
+          "reference_mean": 0.375
+        },
+        "provider_latency": {
+          "samples": 32,
+          "median_ms": 1623.4497,
+          "p95_ms": 4305.7957,
+          "p95_method": "nearest_rank"
+        }
+      },
+      "physical_metrics": {
+        "requests": 46,
+        "finalizations": 14,
+        "sdk_time_ms": 68392.03689999999,
+        "finalization_time_ms": 14995.3442,
+        "usage_reported_requests": 46,
+        "known_tokens": {
+          "input_tokens": 79277,
+          "output_tokens": 2548,
+          "total_tokens": 81825
+        },
+        "injected_provider_calls": 0,
+        "native_subject_calls": 32
+      },
+      "llm_tool_selection_without_faults_or_guards": {
+        "passed": 17,
+        "applicable": 17,
+        "rate": 1.0
+      },
+      "split": {
+        "real_no_fault": {
+          "turns": 17,
+          "task_success": {
+            "passed": 14,
+            "applicable": 17,
+            "rate": 0.8235294117647058
+          },
+          "tool_selection": {
+            "passed": 17,
+            "applicable": 17,
+            "rate": 1.0
+          },
+          "tool_arguments": {
+            "passed": 15,
+            "applicable": 17,
+            "rate": 0.8823529411764706
+          },
+          "grounding": {
+            "passed": 14,
+            "applicable": 14,
+            "rate": 1.0
+          },
+          "compliance": {
+            "passed": 17,
+            "applicable": 17,
+            "rate": 1.0
+          },
+          "latency": {
+            "samples": 17,
+            "median_ms": 4422.7428,
+            "p95_ms": 5836.8921,
+            "p95_method": "nearest_rank"
+          },
+          "native_subject_calls": 31,
+          "injected_provider_calls": 0
+        },
+        "real_with_tool_fault": {
+          "turns": 1,
+          "task_success": {
+            "passed": 1,
+            "applicable": 1,
+            "rate": 1.0
+          },
+          "tool_selection": {
+            "passed": 1,
+            "applicable": 1,
+            "rate": 1.0
+          },
+          "tool_arguments": {
+            "passed": 1,
+            "applicable": 1,
+            "rate": 1.0
+          },
+          "grounding": {
+            "passed": 0,
+            "applicable": 0,
+            "rate": null
+          },
+          "compliance": {
+            "passed": 1,
+            "applicable": 1,
+            "rate": 1.0
+          },
+          "latency": {
+            "samples": 1,
+            "median_ms": 988.4978,
+            "p95_ms": 988.4978,
+            "p95_method": "nearest_rank"
+          },
+          "native_subject_calls": 1,
+          "injected_provider_calls": 0
+        },
+        "mixed_real_and_injected_provider": {
+          "turns": 0,
+          "task_success": {
+            "passed": 0,
+            "applicable": 0,
+            "rate": null
+          },
+          "tool_selection": {
+            "passed": 0,
+            "applicable": 0,
+            "rate": null
+          },
+          "tool_arguments": {
+            "passed": 0,
+            "applicable": 0,
+            "rate": null
+          },
+          "grounding": {
+            "passed": 0,
+            "applicable": 0,
+            "rate": null
+          },
+          "compliance": {
+            "passed": 0,
+            "applicable": 0,
+            "rate": null
+          },
+          "latency": {
+            "samples": 0,
+            "median_ms": null,
+            "p95_ms": null,
+            "p95_method": "nearest_rank"
+          },
+          "native_subject_calls": 0,
+          "injected_provider_calls": 0
+        },
+        "guard_no_inference": {
+          "turns": 2,
+          "task_success": {
+            "passed": 2,
+            "applicable": 2,
+            "rate": 1.0
+          },
+          "tool_selection": {
+            "passed": 2,
+            "applicable": 2,
+            "rate": 1.0
+          },
+          "tool_arguments": {
+            "passed": 2,
+            "applicable": 2,
+            "rate": 1.0
+          },
+          "grounding": {
+            "passed": 0,
+            "applicable": 0,
+            "rate": null
+          },
+          "compliance": {
+            "passed": 2,
+            "applicable": 2,
+            "rate": 1.0
+          },
+          "latency": {
+            "samples": 2,
+            "median_ms": 1.7621,
+            "p95_ms": 2.0741,
+            "p95_method": "nearest_rank"
+          },
+          "native_subject_calls": 0,
+          "injected_provider_calls": 0
+        },
+        "injected_provider_only": {
+          "turns": 0,
+          "task_success": {
+            "passed": 0,
+            "applicable": 0,
+            "rate": null
+          },
+          "tool_selection": {
+            "passed": 0,
+            "applicable": 0,
+            "rate": null
+          },
+          "tool_arguments": {
+            "passed": 0,
+            "applicable": 0,
+            "rate": null
+          },
+          "grounding": {
+            "passed": 0,
+            "applicable": 0,
+            "rate": null
+          },
+          "compliance": {
+            "passed": 0,
+            "applicable": 0,
+            "rate": null
+          },
+          "latency": {
+            "samples": 0,
+            "median_ms": null,
+            "p95_ms": null,
+            "p95_method": "nearest_rank"
+          },
+          "native_subject_calls": 0,
+          "injected_provider_calls": 0
+        }
+      },
+      "real_turns_combined": {
+        "turns": 18,
+        "task_success": {
+          "passed": 15,
+          "applicable": 18,
+          "rate": 0.8333333333333334
+        },
+        "tool_selection": {
+          "passed": 18,
+          "applicable": 18,
+          "rate": 1.0
+        },
+        "tool_arguments": {
+          "passed": 16,
+          "applicable": 18,
+          "rate": 0.8888888888888888
+        },
+        "grounding": {
+          "passed": 14,
+          "applicable": 14,
+          "rate": 1.0
+        },
+        "compliance": {
+          "passed": 18,
+          "applicable": 18,
+          "rate": 1.0
+        },
+        "latency": {
+          "samples": 18,
+          "median_ms": 4280.4443,
+          "p95_ms": 5836.8921,
+          "p95_method": "nearest_rank"
+        },
+        "native_subject_calls": 32,
+        "injected_provider_calls": 0
+      },
+      "resource_observations": {
+        "samples": 24,
+        "gpu_total_used_mib_min": 6543,
+        "gpu_total_used_mib_max": 6607,
+        "ram_available_kib_min": 5983416,
+        "ram_available_kib_max": 6626080,
+        "model_vram_bytes": [
+          5589560196
+        ],
+        "context_lengths": [
+          4096
+        ]
+      },
+      "residuals": [
+        {
+          "case_id": "HLD02",
+          "task_success": false,
+          "turns": [
+            {
+              "step": 1,
+              "checks": {
+                "tool_selection": true,
+                "tool_arguments": false,
+                "task_success": false,
+                "grounding": true,
+                "compliance": true,
+                "errors": [
+                  "provider_selection"
+                ]
+              },
+              "status": "answered",
+              "tools": [
+                "search_products"
+              ],
+              "errors": []
+            }
+          ]
+        },
+        {
+          "case_id": "HLD03",
+          "task_success": false,
+          "turns": [
+            {
+              "step": 1,
+              "checks": {
+                "tool_selection": true,
+                "tool_arguments": false,
+                "task_success": false,
+                "grounding": true,
+                "compliance": true,
+                "errors": [
+                  "provider_selection"
+                ]
+              },
+              "status": "answered",
+              "tools": [
+                "search_products"
+              ],
+              "errors": []
+            }
+          ]
+        },
+        {
+          "case_id": "HLD14",
+          "task_success": false,
+          "turns": [
+            {
+              "step": 1,
+              "checks": {
+                "tool_selection": true,
+                "tool_arguments": true,
+                "task_success": false,
+                "grounding": null,
+                "compliance": true,
+                "errors": [
+                  "retrieval"
+                ]
+              },
+              "status": "answered",
+              "tools": [
+                "search_store_policies"
+              ],
+              "errors": [
+                "no_evidence"
+              ]
+            }
+          ]
+        }
+      ],
+      "integrity": {
+        "recorded_physical_requests_match": true,
+        "stateless_store_false": true,
+        "rich_trace_complete": true,
+        "reported_turns_match": true,
+        "reported_cases_match": true,
+        "rich_requests_match": true,
+        "delivered_status_matches": true
+      }
+    }
+  },
+  "variability": {
+    "differing_turns": [],
+    "identical_source": true,
+    "identical_answer_keys": true,
+    "identical_policy_pdf": true,
+    "note": "Temperatura 0 não implica determinismo bit a bit. Sequência, GPU compartilhada e cache não foram randomizados."
+  }
+}

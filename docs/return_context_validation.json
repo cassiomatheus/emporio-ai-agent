@@ -1,0 +1,236 @@
+{
+  "date": "2026-11-02",
+  "model": "qwen3.5:9b",
+  "before": {
+    "execution": "real_local_qwen_before",
+    "rows": [
+      {
+        "message": "Me arrependi da minha compra, posso devolver meu pedido?",
+        "status": "answered",
+        "http_status": null,
+        "latency_ms": 2355.08,
+        "tools": [],
+        "provider_turns": [
+          {
+            "calls": [],
+            "final_plan": "{\"intent\":\"handoff\",\"evidence_call_ids\":[],\"clarification\":null}",
+            "usage": {
+              "input_tokens": 2783,
+              "output_tokens": 85,
+              "total_tokens": 2868
+            }
+          }
+        ],
+        "rounds": null,
+        "asks_product_model": false,
+        "asks_receipt_date": false,
+        "policy_sections": []
+      },
+      {
+        "message": "Recebi dia <DATA_DECLARADA> e ele ainda está embalado",
+        "status": "answered",
+        "http_status": null,
+        "latency_ms": 1.84,
+        "tools": [],
+        "provider_turns": [],
+        "rounds": null,
+        "asks_product_model": true,
+        "asks_receipt_date": false,
+        "policy_sections": []
+      }
+    ]
+  },
+  "reference_fix_only": {
+    "execution": "real_local_qwen_after",
+    "rows": [
+      {
+        "message": "Me arrependi da minha compra, posso devolver meu pedido?",
+        "status": "answered",
+        "http_status": null,
+        "latency_ms": 2223.59,
+        "tools": [],
+        "provider_turns": [
+          {
+            "calls": [],
+            "final_plan": "{\"intent\":\"handoff\",\"evidence_call_ids\":[],\"clarification\":null}",
+            "usage": {
+              "input_tokens": 2783,
+              "output_tokens": 85,
+              "total_tokens": 2868
+            }
+          }
+        ],
+        "rounds": null,
+        "asks_product_model": false,
+        "asks_receipt_date": false,
+        "policy_sections": []
+      },
+      {
+        "message": "Recebi dia <DATA_DECLARADA> e ele ainda está embalado",
+        "status": "answered",
+        "http_status": null,
+        "latency_ms": 2260.34,
+        "tools": [],
+        "provider_turns": [
+          {
+            "calls": [],
+            "final_plan": "{\"intent\":\"handoff\",\"evidence_call_ids\":[],\"clarification\":null}",
+            "usage": {
+              "input_tokens": 2893,
+              "output_tokens": 87,
+              "total_tokens": 2980
+            }
+          }
+        ],
+        "rounds": null,
+        "asks_product_model": false,
+        "asks_receipt_date": false,
+        "policy_sections": []
+      }
+    ]
+  },
+  "after": {
+    "execution": "real_local_qwen_after",
+    "rows": [
+      {
+        "message": "Me arrependi da minha compra, posso devolver meu pedido?",
+        "status": "answered",
+        "http_status": null,
+        "latency_ms": 6750.8,
+        "tools": [
+          {
+            "call_id": "call_musv45h3",
+            "name": "search_store_policies",
+            "status": "ok",
+            "error_code": null
+          }
+        ],
+        "provider_turns": [
+          {
+            "calls": [
+              {
+                "call_id": "call_musv45h3",
+                "name": "search_store_policies",
+                "arguments": "{\"query\":\"devolução por arrependimento\",\"top_k\":3}"
+              }
+            ],
+            "final_plan": null,
+            "usage": {
+              "input_tokens": 1941,
+              "output_tokens": 44,
+              "total_tokens": 1985
+            }
+          },
+          {
+            "calls": [],
+            "final_plan": "{\"intent\":\"answer\",\"evidence_call_ids\":[\"call_musv45h3\"],\"clarification\":null}",
+            "usage": {
+              "input_tokens": 3635,
+              "output_tokens": 139,
+              "total_tokens": 3774
+            }
+          }
+        ],
+        "rounds": null,
+        "asks_product_model": false,
+        "asks_receipt_date": false,
+        "policy_sections": [
+          "4.1"
+        ]
+      },
+      {
+        "message": "Recebi dia <DATA_DECLARADA> e ele ainda está embalado",
+        "status": "answered",
+        "http_status": null,
+        "latency_ms": 6276.78,
+        "tools": [
+          {
+            "call_id": "call_4iw127oy",
+            "name": "search_store_policies",
+            "status": "ok",
+            "error_code": null
+          }
+        ],
+        "provider_turns": [
+          {
+            "calls": [
+              {
+                "call_id": "call_4iw127oy",
+                "name": "search_store_policies",
+                "arguments": "{\"query\":\"devolução arrependimento prazo embalagem\",\"top_k\":3}"
+              }
+            ],
+            "final_plan": null,
+            "usage": {
+              "input_tokens": 2086,
+              "output_tokens": 45,
+              "total_tokens": 2131
+            }
+          },
+          {
+            "calls": [],
+            "final_plan": "{\"intent\":\"answer\",\"evidence_call_ids\":[\"call_4iw127oy\"],\"clarification\":null}",
+            "usage": {
+              "input_tokens": 3979,
+              "output_tokens": 186,
+              "total_tokens": 4165
+            }
+          }
+        ],
+        "rounds": null,
+        "asks_product_model": false,
+        "asks_receipt_date": false,
+        "policy_sections": [
+          "4.1"
+        ]
+      }
+    ]
+  },
+  "http_after": {
+    "execution": "real_local_backend_guard_then_qwen_http",
+    "rows": [
+      {
+        "message": "Quero devolver meu pedido, mas não sei quando recebi.",
+        "status": "answered",
+        "http_status": 200,
+        "latency_ms": 3.36,
+        "tools": [],
+        "provider_turns": null,
+        "rounds": 0,
+        "asks_product_model": false,
+        "asks_receipt_date": true,
+        "policy_sections": []
+      },
+      {
+        "message": "Conferi aqui: recebi dia <DATA_DECLARADA> e ele ainda está embalado.",
+        "status": "answered",
+        "http_status": 200,
+        "latency_ms": 5126.84,
+        "tools": [
+          {
+            "name": "search_store_policies",
+            "status": "ok",
+            "error_code": null
+          }
+        ],
+        "provider_turns": null,
+        "rounds": 2,
+        "asks_product_model": false,
+        "asks_receipt_date": false,
+        "policy_sections": [
+          "4.1"
+        ]
+      }
+    ]
+  },
+  "automated_tests": {
+    "new_cases": 11,
+    "execution": "offline_mocks_and_synthetic_sqlite",
+    "focused_pytest": "89 passed in 1.39s",
+    "full_pytest": "553 passed in 17.82s",
+    "ruff": "All checks passed!",
+    "compileall_exit": 0
+  },
+  "raw_policy_excerpts_omitted": true,
+  "protected_files_hashes_match": true
+}

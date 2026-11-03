@@ -1,0 +1,238 @@
+{
+  "40": {
+    "selected_after_observing_outages": true,
+    "note": "Amostra pós-hoc determinada pelo ponto de queda. Não representa desempenho global do conjunto nem teste independente. Exclui guards e injeções do provedor.",
+    "turns": [
+      {
+        "case_id": "CAT01",
+        "step": 1
+      },
+      {
+        "case_id": "CAT02",
+        "step": 1
+      },
+      {
+        "case_id": "CAT03",
+        "step": 1
+      },
+      {
+        "case_id": "CAT04",
+        "step": 1
+      },
+      {
+        "case_id": "CAT05",
+        "step": 1
+      },
+      {
+        "case_id": "CAT06",
+        "step": 1
+      },
+      {
+        "case_id": "CAT07",
+        "step": 1
+      },
+      {
+        "case_id": "CAT08",
+        "step": 1
+      },
+      {
+        "case_id": "PRE01",
+        "step": 1
+      },
+      {
+        "case_id": "PRE02",
+        "step": 1
+      }
+    ],
+    "gemma": {
+      "task_success": {
+        "passed": 10,
+        "applicable": 10,
+        "rate": 1.0
+      },
+      "selection": {
+        "passed": 9,
+        "applicable": 10,
+        "rate": 0.9
+      },
+      "arguments": {
+        "passed": 9,
+        "applicable": 10,
+        "rate": 0.9
+      },
+      "grounding": {
+        "passed": 8,
+        "applicable": 8,
+        "rate": 1.0
+      },
+      "compliance": {
+        "passed": 10,
+        "applicable": 10,
+        "rate": 1.0
+      },
+      "latency": {
+        "samples": 10,
+        "median_ms": 5796.5885,
+        "p95_ms": 21411.9924,
+        "p95_method": "nearest_rank"
+      }
+    },
+    "qwen": {
+      "task_success": {
+        "passed": 10,
+        "applicable": 10,
+        "rate": 1.0
+      },
+      "selection": {
+        "passed": 10,
+        "applicable": 10,
+        "rate": 1.0
+      },
+      "arguments": {
+        "passed": 9,
+        "applicable": 10,
+        "rate": 0.9
+      },
+      "grounding": {
+        "passed": 8,
+        "applicable": 8,
+        "rate": 1.0
+      },
+      "compliance": {
+        "passed": 10,
+        "applicable": 10,
+        "rate": 1.0
+      },
+      "latency": {
+        "samples": 10,
+        "median_ms": 3745.0595,
+        "p95_ms": 6565.1591,
+        "p95_method": "nearest_rank"
+      }
+    }
+  },
+  "18": {
+    "selected_after_observing_outages": true,
+    "note": "Amostra pós-hoc determinada pelo ponto de queda. Não representa desempenho global do conjunto nem teste independente. Exclui guards e injeções do provedor.",
+    "turns": [
+      {
+        "case_id": "HLD01",
+        "step": 1
+      },
+      {
+        "case_id": "HLD02",
+        "step": 1
+      },
+      {
+        "case_id": "HLD03",
+        "step": 1
+      },
+      {
+        "case_id": "HLD04",
+        "step": 1
+      },
+      {
+        "case_id": "HLD05",
+        "step": 1
+      },
+      {
+        "case_id": "HLD06",
+        "step": 1
+      },
+      {
+        "case_id": "HLD07",
+        "step": 1
+      },
+      {
+        "case_id": "HLD08",
+        "step": 1
+      },
+      {
+        "case_id": "HLD09",
+        "step": 1
+      },
+      {
+        "case_id": "HLD10",
+        "step": 1
+      },
+      {
+        "case_id": "HLD11",
+        "step": 1
+      },
+      {
+        "case_id": "HLD12",
+        "step": 1
+      },
+      {
+        "case_id": "HLD14",
+        "step": 1
+      }
+    ],
+    "gemma": {
+      "task_success": {
+        "passed": 11,
+        "applicable": 13,
+        "rate": 0.8461538461538461
+      },
+      "selection": {
+        "passed": 13,
+        "applicable": 13,
+        "rate": 1.0
+      },
+      "arguments": {
+        "passed": 12,
+        "applicable": 13,
+        "rate": 0.9230769230769231
+      },
+      "grounding": {
+        "passed": 10,
+        "applicable": 10,
+        "rate": 1.0
+      },
+      "compliance": {
+        "passed": 13,
+        "applicable": 13,
+        "rate": 1.0
+      },
+      "latency": {
+        "samples": 13,
+        "median_ms": 5321.0031,
+        "p95_ms": 18851.5371,
+        "p95_method": "nearest_rank"
+      }
+    },
+    "qwen": {
+      "task_success": {
+        "passed": 10,
+        "applicable": 13,
+        "rate": 0.7692307692307693
+      },
+      "selection": {
+        "passed": 13,
+        "applicable": 13,
+        "rate": 1.0
+      },
+      "arguments": {
+        "passed": 11,
+        "applicable": 13,
+        "rate": 0.8461538461538461
+      },
+      "grounding": {
+        "passed": 11,
+        "applicable": 11,
+        "rate": 1.0
+      },
+      "compliance": {
+        "passed": 13,
+        "applicable": 13,
+        "rate": 1.0
+      },
+      "latency": {
+        "samples": 13,
+        "median_ms": 4458.8291,
+        "p95_ms": 5608.9228,
+        "p95_method": "nearest_rank"
+      }
+    }
+  }
+}
